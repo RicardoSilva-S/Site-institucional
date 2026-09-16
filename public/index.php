@@ -1,20 +1,38 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
+declare(strict_types=1);
 
-define('LARAVEL_START', microtime(true));
+/**
+ * Front Controller — tudo passa por aqui
+ * 1. Autoload
+ * 2. Carrega variáveis de ambiente (.env)
+ * 3. Instancia Request e Router
+ * 4. Carrega as rotas
+ * 5. Despacha
+ */
 
-// Determine if the application is in maintenance mode...
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
+define('ROOT', dirname(__DIR__));
+
+// 1. Autoload PSR-4
+require ROOT . '/app/Core/Autoload.php';
+
+// 2. Carrega .env se existir
+$envFile = ROOT . '/.env';
+if (file_exists($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $linha) {
+        if (strpos(trim($linha), '#') === 0) continue; // ignora comentários
+        if (strpos($linha, '=') === false) continue;
+        [$chave, $valor] = explode('=', $linha, 2);
+        putenv(trim($chave) . '=' . trim($valor));
+    }
 }
 
-// Register the Composer autoloader...
-require __DIR__.'/../vendor/autoload.php';
+// 3. Request e Router
+$request = new App\Core\Request();
+$router  = new App\Core\Router($request);
 
-// Bootstrap Laravel and handle the request...
-/** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
+// 4. Rotas
+require ROOT . '/routes/web.php';
 
-$app->handleRequest(Request::capture());
+// 5. Despacha
+$router->dispatch();
