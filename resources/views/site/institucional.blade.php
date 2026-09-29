@@ -17,6 +17,15 @@
     width: 100%;
   }
 
+  .team-card__photo {
+    overflow: hidden;
+  }
+
+  .team-card--jonny .team-card__photo img {
+    transform: scale(1.18);
+    transform-origin: center 18%;
+  }
+
   .team-card__body {
     padding: 28px;
   }
@@ -84,8 +93,10 @@
       </div>
       <h3 style="margin-bottom:18px;">Diretoria Executiva</h3>
       <div class="cards-grid">
-        <article class="card team-card">
-          <img src="{{ asset('assets/equipe/jonny.jpg') }}" alt="Jonny de Souza Ribeiro" loading="lazy">
+        <article class="card team-card team-card--jonny">
+          <div class="team-card__photo">
+            <img src="{{ asset('assets/equipe/jonny.jpg') }}" alt="Jonny de Souza Ribeiro" loading="lazy">
+          </div>
           <div class="team-card__body">
             <span class="kicker">Presidência</span>
             <h3>Jonny de Souza Ribeiro</h3>
