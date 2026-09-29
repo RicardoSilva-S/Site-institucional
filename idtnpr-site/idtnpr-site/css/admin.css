@@ -1,0 +1,91 @@
+/* =========================================================================
+   IDTNPR — admin.css
+   Estilo do painel administrativo (/admin.html). Usa as mesmas variáveis
+   de cor/fonte de style.css (carregado antes deste arquivo).
+   ========================================================================= */
+
+.admin-shell{background:var(--mist);min-height:100vh;}
+
+.admin-header{
+  background:var(--navy-dark);color:#fff;padding:22px 0;
+  position:sticky;top:0;z-index:50;box-shadow:var(--shadow-md);
+}
+.admin-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.admin-header .brand-row{display:flex;align-items:center;gap:14px;}
+.admin-header .brand-row img{height:32px;filter:brightness(0) invert(1);opacity:0.92;}
+.admin-header h1{color:#fff;font-size:19px;font-weight:700;}
+.admin-header .back-link{font-size:14px;color:rgba(255,255,255,0.75);font-weight:500;}
+.admin-header .back-link:hover{color:#fff;}
+
+.admin-intro{padding:36px 0 8px;}
+.admin-intro h2{font-size:24px;}
+.admin-intro p{color:var(--ink-soft);font-size:15.5px;margin-top:10px;max-width:70ch;}
+
+.admin-toolbar{
+  position:sticky;top:76px;z-index:40;background:var(--mist);
+  padding:16px 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+  border-bottom:1px solid var(--line);margin-bottom:28px;
+}
+.admin-search{
+  flex:1;min-width:220px;
+  padding:11px 16px;border-radius:var(--radius-sm);border:1px solid var(--line);
+  font-family:var(--sans);font-size:14.5px;background:var(--paper);
+}
+.admin-toolbar-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-sm{padding:10px 18px;font-size:14px;}
+.btn-text{background:none;border:none;color:var(--ink-soft);font-size:14px;font-weight:600;cursor:pointer;padding:10px 6px;}
+.btn-text:hover{color:var(--bad-ink);}
+
+#admin-form{padding-bottom:90px;}
+
+details.admin-page{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);
+  margin-bottom:16px;box-shadow:var(--shadow-sm);overflow:hidden;
+}
+details.admin-page summary{
+  list-style:none;cursor:pointer;padding:18px 22px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  font-family:var(--serif);font-weight:700;font-size:17px;color:var(--navy-dark);
+  background:var(--mist);
+}
+details.admin-page summary::-webkit-details-marker{display:none;}
+details.admin-page summary::before{content:"▸";margin-right:10px;color:var(--gold);font-size:13px;transition:transform .15s ease;}
+details.admin-page[open] summary::before{transform:rotate(90deg);}
+.admin-page-count{font-family:var(--sans);font-weight:500;font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+
+.admin-group{padding:22px 26px;border-top:1px solid var(--line);}
+.admin-group h3{
+  font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--gold);
+  text-transform:uppercase;letter-spacing:.04em;margin-bottom:16px;
+}
+.admin-field{display:grid;grid-template-columns:260px 1fr;gap:18px;align-items:start;padding:12px 0;}
+.admin-field + .admin-field{border-top:1px dashed var(--line);}
+.admin-field label{font-size:14px;color:var(--ink);font-weight:500;padding-top:10px;}
+.admin-field input[type="text"],
+.admin-field textarea{
+  width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+  padding:10px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--paper);resize:vertical;
+}
+.admin-field input[type="text"]:focus,
+.admin-field textarea:focus{border-color:var(--navy);}
+
+.admin-save-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(15,42,92,0.10);
+  padding:16px 0;
+}
+.admin-save-bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.admin-save-bar p{font-size:13.5px;color:var(--ink-soft);}
+
+.admin-status{
+  font-size:13.5px;font-weight:600;color:var(--good-ink);
+  opacity:0;transition:opacity .2s ease;
+}
+.admin-status.is-visible{opacity:1;}
+
+@media (max-width:720px){
+  .admin-field{grid-template-columns:1fr;}
+  .admin-field label{padding-top:0;}
+  .admin-toolbar{top:70px;}
+}
