@@ -13,4 +13,14 @@ class SiteController extends Controller
     {
         return view('site.marco-legal');
     }
+
+    public function contato()
+    {
+        return view('site.contato');
+    }
+
+    public function transparencia()
+    {
+        return view('site.transparencia');
+    }
 }

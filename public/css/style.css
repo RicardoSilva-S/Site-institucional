@@ -428,3 +428,118 @@ footer{background:var(--mist);padding:68px 0 32px;border-top:1px solid var(--lin
   .qa-block{padding:30px 26px;}
   .proc-card{padding:30px 26px;}
 }
+
+/* --- Contato: blocos institucionais, formulário e ouvidoria --- */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.contact-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:28px;box-shadow:var(--shadow-sm);
+}
+.contact-card h3{font-size:18px;margin-bottom:16px;}
+.contact-card dl{margin:0;}
+.contact-card dt{font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.03em;margin-top:14px;}
+.contact-card dt:first-child{margin-top:0;}
+.contact-card dd{margin:3px 0 0;font-size:15px;color:var(--ink);word-break:break-word;}
+.contact-card dd a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--line);}
+.contact-card dd a:hover{border-bottom-color:var(--navy);}
+.contact-card p{font-size:14.5px;color:var(--ink-soft);margin:0;}
+
+.form-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;}
+.form-intro p{color:var(--ink-soft);font-size:16.5px;margin-top:16px;}
+.contact-audience{margin-top:32px;display:grid;gap:14px;}
+.contact-audience .contact-card{padding:22px 24px;}
+.contact-audience h3{font-size:16.5px;margin-bottom:6px;}
+.contact-audience a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--navy);}
+
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:34px 32px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:14px;font-weight:600;color:var(--navy-dark);}
+.field label .req{color:var(--bad-ink);}
+.field input,.field select,.field textarea{
+  font:inherit;font-size:15.5px;color:var(--ink);background:var(--paper);
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;width:100%;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.field textarea{min-height:130px;resize:vertical;}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#C3CADB;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(31,76,145,.15);}
+.field.has-error input,.field.has-error select,.field.has-error textarea{border-color:var(--bad-ink);background:var(--bad-bg);}
+.field .error-msg{display:none;font-size:13px;color:var(--bad-ink);}
+.field.has-error .error-msg{display:block;}
+.form-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+.form-actions button{cursor:pointer;font:inherit;}
+.form-note{margin-top:18px;font-size:13.5px;color:var(--ink-soft);}
+.form-note a{color:var(--navy);border-bottom:1px solid var(--navy);}
+.form-alert{display:none;margin-bottom:20px;padding:13px 16px;border-radius:var(--radius-sm);font-size:14.5px;}
+.form-alert.is-visible{display:block;}
+.form-alert.error{background:var(--bad-bg);color:var(--bad-ink);}
+.form-alert.success{background:var(--good-bg);color:var(--good-ink);}
+
+.ouvidoria{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+.ouvidoria p{color:var(--ink-soft);font-size:16.5px;margin-top:14px;}
+.ouvidoria-box{background:var(--navy-dark);color:#fff;border-radius:var(--radius-lg);padding:32px 30px;box-shadow:var(--shadow-lg);}
+.ouvidoria-box .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--navy-dark);background:var(--gold);padding:5px 12px;border-radius:20px;margin-bottom:16px;}
+.ouvidoria-box a.mail{display:block;font-family:var(--serif);font-size:20px;color:#fff;word-break:break-all;margin-bottom:14px;}
+.ouvidoria-box p{color:rgba(255,255,255,.78);font-size:14.5px;margin:0;}
+
+@media (max-width:960px){
+  .form-layout,.ouvidoria{grid-template-columns:1fr;gap:36px;}
+}
+@media (max-width:600px){
+  .contact-grid{grid-template-columns:1fr;}
+  .form-card{padding:24px 18px;}
+  .form-grid{grid-template-columns:1fr;}
+  .form-actions .btn{width:100%;justify-content:center;}
+}
+
+/* --- Portal da Transparência --- */
+.page-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+.meta-chip{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);padding:12px 18px;box-shadow:var(--shadow-sm);}
+.meta-chip .k{display:block;font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.03em;}
+.meta-chip .v{font-size:15px;color:var(--ink);word-break:break-word;}
+.meta-chip a.v{color:var(--navy);font-weight:600;}
+
+.cta-panel{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:34px 36px;}
+.cta-panel h2{font-size:26px;margin-bottom:10px;}
+.cta-panel p{color:var(--ink-soft);max-width:56ch;font-size:16px;}
+.cta-panel .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+
+.doc-filters{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:28px;}
+.doc-filters input[type=search]{flex:1 1 260px;font:inherit;font-size:15.5px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);}
+.doc-filters input[type=search]:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(31,76,145,.15);}
+.chip{font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--navy);background:var(--mist);border:1px solid var(--line);border-radius:20px;padding:8px 15px;transition:background .15s ease;}
+.chip:hover{background:var(--gold-soft);}
+.chip.is-active{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+.doc-section{margin-bottom:34px;scroll-margin-top:100px;}
+.doc-section-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:14px;}
+.doc-section-head h3{font-size:21px;}
+.doc-section-head span{font-size:14px;color:var(--ink-soft);}
+.doc-list{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);background:var(--paper);}
+.doc-item{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 22px;transition:background .15s ease;}
+.doc-item + .doc-item{border-top:1px solid var(--line);}
+.doc-item:hover{background:var(--mist);}
+.doc-name{font-weight:600;font-size:15.5px;color:var(--navy-dark);}
+.doc-detail{font-size:13.5px;color:var(--ink-soft);margin-top:2px;}
+.doc-side{flex:none;display:flex;align-items:center;}
+.doc-side .btn{padding:9px 18px;font-size:14px;}
+.status{font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:5px 12px;border-radius:20px;background:var(--mist-dark);color:var(--ink-soft);white-space:nowrap;}
+.status.publicado{background:var(--good-bg);color:var(--good-ink);}
+.status.elaboracao{background:var(--gold-soft);color:#7A5714;}
+.doc-empty{display:none;padding:28px;text-align:center;color:var(--ink-soft);border:1px dashed var(--line);border-radius:var(--radius-md);}
+.doc-empty.is-visible{display:block;}
+.doc-note{background:var(--mist);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px 30px;}
+.doc-note p{color:var(--ink-soft);font-size:15.5px;margin:8px 0 18px;}
+
+.transp-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:center;}
+
+@media (max-width:960px){
+  .transp-grid{grid-template-columns:1fr;gap:24px;}
+}
+@media (max-width:600px){
+  .cta-panel{padding:26px 22px;}
+  .doc-item{flex-direction:column;align-items:flex-start;padding:16px 18px;}
+  .doc-side .btn{width:100%;}
+}

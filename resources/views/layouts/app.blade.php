@@ -22,10 +22,10 @@
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR - Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense">
     </a>
 
-    {{-- Institucional, Atuação, Projetos, Editais, Transparência e Contato
-         ainda não têm rota própria — só Início e Marco Legal foram
-         migrados para Blade até agora. Aponte para a rota real assim que
-         a página correspondente existir em routes/web.php. --}}
+    {{-- Institucional, Atuação, Projetos e Editais ainda não têm rota
+         própria — Início, Marco Legal, Contato e Transparência já foram
+         migrados para Blade. Aponte para a rota real assim que a página
+         correspondente existir em routes/web.php. --}}
     <nav class="primary" aria-label="Navegação principal">
       <ul>
         <li><a class="top-link" href="{{ route('home') }}">@content('shared.nav.inicio')</a></li>
@@ -41,8 +41,8 @@
         <li><a class="top-link" href="#">@content('shared.nav.atuacao')</a></li>
         <li><a class="top-link" href="#">@content('shared.nav.projetos')</a></li>
         <li><a class="top-link" href="#">@content('shared.nav.editais')</a></li>
-        <li><a class="top-link" href="#">@content('shared.nav.transparencia')</a></li>
-        <li><a class="top-link" href="#">@content('shared.nav.contato')</a></li>
+        <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.transparencia')</a></li>
+        <li><a class="top-link" href="{{ route('contato') }}">@content('shared.nav.contato')</a></li>
       </ul>
     </nav>
 
@@ -89,9 +89,9 @@
       <div>
         <h4>@content('shared.footer.col3.title')</h4>
         <ul>
-          <li><a href="#">Portal da Transparência</a></li>
-          <li><a href="#">Documentos institucionais</a></li>
-          <li><a href="#">Ouvidoria</a></li>
+          <li><a href="{{ route('transparencia') }}">Portal da Transparência</a></li>
+          <li><a href="{{ route('transparencia') }}">Documentos institucionais</a></li>
+          <li><a href="{{ route('contato') }}#ouvidoria">Ouvidoria</a></li>
           <li><a href="#">LGPD e Privacidade</a></li>
         </ul>
       </div>
