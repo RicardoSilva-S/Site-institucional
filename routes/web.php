@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 // Site público -----------------------------------------------------------
 Route::get('/', [SiteController::class, 'home'])->name('home');
 Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-legal');
+Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 
 // Autenticação (painel administrativo) ------------------------------------
 Route::middleware('guest')->group(function () {

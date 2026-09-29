@@ -38,7 +38,7 @@
             <a href="{{ route('marco-legal') }}">Marco Legal</a>
           </div>
         </li>
-        <li><a class="top-link" href="#">@content('shared.nav.atuacao')</a></li>
+        <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.atuacao')</a></li>
         <li><a class="top-link" href="#">@content('shared.nav.projetos')</a></li>
         <li><a class="top-link" href="#">@content('shared.nav.editais')</a></li>
         <li><a class="top-link" href="#">@content('shared.nav.transparencia')</a></li>
@@ -80,7 +80,7 @@
         <h4>@content('shared.footer.col2.title')</h4>
         <ul>
           <li><a href="#">Projetos e produtos</a></li>
-          <li><a href="#">Frentes de atuação</a></li>
+          <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
           <li><a href="#">Editais e chamamentos</a></li>
           <li><a href="#">Diagnóstico gratuito</a></li>
         </ul>
