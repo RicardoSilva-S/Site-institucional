@@ -337,3 +337,94 @@ footer{background:var(--mist);padding:68px 0 32px;border-top:1px solid var(--lin
   body{font-size:16px;}
   .hero h1{font-size:30px;}
 }
+
+/* =========================================================================
+   Componentes da página Marco Legal (marco-legal.html)
+   Reaproveitáveis em qualquer página institucional/jurídica futura.
+   ========================================================================= */
+
+/* --- Hero simples (sem imagem lateral), usado em páginas internas --- */
+.page-hero{background:linear-gradient(180deg, var(--mist) 0%, var(--paper) 78%);padding:72px 0 20px;}
+.page-hero .wrap{max-width:760px;}
+.page-hero h1{font-size:40px;line-height:1.2;}
+.page-hero .lead{font-size:18.5px;color:var(--ink-soft);margin-top:18px;line-height:1.6;}
+
+/* --- Lista de normas (grid de cartões) --- */
+.norma-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.norma-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:22px 24px;box-shadow:var(--shadow-sm);
+  border-left:3px solid var(--navy);
+}
+.norma-card .ref{
+  display:block;font-family:var(--serif);font-weight:700;font-size:15.5px;
+  color:var(--navy-dark);margin-bottom:8px;line-height:1.35;
+}
+.norma-card .desc{font-size:14.5px;color:var(--ink-soft);line-height:1.55;}
+
+/* --- Bloco de Pergunta/Resposta (ICT) --- */
+.qa-block{
+  background:var(--navy-dark);color:#fff;border-radius:var(--radius-lg);
+  padding:40px 44px;box-shadow:var(--shadow-lg);margin-bottom:24px;
+}
+.qa-block .question{font-family:var(--serif);font-size:24px;font-weight:700;color:#fff;margin-bottom:14px;}
+.qa-block .answer{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.6;max-width:70ch;}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.info-box{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:24px 26px;box-shadow:var(--shadow-sm);
+}
+.info-box h3{font-size:15.5px;color:var(--gold);text-transform:uppercase;letter-spacing:.03em;font-weight:700;margin-bottom:14px;font-family:var(--sans);}
+.info-box p{font-size:15px;color:var(--ink-soft);line-height:1.6;}
+.req-list{list-style:none;margin:0;padding:0;}
+.req-list li{
+  display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink);padding:8px 0;
+}
+.req-list li::before{content:"✓";flex:none;color:var(--good-ink);font-weight:700;}
+
+/* --- Tabela de instrumentos legais (3 colunas) --- */
+.legal-table{
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-md);border:1px solid var(--line);
+  overflow-x:auto;
+}
+.legal-table table{width:100%;border-collapse:collapse;min-width:680px;}
+.legal-table thead th{
+  font-family:var(--serif);font-weight:700;font-size:15px;text-align:left;
+  background:var(--navy-dark);color:#fff;padding:16px 20px;
+}
+.legal-table tbody td{
+  padding:18px 20px;font-size:14.5px;color:var(--ink);vertical-align:top;
+  border-top:1px solid var(--line);
+}
+.legal-table tbody tr:hover td{background:var(--mist);}
+.legal-table td.situacao{color:var(--ink-soft);}
+.legal-table td.instrumento{font-weight:600;color:var(--navy-dark);white-space:nowrap;}
+.legal-table td.fundamento{font-size:13.5px;color:var(--ink-soft);}
+
+.legal-note{
+  margin-top:20px;background:var(--gold-soft);border:1px solid #E4CE9C;
+  border-radius:var(--radius-md);padding:24px 26px;
+}
+.legal-note h3{font-family:var(--serif);font-size:17px;color:var(--navy-dark);margin-bottom:8px;}
+.legal-note p{font-size:15px;color:var(--ink);line-height:1.6;}
+
+/* --- CTA para Procuradorias --- */
+.proc-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:44px;box-shadow:var(--shadow-md);
+}
+.proc-card p{font-size:16px;color:var(--ink-soft);margin-bottom:16px;line-height:1.6;max-width:70ch;}
+.proc-cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0;}
+.proc-disclaimer{
+  font-size:13.5px;color:var(--ink-soft);border-top:1px solid var(--line);
+  padding-top:20px;margin-top:6px;line-height:1.6;
+}
+
+@media (max-width:900px){
+  .norma-grid{grid-template-columns:1fr;}
+  .info-grid{grid-template-columns:1fr;}
+  .qa-block{padding:30px 26px;}
+  .proc-card{padding:30px 26px;}
+}
