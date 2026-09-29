@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 // Site público -----------------------------------------------------------
 Route::get('/', [SiteController::class, 'home'])->name('home');
+Route::get('/institucional', [SiteController::class, 'institucional'])->name('institucional');
 Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-legal');
 
 // Autenticação (painel administrativo) ------------------------------------
