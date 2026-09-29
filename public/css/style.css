@@ -533,10 +533,13 @@ footer{background:var(--mist);padding:68px 0 32px;border-top:1px solid var(--lin
 .doc-note{background:var(--mist);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px 30px;}
 .doc-note p{color:var(--ink-soft);font-size:15.5px;margin:8px 0 18px;}
 
-.transp-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:center;}
+/* Nome diferente de .transp-grid (home.blade.php) de propósito — mesma
+   classe já existia com outro layout na home, então reaproveitá-la aqui
+   ia bagunçar a seção de transparência da home. */
+.pedidos-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:center;}
 
 @media (max-width:960px){
-  .transp-grid{grid-template-columns:1fr;gap:24px;}
+  .pedidos-grid{grid-template-columns:1fr;gap:24px;}
 }
 @media (max-width:600px){
   .cta-panel{padding:26px 22px;}

@@ -127,7 +127,7 @@
 
   <!-- PEDIDOS DE INFORMAÇÃO -->
   <section class="alt">
-    <div class="wrap transp-grid">
+    <div class="wrap pedidos-grid">
       <div>
         <span class="section-head kicker" style="display:block;">@content('transparencia.pedidos.kicker')</span>
         <h2>@content('transparencia.pedidos.title')</h2>
