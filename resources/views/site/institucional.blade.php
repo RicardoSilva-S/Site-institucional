@@ -3,6 +3,26 @@
 @section('title', 'Institucional | IDTNPR')
 @section('description', 'Conheça o IDTNPR: sua natureza jurídica, missão, história, governança e documentos institucionais.')
 
+@push('styles')
+<style>
+  .team-card {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .team-card img {
+    aspect-ratio: 1;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .team-card__body {
+    padding: 28px;
+  }
+</style>
+@endpush
+
 @section('content')
   <section class="page-hero">
     <div class="wrap">
@@ -64,9 +84,30 @@
       </div>
       <h3 style="margin-bottom:18px;">Diretoria Executiva</h3>
       <div class="cards-grid">
-        <article class="card"><span class="kicker">Presidência</span><h3>Jonny de Souza Ribeiro</h3><p>Economista com pós-graduação em Controladoria e Finanças, com experiência em tecnologia, análise econômica aplicada à gestão pública e projetos de inovação.</p></article>
-        <article class="card"><span class="kicker">Diretoria administrativa</span><h3>Gilmar Boti Júnior</h3><p>Graduado em Processos Gerenciais e Gestão Pública, com mais de dez anos de atuação direta no setor público e na administração de contratos.</p></article>
-        <article class="card"><span class="kicker">Projetos e tecnologia</span><h3>Bruno Nascimento</h3><p>Bacharel em Gestão Pública, consultor e empresário com experiência em processos, modernização administrativa e implantação de sistemas.</p></article>
+        <article class="card team-card">
+          <img src="{{ asset('assets/equipe/jonny.jpg') }}" alt="Jonny de Souza Ribeiro" loading="lazy">
+          <div class="team-card__body">
+            <span class="kicker">Presidência</span>
+            <h3>Jonny de Souza Ribeiro</h3>
+            <p>Economista com pós-graduação em Controladoria e Finanças, com experiência em tecnologia, análise econômica aplicada à gestão pública e projetos de inovação.</p>
+          </div>
+        </article>
+        <article class="card team-card">
+          <img src="{{ asset('assets/equipe/gilmar.jpg') }}" alt="Gilmar Boti Júnior" loading="lazy">
+          <div class="team-card__body">
+            <span class="kicker">Diretoria administrativa</span>
+            <h3>Gilmar Boti Júnior</h3>
+            <p>Graduado em Processos Gerenciais e Gestão Pública, com mais de dez anos de atuação direta no setor público e na administração de contratos.</p>
+          </div>
+        </article>
+        <article class="card team-card">
+          <img src="{{ asset('assets/equipe/bruno.jpg') }}" alt="Bruno Nascimento" loading="lazy">
+          <div class="team-card__body">
+            <span class="kicker">Projetos e tecnologia</span>
+            <h3>Bruno Nascimento</h3>
+            <p>Bacharel em Gestão Pública, consultor e empresário com experiência em processos, modernização administrativa e implantação de sistemas.</p>
+          </div>
+        </article>
       </div>
       <h3 style="margin:42px 0 18px;">Conselho Fiscal e Consultivo</h3>
       <div class="cards-grid">
