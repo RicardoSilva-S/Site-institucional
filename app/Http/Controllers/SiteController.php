@@ -2,24 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+
 class SiteController extends Controller
 {
-    public function home()
+    public function home(): View
     {
         return view('site.home');
     }
 
-    public function marcoLegal()
+    public function marcoLegal(): View
     {
         return view('site.marco-legal');
     }
 
-    public function contato()
+    public function atuacao(): View
+    {
+        return view('site.atuacao');
+    }
+
+    public function contato(): View
     {
         return view('site.contato');
     }
 
-    public function transparencia()
+    public function transparencia(): View
     {
         return view('site.transparencia');
     }
