@@ -20,4 +20,14 @@ class SiteController extends Controller
     {
         return view('site.institucional');
     }
+
+    public function contato(): View
+    {
+        return view('site.contato');
+    }
+
+    public function transparencia(): View
+    {
+        return view('site.transparencia');
+    }
 }
