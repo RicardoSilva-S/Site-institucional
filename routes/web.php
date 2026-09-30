@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'home'])->name('home');
 Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-legal');
 Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
+Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
+Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 
 // Autenticação (painel administrativo) ------------------------------------
 Route::middleware('guest')->group(function () {

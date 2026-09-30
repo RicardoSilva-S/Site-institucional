@@ -1187,4 +1187,273 @@ return [
             ],
         ],
     ],
+    [
+        'page' => 'contato',
+        'pageLabel' => 'Contato (contato.html)',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo da página',
+                'fields' => [
+                    [
+                        'key' => 'contato.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Fale com o Instituto',
+                    ],
+                    [
+                        'key' => 'contato.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'Conte qual é o problema do seu município. O diagnóstico inicial é gratuito.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'institucional',
+                'label' => 'Blocos de contato institucional',
+                'fields' => [
+                    [
+                        'key' => 'contato.institucional.card1.title',
+                        'label' => 'Título — bloco 1',
+                        'default' => 'Contato institucional',
+                    ],
+                    [
+                        'key' => 'contato.institucional.card2.title',
+                        'label' => 'Título — bloco 2',
+                        'default' => 'Endereço',
+                    ],
+                    [
+                        'key' => 'contato.institucional.card3.title',
+                        'label' => 'Título — bloco 3',
+                        'default' => 'Identificação',
+                    ],
+                    [
+                        'key' => 'contato.institucional.razao_social',
+                        'label' => 'Razão social',
+                        'default' => 'Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense',
+                    ],
+                    [
+                        'key' => 'contato.institucional.natureza',
+                        'label' => 'Natureza jurídica',
+                        'default' => 'Associação privada sem fins lucrativos',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'diagnostico',
+                'label' => 'Formulário — diagnóstico gratuito',
+                'fields' => [
+                    [
+                        'key' => 'contato.diagnostico.kicker',
+                        'label' => 'Selo',
+                        'default' => 'Para gestores públicos',
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.title',
+                        'label' => 'Título',
+                        'default' => 'Solicite o diagnóstico gratuito',
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.text1',
+                        'label' => 'Parágrafo 1',
+                        'default' => 'Conte qual é o problema: fila no atendimento, dificuldade de integrar sistemas, falta de indicadores, manutenção de equipamentos, o que for.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.text2',
+                        'label' => 'Parágrafo 2',
+                        'default' => 'Retornamos com uma proposta de diagnóstico: o que vamos medir, em quanto tempo e o que o município recebe ao final. Sem custo e sem compromisso de contratação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.aud1.title',
+                        'label' => 'Público 1 — título',
+                        'default' => 'Prefeituras e secretarias',
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.aud1.text',
+                        'label' => 'Público 1 — texto',
+                        'default' => 'Diagnóstico do problema, alternativas de mercado, estimativa de custo e indicação do instrumento jurídico aplicável.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.aud2.title',
+                        'label' => 'Público 2 — título',
+                        'default' => 'Procuradorias municipais',
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.aud2.text',
+                        'label' => 'Público 2 — texto',
+                        'default' => 'Minutas, notas de fundamentação e checklists processuais, sem custo e sem vínculo.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.aud2.link',
+                        'label' => 'Público 2 — link para o Marco Legal',
+                        'default' => 'Ver o material disponível',
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.aud3.title',
+                        'label' => 'Público 3 — título',
+                        'default' => 'Empresas de tecnologia',
+                    ],
+                    [
+                        'key' => 'contato.diagnostico.aud3.text',
+                        'label' => 'Público 3 — texto',
+                        'default' => 'Interesse em integrar a carteira de soluções do Instituto? Nossos processos de credenciamento são abertos e não excludentes.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'contato.form.btn_whatsapp',
+                        'label' => 'Botão — enviar pelo WhatsApp',
+                        'default' => 'Enviar pelo WhatsApp',
+                    ],
+                    [
+                        'key' => 'contato.form.btn_email',
+                        'label' => 'Botão — enviar por e-mail',
+                        'default' => 'Enviar por e-mail',
+                    ],
+                    [
+                        'key' => 'contato.form.note',
+                        'label' => 'Ressalva abaixo do formulário',
+                        'default' => 'Os dados preenchidos não são armazenados neste site: ao clicar, a mensagem é montada e aberta no seu WhatsApp ou no seu programa de e-mail, e só é enviada por você.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'ouvidoria',
+                'label' => 'Ouvidoria',
+                'fields' => [
+                    [
+                        'key' => 'contato.ouvidoria.kicker',
+                        'label' => 'Selo',
+                        'default' => 'Canal de integridade',
+                    ],
+                    [
+                        'key' => 'contato.ouvidoria.title',
+                        'label' => 'Título',
+                        'default' => 'Ouvidoria',
+                    ],
+                    [
+                        'key' => 'contato.ouvidoria.text1',
+                        'label' => 'Parágrafo 1',
+                        'default' => 'Canal para denúncias, reclamações, sugestões e pedidos de informação sobre a atuação do IDTNPR.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'contato.ouvidoria.text2',
+                        'label' => 'Parágrafo 2',
+                        'default' => 'As manifestações podem ser identificadas ou anônimas e são respondidas em até 20 dias úteis. Manifestações sobre conduta de dirigentes são encaminhadas diretamente ao Conselho Fiscal e Consultivo.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'contato.ouvidoria.tag',
+                        'label' => 'Selo do quadro de destaque',
+                        'default' => 'Ouvidoria',
+                    ],
+                    [
+                        'key' => 'contato.ouvidoria.note',
+                        'label' => 'Ressalva do quadro de destaque',
+                        'default' => 'É vedada qualquer forma de retaliação contra quem apresenta manifestação de boa-fé.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'page' => 'transparencia',
+        'pageLabel' => 'Portal da Transparência (portal-transparencia.html)',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo da página',
+                'fields' => [
+                    [
+                        'key' => 'transparencia.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Portal da Transparência',
+                    ],
+                    [
+                        'key' => 'transparencia.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'Os atos institucionais do Instituto são registrados em cartório e ficam à disposição de qualquer pessoa. Solicite o documento que precisa e enviamos o arquivo.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'cta',
+                'label' => 'Chamada — solicitar documento',
+                'fields' => [
+                    [
+                        'key' => 'transparencia.cta.title',
+                        'label' => 'Título',
+                        'default' => 'Precisa de algum documento?',
+                    ],
+                    [
+                        'key' => 'transparencia.cta.text',
+                        'label' => 'Texto',
+                        'default' => 'Estatuto Social, atas registradas, regimento interno, CNPJ, termos de parceria. Todos existem, estão registrados e podem ser enviados a você. Diga qual precisa e respondemos com o arquivo.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'transparencia.cta.btn_whatsapp',
+                        'label' => 'Botão — WhatsApp',
+                        'default' => 'Solicitar pelo WhatsApp',
+                    ],
+                    [
+                        'key' => 'transparencia.cta.btn_email',
+                        'label' => 'Botão — e-mail',
+                        'default' => 'Solicitar por e-mail',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'editais',
+                'label' => 'Aviso — editais e chamamentos',
+                'fields' => [
+                    [
+                        'key' => 'transparencia.editais.title',
+                        'label' => 'Título',
+                        'default' => 'Editais e chamamentos',
+                    ],
+                    [
+                        'key' => 'transparencia.editais.text',
+                        'label' => 'Texto',
+                        'default' => 'Os processos de credenciamento e chamamento público do Instituto ficam reunidos em página própria, com o edital completo, os prazos e o canal de inscrição.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'transparencia.editais.btn',
+                        'label' => 'Botão',
+                        'default' => 'Ver editais e chamamentos',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'pedidos',
+                'label' => 'Pedidos de informação',
+                'fields' => [
+                    [
+                        'key' => 'transparencia.pedidos.kicker',
+                        'label' => 'Selo',
+                        'default' => 'Acesso à informação',
+                    ],
+                    [
+                        'key' => 'transparencia.pedidos.title',
+                        'label' => 'Título',
+                        'default' => 'Pedidos de informação',
+                    ],
+                    [
+                        'key' => 'transparencia.pedidos.text',
+                        'label' => 'Texto (antes dos links de e-mail e Ouvidoria)',
+                        'default' => 'Qualquer pessoa pode solicitar informações sobre a atuação do Instituto, identificando-se ou não, pelo e-mail',
+                        'long' => true,
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
