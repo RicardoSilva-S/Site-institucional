@@ -89,3 +89,39 @@ details.admin-page[open] summary::before{transform:rotate(90deg);}
   .admin-field label{padding-top:0;}
   .admin-toolbar{top:70px;}
 }
+
+/* --- Mensagens de erro por campo (validação do servidor) --- */
+.admin-field.has-error input[type="text"],
+.admin-field.has-error textarea{border-color:var(--bad-ink);}
+.field-error{display:block;font-size:12.5px;color:var(--bad-ink);margin-top:6px;}
+
+/* --- Flash de sucesso/erro no topo do painel --- */
+.admin-flash{
+  padding:14px 20px;border-radius:var(--radius-sm);font-size:14.5px;font-weight:600;
+  margin-bottom:22px;border:1px solid transparent;
+}
+.admin-flash.success{background:var(--good-bg);color:var(--good-ink);border-color:#BFE1C9;}
+.admin-flash.error{background:var(--bad-bg);color:var(--bad-ink);border-color:#F1C6C0;}
+
+/* --- Tela de login --- */
+.auth-shell{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:var(--navy-dark);padding:24px;
+}
+.auth-card{
+  width:100%;max-width:380px;background:var(--paper);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);padding:40px 36px;
+}
+.auth-card img{height:38px;margin-bottom:24px;}
+.auth-card h1{font-size:22px;margin-bottom:8px;}
+.auth-card .sub{font-size:14.5px;color:var(--ink-soft);margin-bottom:28px;}
+.auth-field{margin-bottom:18px;}
+.auth-field label{display:block;font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:7px;}
+.auth-field input{
+  width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+  padding:11px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);
+}
+.auth-field input:focus{border-color:var(--navy);}
+.auth-card .btn{width:100%;justify-content:center;margin-top:6px;}
+.auth-back{display:block;text-align:center;margin-top:22px;font-size:13.5px;color:var(--ink-soft);}
+.auth-back:hover{color:var(--navy);}
