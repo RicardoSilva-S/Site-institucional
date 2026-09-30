@@ -33,11 +33,15 @@ class AdminUserSeeder extends Seeder
             ],
         );
 
-        $this->command?->info("Usuário admin pronto: {$email}");
+        if (! $this->command) {
+            return;
+        }
+
+        $this->command->info("Usuário admin pronto: {$email}");
 
         if (! env('ADMIN_PASSWORD')) {
-            $this->command?->warn(
-                'ADMIN_PASSWORD não definida no .env — usando a senha padrão "trocar-esta-senha". Troque-a antes de publicar em produção.',
+            $this->command->warn(
+                'ADMIN_PASSWORD não definida no .env — usando a senha padrão "trocar-esta-senha". Troque-a antes de publicar em produção.'
             );
         }
     }

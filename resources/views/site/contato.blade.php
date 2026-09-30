@@ -126,7 +126,7 @@
                   'Manutenção e serviços públicos', 'Câmara Municipal', 'Lei de inovação e política de CT&I',
                   'Capacitação de servidores', 'Outro',
                 ] as $opcao)
-                  <option value="{{ $opcao }}" @selected(old('area') === $opcao)>{{ $opcao }}</option>
+                  <option value="{{ $opcao }}" @if (old('area') === $opcao) selected @endif>{{ $opcao }}</option>
                 @endforeach
               </select>
             </div>
