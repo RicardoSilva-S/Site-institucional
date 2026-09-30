@@ -22,19 +22,19 @@
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR - Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense">
     </a>
 
-    {{-- Institucional, Projetos e Editais ainda não têm rota própria —
-         Início, Marco Legal, Atuação, Contato e Transparência já foram
+    {{-- Projetos e Editais ainda não têm rota própria — Início,
+         Institucional, Marco Legal, Atuação, Contato e Transparência já foram
          migrados para Blade. Aponte para a rota real assim que a página
          correspondente existir em routes/web.php. --}}
     <nav class="primary" aria-label="Navegação principal">
       <ul>
         <li><a class="top-link" href="{{ route('home') }}">@content('shared.nav.inicio')</a></li>
         <li class="has-sub">
-          <a class="top-link" href="#">@content('shared.nav.institucional')</a>
+          <a class="top-link" href="{{ route('institucional') }}">@content('shared.nav.institucional')</a>
           <div class="sub-panel">
-            <a href="#">Quem somos</a>
-            <a href="#">Linha do tempo</a>
-            <a href="#">Governança</a>
+            <a href="{{ route('institucional') }}">Quem somos</a>
+            <a href="{{ route('institucional') }}#linha-do-tempo">Linha do tempo</a>
+            <a href="{{ route('institucional') }}#governanca">Governança</a>
             <a href="{{ route('marco-legal') }}">Marco Legal</a>
           </div>
         </li>
@@ -69,9 +69,9 @@
       <div>
         <h4>@content('shared.footer.col1.title')</h4>
         <ul>
-          <li><a href="#">Quem somos</a></li>
-          <li><a href="#">Linha do tempo</a></li>
-          <li><a href="#">Governança</a></li>
+          <li><a href="{{ route('institucional') }}">Quem somos</a></li>
+          <li><a href="{{ route('institucional') }}#linha-do-tempo">Linha do tempo</a></li>
+          <li><a href="{{ route('institucional') }}#governanca">Governança</a></li>
           <li><a href="{{ route('marco-legal') }}">Marco Legal</a></li>
         </ul>
       </div>

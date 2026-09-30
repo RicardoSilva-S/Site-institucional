@@ -16,6 +16,11 @@ class SiteController extends Controller
         return view('site.marco-legal');
     }
 
+    public function institucional(): View
+    {
+        return view('site.institucional');
+    }
+
     public function atuacao(): View
     {
         return view('site.atuacao');
