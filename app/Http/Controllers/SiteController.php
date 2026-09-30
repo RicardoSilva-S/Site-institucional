@@ -21,6 +21,11 @@ class SiteController extends Controller
         return view('site.institucional');
     }
 
+    public function atuacao(): View
+    {
+        return view('site.atuacao');
+    }
+
     public function contato(): View
     {
         return view('site.contato');

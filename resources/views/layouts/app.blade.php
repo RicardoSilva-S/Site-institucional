@@ -22,8 +22,8 @@
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR - Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense">
     </a>
 
-    {{-- Atuação, Projetos e Editais ainda não têm rota própria — Início,
-         Institucional, Marco Legal, Contato e Transparência já foram
+    {{-- Projetos e Editais ainda não têm rota própria — Início,
+         Institucional, Marco Legal, Atuação, Contato e Transparência já foram
          migrados para Blade. Aponte para a rota real assim que a página
          correspondente existir em routes/web.php. --}}
     <nav class="primary" aria-label="Navegação principal">
@@ -38,7 +38,7 @@
             <a href="{{ route('marco-legal') }}">Marco Legal</a>
           </div>
         </li>
-        <li><a class="top-link" href="#">@content('shared.nav.atuacao')</a></li>
+        <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.atuacao')</a></li>
         <li><a class="top-link" href="#">@content('shared.nav.projetos')</a></li>
         <li><a class="top-link" href="#">@content('shared.nav.editais')</a></li>
         <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.transparencia')</a></li>
@@ -80,7 +80,7 @@
         <h4>@content('shared.footer.col2.title')</h4>
         <ul>
           <li><a href="#">Projetos e produtos</a></li>
-          <li><a href="#">Frentes de atuação</a></li>
+          <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
           <li><a href="#">Editais e chamamentos</a></li>
           <li><a href="#">Diagnóstico gratuito</a></li>
         </ul>
