@@ -2,8 +2,15 @@
 # PHP 7.4 é a versão travada no composer.json (config.platform.php).
 FROM php:7.4-apache
 
+# O Debian 11 (base da imagem PHP 7.4) saiu de suporte e foi movido para
+# archive.debian.org; sem isso o apt-get dá 404.
+RUN sed -i -e 's|deb.debian.org|archive.debian.org|g' \
+           -e 's|security.debian.org|archive.debian.org|g' \
+           -e '/bullseye-updates/d' /etc/apt/sources.list \
+    && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99archive
+
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libpq-dev libzip-dev unzip git \
+    && apt-get install -y --no-install-recommends libpq-dev libzip-dev \
     && docker-php-ext-install pdo_pgsql pdo_mysql zip \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
