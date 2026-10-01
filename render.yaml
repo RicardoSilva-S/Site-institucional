@@ -2,7 +2,7 @@
 # No Render: New + > Blueprint > escolha este repositório.
 services:
   - type: web
-    name: site-institucional
+    name: site-institucional-idtnpr
     runtime: docker
     plan: free
     envVars:
