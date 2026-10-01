@@ -3,10 +3,11 @@
 FROM php:7.4-apache
 
 # O Debian 11 (base da imagem PHP 7.4) saiu de suporte e foi movido para
-# archive.debian.org; sem isso o apt-get dá 404.
-RUN sed -i -e 's|deb.debian.org|archive.debian.org|g' \
-           -e 's|security.debian.org|archive.debian.org|g' \
-           -e '/bullseye-updates/d' /etc/apt/sources.list \
+# archive.debian.org; sem isso o apt-get dá 404. As linhas de "updates" e
+# "security" ficam de fora porque ainda não existem no arquivo histórico.
+RUN sed -i -e '/bullseye-updates/d' \
+           -e '/debian-security/d' \
+           -e 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
     && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99archive
 
 RUN apt-get update \
