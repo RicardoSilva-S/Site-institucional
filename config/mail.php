@@ -91,6 +91,14 @@ return [
     |
     */
 
+    /*
+    |--------------------------------------------------------------------------
+    | Destino das mensagens do formulário de contato
+    |--------------------------------------------------------------------------
+    */
+
+    'contact_to' => env('CONTACT_MAIL_TO', 'faleconosco@idtnpr.org.br'),
+
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),

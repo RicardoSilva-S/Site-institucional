@@ -3,9 +3,10 @@
  * -----------------------------------------------------------------------
  * Só roda na página de Contato. O formulário não grava no servidor ainda
  * (ver comentário em resources/views/site/contato.blade.php): este script
- * valida os campos obrigatórios e, ao clicar em "Enviar pelo WhatsApp" ou
+ * valida os campos obrigatórios antes do envio normal (que grava no servidor,
+ * ver ContactController) e, ao clicar em "Enviar pelo WhatsApp" ou
  * "Enviar por e-mail", monta a mensagem e abre o WhatsApp/e-mail do
- * navegador — quem envia é o próprio visitante, nada fica salvo aqui.
+ * navegador — quem envia é o próprio visitante, nada fica salvo por esses dois.
  * -----------------------------------------------------------------------
  */
 
@@ -51,6 +52,13 @@
     if (!form) return;
 
     const alertBox = document.getElementById("form-alert");
+
+    form.addEventListener("submit", (event) => {
+      if (!validate(form)) {
+        event.preventDefault();
+        showAlert(alertBox, "Preencha os campos obrigatórios antes de enviar.", "error");
+      }
+    });
 
     form.querySelectorAll("[data-send]").forEach((button) => {
       button.addEventListener("click", () => {

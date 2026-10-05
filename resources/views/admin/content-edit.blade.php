@@ -20,6 +20,7 @@
         <h1>Painel de edição de textos</h1>
       </div>
       <div style="display:flex;align-items:center;gap:18px;">
+        <a class="back-link" href="{{ route('admin.messages.index') }}">Mensagens recebidas</a>
         <a class="back-link" href="{{ route('home') }}">← Voltar para o site</a>
         <form method="POST" action="{{ route('logout') }}">
           @csrf

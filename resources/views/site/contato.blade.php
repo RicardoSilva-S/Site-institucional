@@ -54,13 +54,8 @@
   </section>
 
   <!-- FORMULÁRIO DE DIAGNÓSTICO -->
-  {{--
-    O formulário ainda não grava no servidor (action="#"). Para integrar,
-    crie um controller/rota (ex.: rota "contato.enviar"), troque o action
-    para route('contato.enviar') e mantenha o @csrf. Por enquanto, o JS
-    (public/js/contato.js) monta a mensagem e abre WhatsApp/e-mail direto,
-    como no site estático original.
-  --}}
+  {{-- O formulário grava a mensagem (ContactController@store) e avisa por e-mail.
+       Os botões de WhatsApp/e-mail continuam como alternativa (public/js/contato.js). --}}
   <section class="alt" id="diagnostico">
     <div class="wrap form-layout">
       <div class="form-intro">
@@ -88,13 +83,25 @@
       </div>
 
       <div class="form-card">
-        <form id="form-contato" action="#" method="POST" novalidate
+        <form id="form-contato" action="{{ route('contato.enviar') }}" method="POST" novalidate
               data-whatsapp="5544998083001" data-email="faleconosco@idtnpr.org.br">
           @csrf
-          <div id="form-alert" class="form-alert" role="alert" aria-live="polite"></div>
+          @if (session('contact_status'))
+            <div id="form-alert" class="form-alert is-visible success" role="alert" aria-live="polite">{{ session('contact_status') }}</div>
+          @elseif ($errors->any())
+            <div id="form-alert" class="form-alert is-visible error" role="alert" aria-live="polite">Confira os campos destacados e tente de novo.</div>
+          @else
+            <div id="form-alert" class="form-alert" role="alert" aria-live="polite"></div>
+          @endif
+
+          {{-- Campo-isca anti-robô: fica fora da tela e não deve ser preenchido. --}}
+          <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+            <label for="website">Não preencha este campo</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="form-grid">
-            <div class="field">
+            <div class="field @error('nome') has-error @enderror">
               <label for="nome">Nome <span class="req">*</span></label>
               <input type="text" id="nome" name="nome" value="{{ old('nome') }}" autocomplete="name" required>
               <span class="error-msg">Informe seu nome.</span>
@@ -103,12 +110,12 @@
               <label for="cargo">Cargo ou função</label>
               <input type="text" id="cargo" name="cargo" value="{{ old('cargo') }}">
             </div>
-            <div class="field full">
+            <div class="field full @error('orgao') has-error @enderror">
               <label for="orgao">Órgão ou município <span class="req">*</span></label>
               <input type="text" id="orgao" name="orgao" value="{{ old('orgao') }}" required>
               <span class="error-msg">Informe o órgão ou município.</span>
             </div>
-            <div class="field">
+            <div class="field @error('email') has-error @enderror">
               <label for="email">E-mail</label>
               <input type="email" id="email" name="email" value="{{ old('email') }}" autocomplete="email">
               <span class="error-msg">Informe um e-mail válido.</span>
@@ -121,16 +128,12 @@
               <label for="area">Área do problema</label>
               <select id="area" name="area">
                 <option value="">Selecione</option>
-                @foreach ([
-                  'Atendimento ao cidadão', 'Tributos e arrecadação', 'Contabilidade e prestação de contas',
-                  'Manutenção e serviços públicos', 'Câmara Municipal', 'Lei de inovação e política de CT&I',
-                  'Capacitação de servidores', 'Outro',
-                ] as $opcao)
+                @foreach (\App\Models\ContactMessage::AREAS as $opcao)
                   <option value="{{ $opcao }}" @if (old('area') === $opcao) selected @endif>{{ $opcao }}</option>
                 @endforeach
               </select>
             </div>
-            <div class="field full">
+            <div class="field full @error('mensagem') has-error @enderror">
               <label for="mensagem">Descreva o problema <span class="req">*</span></label>
               <textarea id="mensagem" name="mensagem" required>{{ old('mensagem') }}</textarea>
               <span class="error-msg">Descreva o problema para que possamos ajudar.</span>
@@ -138,7 +141,8 @@
           </div>
 
           <div class="form-actions">
-            <button type="button" class="btn btn-primary" data-send="whatsapp">@content('contato.form.btn_whatsapp')</button>
+            <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+            <button type="button" class="btn btn-outline" data-send="whatsapp">@content('contato.form.btn_whatsapp')</button>
             <button type="button" class="btn btn-outline" data-send="email">@content('contato.form.btn_email')</button>
           </div>
           <p class="form-note">@content('contato.form.note') Ver a <a href="#">Política de Privacidade</a>.</p>

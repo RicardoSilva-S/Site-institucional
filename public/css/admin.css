@@ -125,3 +125,19 @@ details.admin-page[open] summary::before{transform:rotate(90deg);}
 .auth-card .btn{width:100%;justify-content:center;margin-top:6px;}
 .auth-back{display:block;text-align:center;margin-top:22px;font-size:13.5px;color:var(--ink-soft);}
 .auth-back:hover{color:var(--navy);}
+
+/* ---- Mensagens do formulário de contato (/admin/mensagens) ---- */
+.admin-messages{padding-bottom:90px;display:grid;gap:16px;}
+.msg-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:22px 26px;}
+.msg-card.is-unread{border-left:4px solid var(--gold);}
+.msg-card.is-read{opacity:.8;}
+.msg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.msg-head h3{font-family:var(--serif);font-size:18px;color:var(--navy-dark);}
+.msg-meta{color:var(--ink-soft);font-size:13.5px;margin-top:4px;}
+.msg-badge{font-family:var(--sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--gold);color:#fff;padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+.msg-fields{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:14px 0 0;font-size:14.5px;}
+.msg-fields dt{font-weight:600;color:var(--ink-soft);}
+.msg-fields dd{margin:0;}
+.msg-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:15px;line-height:1.6;}
+.msg-empty{background:var(--paper);border:1px dashed var(--line);border-radius:var(--radius-md);padding:36px;text-align:center;color:var(--ink-soft);}
+.msg-pager nav{display:flex;gap:16px;justify-content:center;}
