@@ -1,11 +1,13 @@
 <?php
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\MembroInstitucionalController;
 use App\Http\Controllers\Admin\TransparenciaDocumentoController;
 use App\Http\Controllers\Admin\TransparenciaSecaoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +19,9 @@ Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/projetos', [SiteController::class, 'projetos'])->name('projetos');
 Route::get('/editais', [SiteController::class, 'editais'])->name('editais');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
-Route::post('/contato/enviar', [SiteController::class, 'enviarContato'])->name('contato.enviar');
+Route::post('/contato/enviar', [ContactController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('contato.enviar');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 Route::get('/politica-de-privacidade', [SiteController::class, 'privacidade'])->name('privacidade');
 
@@ -70,4 +74,8 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
     Route::resource('usuarios', UserController::class)
         ->only(['index', 'create', 'store', 'edit', 'update'])
         ->middleware('admin');
+
+    // Mensagens do formulario de contato
+    Route::get('/mensagens', [ContactMessageController::class, 'index'])->name('messages.index');
+    Route::post('/mensagens/{message}/lida', [ContactMessageController::class, 'toggleRead'])->name('messages.toggle-read');
 });
