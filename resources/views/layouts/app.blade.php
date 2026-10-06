@@ -101,6 +101,7 @@
       <span>@content('shared.footer.bottom.right')</span>
     </div>
   </div>
+  @extraTexts('shared.footer')
 </footer>
 
 <script src="{{ asset('js/site.js') }}"></script>

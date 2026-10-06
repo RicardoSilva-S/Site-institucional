@@ -11,6 +11,7 @@
       <h1>@content('marcolegal.hero.title')</h1>
       <p class="lead">@content('marcolegal.hero.lead')</p>
     </div>
+    @extraTexts('marcolegal.hero')
   </section>
 
   <!-- AS NORMAS -->
@@ -56,6 +57,7 @@
         </div>
       </div>
     </div>
+    @extraTexts('marcolegal.normas')
   </section>
 
   <!-- ICT -->
@@ -91,6 +93,7 @@
         <p>@content('marcolegal.ict.verif.text')</p>
       </div>
     </div>
+    @extraTexts('marcolegal.ict')
   </section>
 
   <!-- O MAPA -->
@@ -151,6 +154,7 @@
         <p>@content('marcolegal.mapa.none.text')</p>
       </div>
     </div>
+    @extraTexts('marcolegal.mapa')
   </section>
 
   <!-- PROCURADORIAS -->
@@ -173,6 +177,7 @@
         <p class="proc-disclaimer">@content('marcolegal.proc.disclaimer')</p>
       </div>
     </div>
+    @extraTexts('marcolegal.procuradorias')
   </section>
 
 @endsection

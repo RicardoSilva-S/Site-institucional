@@ -99,7 +99,6 @@ nav.primary a.top-link:hover{color:var(--navy);}
 .btn-gold:hover{background:#9C7226;transform:translateY(-1px);box-shadow:var(--shadow-md);}
 .btn-outline{background:transparent;color:var(--navy);border-color:var(--navy);}
 .btn-outline:hover{background:var(--navy);color:#fff;transform:translateY(-1px);}
-
 .menu-toggle{
   display:none;background:none;border:1px solid var(--line);
   padding:9px 13px;border-radius:var(--radius-sm);font-size:18px;line-height:1;cursor:pointer;
@@ -540,3 +539,26 @@ footer{background:var(--mist);padding:68px 0 32px;border-top:1px solid var(--lin
   .doc-item{flex-direction:column;align-items:flex-start;padding:16px 18px;}
   .doc-side .btn{width:100%;}
 }
+ 
+
+/* =========================================================================
+
+   Textos inseridos pelo painel (@extraTexts) e textos excluídos
+
+   ========================================================================= */
+
+.extra-texts{max-width:1160px;margin:28px auto 0;padding:0 24px;}
+
+.extra-texts p{color:var(--ink-soft);font-size:16.5px;line-height:1.7;max-width:75ch;}
+
+.extra-texts p + p{margin-top:14px;}
+
+.final-cta .extra-texts p,
+
+.banner-slide .extra-texts p{color:rgba(255,255,255,.85);}
+
+/* Um texto excluído no painel fica vazio — esconde a tag que sobrou. */
+
+main h1:empty, main h2:empty, main h3:empty, main p:empty, main li:empty,
+
+main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h4:empty{display:none;}
