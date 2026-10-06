@@ -17,7 +17,7 @@
   <div class="auth-card">
     <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR">
     <h1>Entrar no painel</h1>
-    <p class="sub">Acesse para editar os textos do site.</p>
+    <p class="sub">Acesse para gerenciar os textos e banners do site.</p>
 
     @if ($errors->any())
       <div class="admin-flash error">
@@ -40,8 +40,6 @@
 
       <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
-
-    <a href="{{ route('home') }}" class="auth-back">← Voltar para o site</a>
   </div>
 </div>
 

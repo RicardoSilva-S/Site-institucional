@@ -47,7 +47,6 @@
     </nav>
 
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="{{ auth()->check() ? route('admin.content.edit') : route('login') }}" class="btn-edit" title="Abrir painel de edição de textos">✎ Editar textos</a>
       <a href="#" class="btn btn-primary">@content('shared.nav.cta')</a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>

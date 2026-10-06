@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * Login simples por e-mail/senha para o painel /admin/conteudo.
+ * Login do painel administrativo (/login-adm).
  * O usuário admin é criado pelo seeder (database/seeders/AdminUserSeeder.php).
  */
 class LoginController extends Controller
@@ -44,6 +44,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('login');
     }
 }
