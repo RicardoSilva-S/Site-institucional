@@ -16,7 +16,9 @@ Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('tr
 // Autenticação (painel administrativo) ------------------------------------
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [LoginController::class, 'login'])->name('login.attempt');
+    Route::post('/login', [LoginController::class, 'login'])
+        ->middleware('throttle:20,1')
+        ->name('login.attempt');
 });
 Route::post('/logout', [LoginController::class, 'logout'])
     ->middleware('auth')
