@@ -29,4 +29,5 @@ Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
     Route::get('/conteudo', [ContentController::class, 'edit'])->name('content.edit');
     Route::post('/conteudo', [ContentController::class, 'update'])->name('content.update');
     Route::post('/conteudo/restaurar', [ContentController::class, 'reset'])->name('content.reset');
+    Route::get('/conteudo/exportar', [ContentController::class, 'export'])->name('content.export');
 });
