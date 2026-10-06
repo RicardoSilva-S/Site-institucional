@@ -805,7 +805,7 @@ return [
     [
         'page' => 'marcolegal',
         'pageLabel' => 'Marco Legal',
-        'route' => 'marcolegal',
+        'route' => 'marco-legal',
         'groups' => [
             [
                 'id' => 'hero',
