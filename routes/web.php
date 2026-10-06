@@ -13,19 +13,20 @@ Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 
-// Autenticação (painel administrativo) ------------------------------------
+// Painel administrativo --------------------------------------------------
+// Separado do site: o site não tem nenhum link para cá. O acesso é só
+// digitando o endereço /login-adm.
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [LoginController::class, 'login'])->name('login.attempt');
+    Route::get('/login-adm', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login-adm', [LoginController::class, 'login'])->name('login.attempt');
 });
 Route::post('/logout', [LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
 // Painel de edição de textos -----------------------------------------------
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
     Route::get('/conteudo', [ContentController::class, 'edit'])->name('content.edit');
     Route::post('/conteudo', [ContentController::class, 'update'])->name('content.update');
     Route::post('/conteudo/restaurar', [ContentController::class, 'reset'])->name('content.reset');
-    Route::get('/conteudo/exportar', [ContentController::class, 'export'])->name('content.export');
 });

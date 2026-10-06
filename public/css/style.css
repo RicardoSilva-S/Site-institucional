@@ -99,13 +99,7 @@ nav.primary a.top-link:hover{color:var(--navy);}
 .btn-gold:hover{background:#9C7226;transform:translateY(-1px);box-shadow:var(--shadow-md);}
 .btn-outline{background:transparent;color:var(--navy);border-color:var(--navy);}
 .btn-outline:hover{background:var(--navy);color:#fff;transform:translateY(-1px);}
-.btn-edit{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:13.5px;font-weight:600;color:var(--navy);
-  background:var(--mist);border:1px solid var(--line);
-  padding:9px 14px;border-radius:20px;white-space:nowrap;
-}
-.btn-edit:hover{background:var(--gold-soft);border-color:#E4CE9C;color:var(--navy-dark);}
+
 .menu-toggle{
   display:none;background:none;border:1px solid var(--line);
   padding:9px 13px;border-radius:var(--radius-sm);font-size:18px;line-height:1;cursor:pointer;
