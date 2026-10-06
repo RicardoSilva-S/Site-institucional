@@ -8,21 +8,29 @@
  *   - App\Support\SiteContent::text($key) nas views Blade, via @content($key)
  *   - o painel /admin/conteudo, para montar o formulário de edição
  *
- * O valor exibido é o override salvo na tabela site_content_values, ou este
+  * O valor exibido é o override salvo na tabela site_content_values, ou este
  * "default" quando não houver override.
+ *
+ * Os textos são copiados daqui para a tabela site_texts (migration
+ * create_site_texts_table / SiteContent::sync()). Depois disso, o que vale é
+ * o banco: o painel /adm edita, insere e exclui textos lá. Este arquivo
+ * continua sendo o "texto original" de cada campo.
+ *
+ * "route" é o nome da rota da página (routes/web.php) — usado pelos banners.
  *
  * COMO ADICIONAR UMA NOVA PÁGINA:
  * 1. Copie resources/views/site/home.blade.php para a nova página.
  * 2. Adicione um novo item aqui, com "page" => "nome-da-pagina".
  * 3. Use @content("nome-da-pagina.secao.campo") na nova view.
  * 4. Adicione a rota em routes/web.php.
- * O painel /admin/conteudo mostra a nova página automaticamente.
+ * O painel /adm mostra a nova página no menu lateral automaticamente.
  */
 
 return [
     [
         'page' => 'shared',
-        'pageLabel' => 'Compartilhado (menu e rodapé — aparece em todas as páginas)',
+        'pageLabel' => 'Menu e rodapé',
+        'route' => null,
         'groups' => [
             [
                 'id' => 'nav',
@@ -111,7 +119,8 @@ return [
     ],
     [
         'page' => 'home',
-        'pageLabel' => 'Página inicial (index.html)',
+        'pageLabel' => 'Início',
+        'route' => 'home',
         'groups' => [
             [
                 'id' => 'hero',
@@ -795,7 +804,8 @@ return [
     ],
     [
         'page' => 'marcolegal',
-        'pageLabel' => 'Marco Legal (marco-legal.html)',
+        'pageLabel' => 'Marco Legal',
+        'route' => 'marcolegal',
         'groups' => [
             [
                 'id' => 'hero',
@@ -1189,7 +1199,8 @@ return [
     ],
     [
         'page' => 'contato',
-        'pageLabel' => 'Contato (contato.html)',
+        'pageLabel' => 'Contato',
+        'route' => 'contato',
         'groups' => [
             [
                 'id' => 'hero',
@@ -1364,7 +1375,8 @@ return [
     ],
     [
         'page' => 'transparencia',
-        'pageLabel' => 'Portal da Transparência (portal-transparencia.html)',
+        'pageLabel' => 'Transparência',
+        'route' => 'transparencia',
         'groups' => [
             [
                 'id' => 'hero',

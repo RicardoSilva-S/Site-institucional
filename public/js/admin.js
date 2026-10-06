@@ -1,14 +1,10 @@
 /**
- * admin.js
- * -----------------------------------------------------------------------
- * O formulário do painel (/admin/conteudo) agora é renderizado e salvo
- * pelo servidor (Blade + Admin\ContentController), então este arquivo só
- * cuida de duas coisas no navegador:
- *   - filtrar os campos por texto digitado na busca
- *   - confirmar antes de restaurar os textos padrão (ação destrutiva)
- * -----------------------------------------------------------------------
+ * admin.js — comportamento do painel /adm (no navegador)
+ *   - busca de textos na página aberta
+ *   - confirmação antes de excluir (botões com data-confirm)
+ *   - menu lateral recolhível no celular
+ *   - pré-visualização da imagem no formulário de banner
  */
-
 (function () {
   function setupSearch() {
     const input = document.getElementById("admin-search");
@@ -21,30 +17,51 @@
       form.querySelectorAll(".admin-field").forEach((row) => {
         const label = row.querySelector("label").textContent.toLowerCase();
         const value = row.querySelector("[name]").value.toLowerCase();
-        const match = !term || label.includes(term) || value.includes(term);
-        row.style.display = match ? "" : "none";
+        row.style.display = !term || label.includes(term) || value.includes(term) ? "" : "none";
       });
 
-      if (term) {
-        form.querySelectorAll("details.admin-page").forEach((d) => (d.open = true));
-      }
+      form.querySelectorAll(".admin-group").forEach((group) => {
+        const visible = group.querySelectorAll('.admin-field:not([style*="none"])').length;
+        group.style.display = term && !visible ? "none" : "";
+      });
     });
   }
 
-  function setupResetConfirm() {
-    const resetForm = document.getElementById("admin-reset-form");
-    if (!resetForm) return;
+  function setupConfirm() {
+    document.addEventListener("click", (e) => {
+      const button = e.target.closest("[data-confirm]");
+      if (button && !confirm(button.dataset.confirm)) e.preventDefault();
+    });
+  }
 
-    resetForm.addEventListener("submit", (e) => {
-      const confirmed = confirm(
-        "Restaurar todos os textos para o padrão original? Isso apaga todas as edições salvas."
-      );
-      if (!confirmed) e.preventDefault();
+  function setupSidebarToggle() {
+    const toggle = document.querySelector(".admin-sidebar__toggle");
+    const sidebar = document.querySelector(".admin-sidebar");
+    if (!toggle || !sidebar) return;
+
+    toggle.addEventListener("click", () => {
+      const open = sidebar.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  function setupImagePreview() {
+    const input = document.getElementById("image");
+    const preview = document.getElementById("image-preview");
+    if (!input || !preview) return;
+
+    input.addEventListener("change", () => {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      preview.src = URL.createObjectURL(file);
+      preview.hidden = false;
     });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     setupSearch();
-    setupResetConfirm();
+    setupConfirm();
+    setupSidebarToggle();
+    setupImagePreview();
   });
 })();

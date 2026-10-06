@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+use App\Support\SiteContent;
+
 use Illuminate\Support\Facades\Blade;
+
+use Illuminate\Support\Facades\View;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,11 +34,39 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo \\App\\Support\\Vite::tags({$entradas}); ?>";
         });
 
-        // @content('home.hero.title') imprime o texto editável dessa key
-        // (override salvo pelo painel /admin/conteudo, ou o default de
-        // config/site_content.php). Ver App\Support\SiteContent.
+        // @content('home.hero.title') imprime o texto atual dessa key
+        // (tabela site_texts, editada pelo painel /adm). Ver App\Support\SiteContent.
+        
         Blade::directive('content', function ($expression) {
             return "<?php echo e(\App\Support\SiteContent::text({$expression})); ?>";
         });
+
+        // @extraTexts('home.hero') imprime os textos que foram INCLUÍDOS pelo
+
+        // painel nessa seção. Não imprime nada se não houver nenhum.
+
+        Blade::directive('extraTexts', function ($expression) {
+
+            return "<?php \$__extras = \App\Support\SiteContent::extras({$expression}); if (\$__extras): ?>"
+
+                .'<div class="extra-texts">'
+
+                ."<?php foreach (\$__extras as \$__extra): ?><p><?php echo nl2br(e(\$__extra)); ?></p><?php endforeach; ?>"
+
+                .'</div><?php endif; ?>';
+
+        });
+
+ 
+
+        // Menu lateral do painel: uma entrada por página do config.
+
+        View::composer('layouts.admin', function ($view) {
+
+            $view->with('adminPages', SiteContent::schema());
+
+        });
+
     }
+
 }

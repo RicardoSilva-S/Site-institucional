@@ -20,14 +20,28 @@ Route::middleware('guest')->group(function () {
     Route::get('/login-adm', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login-adm', [LoginController::class, 'login'])->name('login.attempt');
 });
-Route::post('/logout', [LoginController::class, 'logout'])
-    ->middleware('auth')
-    ->name('logout');
 
-// Painel de edição de textos -----------------------------------------------
 Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
-    Route::get('/conteudo', [ContentController::class, 'edit'])->name('content.edit');
-    Route::post('/conteudo', [ContentController::class, 'update'])->name('content.update');
-    Route::post('/conteudo/restaurar', [ContentController::class, 'reset'])->name('content.reset');
-    Route::get('/conteudo/exportar', [ContentController::class, 'export'])->name('content.export');
+    Route::post('/sair', [LoginController::class, 'logout'])->name('logout');
+
+ 
+
+    // /adm abre direto a primeira página do menu lateral (Início).
+
+    Route::get('/', fn () => redirect()->route('admin.pages.show', 'home'))->name('dashboard');
+
+ 
+
+    // Textos de cada página do site
+
+    Route::get('/paginas/{page}', [ContentController::class, 'show'])->name('pages.show');
+
+    Route::put('/paginas/{page}', [ContentController::class, 'update'])->name('pages.update');
+
+    Route::post('/paginas/{page}/textos', [ContentController::class, 'store'])->name('texts.store');
+
+    Route::delete('/textos/{text}', [ContentController::class, 'destroy'])->name('texts.destroy');
+
+    Route::post('/textos/{text}/restaurar', [ContentController::class, 'restore'])->name('texts.restore');
+
 });

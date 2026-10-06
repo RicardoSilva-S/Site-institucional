@@ -59,6 +59,7 @@
         <div class="meta-chip"><span class="k">Pedidos de informação</span><a class="v" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></div>
       </div>
     </div>
+    @extraTexts('transparencia.hero')
   </section>
 
   <!-- SOLICITAÇÃO -->
@@ -75,6 +76,7 @@
         </div>
       </div>
     </div>
+    @extraTexts('transparencia.cta')
   </section>
 
   <!-- DOCUMENTOS -->
@@ -123,6 +125,7 @@
         <a class="btn btn-primary" href="#">@content('transparencia.editais.btn')</a>
       </div>
     </div>
+    @extraTexts('transparencia.editais')
   </section>
 
   <!-- PEDIDOS DE INFORMAÇÃO -->
@@ -138,6 +141,7 @@
         ou pela <a href="{{ route('contato') }}#ouvidoria" style="color:var(--navy);font-weight:600;">Ouvidoria</a>. Respondemos em até 20 dias úteis.
       </p>
     </div>
+    @extraTexts('transparencia.pedidos')
   </section>
 
 @endsection
