@@ -39,15 +39,15 @@
           </div>
         </li>
         <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.atuacao')</a></li>
-        <li><a class="top-link" href="#">@content('shared.nav.projetos')</a></li>
-        <li><a class="top-link" href="#">@content('shared.nav.editais')</a></li>
+        <li><a class="top-link" href="/projetos">@content('shared.nav.projetos')</a></li>
+        <li><a class="top-link" href="/editais">@content('shared.nav.editais')</a></li>
         <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.transparencia')</a></li>
         <li><a class="top-link" href="{{ route('contato') }}">@content('shared.nav.contato')</a></li>
       </ul>
     </nav>
 
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="#" class="btn btn-primary">@content('shared.nav.cta')</a>
+    <a href="/contato" class="btn btn-primary">@content('shared.nav.cta')</a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>
   </div>
@@ -80,10 +80,10 @@
       <div>
         <h4>@content('shared.footer.col2.title')</h4>
         <ul>
-          <li><a href="#">Projetos e produtos</a></li>
-          <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
-          <li><a href="#">Editais e chamamentos</a></li>
-          <li><a href="#">Diagnóstico gratuito</a></li>
+        <li><a href="/projetos">Projetos e produtos</a></li>
+        <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
+        <li><a href="/editais">Editais e chamamentos</a></li>
+        <li><a href="/diagnostico">Diagnóstico gratuito</a></li>
         </ul>
       </div>
 
@@ -93,7 +93,7 @@
           <li><a href="{{ route('transparencia') }}">Portal da Transparência</a></li>
           <li><a href="{{ route('transparencia') }}">Documentos institucionais</a></li>
           <li><a href="{{ route('contato') }}#ouvidoria">Ouvidoria</a></li>
-          <li><a href="#">LGPD e Privacidade</a></li>
+          <li><a href="/politica-de-privacidade">LGPD e Privacidade</a></li>
         </ul>
       </div>
     </div>
