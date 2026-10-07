@@ -138,6 +138,8 @@
 .admin-form__row{display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:start;padding:12px 0;}
 .admin-form__row > label{font-size:14px;font-weight:600;padding-top:10px;}
 .admin-form input[type="text"],
+.admin-form input[type="email"],
+.admin-form input[type="password"],
 .admin-form input[type="number"],
 .admin-form select,
 .admin-form textarea{

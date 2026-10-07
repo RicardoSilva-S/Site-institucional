@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login-adm', [LoginController::class, 'login'])->name('login.attempt');
 });
 
-Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
+Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(function () {
     Route::post('/sair', [LoginController::class, 'logout'])->name('logout');
 
  
@@ -46,4 +47,9 @@ Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
 
     // Banners do topo do site
     Route::resource('banners', BannerController::class)->except('show');
+
+    // Usuarios do painel (so administrador)
+    Route::resource('usuarios', UserController::class)
+        ->only(['index', 'create', 'store', 'edit', 'update'])
+        ->middleware('admin');
 });

@@ -12,6 +12,21 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const PAPEL_ADMIN = 'admin';
+    public const PAPEL_EDITOR = 'editor';
+
+    /** papeis aceitos e o nome mostrado no painel */
+    public const PAPEIS = [
+        self::PAPEL_ADMIN => 'Administrador',
+        self::PAPEL_EDITOR => 'Editor',
+    ];
+
+    /** mesmos valores padrao da tabela, para o objeto ja nascer certo */
+    protected $attributes = [
+        'papel' => self::PAPEL_EDITOR,
+        'ativo' => true,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +36,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'papel',
+        'ativo',
     ];
 
     /**
@@ -40,5 +57,22 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'ativo' => 'boolean',
+        'ultimo_login' => 'datetime',
     ];
+
+    public function ehAdmin(): bool
+    {
+        return $this->papel === self::PAPEL_ADMIN;
+    }
+
+    public function nomeDoPapel(): string
+    {
+        return self::PAPEIS[$this->papel] ?? $this->papel;
+    }
+
+    public function registrarLogin(): void
+    {
+        $this->forceFill(['ultimo_login' => now()])->save();
+    }
 }
