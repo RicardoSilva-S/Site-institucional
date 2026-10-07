@@ -13,6 +13,10 @@ class TransparenciaPainelTest extends TestCase
 {
     use RefreshDatabase;
 
+    private const PAINEL = '/adm/transparencia';
+    private const SECOES = self::PAINEL . '/secoes';
+    private const DOCUMENTOS = self::PAINEL . '/documentos';
+
     private function editor(): User
     {
         return User::factory()->create(['papel' => User::PAPEL_EDITOR]);
@@ -30,12 +34,12 @@ class TransparenciaPainelTest extends TestCase
 
     public function test_visitante_sem_login_nao_acessa_o_painel(): void
     {
-        $this->get('/adm/transparencia')->assertRedirect('/login-adm');
+        $this->get(self::PAINEL)->assertRedirect('/login-adm');
     }
 
     public function test_painel_lista_as_secoes_e_documentos_iniciais(): void
     {
-        $this->actingAs($this->editor())->get('/adm/transparencia')
+        $this->actingAs($this->editor())->get(self::PAINEL)
             ->assertOk()
             ->assertSee('Prestação de contas')
             ->assertSee('Estatuto Social consolidado');
@@ -43,11 +47,11 @@ class TransparenciaPainelTest extends TestCase
 
     public function test_cria_secao_com_apelido_gerado_pelo_titulo(): void
     {
-        $this->actingAs($this->editor())->post('/adm/transparencia/secoes', [
+        $this->actingAs($this->editor())->post(self::SECOES, [
             'titulo' => 'Editais e chamamentos',
             'subtitulo' => 'Processos abertos',
             'ordem' => 6,
-        ])->assertRedirect('/adm/transparencia');
+        ])->assertRedirect(self::PAINEL);
 
         $this->assertDatabaseHas('transparencia_secoes', [
             'titulo' => 'Editais e chamamentos',
@@ -57,19 +61,19 @@ class TransparenciaPainelTest extends TestCase
 
     public function test_secao_com_titulo_repetido_ganha_apelido_diferente(): void
     {
-        $this->actingAs($this->editor())->post('/adm/transparencia/secoes', ['titulo' => 'Institucional']);
+        $this->actingAs($this->editor())->post(self::SECOES, ['titulo' => 'Institucional']);
 
         $this->assertDatabaseHas('transparencia_secoes', ['slug' => 'institucional-2']);
     }
 
     public function test_cria_documento_com_pdf_e_o_site_mostra_o_botao_de_baixar(): void
     {
-        $this->actingAs($this->editor())->post('/adm/transparencia/documentos', [
+        $this->actingAs($this->editor())->post(self::DOCUMENTOS, [
             'secao_id' => $this->secao()->id,
             'nome' => 'Relatório de teste',
             'status' => 'publicado',
             'arquivo' => $this->pdf('relatorio.pdf'),
-        ])->assertRedirect('/adm/transparencia')->assertSessionHasNoErrors();
+        ])->assertRedirect(self::PAINEL)->assertSessionHasNoErrors();
 
         $documento = TransparenciaDocumento::where('nome', 'Relatório de teste')->firstOrFail();
         $this->assertSame('relatorio.pdf', $documento->arquivo_nome);
@@ -117,7 +121,7 @@ class TransparenciaPainelTest extends TestCase
 
     public function test_recusa_arquivo_que_nao_e_pdf(): void
     {
-        $this->actingAs($this->editor())->post('/adm/transparencia/documentos', [
+        $this->actingAs($this->editor())->post(self::DOCUMENTOS, [
             'secao_id' => $this->secao()->id,
             'nome' => 'Planilha',
             'status' => 'publicado',
@@ -129,7 +133,7 @@ class TransparenciaPainelTest extends TestCase
 
     public function test_documento_sem_nome_ou_sem_secao_nao_e_salvo(): void
     {
-        $this->actingAs($this->editor())->post('/adm/transparencia/documentos', [
+        $this->actingAs($this->editor())->post(self::DOCUMENTOS, [
             'status' => 'publicado',
         ])->assertSessionHasErrors(['nome', 'secao_id']);
     }
@@ -142,12 +146,12 @@ class TransparenciaPainelTest extends TestCase
             'arquivo_data' => base64_encode('%PDF'),
         ]);
 
-        $this->actingAs($this->editor())->put("/adm/transparencia/documentos/{$documento->id}", [
+        $this->actingAs($this->editor())->put(self::DOCUMENTOS . "/{$documento->id}", [
             'secao_id' => $documento->secao_id,
             'nome' => 'Sem PDF agora',
             'status' => 'elaboracao',
             'remover_arquivo' => '1',
-        ])->assertRedirect('/adm/transparencia');
+        ])->assertRedirect(self::PAINEL);
 
         $documento->refresh();
         $this->assertSame('Sem PDF agora', $documento->nome);
@@ -163,7 +167,7 @@ class TransparenciaPainelTest extends TestCase
             'arquivo_data' => base64_encode('%PDF'),
         ]);
 
-        $this->actingAs($this->editor())->put("/adm/transparencia/documentos/{$documento->id}", [
+        $this->actingAs($this->editor())->put(self::DOCUMENTOS . "/{$documento->id}", [
             'secao_id' => $documento->secao_id,
             'nome' => 'Nome novo',
             'status' => 'publicado',
@@ -178,8 +182,8 @@ class TransparenciaPainelTest extends TestCase
         $quantos = $secao->documentos()->count();
         $this->assertGreaterThan(0, $quantos);
 
-        $this->actingAs($this->editor())->delete("/adm/transparencia/secoes/{$secao->id}")
-            ->assertRedirect('/adm/transparencia');
+        $this->actingAs($this->editor())->delete(self::SECOES . "/{$secao->id}")
+            ->assertRedirect(self::PAINEL);
 
         $this->assertDatabaseMissing('transparencia_secoes', ['id' => $secao->id]);
         $this->assertSame(0, TransparenciaDocumento::where('secao_id', $secao->id)->count());

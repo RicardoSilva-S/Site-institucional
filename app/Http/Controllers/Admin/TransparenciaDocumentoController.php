@@ -21,8 +21,10 @@ use Illuminate\View\View;
  */
 class TransparenciaDocumentoController extends Controller
 {
-    // Abaixo do limite de upload do servidor (upload_max_filesize=5M no Dockerfile).
-    private const TAMANHO_MAXIMO_KB = 5000;
+    // Tamanho máximo do PDF, em MB, mostrado no formulário. A regra de validação
+    // usa o mesmo valor escrito direto ('max:5000', em KB), abaixo do limite de
+    // upload do servidor (upload_max_filesize=5M no Dockerfile).
+    private const TAMANHO_MAXIMO_MB = 5;
 
     public function create(Request $request): View
     {
@@ -83,7 +85,7 @@ class TransparenciaDocumentoController extends Controller
             'documento' => $documento,
             'secoes' => TransparenciaSecao::orderBy('ordem')->orderBy('id')->get(),
             'status' => TransparenciaDocumento::STATUS,
-            'tamanhoMaximoMb' => round(self::TAMANHO_MAXIMO_KB / 1000),
+            'tamanhoMaximoMb' => self::TAMANHO_MAXIMO_MB,
         ]);
     }
 
@@ -95,13 +97,13 @@ class TransparenciaDocumentoController extends Controller
             'detalhe' => ['nullable', 'string', 'max:255'],
             'status' => ['required', Rule::in(array_keys(TransparenciaDocumento::STATUS))],
             'ordem' => ['nullable', 'integer', 'min:0'],
-            'arquivo' => ['nullable', 'file', 'mimes:pdf', 'max:' . self::TAMANHO_MAXIMO_KB],
+            'arquivo' => ['nullable', 'file', 'mimes:pdf', 'max:5000'],
         ], [
             'secao_id.required' => 'Escolha a seção do documento.',
             'secao_id.exists' => 'A seção escolhida não existe mais.',
             'nome.required' => 'Informe o nome do documento.',
             'arquivo.mimes' => 'O arquivo precisa ser um PDF.',
-            'arquivo.max' => 'O PDF pode ter no máximo ' . round(self::TAMANHO_MAXIMO_KB / 1000) . ' MB.',
+            'arquivo.max' => 'O PDF pode ter no máximo ' . self::TAMANHO_MAXIMO_MB . ' MB.',
             'arquivo.uploaded' => 'Não foi possível enviar o PDF. Ele pode ser maior que o limite do servidor.',
         ]);
 
