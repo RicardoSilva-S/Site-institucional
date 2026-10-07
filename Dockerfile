@@ -29,7 +29,11 @@ RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-in
 
 COPY . .
 RUN composer dump-autoload --optimize --no-dev \
-    && chown -R www-data:www-data storage bootstrap/cache
+    && mkdir -p public/uploads/banners \
+    && chown -R www-data:www-data storage bootstrap/cache public/uploads
+
+# Permite enviar imagens de banner de até 4 MB (o padrão do PHP é 2 MB).
+RUN { echo 'upload_max_filesize=5M'; echo 'post_max_size=8M'; } > /usr/local/etc/php/conf.d/uploads.ini
 
 COPY docker/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
