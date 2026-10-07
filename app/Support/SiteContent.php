@@ -175,7 +175,9 @@ class SiteContent
             }
         }
 
-        foreach (array_chunk($rows, 100) as $chunk) {
+        // Lotes de 50: 50 linhas x 11 colunas fica abaixo do limite de 999
+        // valores por comando do SQLite usado nos testes (PHP 7.4).
+        foreach (array_chunk($rows, 50) as $chunk) {
             SiteText::query()->insert($chunk);
         }
 

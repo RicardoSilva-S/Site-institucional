@@ -18,7 +18,9 @@ Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('tr
 // digitando o endereço /login-adm.
 Route::middleware('guest')->group(function () {
     Route::get('/login-adm', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login-adm', [LoginController::class, 'login'])->name('login.attempt');
+    Route::post('/login-adm', [LoginController::class, 'login'])
+        ->middleware('throttle:20,1')
+        ->name('login.attempt');
 });
 
 Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
