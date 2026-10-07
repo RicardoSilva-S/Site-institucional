@@ -143,7 +143,7 @@
             <button type="button" class="btn btn-primary" data-send="whatsapp">@content('contato.form.btn_whatsapp')</button>
             <button type="button" class="btn btn-outline" data-send="email">@content('contato.form.btn_email')</button>
           </div>
-          <p class="form-note">@content('contato.form.note') Ver a <a href="#">Política de Privacidade</a>.</p>
+          <p class="form-note">@content('contato.form.note') Ver a <a href="{{ url('/privacidade') }}">Política de Privacidade</a>.</p>
         </form>
       </div>
     </div>

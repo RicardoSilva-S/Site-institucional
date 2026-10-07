@@ -12,6 +12,7 @@ Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-l
 Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
+Route::get('/privacidade', [SiteController::class, 'privacidade'])->name('privacidade');
 
 // Painel administrativo --------------------------------------------------
 // Separado do site: o site não tem nenhum link para cá. O acesso é só

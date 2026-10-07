@@ -91,7 +91,7 @@
           <li><a href="{{ route('transparencia') }}">Portal da Transparência</a></li>
           <li><a href="{{ route('transparencia') }}">Documentos institucionais</a></li>
           <li><a href="{{ route('contato') }}#ouvidoria">Ouvidoria</a></li>
-          <li><a href="#">LGPD e Privacidade</a></li>
+          <li><a href="{{ url('/privacidade') }}">LGPD e Privacidade</a></li>
         </ul>
       </div>
     </div>

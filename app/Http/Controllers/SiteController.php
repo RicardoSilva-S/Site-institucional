@@ -35,4 +35,8 @@ class SiteController extends Controller
     {
         return view('site.transparencia');
     }
+    public function privacidade(): View
+    {
+        return view('site.privacidade');
+    }
 }
