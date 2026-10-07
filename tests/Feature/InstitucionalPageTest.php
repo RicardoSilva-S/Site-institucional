@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\Banner;
 use App\Models\SiteText;
+use App\Models\User;
 use App\Support\BannerSlots;
 use App\Support\SiteContent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -25,6 +27,22 @@ class InstitucionalPageTest extends TestCase
     {
         $this->assertSame('assets/institucional/hero.svg', BannerSlots::fallback('institucional', 'hero'));
         $this->assertArrayHasKey('institucional:hero', BannerSlots::options()['Institucional']);
+
+        $this->actingAs(User::factory()->create())
+            ->get('/adm/paginas/institucional')
+            ->assertOk()
+            ->assertSee('Imagem da seção')
+            ->assertSee('assets/institucional/hero.svg')
+            ->assertSee('Trocar imagem');
+    }
+
+    public function test_banner_cadastrado_substitui_a_imagem_do_topo()
+    {
+        Banner::create(['page' => 'institucional', 'slot' => 'hero', 'image' => 'uploads/banners/topo.jpg', 'active' => true]);
+
+        $this->get('/institucional')
+            ->assertSee('uploads/banners/topo.jpg')
+            ->assertDontSee('assets/institucional/hero.svg');
     }
 
     public function test_principios_aparecem_um_por_etiqueta()
