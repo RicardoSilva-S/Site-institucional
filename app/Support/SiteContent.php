@@ -6,6 +6,7 @@ use App\Models\SiteText;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 /**
  * Fachada estática para os textos editáveis do site.
@@ -111,6 +112,16 @@ class SiteContent
         }
 
         return static::defaults()[$key] ?? '';
+    }
+
+    /**
+     * Texto do campo como frase independente: sem ":" ou pontuação no começo
+     * e com inicial maiúscula. Usado quando o complemento de um item de lista
+     * (": inventário de dados...") aparece sozinho, num cartão.
+     */
+    public static function sentence(string $key): string
+    {
+        return Str::ucfirst((string) preg_replace('/^[\s:;,.\-–—]+/u', '', static::text($key)));
     }
 
     /** O campo tem texto? (falso quando foi excluído pelo painel) */

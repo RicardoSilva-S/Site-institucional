@@ -3,128 +3,185 @@
 @section('title', 'Atuação | IDTNPR')
 @section('description', 'Conheça as frentes de atuação do IDTNPR para modernizar a gestão pública, estruturar políticas de inovação e apoiar municípios com soluções tecnológicas.')
 
+{{-- Cada frente: título e texto ao lado da imagem da seção
+     (partials/section-banner, editável em /adm/banners ou no editor da página)
+     e, embaixo, os itens em cartões numerados (partials/item-cards) ou a nota.
+     As frentes pares invertem o lado da imagem. --}}
 @section('content')
-  <section class="page-hero">
+  <section class="page-hero page-hero--split">
     <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span> @content('atuacao.hero.eyebrow')</span>
-      <h1>@content('atuacao.hero.title')</h1>
-      <p class="lead">@content('atuacao.hero.lead')</p>
+      <div>
+        <span class="eyebrow"><span class="dot"></span> @content('atuacao.hero.eyebrow')</span>
+        <h1>@content('atuacao.hero.title')</h1>
+        <p class="lead">@content('atuacao.hero.lead')</p>
+        @if (\App\Support\SiteContent::has('atuacao.hero.cta'))
+          <div class="cta-row">
+            <a href="{{ route('contato') }}" class="btn btn-primary">@content('atuacao.hero.cta')</a>
+          </div>
+        @endif
+      </div>
+      @include('partials.section-banner', ['slot' => 'hero', 'eager' => true])
     </div>
     @extraTexts('atuacao.hero')
   </section>
 
-  <section id="governanca-publica">
+  <nav class="frentes-nav" aria-label="Frentes de atuação">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('atuacao.governanca.kicker')</span>
-        <h2>@content('atuacao.governanca.title')</h2>
-        <p class="sub">@content('atuacao.governanca.sub')</p>
+      <ul>
+        <li><a href="#governanca-publica"><span class="num">01</span> @content('atuacao.nav.governanca')</a></li>
+        <li><a href="#observatorio"><span class="num">02</span> @content('atuacao.nav.observatorio')</a></li>
+        <li><a href="#pmo"><span class="num">03</span> @content('atuacao.nav.pmo')</a></li>
+        <li><a href="#marco-legal-inovacao"><span class="num">04</span> @content('atuacao.nav.marcolegal')</a></li>
+        <li><a href="#capacitacao"><span class="num">05</span> @content('atuacao.nav.capacitacao')</a></li>
+        <li><a href="#piloto"><span class="num">06</span> @content('atuacao.nav.piloto')</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="frente-section" id="governanca-publica">
+    <div class="wrap frente">
+      <div class="frente__top">
+        <div class="frente__text">
+          <div class="section-head">
+            <span class="kicker">@content('atuacao.governanca.kicker')</span>
+            <h2>@content('atuacao.governanca.title')</h2>
+            <p class="sub">@content('atuacao.governanca.sub')</p>
+          </div>
+          @if (\App\Support\SiteContent::has('atuacao.governanca.text'))
+            <div class="frente__intro"><p>@content('atuacao.governanca.text')</p></div>
+          @endif
+        </div>
+        <div class="frente__media">
+          @include('partials.section-banner', ['slot' => 'governanca'])
+        </div>
       </div>
-      <div class="info-box">
-        <p>@content('atuacao.governanca.text')</p>
-        <ul class="req-list">
-          <li><strong>@content('atuacao.governanca.item1.title')</strong> @content('atuacao.governanca.item1.text')</li>
-          <li><strong>@content('atuacao.governanca.item2.title')</strong> @content('atuacao.governanca.item2.text')</li>
-          <li><strong>@content('atuacao.governanca.item3.title')</strong> @content('atuacao.governanca.item3.text')</li>
-          <li><strong>@content('atuacao.governanca.item4.title')</strong>@content('atuacao.governanca.item4.text')</li>
-        </ul>
+      <div class="frente__items">
+        @include('partials.item-cards', ['prefix' => 'atuacao.governanca.item', 'count' => 4])
       </div>
     </div>
     @extraTexts('atuacao.governanca')
   </section>
 
-  <section class="alt" id="observatorio">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('atuacao.observatorio.kicker')</span>
-        <h2>@content('atuacao.observatorio.title')</h2>
-        <p class="sub">@content('atuacao.observatorio.sub')</p>
+  <section class="alt frente-section" id="observatorio">
+    <div class="wrap frente frente--reverse">
+      <div class="frente__top">
+        <div class="frente__text">
+          <div class="section-head">
+            <span class="kicker">@content('atuacao.observatorio.kicker')</span>
+            <h2>@content('atuacao.observatorio.title')</h2>
+            <p class="sub">@content('atuacao.observatorio.sub')</p>
+          </div>
+          @if (\App\Support\SiteContent::has('atuacao.observatorio.text'))
+            <div class="frente__intro"><p>@content('atuacao.observatorio.text')</p></div>
+          @endif
+        </div>
+        <div class="frente__media">
+          @include('partials.section-banner', ['slot' => 'observatorio'])
+        </div>
       </div>
-      <div class="info-box">
-        <p>@content('atuacao.observatorio.text')</p>
-        <ul class="req-list">
-          <li><strong>@content('atuacao.observatorio.item1.title')</strong> @content('atuacao.observatorio.item1.text')</li>
-          <li><strong>@content('atuacao.observatorio.item2.title')</strong> @content('atuacao.observatorio.item2.text')</li>
-          <li><strong>@content('atuacao.observatorio.item3.title')</strong> @content('atuacao.observatorio.item3.text')</li>
-          <li><strong>@content('atuacao.observatorio.item4.title')</strong> @content('atuacao.observatorio.item4.text')</li>
-        </ul>
+      <div class="frente__items">
+        @include('partials.item-cards', ['prefix' => 'atuacao.observatorio.item', 'count' => 4])
       </div>
     </div>
     @extraTexts('atuacao.observatorio')
   </section>
 
-  <section id="pmo">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('atuacao.pmo.kicker')</span>
-        <h2>@content('atuacao.pmo.title')</h2>
-        <p class="sub">@content('atuacao.pmo.sub')</p>
+  <section class="frente-section" id="pmo">
+    <div class="wrap frente">
+      <div class="frente__top">
+        <div class="frente__text">
+          <div class="section-head">
+            <span class="kicker">@content('atuacao.pmo.kicker')</span>
+            <h2>@content('atuacao.pmo.title')</h2>
+            <p class="sub">@content('atuacao.pmo.sub')</p>
+          </div>
+          <div class="frente__intro">
+            <h3>@content('atuacao.pmo.question')</h3>
+            <p>@content('atuacao.pmo.answer') <em>@content('atuacao.pmo.answer.highlight')</em>@content('atuacao.pmo.answer.end')</p>
+          </div>
+        </div>
+        <div class="frente__media">
+          @include('partials.section-banner', ['slot' => 'pmo'])
+        </div>
       </div>
-      <div class="qa-block">
-        <p class="question">@content('atuacao.pmo.question')</p>
-        <p class="answer">@content('atuacao.pmo.answer') <em>@content('atuacao.pmo.answer.highlight')</em>@content('atuacao.pmo.answer.end')</p>
-      </div>
-      <div class="legal-note">
-        <h3>@content('atuacao.pmo.note.title')</h3>
-        <p>@content('atuacao.pmo.note.text')</p>
+      <div class="frente__items">
+        <div class="legal-note">
+          <h3>@content('atuacao.pmo.note.title')</h3>
+          <p>@content('atuacao.pmo.note.text')</p>
+        </div>
       </div>
     </div>
     @extraTexts('atuacao.pmo')
   </section>
 
-  <section class="alt" id="marco-legal-inovacao">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('atuacao.marcolegal.kicker')</span>
-        <h2>@content('atuacao.marcolegal.title')</h2>
-        <p class="sub">@content('atuacao.marcolegal.sub')</p>
+  <section class="alt frente-section" id="marco-legal-inovacao">
+    <div class="wrap frente frente--reverse">
+      <div class="frente__top">
+        <div class="frente__text">
+          <div class="section-head">
+            <span class="kicker">@content('atuacao.marcolegal.kicker')</span>
+            <h2>@content('atuacao.marcolegal.title')</h2>
+            <p class="sub">@content('atuacao.marcolegal.sub')</p>
+          </div>
+          @if (\App\Support\SiteContent::has('atuacao.marcolegal.text'))
+            <div class="frente__intro"><p>@content('atuacao.marcolegal.text')</p></div>
+          @endif
+        </div>
+        <div class="frente__media">
+          @include('partials.section-banner', ['slot' => 'marcolegal'])
+        </div>
       </div>
-      <div class="info-box">
-        <p>@content('atuacao.marcolegal.text')</p>
-        <ul class="req-list">
-          <li><strong>@content('atuacao.marcolegal.item1.title')</strong> @content('atuacao.marcolegal.item1.text')</li>
-          <li><strong>@content('atuacao.marcolegal.item2.title')</strong> @content('atuacao.marcolegal.item2.text')</li>
-          <li><strong>@content('atuacao.marcolegal.item3.title')</strong>@content('atuacao.marcolegal.item3.text')</li>
-          <li><strong>@content('atuacao.marcolegal.item4.title')</strong>@content('atuacao.marcolegal.item4.text')</li>
-        </ul>
+      <div class="frente__items">
+        @include('partials.item-cards', ['prefix' => 'atuacao.marcolegal.item', 'count' => 4])
+        <p class="cards-note">@content('atuacao.marcolegal.note.start') <strong>@content('atuacao.marcolegal.note.highlight')</strong>@content('atuacao.marcolegal.note.end')</p>
       </div>
-      <p class="cards-note">@content('atuacao.marcolegal.note.start') <strong>@content('atuacao.marcolegal.note.highlight')</strong>@content('atuacao.marcolegal.note.end')</p>
     </div>
     @extraTexts('atuacao.marcolegal')
   </section>
 
-  <section id="capacitacao">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('atuacao.capacitacao.kicker')</span>
-        <h2>@content('atuacao.capacitacao.title')</h2>
-        <p class="sub">@content('atuacao.capacitacao.sub')</p>
+  <section class="frente-section" id="capacitacao">
+    <div class="wrap frente">
+      <div class="frente__top">
+        <div class="frente__text">
+          <div class="section-head">
+            <span class="kicker">@content('atuacao.capacitacao.kicker')</span>
+            <h2>@content('atuacao.capacitacao.title')</h2>
+            <p class="sub">@content('atuacao.capacitacao.sub')</p>
+          </div>
+        </div>
+        <div class="frente__media">
+          @include('partials.section-banner', ['slot' => 'capacitacao'])
+        </div>
       </div>
-      <div class="cards-grid">
-        <article class="card"><h3>@content('atuacao.capacitacao.card1.title')</h3><p>@content('atuacao.capacitacao.card1.text')</p></article>
-        <article class="card"><h3>@content('atuacao.capacitacao.card2.title')</h3><p>@content('atuacao.capacitacao.card2.text')</p></article>
-        <article class="card"><h3>@content('atuacao.capacitacao.card3.title')</h3><p>@content('atuacao.capacitacao.card3.text')</p></article>
-        <article class="card"><h3>@content('atuacao.capacitacao.card4.title')</h3><p>@content('atuacao.capacitacao.card4.text')</p></article>
-        <article class="card"><h3>@content('atuacao.capacitacao.card5.title')</h3><p>@content('atuacao.capacitacao.card5.text')</p></article>
-        <article class="card"><h3>@content('atuacao.capacitacao.card6.title')</h3><p>@content('atuacao.capacitacao.card6.text')</p></article>
+      <div class="frente__items">
+        @include('partials.item-cards', ['prefix' => 'atuacao.capacitacao.card', 'count' => 6])
       </div>
     </div>
     @extraTexts('atuacao.capacitacao')
   </section>
 
-  <section class="alt" id="piloto">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('atuacao.piloto.kicker')</span>
-        <h2>@content('atuacao.piloto.title')</h2>
-        <p class="sub">@content('atuacao.piloto.sub')</p>
+  <section class="alt frente-section" id="piloto">
+    <div class="wrap frente frente--reverse">
+      <div class="frente__top">
+        <div class="frente__text">
+          <div class="section-head">
+            <span class="kicker">@content('atuacao.piloto.kicker')</span>
+            <h2>@content('atuacao.piloto.title')</h2>
+            <p class="sub">@content('atuacao.piloto.sub')</p>
+          </div>
+          @if (\App\Support\SiteContent::has('atuacao.piloto.text'))
+            <div class="frente__intro"><p>@content('atuacao.piloto.text')</p></div>
+          @endif
+        </div>
+        <div class="frente__media">
+          @include('partials.section-banner', ['slot' => 'piloto'])
+        </div>
       </div>
-      <div class="info-box">
-        <p>@content('atuacao.piloto.text')</p>
-      </div>
-      <div class="legal-note" style="margin-top:18px;">
-        <h3>@content('atuacao.piloto.note.title')</h3>
-        <p><strong>@content('atuacao.piloto.note.highlight')</strong> @content('atuacao.piloto.note.text')</p>
+      <div class="frente__items">
+        <div class="legal-note">
+          <h3>@content('atuacao.piloto.note.title')</h3>
+          <p><strong>@content('atuacao.piloto.note.highlight')</strong> @content('atuacao.piloto.note.text')</p>
+        </div>
       </div>
     </div>
     @extraTexts('atuacao.piloto')
@@ -141,3 +198,7 @@
     @extraTexts('atuacao.cta')
   </section>
 @endsection
+
+@push('scripts')
+  <script src="{{ asset('js/atuacao.js') }}"></script>
+@endpush

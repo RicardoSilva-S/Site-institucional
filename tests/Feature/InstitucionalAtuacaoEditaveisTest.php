@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\SiteText;
 use App\Models\User;
+use App\Support\SiteContent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -53,5 +54,27 @@ class InstitucionalAtuacaoEditaveisTest extends TestCase
             ->assertRedirect();
 
         $this->get('/atuacao')->assertSee('Novo piloto em andamento.');
+    }
+
+    public function test_itens_da_atuacao_viram_cartoes_com_frase_propria()
+    {
+        // O complemento ": inventário de dados..." aparece como frase solta no cartão.
+        $this->get('/atuacao')
+            ->assertSee('item-card', false)
+            ->assertSee('Inventário de dados, bases legais, encarregado e relatório de impacto.')
+            ->assertDontSee(': inventário de dados');
+    }
+
+    public function test_item_excluido_no_painel_some_dos_cartoes()
+    {
+        SiteContent::sync();
+        SiteText::query()
+            ->whereIn('key', ['atuacao.governanca.item2.title', 'atuacao.governanca.item2.text'])
+            ->update(['value' => '']);
+        SiteContent::forget();
+
+        $this->get('/atuacao')
+            ->assertDontSee('Mapeamento e redesenho de processos')
+            ->assertSee('Políticas internas');
     }
 }

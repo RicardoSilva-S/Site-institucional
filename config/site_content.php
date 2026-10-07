@@ -1134,6 +1134,47 @@ return [
                         'default' => 'O Instituto atua como hub de soluções para o poder público: reúne o que os parceiros desenvolvem, produz o que falta e entrega tudo pelo caminho legal adequado a cada caso.',
                         'long' => true,
                     ],
+                    [
+                        'key' => 'atuacao.hero.cta',
+                        'label' => 'Botão',
+                        'default' => 'Solicitar diagnóstico gratuito',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'nav',
+                'label' => 'Atalhos para as frentes',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.nav.governanca',
+                        'label' => 'Atalho — Frente 01',
+                        'default' => 'Governança',
+                    ],
+                    [
+                        'key' => 'atuacao.nav.observatorio',
+                        'label' => 'Atalho — Frente 02',
+                        'default' => 'Observatório de dados',
+                    ],
+                    [
+                        'key' => 'atuacao.nav.pmo',
+                        'label' => 'Atalho — Frente 03',
+                        'default' => 'PMO público',
+                    ],
+                    [
+                        'key' => 'atuacao.nav.marcolegal',
+                        'label' => 'Atalho — Frente 04',
+                        'default' => 'Marco legal',
+                    ],
+                    [
+                        'key' => 'atuacao.nav.capacitacao',
+                        'label' => 'Atalho — Frente 05',
+                        'default' => 'Capacitação',
+                    ],
+                    [
+                        'key' => 'atuacao.nav.piloto',
+                        'label' => 'Atalho — Frente 06',
+                        'default' => 'Piloto e PD&I',
+                    ],
                 ],
             ],
             [

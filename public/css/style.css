@@ -612,3 +612,96 @@ main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h4:empty{di
 .section-banner__caption strong{font-family:var(--serif);font-size:17px;line-height:1.35;color:#fff;}
 .section-banner__caption span{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);}
 .section-banner .banner-dots{top:16px;bottom:auto;justify-content:flex-end;padding:0 16px;}
+
+/* =========================================================================
+   Página Atuação (site/atuacao.blade.php): topo com imagem, atalhos fixos
+   para as frentes e frentes em duas colunas (textos + imagem da seção).
+   ========================================================================= */
+.page-hero--split{padding:64px 0 72px;}
+.page-hero--split .wrap{
+  max-width:1160px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:64px;align-items:center;
+}
+.page-hero--split h1{font-size:46px;line-height:1.15;}
+.page-hero--split .lead{max-width:46ch;}
+.page-hero--split .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+
+/* --- Atalhos para as frentes (fixos logo abaixo do cabeçalho) --- */
+.frentes-nav{
+  position:sticky;top:81px;z-index:90;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(6px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.frentes-nav ul{
+  position:relative;list-style:none;margin:0 -14px;padding:0;
+  display:flex;justify-content:space-between;gap:4px;
+  overflow-x:auto;scrollbar-width:none;
+}
+.frentes-nav ul::-webkit-scrollbar{display:none;}
+.frentes-nav a{
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  padding:15px 14px 13px;font-size:14.5px;font-weight:500;color:var(--ink-soft);
+  border-bottom:2px solid transparent;transition:color .15s ease, border-color .15s ease;
+}
+.frentes-nav a .num{font-size:12px;font-weight:700;letter-spacing:.03em;color:var(--gold);}
+.frentes-nav a:hover{color:var(--navy);}
+.frentes-nav a.is-active{color:var(--navy-dark);font-weight:600;border-bottom-color:var(--gold);}
+
+/* --- Frente: título e texto ao lado da imagem; itens em cartões embaixo.
+   A imagem acompanha a altura do texto (mínimo 280px), então a linha de
+   cima nunca fica com sobra, mesmo quando o texto é editado no painel.
+   As frentes pares invertem o lado da imagem. --- */
+.frente-section{scroll-margin-top:96px;}
+.frente__top{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);
+  column-gap:64px;align-items:stretch;
+}
+.frente--reverse .frente__top{grid-template-columns:minmax(0,440px) minmax(0,1fr);}
+.frente--reverse .frente__media{order:-1;}
+.frente__text{display:flex;flex-direction:column;justify-content:center;min-width:0;}
+.frente__text .section-head{margin-bottom:0;}
+.frente__intro{margin-top:22px;padding-top:22px;border-top:1px solid var(--line);}
+.frente__intro h3{font-size:19px;line-height:1.35;margin-bottom:10px;}
+.frente__intro p{font-size:16px;line-height:1.65;color:var(--ink);}
+.frente__media{display:flex;min-height:280px;}
+.frente__media .section-banner{flex:1;aspect-ratio:auto;}
+/* Entrada suave da imagem quando a frente aparece na tela (atuacao.js põe
+   .js-reveal no <html>; sem JS, a imagem já aparece normalmente). */
+.js-reveal .frente__media{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease;}
+.js-reveal .frente__media.is-visible{opacity:1;transform:none;}
+@media print{.js-reveal .frente__media{opacity:1;transform:none;}}
+
+.frente__items{margin-top:48px;}
+.frente__items .legal-note{margin-top:0;}
+.item-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
+.item-cards--3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.item-card{
+  display:flex;flex-direction:column;gap:10px;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:22px 22px 24px;box-shadow:var(--shadow-sm);
+  transition:box-shadow .15s ease, transform .15s ease;
+}
+.item-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.item-card .num{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--gold);}
+.item-card h3{font-size:17px;line-height:1.35;}
+.item-card p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);}
+
+@media (max-width:960px){
+  .page-hero--split .wrap{grid-template-columns:1fr;gap:40px;}
+  .page-hero--split h1{font-size:38px;}
+  .frentes-nav ul{justify-content:flex-start;}
+  .frente__top,
+  .frente--reverse .frente__top{grid-template-columns:minmax(0,1fr);row-gap:32px;}
+  .frente--reverse .frente__media{order:0;}
+  .frente__media{min-height:0;}
+  .frente__media .section-banner{aspect-ratio:4/3;}
+  .frente__items{margin-top:32px;}
+  .item-cards,
+  .item-cards--3{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:600px){
+  .page-hero--split{padding:44px 0 52px;}
+  .page-hero--split h1{font-size:32px;}
+  .item-cards,
+  .item-cards--3{grid-template-columns:1fr;}
+}

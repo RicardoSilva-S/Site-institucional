@@ -22,7 +22,7 @@ use Illuminate\View\View;
 class ContentController extends Controller
 {
     /** Seções em que não faz sentido inserir textos soltos. */
-    protected const NO_EXTRAS = ['shared.nav'];
+    protected const NO_EXTRAS = ['shared.nav', 'atuacao.nav'];
 
     public function show(string $page): View
     {
