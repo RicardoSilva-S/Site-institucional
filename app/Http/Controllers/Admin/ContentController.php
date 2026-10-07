@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\SiteText;
+use App\Support\BannerSlots;
 use App\Support\SiteContent;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,7 +15,8 @@ use Illuminate\View\View;
 /**
  * Textos do site, uma página por vez (/adm/paginas/{page}).
  *
- * - show:    lista os textos da página, agrupados por seção
+ * - show:    lista os textos da página, agrupados por seção (e a imagem
+ *            das seções que têm banner ao lado — ver App\Support\BannerSlots)
  * - update:  salva as alterações de todos os textos da página
  * - store:   insere um texto novo numa seção
  * - destroy: exclui um texto (inserido = apaga; original = esvazia)
@@ -37,12 +40,26 @@ class ContentController extends Controller
             ->get()
             ->groupBy('group');
 
+        // Banners das seções que têm imagem ao lado (ativos e inativos).
+        $slotBanners = empty($schema['route']) ? collect() : Banner::query()
+            ->where('page', $schema['route'])
+            ->whereNotNull('slot')
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get()
+            ->groupBy('slot');
+
         // Monta as seções na ordem do config (mesmo as que estiverem vazias).
         $groups = collect($schema['groups'])->map(fn ($group) => [
             'id' => $group['id'],
             'label' => $group['label'],
             'texts' => $texts->get($group['id'], collect()),
             'canAdd' => ! in_array("{$page}.{$group['id']}", self::NO_EXTRAS, true),
+            'banner' => (! empty($group['banner']) && ! empty($schema['route'])) ? [
+                'posicao' => BannerSlots::encode($schema['route'], $group['id']),
+                'default' => $group['banner'],
+                'items' => $slotBanners->get($group['id'], collect()),
+            ] : null,
         ]);
 
         return view('admin.pagina', [

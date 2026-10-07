@@ -27,6 +27,51 @@
       <section class="admin-group" id="secao-{{ $group['id'] }}">
         <h2>{{ $group['label'] }}</h2>
 
+        {{-- Imagem exibida ao lado da seção no site (ver App\Support\BannerSlots). --}}
+        @if ($group['banner'])
+          @php $slotItems = $group['banner']['items']; @endphp
+          <div class="admin-slot">
+            <div class="admin-slot__head">
+              <div>
+                <strong>Imagem da seção</strong>
+                <p class="admin-muted">Aparece ao lado dos textos desta seção. Com mais de uma imagem ativa, elas passam em carrossel.</p>
+              </div>
+              <a href="{{ route('admin.banners.create', ['posicao' => $group['banner']['posicao'], 'voltar' => $page['page']]) }}" class="btn btn-outline btn-sm">
+                {{ $slotItems->isEmpty() ? 'Trocar imagem' : '+ Adicionar imagem' }}
+              </a>
+            </div>
+
+            <ul class="admin-slot__list">
+              @forelse ($slotItems as $banner)
+                <li>
+                  <img src="{{ $banner->imageUrl() }}" alt="" class="admin-slot__thumb">
+                  <div class="admin-slot__info">
+                    <strong>{{ $banner->title ?: '(sem título)' }}</strong>
+                    <span class="admin-badge{{ $banner->active ? '' : ' admin-badge--muted' }}">{{ $banner->active ? 'Ativo' : 'Inativo' }}</span>
+                  </div>
+                  <div class="admin-slot__actions">
+                    <a href="{{ route('admin.banners.edit', ['banner' => $banner, 'voltar' => $page['page']]) }}" class="btn-text">Editar</a>
+                    <button type="submit" form="banner-delete-{{ $banner->id }}" class="btn-text btn-text--danger"
+                            data-confirm="Remover esta imagem? Sem outra imagem ativa, a seção volta a mostrar a imagem padrão.">Remover</button>
+                  </div>
+                </li>
+              @empty
+                <li>
+                  <img src="{{ asset($group['banner']['default']) }}" alt="" class="admin-slot__thumb">
+                  <div class="admin-slot__info">
+                    <strong>Imagem padrão</strong>
+                    <span class="admin-muted">Ilustração do site. Envie uma imagem para substituí-la.</span>
+                  </div>
+                </li>
+              @endforelse
+            </ul>
+
+            @if ($slotItems->isNotEmpty() && $slotItems->where('active', true)->isEmpty())
+              <p class="admin-muted">Nenhuma imagem ativa: o site está mostrando a imagem padrão.</p>
+            @endif
+          </div>
+        @endif
+
         @forelse ($group['texts'] as $text)
           @php $isEmpty = trim((string) $text->value) === ''; @endphp
           <div class="admin-field{{ $isEmpty ? ' is-empty' : '' }}{{ $text->custom ? ' is-custom' : '' }}">
@@ -88,6 +133,15 @@
 
   {{-- Forms auxiliares (fora do form principal) --}}
   @foreach ($groups as $group)
+    @if ($group['banner'])
+      @foreach ($group['banner']['items'] as $banner)
+        <form id="banner-delete-{{ $banner->id }}" method="POST" action="{{ route('admin.banners.destroy', $banner) }}" hidden>
+          @csrf
+          @method('DELETE')
+          <input type="hidden" name="voltar" value="{{ $page['page'] }}">
+        </form>
+      @endforeach
+    @endif
     @if ($group['canAdd'])
       <form id="add-{{ $group['id'] }}" method="POST" action="{{ route('admin.texts.store', $page['page']) }}" hidden>
         @csrf

@@ -7,14 +7,14 @@
     <div>
       <p class="admin-eyebrow">Mídia</p>
       <h1>Banners</h1>
-      <p class="admin-muted">Imagens exibidas no topo das páginas do site. Com mais de um banner na mesma página, eles passam em carrossel.</p>
+      <p class="admin-muted">Imagens do carrossel no topo das páginas e das imagens ao lado das seções (ex: frentes da página Atuação). Com mais de um banner no mesmo lugar, eles passam em carrossel.</p>
     </div>
     <a href="{{ route('admin.banners.create') }}" class="btn btn-primary btn-sm">+ Novo banner</a>
   </div>
 
   @if ($banners->isEmpty())
     <div class="admin-empty">
-      <p>Nenhum banner cadastrado ainda. Enquanto não houver banners, o topo das páginas continua como está hoje.</p>
+      <p>Nenhum banner cadastrado ainda. Enquanto não houver banners, o topo das páginas continua como está hoje e as seções mostram a imagem padrão.</p>
     </div>
   @else
     <div class="admin-table-wrap">
@@ -23,7 +23,7 @@
           <tr>
             <th>Imagem</th>
             <th>Título</th>
-            <th>Página</th>
+            <th>Onde aparece</th>
             <th>Ordem</th>
             <th>Situação</th>
             <th></th>
@@ -37,7 +37,7 @@
                 <strong>{{ $banner->title ?: '(sem título)' }}</strong>
                 @if ($banner->subtitle)<br><span class="admin-muted">{{ \Illuminate\Support\Str::limit($banner->subtitle, 70) }}</span>@endif
               </td>
-              <td>{{ $banner->page ? ($pages[$banner->page] ?? $banner->page) : 'Todas as páginas' }}</td>
+              <td>{{ \App\Support\BannerSlots::label($banner->page, $banner->slot) }}</td>
               <td>{{ $banner->sort_order }}</td>
               <td>
                 <span class="admin-badge{{ $banner->active ? '' : ' admin-badge--muted' }}">{{ $banner->active ? 'Ativo' : 'Inativo' }}</span>
