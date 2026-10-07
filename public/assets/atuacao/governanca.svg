@@ -1,54 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
-  <defs>
-    <radialGradient id="glowGold" cx="0.92" cy="0.04" r="0.62">
-      <stop offset="0" stop-color="#B8862E" stop-opacity="0.42"/>
-      <stop offset="1" stop-color="#B8862E" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="glowBlue" cx="0.04" cy="1" r="0.72">
-      <stop offset="0" stop-color="#1F4C91" stop-opacity="0.75"/>
-      <stop offset="1" stop-color="#1F4C91" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.2" fill="#FFFFFF" fill-opacity="0.08"/>
-    </pattern>
-  </defs>
-  <rect width="640" height="480" fill="#0A1D42"/>
-  <rect width="640" height="480" fill="url(#glowBlue)"/>
-  <rect width="640" height="480" fill="url(#glowGold)"/>
-  <rect width="640" height="480" fill="url(#dots)"/>
-  <rect x="64" y="64" width="512" height="352" rx="18" fill="#0F2A5C" fill-opacity="0.7" stroke="#FFFFFF" stroke-opacity="0.12"/>
-  <g fill="#FFFFFF" fill-opacity="0.25">
-    <circle cx="92" cy="92" r="4"/><circle cx="108" cy="92" r="4"/><circle cx="124" cy="92" r="4"/>
+  <rect width="640" height="480" fill="#FFFFFF"/>
+  <g fill="none" stroke="#0F2A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="78" y="200" width="132" height="80" rx="14" fill="#FFFFFF"/>
+    <line x1="210" y1="240" x2="254" y2="240"/>
+    <polyline points="246,232 256,240 246,248"/>
+    <path d="M376,240 H400 V180 H422"/>
+    <polyline points="414,172 424,180 414,188"/>
+    <path d="M400,240 V300 H422"/>
+    <polyline points="414,292 424,300 414,308"/>
+    <rect x="430" y="140" width="132" height="80" rx="14" fill="#E9EDF5"/>
+    <rect x="430" y="260" width="132" height="80" rx="14" fill="#E9EDF5"/>
   </g>
-  <rect x="148" y="88" width="120" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.18"/>
-  <rect x="96" y="150" width="128" height="60" rx="12" fill="#13306A" stroke="#FFFFFF" stroke-opacity="0.2"/>
-  <rect x="114" y="168" width="76" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.85"/>
-  <rect x="114" y="184" width="52" height="6" rx="3" fill="#FFFFFF" fill-opacity="0.35"/>
-  <line x1="224" y1="180" x2="266" y2="180" stroke="#B8862E" stroke-width="2"/>
-  <polygon points="276,180 266,174 266,186" fill="#B8862E"/>
-  <polygon points="320,136 364,180 320,224 276,180" fill="#B8862E"/>
-  <path d="M304,180 L314,190 L336,166" fill="none" stroke="#0A1D42" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M364,180 H392 V140 H414 M392,180 V220 H414" fill="none" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="2"/>
-  <polygon points="424,140 414,134 414,146" fill="#FFFFFF" fill-opacity="0.6"/>
-  <polygon points="424,220 414,214 414,226" fill="#FFFFFF" fill-opacity="0.6"/>
-  <rect x="424" y="112" width="124" height="56" rx="12" fill="#13306A" stroke="#FFFFFF" stroke-opacity="0.2"/>
-  <rect x="440" y="130" width="64" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.85"/>
-  <rect x="440" y="146" width="44" height="6" rx="3" fill="#FFFFFF" fill-opacity="0.35"/>
-  <rect x="424" y="192" width="124" height="56" rx="12" fill="#13306A" stroke="#FFFFFF" stroke-opacity="0.2"/>
-  <rect x="440" y="210" width="72" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.85"/>
-  <rect x="440" y="226" width="40" height="6" rx="3" fill="#FFFFFF" fill-opacity="0.35"/>
-  <rect x="96" y="272" width="452" height="116" rx="14" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.12"/>
-  <circle cx="124" cy="300" r="9" fill="#B8862E"/>
-  <circle cx="124" cy="330" r="9" fill="#B8862E"/>
-  <circle cx="124" cy="360" r="8" fill="none" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2"/>
-  <g fill="none" stroke="#0A1D42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M119,300 L123,304 L130,296"/>
-    <path d="M119,330 L123,334 L130,326"/>
+  <polygon points="320,184 376,240 320,296 264,240" fill="#F2E6CE" stroke="#B8862E" stroke-width="3" stroke-linejoin="round"/>
+  <polyline points="302,240 314,252 338,226" fill="none" stroke="#B8862E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="#C3CADB" stroke-width="6" stroke-linecap="round">
+    <line x1="102" y1="230" x2="172" y2="230"/><line x1="102" y1="252" x2="148" y2="252"/>
+    <line x1="454" y1="170" x2="520" y2="170"/><line x1="454" y1="190" x2="500" y2="190"/>
+    <line x1="454" y1="290" x2="528" y2="290"/><line x1="454" y1="310" x2="494" y2="310"/>
   </g>
-  <rect x="146" y="296" width="210" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.7"/>
-  <rect x="146" y="326" width="170" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.7"/>
-  <rect x="146" y="356" width="190" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.3"/>
-  <rect x="452" y="291" width="72" height="18" rx="9" fill="#B8862E" fill-opacity="0.3"/>
-  <rect x="452" y="321" width="72" height="18" rx="9" fill="#B8862E" fill-opacity="0.3"/>
-  <rect x="452" y="351" width="72" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.1"/>
 </svg>

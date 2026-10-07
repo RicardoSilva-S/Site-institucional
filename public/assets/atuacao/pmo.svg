@@ -1,45 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
-  <defs>
-    <radialGradient id="glowGold" cx="0.92" cy="0.04" r="0.62">
-      <stop offset="0" stop-color="#B8862E" stop-opacity="0.42"/>
-      <stop offset="1" stop-color="#B8862E" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="glowBlue" cx="0.04" cy="1" r="0.72">
-      <stop offset="0" stop-color="#1F4C91" stop-opacity="0.75"/>
-      <stop offset="1" stop-color="#1F4C91" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.2" fill="#FFFFFF" fill-opacity="0.08"/>
-    </pattern>
-  </defs>
-  <rect width="640" height="480" fill="#0A1D42"/>
-  <rect width="640" height="480" fill="url(#glowBlue)"/>
-  <rect width="640" height="480" fill="url(#glowGold)"/>
-  <rect width="640" height="480" fill="url(#dots)"/>
-  <rect x="56" y="64" width="528" height="352" rx="18" fill="#0F2A5C" fill-opacity="0.7" stroke="#FFFFFF" stroke-opacity="0.12"/>
-  <rect x="80" y="96" width="90" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.3"/>
-  <g fill="#FFFFFF" fill-opacity="0.22">
-    <rect x="216" y="97" width="30" height="6" rx="3"/><rect x="280" y="97" width="30" height="6" rx="3"/><rect x="344" y="97" width="30" height="6" rx="3"/>
-    <rect x="408" y="97" width="30" height="6" rx="3"/><rect x="472" y="97" width="30" height="6" rx="3"/><rect x="536" y="97" width="22" height="6" rx="3"/>
+  <rect width="640" height="480" fill="#FFFFFF"/>
+  <g stroke="#E9EDF5" stroke-width="2">
+    <line x1="176" y1="112" x2="176" y2="372"/><line x1="252" y1="112" x2="252" y2="372"/><line x1="328" y1="112" x2="328" y2="372"/>
+    <line x1="404" y1="112" x2="404" y2="372"/><line x1="480" y1="112" x2="480" y2="372"/><line x1="556" y1="112" x2="556" y2="372"/>
   </g>
-  <line x1="80" y1="122" x2="560" y2="122" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <g stroke="#FFFFFF" stroke-opacity="0.07">
-    <line x1="200" y1="122" x2="200" y2="392"/><line x1="264" y1="122" x2="264" y2="392"/><line x1="328" y1="122" x2="328" y2="392"/>
-    <line x1="392" y1="122" x2="392" y2="392"/><line x1="456" y1="122" x2="456" y2="392"/><line x1="520" y1="122" x2="520" y2="392"/>
+  <g stroke="#C3CADB" stroke-width="6" stroke-linecap="round">
+    <line x1="84" y1="150" x2="140" y2="150"/><line x1="84" y1="200" x2="128" y2="200"/><line x1="84" y1="250" x2="146" y2="250"/>
+    <line x1="84" y1="300" x2="120" y2="300"/><line x1="84" y1="350" x2="136" y2="350"/>
   </g>
-  <g fill="#FFFFFF" fill-opacity="0.55">
-    <rect x="80" y="147" width="96" height="10" rx="5"/><rect x="80" y="189" width="80" height="10" rx="5"/><rect x="80" y="231" width="104" height="10" rx="5"/>
-    <rect x="80" y="273" width="72" height="10" rx="5"/><rect x="80" y="315" width="90" height="10" rx="5"/><rect x="80" y="357" width="84" height="10" rx="5"/>
+  <g fill="#E9EDF5" stroke="#0F2A5C" stroke-width="3">
+    <rect x="176" y="139" width="150" height="22" rx="11"/>
+    <rect x="240" y="189" width="180" height="22" rx="11"/>
+    <rect x="430" y="289" width="110" height="22" rx="11"/>
   </g>
-  <rect x="204" y="143" width="140" height="18" rx="9" fill="#5B8BD6"/>
-  <rect x="268" y="185" width="170" height="18" rx="9" fill="#2E63B5"/>
-  <rect x="268" y="185" width="120" height="18" rx="9" fill="#5B8BD6"/>
-  <rect x="330" y="227" width="120" height="18" rx="9" fill="#B8862E"/>
-  <rect x="330" y="227" width="60" height="18" rx="9" fill="#DDB35E"/>
-  <path d="M450,236 H456 Q462,236 462,244 V270 Q462,278 468,278" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="2"/>
-  <rect x="460" y="269" width="90" height="18" rx="9" fill="#2E63B5"/>
-  <rect x="470" y="311" width="80" height="18" rx="9" fill="none" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="5 4"/>
-  <polygon points="548,350 560,362 548,374 536,362" fill="#DDB35E"/>
-  <line x1="372" y1="128" x2="372" y2="392" stroke="#DDB35E" stroke-opacity="0.85" stroke-width="2" stroke-dasharray="5 5"/>
-  <circle cx="372" cy="124" r="5" fill="#DDB35E"/>
+  <rect x="320" y="239" width="140" height="22" rx="11" fill="#F2E6CE" stroke="#B8862E" stroke-width="3"/>
+  <polygon points="540,336 554,350 540,364 526,350" fill="#B8862E"/>
+  <line x1="382" y1="122" x2="382" y2="372" stroke="#B8862E" stroke-width="2.5" stroke-dasharray="6 6"/>
+  <circle cx="382" cy="116" r="6" fill="#B8862E"/>
 </svg>
