@@ -689,3 +689,137 @@ main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h4:empty{di
   .frente-itens,
   .frente-itens--3{grid-template-columns:1fr;row-gap:24px;}
 }
+
+/* =========================================================================
+   Página Institucional (site/institucional.blade.php): topo com a ficha do
+   Instituto e a imagem da seção, os mesmos atalhos da Atuação e seções em
+   duas colunas (título | texto), sem sobra de espaço ao lado dos títulos.
+   ========================================================================= */
+.inst-section{scroll-margin-top:96px;}
+
+/* --- Ficha do Instituto no topo --- */
+.ficha{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px;
+  margin:36px 0 0;padding-top:28px;border-top:1px solid var(--line);
+}
+.ficha dt{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);}
+.ficha dd{margin:4px 0 0;font-size:15.5px;line-height:1.45;color:var(--ink);}
+
+/* --- Seção em duas colunas: título de um lado, texto do outro --- */
+.inst-split{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:72px;row-gap:24px;align-items:start;
+}
+.inst-split .section-head{margin-bottom:0;}
+.inst-split .section-head .btn{margin-top:26px;}
+.inst-split--end{align-items:end;}
+.inst-split--center{align-items:center;}
+.inst-split__body{display:flex;flex-direction:column;gap:16px;padding-top:32px;}
+.inst-split__body p{font-size:16.5px;line-height:1.68;color:var(--ink-soft);}
+.inst-split__body .inst-lead{font-size:19px;line-height:1.6;color:var(--ink);}
+.inst-split__aside{font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:58ch;}
+
+/* Selo pequeno dos cartões (cargo, tipo de documento). */
+.inst-label{display:block;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--gold);}
+
+/* --- Missão, visão e princípios --- */
+.identidade{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px;
+  margin-top:56px;padding:44px 48px;border-radius:var(--radius-md);
+  background:var(--navy-dark);
+}
+.identidade__item{padding-top:20px;border-top:2px solid var(--gold);}
+.identidade h3{font-size:22px;color:#fff;}
+.identidade p{margin-top:12px;font-size:16px;line-height:1.65;color:rgba(255,255,255,.85);}
+.principios{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+.principios li{
+  font-size:14px;line-height:1.4;color:#fff;
+  padding:5px 12px;border:1px solid rgba(255,255,255,.28);border-radius:20px;
+}
+
+/* --- Linha do tempo: um passo por coluna, ligados por um fio --- */
+.timeline{
+  list-style:none;margin:56px 0 0;padding:0;
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);
+}
+.timeline li{position:relative;padding:30px 24px 0 0;border-top:2px solid var(--line);}
+.timeline li::before{
+  content:"";position:absolute;top:-9px;left:0;width:16px;height:16px;border-radius:50%;
+  background:var(--navy);box-shadow:0 0 0 4px var(--mist);
+}
+.timeline li.is-latest{border-top-color:var(--gold);}
+.timeline li.is-latest::before{background:var(--gold);}
+.timeline h3{font-size:20px;line-height:1.3;}
+.timeline p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--ink-soft);}
+
+/* --- Diretoria e conselho --- */
+.inst-subhead{display:flex;align-items:center;gap:16px;margin:56px 0 20px;font-size:20px;}
+.inst-subhead::after{content:"";flex:1;height:1px;background:var(--line);}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
+.team-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;}
+.team-card__photo{overflow:hidden;aspect-ratio:5/4;}
+.team-card__photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;}
+.team-card--jonny .team-card__photo img{transform:scale(1.18);transform-origin:center 18%;}
+.team-card__body{padding:24px 26px 28px;}
+.team-card h4{margin:8px 0 0;font-family:var(--serif);font-size:20px;line-height:1.3;color:var(--navy-dark);}
+.team-card p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--ink-soft);}
+
+.conselho{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
+.conselho li{display:flex;align-items:center;gap:16px;padding:20px 22px;border-radius:var(--radius-md);background:var(--mist);}
+.conselho__sigla{
+  flex:none;width:52px;height:52px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--navy);color:#fff;font-family:var(--serif);font-weight:700;font-size:17px;
+}
+.conselho strong{display:block;margin-top:4px;font-family:var(--serif);font-size:17px;line-height:1.35;color:var(--navy-dark);}
+
+/* --- Marco legal: atalhos em cartões empilhados --- */
+.link-cards{display:flex;flex-direction:column;gap:16px;}
+.link-card{
+  display:flex;align-items:center;gap:20px;padding:24px 26px;color:var(--navy);
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);
+  transition:border-color .15s ease;
+}
+.link-card:hover{border-color:var(--navy);}
+.link-card__body{flex:1;min-width:0;}
+.link-card strong{display:block;margin-top:4px;font-family:var(--serif);font-size:19px;line-height:1.3;color:var(--navy-dark);}
+.link-card__text{display:block;margin-top:6px;font-size:15px;line-height:1.55;color:var(--ink-soft);}
+.link-card svg{flex:none;}
+
+/* --- Documentos: chamada final com a lista do Portal da Transparência --- */
+.final-cta--docs .wrap{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);
+  gap:40px 72px;align-items:center;
+}
+.final-cta--docs h2{max-width:none;}
+.final-cta--docs .btn{margin-top:28px;}
+.doc-links{
+  list-style:none;margin:0;padding:6px 0;
+  border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-md);background:rgba(255,255,255,.04);
+}
+.doc-links li{margin:0 22px;}
+.doc-links li + li{border-top:1px solid rgba(255,255,255,.1);}
+.doc-links a{display:flex;align-items:center;gap:14px;min-height:52px;padding:12px 0;color:#fff;font-size:16px;font-weight:500;}
+.doc-links a span{flex:1;}
+.doc-links a:hover span{text-decoration:underline;text-underline-offset:3px;}
+.doc-links svg{flex:none;color:rgba(255,255,255,.6);}
+.doc-links svg:first-child{color:#DDB35E;}
+
+@media (max-width:960px){
+  .inst-split,
+  .final-cta--docs .wrap{grid-template-columns:minmax(0,1fr);}
+  .inst-split__body{padding-top:0;}
+  .identidade{grid-template-columns:minmax(0,1fr);gap:32px;padding:32px 28px;}
+  .team-grid,
+  .conselho{grid-template-columns:repeat(2,minmax(0,1fr));}
+
+  /* Linha do tempo na vertical, com o fio à esquerda. */
+  .timeline{grid-auto-flow:row;grid-auto-columns:auto;row-gap:28px;margin-left:8px;border-left:2px solid var(--line);}
+  .timeline li{padding:0 0 0 28px;border-top:none;}
+  .timeline li::before{top:4px;left:-9px;}
+}
+@media (max-width:600px){
+  .ficha,
+  .team-grid,
+  .conselho{grid-template-columns:minmax(0,1fr);}
+}

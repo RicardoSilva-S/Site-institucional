@@ -29,7 +29,7 @@ produção — o valor padrão é só para desenvolvimento).
 - A diretiva Blade `@content('home.hero.title')` imprime esse texto em qualquer view (ver `App\Providers\AppServiceProvider`).
 - `resources/views/admin/content-edit.blade.php` + `app/Http/Controllers/Admin/ContentController.php` — o painel `/admin/conteudo` (autenticação via `App\Http\Controllers\Auth\LoginController`, usuário criado por `database/seeders/AdminUserSeeder.php`).
 - `public/css`, `public/js`, `public/assets` — CSS, JS e imagens estáticas do site (servidos diretamente pelo Laravel).
-- `app/Support/BannerSlots.php` + `resources/views/partials/section-banner.blade.php` — imagens ao lado das seções (ex: as frentes da página Atuação), editáveis no painel.
+- `app/Support/BannerSlots.php` + `resources/views/partials/section-banner.blade.php` — imagens ao lado das seções (ex: o topo do Institucional e as frentes da Atuação), editáveis no painel.
 
 ## Imagens das seções (banners de seção)
 

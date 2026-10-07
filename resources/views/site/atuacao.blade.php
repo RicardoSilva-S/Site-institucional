@@ -199,5 +199,5 @@
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('js/atuacao.js') }}"></script>
+  <script src="{{ asset('js/secoes-nav.js') }}"></script>
 @endpush
