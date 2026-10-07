@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SiteController;
@@ -44,4 +44,6 @@ Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
 
     Route::post('/textos/{text}/restaurar', [ContentController::class, 'restore'])->name('texts.restore');
 
+    // Banners do topo do site
+    Route::resource('banners', BannerController::class)->except('show');
 });
