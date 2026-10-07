@@ -54,6 +54,8 @@
 </header>
 
 <main id="conteudo">
+  {{-- Banners cadastrados no painel (/adm/banners) para esta página. --}}
+  @include('partials.banner')
   @yield('content')
 </main>
 
@@ -101,6 +103,7 @@
       <span>@content('shared.footer.bottom.right')</span>
     </div>
   </div>
+  @extraTexts('shared.footer')
 </footer>
 
 <script src="{{ asset('js/site.js') }}"></script>
