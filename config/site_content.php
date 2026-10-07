@@ -803,6 +803,762 @@ return [
         ],
     ],
     [
+        'page' => 'institucional',
+        'pageLabel' => 'Institucional',
+        'route' => 'institucional',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo',
+                'fields' => [
+                    [
+                        'key' => 'institucional.hero.eyebrow',
+                        'label' => 'Selo',
+                        'default' => 'Conheça o IDTNPR',
+                    ],
+                    [
+                        'key' => 'institucional.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Institucional',
+                    ],
+                    [
+                        'key' => 'institucional.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'Quem somos, de onde viemos e como nos organizamos.',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'quemsomos',
+                'label' => 'Seção "Quem somos"',
+                'fields' => [
+                    [
+                        'key' => 'institucional.quemsomos.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Quem somos',
+                    ],
+                    [
+                        'key' => 'institucional.quemsomos.title',
+                        'label' => 'Título',
+                        'default' => 'Uma instituição de ciência e tecnologia a serviço da gestão pública',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.quemsomos.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'O Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense (IDTNPR) é uma associação civil de direito privado, sem fins lucrativos, com sede em Sarandi, Paraná.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.quemsomos.p1',
+                        'label' => 'Parágrafo 1',
+                        'default' => 'Atuamos junto a prefeituras, câmaras municipais, consórcios públicos e demais entidades da Administração Pública, apoiando a modernização administrativa, a transformação digital e a estruturação de políticas de ciência, tecnologia e inovação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.quemsomos.p2',
+                        'label' => 'Parágrafo 2',
+                        'default' => 'Nosso objeto social contempla a pesquisa aplicada de caráter tecnológico e o desenvolvimento de produtos, serviços e processos, o que nos enquadra como Instituição de Ciência e Tecnologia nos termos do art. 2º, inciso V, da Lei nº 10.973/2004, o Marco Legal de Ciência, Tecnologia e Inovação.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'identidade',
+                'label' => 'Missão, visão e princípios',
+                'fields' => [
+                    [
+                        'key' => 'institucional.missao.title',
+                        'label' => 'Missão — título',
+                        'default' => 'Missão',
+                    ],
+                    [
+                        'key' => 'institucional.missao.text',
+                        'label' => 'Missão — texto',
+                        'default' => 'Fomentar o desenvolvimento tecnológico e a inovação em entidades públicas e privadas, com transparência, legalidade e compromisso com o interesse público.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.visao.title',
+                        'label' => 'Visão — título',
+                        'default' => 'Visão',
+                    ],
+                    [
+                        'key' => 'institucional.visao.text',
+                        'label' => 'Visão — texto',
+                        'default' => 'Ser referência em inovação e tecnologia aplicada ao setor público, reconhecida pela excelência técnica e pelo impacto real na modernização da gestão pública.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.principios.title',
+                        'label' => 'Princípios — título',
+                        'default' => 'Princípios',
+                    ],
+                    [
+                        'key' => 'institucional.principios.text',
+                        'label' => 'Princípios — texto',
+                        'default' => 'Legalidade · Impessoalidade · Moralidade · Publicidade · Eficiência · Transparência · Integridade institucional · Interesse público',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'historia',
+                'label' => 'Seção "Nossa história"',
+                'fields' => [
+                    [
+                        'key' => 'institucional.historia.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Nossa história',
+                    ],
+                    [
+                        'key' => 'institucional.historia.title',
+                        'label' => 'Título',
+                        'default' => 'Como o Instituto chegou até aqui',
+                    ],
+                    [
+                        'key' => 'institucional.historia.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'A história do IDTNPR começa com a escuta de gestores públicos e a percepção de um desafio comum: acompanhar o ritmo da tecnologia e da inovação no cotidiano da gestão.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.historia.p1',
+                        'label' => 'Parágrafo 1',
+                        'default' => 'Essas conversas foram o embrião de uma ideia. Pessoas com experiência no setor público, na tecnologia e na gestão começaram a discutir caminhos para mudar essa realidade e moldaram, a muitas mãos, o que o Instituto viria a ser.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.historia.p2',
+                        'label' => 'Parágrafo 2',
+                        'default' => 'Sarandi/PR foi escolhida como sede e ponto de partida para uma atuação que mira municípios, autarquias e entidades públicas de toda a região e do país. O que segue é o registro dos passos já dados.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.passo1.title',
+                        'label' => 'Passo 1 — data',
+                        'default' => 'Jul · 2025',
+                    ],
+                    [
+                        'key' => 'institucional.passo1.text',
+                        'label' => 'Passo 1 — texto',
+                        'default' => 'Constituição do Instituto em assembleia de fundação, com aprovação do Estatuto Social e eleição da primeira Diretoria.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.passo2.title',
+                        'label' => 'Passo 2 — data',
+                        'default' => 'Set · 2025',
+                    ],
+                    [
+                        'key' => 'institucional.passo2.text',
+                        'label' => 'Passo 2 — texto',
+                        'default' => 'Inscrição no Cadastro Nacional da Pessoa Jurídica, habilitando o Instituto a firmar instrumentos e operar formalmente.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.passo3.title',
+                        'label' => 'Passo 3 — data',
+                        'default' => 'Jan · 2026',
+                    ],
+                    [
+                        'key' => 'institucional.passo3.text',
+                        'label' => 'Passo 3 — texto',
+                        'default' => 'Eleição da Diretoria Executiva e do Conselho Fiscal e Consultivo, com aprovação do Regimento Interno.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.passo4.title',
+                        'label' => 'Passo 4 — data',
+                        'default' => '2026',
+                    ],
+                    [
+                        'key' => 'institucional.passo4.text',
+                        'label' => 'Passo 4 — texto',
+                        'default' => 'Primeira entrega técnica: elaboração de minuta para a Política Municipal de Ciência, Tecnologia e Inovação de Sarandi.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.passo5.title',
+                        'label' => 'Passo 5 — data',
+                        'default' => 'Ago · 2026',
+                    ],
+                    [
+                        'key' => 'institucional.passo5.text',
+                        'label' => 'Passo 5 — texto',
+                        'default' => 'Primeira parceria com desenvolvedora, inaugurando a carteira de soluções tecnológicas do Instituto.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'governanca',
+                'label' => 'Seção "Governança"',
+                'fields' => [
+                    [
+                        'key' => 'institucional.governanca.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Governança',
+                    ],
+                    [
+                        'key' => 'institucional.governanca.title',
+                        'label' => 'Título',
+                        'default' => 'Estrutura institucional',
+                    ],
+                    [
+                        'key' => 'institucional.governanca.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'O IDTNPR é administrado por uma Diretoria Executiva e fiscalizado por um Conselho Fiscal e Consultivo, com sede em Sarandi, no Paraná.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.governanca.diretoria',
+                        'label' => 'Título da Diretoria',
+                        'default' => 'Diretoria Executiva',
+                    ],
+                    [
+                        'key' => 'institucional.governanca.conselho',
+                        'label' => 'Título do Conselho',
+                        'default' => 'Conselho Fiscal e Consultivo',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'marcolegal',
+                'label' => 'Seção "Marco legal"',
+                'fields' => [
+                    [
+                        'key' => 'institucional.marcolegal.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Marco legal',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.title',
+                        'label' => 'Título',
+                        'default' => 'A base jurídica da nossa atuação',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Toda cooperação entre o Instituto e uma entidade pública se apoia em norma expressa, e cada situação pede um instrumento diferente.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.btn',
+                        'label' => 'Botão',
+                        'default' => 'Ver o Marco Legal',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.card1.kicker',
+                        'label' => 'Card 1 — selo',
+                        'default' => 'Orientação',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.card1.title',
+                        'label' => 'Card 1 — título',
+                        'default' => 'Seis instrumentos',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.card1.text',
+                        'label' => 'Card 1 — texto',
+                        'default' => 'Um mapa de qual caminho legal se aplica a cada situação.',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.card2.kicker',
+                        'label' => 'Card 2 — selo',
+                        'default' => 'Documentação',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.card2.title',
+                        'label' => 'Card 2 — título',
+                        'default' => 'Minutas prontas',
+                    ],
+                    [
+                        'key' => 'institucional.marcolegal.card2.text',
+                        'label' => 'Card 2 — texto',
+                        'default' => 'Instrumentos e checklists processuais para a Procuradoria.',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'cta',
+                'label' => 'Chamada final',
+                'fields' => [
+                    [
+                        'key' => 'institucional.cta.title',
+                        'label' => 'Título',
+                        'default' => 'Documentos institucionais',
+                    ],
+                    [
+                        'key' => 'institucional.cta.text',
+                        'label' => 'Texto',
+                        'default' => 'Estatuto Social, atas registradas, regimento interno, normativos e prestação de contas.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'institucional.cta.btn',
+                        'label' => 'Botão',
+                        'default' => 'Portal da Transparência',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'page' => 'atuacao',
+        'pageLabel' => 'Atuação',
+        'route' => 'atuacao',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.hero.eyebrow',
+                        'label' => 'Selo',
+                        'default' => 'Soluções para a gestão pública',
+                    ],
+                    [
+                        'key' => 'atuacao.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Atuação',
+                    ],
+                    [
+                        'key' => 'atuacao.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'O Instituto atua como hub de soluções para o poder público: reúne o que os parceiros desenvolvem, produz o que falta e entrega tudo pelo caminho legal adequado a cada caso.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'governanca',
+                'label' => 'Frente 01 — Governança e modernização',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.governanca.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => '01 · Estruturação institucional',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.title',
+                        'label' => 'Título',
+                        'default' => 'Governança e modernização da gestão pública',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Diagnóstico de maturidade administrativa, desenho de fluxos e processos, políticas internas, governança de dados e adequação à LGPD.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.text',
+                        'label' => 'Texto',
+                        'default' => 'Entregamos ao município a estrutura que ele precisa ter, e não o software que alguém quer vender. Em boa parte dos casos, o ganho de eficiência vem da revisão do processo antes de qualquer sistema entrar em operação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item1.title',
+                        'label' => 'Item 1 — destaque',
+                        'default' => 'Diagnóstico de maturidade digital e administrativa',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item1.text',
+                        'label' => 'Item 1 — complemento',
+                        'default' => 'com indicadores comparáveis.',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item2.title',
+                        'label' => 'Item 2 — destaque',
+                        'default' => 'Mapeamento e redesenho de processos',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item2.text',
+                        'label' => 'Item 2 — complemento',
+                        'default' => 'nas áreas mais críticas.',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item3.title',
+                        'label' => 'Item 3 — destaque',
+                        'default' => 'Políticas internas',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item3.text',
+                        'label' => 'Item 3 — complemento',
+                        'default' => 'de segurança da informação, uso de dados e governança de TI.',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item4.title',
+                        'label' => 'Item 4 — destaque',
+                        'default' => 'Adequação à LGPD',
+                    ],
+                    [
+                        'key' => 'atuacao.governanca.item4.text',
+                        'label' => 'Item 4 — complemento',
+                        'default' => ': inventário de dados, bases legais, encarregado e relatório de impacto.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'observatorio',
+                'label' => 'Frente 02 — Observatório de dados',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.observatorio.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => '02 · Gestão por evidências',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.title',
+                        'label' => 'Título',
+                        'default' => 'Observatório de dados e inteligência municipal',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Painéis de indicadores, integração de bases públicas e leitura analítica para decisão.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.text',
+                        'label' => 'Texto',
+                        'default' => 'O gestor passa a decidir com número e o cidadão passa a enxergar o resultado. Municípios pequenos já produzem muito dado. O que falta é reuni-lo, cruzá-lo e transformá-lo em informação de gestão.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item1.title',
+                        'label' => 'Item 1 — destaque',
+                        'default' => 'Painéis de indicadores',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item1.text',
+                        'label' => 'Item 1 — complemento',
+                        'default' => 'por secretaria, com atualização automatizada.',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item2.title',
+                        'label' => 'Item 2 — destaque',
+                        'default' => 'Integração de bases públicas',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item2.text',
+                        'label' => 'Item 2 — complemento',
+                        'default' => 'municipais, estaduais e federais.',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item3.title',
+                        'label' => 'Item 3 — destaque',
+                        'default' => 'Relatórios analíticos periódicos',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item3.text',
+                        'label' => 'Item 3 — complemento',
+                        'default' => 'com leitura técnica, não apenas gráficos.',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item4.title',
+                        'label' => 'Item 4 — destaque',
+                        'default' => 'Painel público de transparência',
+                    ],
+                    [
+                        'key' => 'atuacao.observatorio.item4.text',
+                        'label' => 'Item 4 — complemento',
+                        'default' => 'para o cidadão acompanhar.',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'pmo',
+                'label' => 'Frente 03 — PMO público',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.pmo.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => '03 · Capacidade de execução',
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.title',
+                        'label' => 'Título',
+                        'default' => 'PMO público e gestão de projetos',
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Escritório de projetos para a prefeitura: priorização de portfólio, plano de trabalho, cronograma, indicadores e apoio técnico ao fiscal de contrato.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.question',
+                        'label' => 'Pergunta em destaque',
+                        'default' => 'Apoio técnico para transformar planejamento em entrega.',
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.answer',
+                        'label' => 'Resposta — início',
+                        'default' => 'O fiscal do contrato é sempre agente público designado por portaria, e essa titularidade é indelegável. Fornecemos o corpo técnico, os relatórios e os indicadores que ele não tem como produzir internamente, na forma autorizada pelo art. 117,',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.answer.highlight',
+                        'label' => 'Resposta — trecho em itálico',
+                        'default' => 'caput',
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.answer.end',
+                        'label' => 'Resposta — final',
+                        'default' => ', da Lei nº 14.133/2021.',
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.note.title',
+                        'label' => 'Nota — título',
+                        'default' => 'Atuação independente',
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.note.text',
+                        'label' => 'Nota — texto',
+                        'default' => 'Essa frente também se aplica a contratos que não são nossos. Podemos apoiar tecnicamente a fiscalização de contratos de qualquer fornecedor. Quando há parceiro do Instituto naquele contrato, não atuamos nessa função.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'marcolegal',
+                'label' => 'Frente 04 — Marco legal de inovação',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.marcolegal.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => '04 · Política pública estruturante',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.title',
+                        'label' => 'Título',
+                        'default' => 'Marco legal de inovação municipal',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Elaboração da Lei Municipal de Ciência, Tecnologia e Inovação, do decreto de regulamentação, do regimento do Conselho Municipal e do desenho do Fundo Municipal de Inovação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.text',
+                        'label' => 'Texto',
+                        'default' => 'Com base na Lei nº 10.973/2004, na Lei Complementar nº 182/2021 e na Lei Estadual/PR nº 20.541/2021. Municípios com política de CT&I institucionalizada acessam mecanismos estaduais de fomento, inclusive o repasse fundo a fundo previsto na Lei Estadual/PR nº 22.107/2024.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item1.title',
+                        'label' => 'Item 1 — destaque',
+                        'default' => 'Minuta de Lei Municipal de CT&I',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item1.text',
+                        'label' => 'Item 1 — complemento',
+                        'default' => 'com exposição de motivos.',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item2.title',
+                        'label' => 'Item 2 — destaque',
+                        'default' => 'Decreto de regulamentação',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item2.text',
+                        'label' => 'Item 2 — complemento',
+                        'default' => 'e Programa de Aplicações Piloto.',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item3.title',
+                        'label' => 'Item 3 — destaque',
+                        'default' => 'Conselho Municipal de Inovação',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item3.text',
+                        'label' => 'Item 3 — complemento',
+                        'default' => ': composição, regimento e instalação.',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item4.title',
+                        'label' => 'Item 4 — destaque',
+                        'default' => 'Fundo Municipal de Inovação',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.item4.text',
+                        'label' => 'Item 4 — complemento',
+                        'default' => ': desenho, fontes e regras de aplicação.',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.note.start',
+                        'label' => 'Observação — início',
+                        'default' => 'As leis que redigimos são',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.note.highlight',
+                        'label' => 'Observação — trecho em negrito',
+                        'default' => 'normas gerais e abertas',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.note.end',
+                        'label' => 'Observação — final',
+                        'default' => ': criam procedimento, não escolhem fornecedor nem definem especificação técnica que favoreça qualquer solução.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'capacitacao',
+                'label' => 'Frente 05 — Capacitação de servidores',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.capacitacao.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => '05 · Formação continuada',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.title',
+                        'label' => 'Título',
+                        'default' => 'Capacitação de servidores',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Trilhas curtas e aplicadas, presenciais ou remotas, com certificação e material próprio.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card1.title',
+                        'label' => 'Trilha 1 — título',
+                        'default' => 'Nova Lei de Licitações',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card1.text',
+                        'label' => 'Trilha 1 — texto',
+                        'default' => 'Lei nº 14.133/2021 aplicada à realidade do município pequeno.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card2.title',
+                        'label' => 'Trilha 2 — título',
+                        'default' => 'LGPD aplicada',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card2.text',
+                        'label' => 'Trilha 2 — texto',
+                        'default' => 'Bases legais, tratamento, incidentes e direitos do titular.',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card3.title',
+                        'label' => 'Trilha 3 — título',
+                        'default' => 'Governo digital',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card3.text',
+                        'label' => 'Trilha 3 — texto',
+                        'default' => 'Lei nº 14.129/2021 e digitalização de serviços.',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card4.title',
+                        'label' => 'Trilha 4 — título',
+                        'default' => 'Segurança da informação',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card4.text',
+                        'label' => 'Trilha 4 — texto',
+                        'default' => 'Práticas essenciais para servidores e gestores.',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card5.title',
+                        'label' => 'Trilha 5 — título',
+                        'default' => 'Rotinas tributárias e contábeis',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card5.text',
+                        'label' => 'Trilha 5 — texto',
+                        'default' => 'Escrituração, obrigações acessórias e prazos do Tribunal de Contas.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card6.title',
+                        'label' => 'Trilha 6 — título',
+                        'default' => 'Marco Legal de CT&I',
+                    ],
+                    [
+                        'key' => 'atuacao.capacitacao.card6.text',
+                        'label' => 'Trilha 6 — texto',
+                        'default' => 'Instrumentos de inovação disponíveis ao município.',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'piloto',
+                'label' => 'Frente 06 — Aplicações piloto',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.piloto.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => '06 · Testar antes de comprar',
+                    ],
+                    [
+                        'key' => 'atuacao.piloto.title',
+                        'label' => 'Título',
+                        'default' => 'Aplicações piloto e PD&I',
+                    ],
+                    [
+                        'key' => 'atuacao.piloto.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Estruturação de aplicações piloto e ambientes de teste com rito formal.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.piloto.text',
+                        'label' => 'Texto',
+                        'default' => 'Chamamento público aberto a qualquer interessado, acordo de parceria para pesquisa e desenvolvimento, e relatório técnico público ao final, inclusive com os resultados negativos e as limitações encontradas. O município conhece a solução antes de decidir, e a decisão fica documentada.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.piloto.note.title',
+                        'label' => 'Nota — título',
+                        'default' => 'Sem preferência de contratação',
+                    ],
+                    [
+                        'key' => 'atuacao.piloto.note.highlight',
+                        'label' => 'Nota — frase em destaque',
+                        'default' => 'O piloto não gera direito de contratação.',
+                    ],
+                    [
+                        'key' => 'atuacao.piloto.note.text',
+                        'label' => 'Nota — texto',
+                        'default' => 'Todos os nossos instrumentos de aplicação piloto contêm cláusula expressa de que a execução não gera preferência, expectativa de direito ou obrigação de contratar em procedimento futuro.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'cta',
+                'label' => 'Chamada final',
+                'fields' => [
+                    [
+                        'key' => 'atuacao.cta.title',
+                        'label' => 'Título',
+                        'default' => 'Qual é o problema do seu município?',
+                    ],
+                    [
+                        'key' => 'atuacao.cta.text',
+                        'label' => 'Texto',
+                        'default' => 'O diagnóstico é gratuito. Medimos o problema, apresentamos as alternativas e indicamos o instrumento jurídico aplicável ao caso.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.cta.btn',
+                        'label' => 'Botão',
+                        'default' => 'Solicitar diagnóstico',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
         'page' => 'marcolegal',
         'pageLabel' => 'Marco Legal',
         'route' => 'marco-legal',
