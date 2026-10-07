@@ -29,6 +29,19 @@ produção — o valor padrão é só para desenvolvimento).
 - A diretiva Blade `@content('home.hero.title')` imprime esse texto em qualquer view (ver `App\Providers\AppServiceProvider`).
 - `resources/views/admin/content-edit.blade.php` + `app/Http/Controllers/Admin/ContentController.php` — o painel `/admin/conteudo` (autenticação via `App\Http\Controllers\Auth\LoginController`, usuário criado por `database/seeders/AdminUserSeeder.php`).
 - `public/css`, `public/js`, `public/assets` — CSS, JS e imagens estáticas do site (servidos diretamente pelo Laravel).
+- `app/Support/BannerSlots.php` + `resources/views/partials/section-banner.blade.php` — imagens ao lado das seções (ex: o topo do Institucional e as frentes da Atuação), editáveis no painel.
+
+## Imagens das seções (banners de seção)
+
+Um grupo de `config/site_content.php` com a chave `'banner' => 'assets/...svg'`
+ganha uma imagem ao lado dele no site. Na view, use
+`@include('partials.section-banner', ['slot' => 'id-do-grupo'])`.
+
+Enquanto ninguém enviar uma imagem, o site mostra a imagem padrão do config.
+Para trocar, abra a página no painel (`/adm/paginas/atuacao`) e use
+"Trocar imagem" na seção, ou cadastre em `/adm/banners` escolhendo
+"Ao lado da seção ..." em "Onde aparece". Com mais de uma imagem ativa na
+mesma seção, elas passam em carrossel.
 
 ## Como adicionar uma nova página
 

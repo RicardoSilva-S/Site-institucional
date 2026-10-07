@@ -15,7 +15,7 @@
 
 <div class="admin-layout">
 
-  {{-- Menu lateral: uma entrada por página do site + Banners --}}
+  {{-- Menu lateral: uma entrada por página do site + Banners + Usuários (só admin) --}}
   <aside class="admin-sidebar">
     <div class="admin-sidebar__brand">
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR">
@@ -36,6 +36,29 @@
           </li>
         @endforeach
       </ul>
+      <p class="admin-sidebar__title">Mídia</p>
+      <ul>
+        <li>
+          <a href="{{ route('admin.banners.index') }}" class="{{ request()->routeIs('admin.banners.*') ? 'is-active' : '' }}">
+            Banners
+          </a>
+        </li>
+        <li>
+          <a href="{{ route('admin.transparencia.index') }}" class="{{ request()->routeIs('admin.transparencia.*') ? 'is-active' : '' }}">
+            Documentos (Transparência)
+          </a>
+        </li>
+      </ul>
+      @if (auth()->user()->ehAdmin())
+        <p class="admin-sidebar__title">Acesso</p>
+        <ul>
+          <li>
+            <a href="{{ route('admin.usuarios.index') }}" class="{{ request()->routeIs('admin.usuarios.*') ? 'is-active' : '' }}">
+              Usuários
+            </a>
+          </li>
+        </ul>
+      @endif
     </nav>
 
     <div class="admin-sidebar__footer">

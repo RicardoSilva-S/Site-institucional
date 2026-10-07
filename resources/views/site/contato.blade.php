@@ -90,61 +90,91 @@
       </div>
 
       <div class="form-card">
-        <form id="form-contato" action="#" method="POST" novalidate
-              data-whatsapp="5544998083001" data-email="faleconosco@idtnpr.org.br">
-          @csrf
-          <div id="form-alert" class="form-alert" role="alert" aria-live="polite"></div>
+        <form id="form-contato" action="{{ route('contato.enviar') }}" method="POST" novalidate data-whatsapp="5544998083001" data-email="faleconosco@idtnpr.org.br">
+  @csrf 
+  
+  @if(session('success'))
+    <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      {{ session('success') }}
+    </div>
+  @endif
 
-          <div class="form-grid">
-            <div class="field">
-              <label for="nome">Nome <span class="req">*</span></label>
-              <input type="text" id="nome" name="nome" value="{{ old('nome') }}" autocomplete="name" required>
-              <span class="error-msg">Informe seu nome.</span>
-            </div>
-            <div class="field">
-              <label for="cargo">Cargo ou função</label>
-              <input type="text" id="cargo" name="cargo" value="{{ old('cargo') }}">
-            </div>
-            <div class="field full">
-              <label for="orgao">Órgão ou município <span class="req">*</span></label>
-              <input type="text" id="orgao" name="orgao" value="{{ old('orgao') }}" required>
-              <span class="error-msg">Informe o órgão ou município.</span>
-            </div>
-            <div class="field">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" value="{{ old('email') }}" autocomplete="email">
-              <span class="error-msg">Informe um e-mail válido.</span>
-            </div>
-            <div class="field">
-              <label for="telefone">Telefone ou WhatsApp</label>
-              <input type="tel" id="telefone" name="telefone" value="{{ old('telefone') }}" autocomplete="tel">
-            </div>
-            <div class="field full">
-              <label for="area">Área do problema</label>
-              <select id="area" name="area">
-                <option value="">Selecione</option>
-                @foreach ([
-                  'Atendimento ao cidadão', 'Tributos e arrecadação', 'Contabilidade e prestação de contas',
-                  'Manutenção e serviços públicos', 'Câmara Municipal', 'Lei de inovação e política de CT&I',
-                  'Capacitação de servidores', 'Outro',
-                ] as $opcao)
-                  <option value="{{ $opcao }}" @if (old('area') === $opcao) selected @endif>{{ $opcao }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="field full">
-              <label for="mensagem">Descreva o problema <span class="req">*</span></label>
-              <textarea id="mensagem" name="mensagem" required>{{ old('mensagem') }}</textarea>
-              <span class="error-msg">Descreva o problema para que possamos ajudar.</span>
-            </div>
-          </div>
+  <div id="form-alert" class="form-alert" role="alert" aria-live="polite"></div>
 
-          <div class="form-actions">
-            <button type="button" class="btn btn-primary" data-send="whatsapp">@content('contato.form.btn_whatsapp')</button>
-            <button type="button" class="btn btn-outline" data-send="email">@content('contato.form.btn_email')</button>
-          </div>
-          <p class="form-note">@content('contato.form.note') Ver a <a href="{{ url('/privacidade') }}">Política de Privacidade</a>.</p>
-        </form>
+  <div class="form-grid">
+    <div class="field">
+      <label for="nome">Nome <span class="req">*</span></label>
+      <input type="text" id="nome" name="nome" value="{{ old('nome') }}" autocomplete="name" required>
+      
+      @error('nome')
+        <span class="error-msg text-danger">{{ $message }}</span>
+      @enderror
+    </div>
+    
+    <div class="field">
+      <label for="cargo">Cargo ou função</label>
+      <input type="text" id="cargo" name="cargo" value="{{ old('cargo') }}">
+      @error('cargo')
+        <span class="error-msg text-danger">{{ $message }}</span>
+      @enderror
+    </div>
+    
+    <div class="field full">
+      <label for="orgao">Órgão ou município <span class="req">*</span></label>
+      <input type="text" id="orgao" name="orgao" value="{{ old('orgao') }}" required>
+      @error('orgao')
+        <span class="error-msg text-danger">{{ $message }}</span>
+      @enderror
+    </div>
+    
+    <div class="field">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" value="{{ old('email') }}" autocomplete="email">
+      @error('email')
+        <span class="error-msg text-danger">{{ $message }}</span>
+      @enderror
+    </div>
+    
+    <div class="field">
+      <label for="telefone">Telefone ou WhatsApp</label>
+      <input type="tel" id="telefone" name="telefone" value="{{ old('telefone') }}" autocomplete="tel">
+      @error('telefone')
+        <span class="error-msg text-danger">{{ $message }}</span>
+      @enderror
+    </div>
+    
+    <div class="field full">
+      <label for="area">Área do problema</label>
+      <select id="area" name="area">
+        <option value="">Selecione</option>
+        @foreach ([
+          'Atendimento ao cidadão', 'Tributos e arrecadação', 'Contabilidade e prestação de contas',
+          'Manutenção e serviços públicos', 'Câmara Municipal', 'Lei de inovação e política de CT&I',
+          'Capacitação de servidores', 'Outro',
+        ] as $opcao)
+          <option value="{{ $opcao }}" @if (old('area') === $opcao) selected @endif>{{ $opcao }}</option>
+        @endforeach
+      </select>
+      @error('area')
+        <span class="error-msg text-danger">{{ $message }}</span>
+      @enderror
+    </div>
+    
+    <div class="field full">
+      <label for="mensagem">Descreva o problema <span class="req">*</span></label>
+      <textarea id="mensagem" name="mensagem" required>{{ old('mensagem') }}</textarea>
+      @error('mensagem')
+        <span class="error-msg text-danger">{{ $message }}</span>
+      @enderror
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+  </div>
+  
+  <p class="form-note">@content('contato.form.note') Ver a <a href="/politica-de-privacidade">Política de Privacidade</a>.</p>
+</form>
       </div>
     </div>
     @extraTexts('contato.diagnostico')

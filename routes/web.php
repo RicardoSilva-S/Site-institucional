@@ -1,6 +1,9 @@
 <?php
-
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\TransparenciaDocumentoController;
+use App\Http\Controllers\Admin\TransparenciaSecaoController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -14,15 +17,24 @@ Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 Route::get('/privacidade', [SiteController::class, 'privacidade'])->name('privacidade');
 
+// PDF dos documentos da transparência (fica guardado no banco, ver SiteController)
+Route::get('/transparencia/documentos/{documento}/pdf', [SiteController::class, 'documentoTransparencia'])
+    ->name('transparencia.documento');
+
+// Imagem dos banners (fica guardada no banco, ver BannerController::image)
+Route::get('/banners/{banner}/imagem', [BannerController::class, 'image'])->name('banners.image');
+
 // Painel administrativo --------------------------------------------------
 // Separado do site: o site não tem nenhum link para cá. O acesso é só
 // digitando o endereço /login-adm.
 Route::middleware('guest')->group(function () {
     Route::get('/login-adm', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login-adm', [LoginController::class, 'login'])->name('login.attempt');
+    Route::post('/login-adm', [LoginController::class, 'login'])
+        ->middleware('throttle:20,1')
+        ->name('login.attempt');
 });
 
-Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
+Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(function () {
     Route::post('/sair', [LoginController::class, 'logout'])->name('logout');
 
  
@@ -45,4 +57,22 @@ Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
 
     Route::post('/textos/{text}/restaurar', [ContentController::class, 'restore'])->name('texts.restore');
 
+    // Banners do topo do site
+    Route::resource('banners', BannerController::class)->except('show');
+
+    // Portal da Transparência: seções e documentos (PDF guardado no banco)
+    Route::get('/transparencia', [TransparenciaSecaoController::class, 'index'])->name('transparencia.index');
+    Route::resource('transparencia/secoes', TransparenciaSecaoController::class)
+        ->except(['index', 'show'])
+        ->parameters(['secoes' => 'secao'])
+        ->names('transparencia.secoes');
+    Route::resource('transparencia/documentos', TransparenciaDocumentoController::class)
+        ->except(['index', 'show'])
+        ->parameters(['documentos' => 'documento'])
+        ->names('transparencia.documentos');
+
+    // Usuarios do painel (so administrador)
+    Route::resource('usuarios', UserController::class)
+        ->only(['index', 'create', 'store', 'edit', 'update'])
+        ->middleware('admin');
 });
