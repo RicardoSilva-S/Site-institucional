@@ -2,42 +2,53 @@
 
 namespace App\Support;
 
-use App\Models\SiteContentValue;
+use App\Models\SiteText;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Fachada estática para os textos editáveis do site.
  *
- * - schema(): a estrutura completa (páginas > grupos > campos), vinda de
- *   config/site_content.php. Usada pelo painel /admin/conteudo para montar
- *   o formulário (rótulos, agrupamento, campo longo ou curto).
- * - defaults(): mapa achatado [key => texto padrão], extraído do schema.
- * - text($key): o texto que deve aparecer no site — o override salvo no
- *   banco (tabela site_content_values), ou o default quando não há override.
+ * - config/site_content.php define as páginas, seções (groups) e o texto
+ *   ORIGINAL de cada campo.
+ * - A tabela site_texts guarda o texto ATUAL de cada campo, mais os textos
+ *   novos inseridos pelo painel /adm.
  *
- * Os overrides ficam em cache (Cache::rememberForever) para não bater no
- * banco em toda chamada de @content() dentro de uma view. O painel chama
- * forget() sempre que salva ou restaura textos, invalidando o cache.
+ * Nas views:
+ *   @content('home.hero.title')   -> texto atual do campo
+ *   @extraTexts('home.hero')      -> textos inseridos pelo painel nessa seção
+ *
+ * Tudo fica em cache para não consultar o banco a cada @content(). O painel
+ * chama forget() sempre que altera algo.
  */
 class SiteContent
 {
-    protected const CACHE_KEY = 'site_content_overrides';
+    protected const CACHE_KEY = 'site_texts_v1';
 
-    protected static ?array $overridesMemo = null;
+    protected static ?array $memo = null;
 
     protected static ?array $defaultsMemo = null;
 
-    /**
-     * @return array<int, array{page: string, pageLabel: string, groups: array}>
-     */
+    /** Estrutura completa (páginas > grupos > campos) do config. */
     public static function schema(): array
     {
         return config('site_content', []);
     }
 
-    /**
-     * @return array<string, string> mapa [key => default]
-     */
+    /** Uma página do schema pelo id ("home", "institucional"...), ou null. */
+    public static function page(string $page): ?array
+    {
+        foreach (static::schema() as $item) {
+            if ($item['page'] === $page) {
+                return $item;
+            }
+        }
+
+        return null;
+    }
+
+    /** @return array<string, string> mapa [key => texto original] */
     public static function defaults(): array
     {
         if (static::$defaultsMemo !== null) {
@@ -57,70 +68,127 @@ class SiteContent
     }
 
     /**
-     * @return array<string, string|null> mapa [key => valor salvo no banco]
+     * Dados em cache: ['values' => [key => valor], 'extras' => ['pagina.grupo' => [textos]]]
      */
-    protected static function overrides(): array
+    protected static function data(): array
     {
-        if (static::$overridesMemo !== null) {
-            return static::$overridesMemo;
+        if (static::$memo !== null) {
+            return static::$memo;
         }
 
-        return static::$overridesMemo = Cache::rememberForever(
-            static::CACHE_KEY,
-            fn () => SiteContentValue::query()->pluck('value', 'key')->all(),
-        );
+        return static::$memo = Cache::rememberForever(static::CACHE_KEY, function () {
+            if (! Schema::hasTable('site_texts')) {
+                return ['values' => [], 'extras' => []];
+            }
+
+            $values = [];
+            $extras = [];
+
+            foreach (SiteText::query()->orderBy('sort_order')->get() as $text) {
+                if ($text->custom) {
+                    if ($text->value !== null && $text->value !== '') {
+                        $extras["{$text->page}.{$text->group}"][] = $text->value;
+                    }
+                } else {
+                    $values[$text->key] = (string) $text->value;
+                }
+            }
+
+            return ['values' => $values, 'extras' => $extras];
+        });
     }
 
     /**
-     * O texto a exibir para uma key: override salvo, ou o default do schema.
+     * Texto a exibir. Se o campo ainda não estiver no banco (ex: acabou de
+     * ser adicionado no config), usa o texto original.
      */
     public static function text(string $key): string
     {
-        $overrides = static::overrides();
+        $values = static::data()['values'];
 
-        if (array_key_exists($key, $overrides) && $overrides[$key] !== null && $overrides[$key] !== '') {
-            return $overrides[$key];
+        if (array_key_exists($key, $values)) {
+            return $values[$key];
         }
 
         return static::defaults()[$key] ?? '';
     }
 
-    /**
-     * Salva um lote de overrides [key => valor]. Uma string vazia remove o
-     * override (volta a usar o default) para manter o banco enxuto.
-     */
-    public static function save(array $values): void
+    /** O campo tem texto? (falso quando foi excluído pelo painel) */
+    public static function has(string $key): bool
     {
-        foreach ($values as $key => $value) {
-            if (! array_key_exists($key, static::defaults())) {
-                // Ignora chaves que não existem no schema (formulário adulterado).
-                continue;
-            }
+        return trim(static::text($key)) !== '';
+    }
 
-            if ($value === null || trim((string) $value) === '') {
-                SiteContentValue::query()->where('key', $key)->delete();
+    /** @return string[] textos inseridos pelo painel numa seção ("pagina.grupo") */
+    public static function extras(string $pageGroup): array
+    {
+        return static::data()['extras'][$pageGroup] ?? [];
+    }
 
-                continue;
-            }
-
-            SiteContentValue::query()->updateOrCreate(['key' => $key], ['value' => $value]);
+    /**
+     * Garante que todo campo do config exista na tabela site_texts.
+     * Campos que já existem não são tocados (o valor editado é mantido).
+     * Na primeira vez, aproveita os textos editados no painel antigo
+     * (tabela site_content_values), se ela existir.
+     */
+    public static function sync(): void
+    {
+        if (! Schema::hasTable('site_texts')) {
+            return;
         }
 
-        static::forget();
+        $existing = SiteText::query()->pluck('key')->flip();
+
+        $oldOverrides = Schema::hasTable('site_content_values')
+            ? DB::table('site_content_values')->pluck('value', 'key')
+            : collect();
+
+        $now = now();
+        $rows = [];
+
+        foreach (static::schema() as $page) {
+            $order = 0;
+            foreach ($page['groups'] as $group) {
+                foreach ($group['fields'] as $field) {
+                    $order += 10;
+
+                    if ($existing->has($field['key'])) {
+                        continue;
+                    }
+
+                    $old = $oldOverrides[$field['key']] ?? null;
+
+                    $rows[] = [
+                        'page' => $page['page'],
+                        'group' => $group['id'],
+                        'group_label' => $group['label'],
+                        'key' => $field['key'],
+                        'label' => $field['label'],
+                        'value' => ($old !== null && $old !== '') ? $old : $field['default'],
+                        'long' => ! empty($field['long']),
+                        'custom' => false,
+                        'sort_order' => $order,
+                        'created_at' => $now,
+                        'updated_at' => $now,
+                    ];
+                }
+            }
+        }
+
+        // Lotes de 50: 50 linhas x 11 colunas fica abaixo do limite de 999
+        // valores por comando do SQLite usado nos testes (PHP 7.4).
+        foreach (array_chunk($rows, 50) as $chunk) {
+            SiteText::query()->insert($chunk);
+        }
+
+        if ($rows) {
+            static::forget();
+        }
     }
 
-    /**
-     * Restaura todos os textos para o padrão (apaga todos os overrides).
-     */
-    public static function resetAll(): void
-    {
-        SiteContentValue::query()->delete();
-        static::forget();
-    }
-
-    protected static function forget(): void
+    public static function forget(): void
     {
         Cache::forget(static::CACHE_KEY);
-        static::$overridesMemo = null;
+        static::$memo = null;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SiteController;
@@ -13,21 +13,39 @@ Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 
-// Autenticação (painel administrativo) ------------------------------------
+// Painel administrativo --------------------------------------------------
+// Separado do site: o site não tem nenhum link para cá. O acesso é só
+// digitando o endereço /login-adm.
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [LoginController::class, 'login'])
+    Route::get('/login-adm', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login-adm', [LoginController::class, 'login'])
         ->middleware('throttle:20,1')
         ->name('login.attempt');
 });
-Route::post('/logout', [LoginController::class, 'logout'])
-    ->middleware('auth')
-    ->name('logout');
 
-// Painel de edição de textos -----------------------------------------------
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/conteudo', [ContentController::class, 'edit'])->name('content.edit');
-    Route::post('/conteudo', [ContentController::class, 'update'])->name('content.update');
-    Route::post('/conteudo/restaurar', [ContentController::class, 'reset'])->name('content.reset');
-    Route::get('/conteudo/exportar', [ContentController::class, 'export'])->name('content.export');
+Route::middleware('auth')->prefix('adm')->name('admin.')->group(function () {
+    Route::post('/sair', [LoginController::class, 'logout'])->name('logout');
+
+ 
+
+    // /adm abre direto a primeira página do menu lateral (Início).
+
+    Route::get('/', fn () => redirect()->route('admin.pages.show', 'home'))->name('dashboard');
+
+ 
+
+    // Textos de cada página do site
+
+    Route::get('/paginas/{page}', [ContentController::class, 'show'])->name('pages.show');
+
+    Route::put('/paginas/{page}', [ContentController::class, 'update'])->name('pages.update');
+
+    Route::post('/paginas/{page}/textos', [ContentController::class, 'store'])->name('texts.store');
+
+    Route::delete('/textos/{text}', [ContentController::class, 'destroy'])->name('texts.destroy');
+
+    Route::post('/textos/{text}/restaurar', [ContentController::class, 'restore'])->name('texts.restore');
+
+    // Banners do topo do site
+    Route::resource('banners', BannerController::class)->except('show');
 });

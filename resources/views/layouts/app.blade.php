@@ -47,7 +47,6 @@
     </nav>
 
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="{{ auth()->check() ? route('admin.content.edit') : route('login') }}" class="btn-edit" title="Abrir painel de edição de textos">✎ Editar textos</a>
       <a href="#" class="btn btn-primary">@content('shared.nav.cta')</a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>
@@ -55,6 +54,8 @@
 </header>
 
 <main id="conteudo">
+  {{-- Banners cadastrados no painel (/adm/banners) para esta página. --}}
+  @include('partials.banner')
   @yield('content')
 </main>
 
@@ -102,6 +103,7 @@
       <span>@content('shared.footer.bottom.right')</span>
     </div>
   </div>
+  @extraTexts('shared.footer')
 </footer>
 
 <script src="{{ asset('js/site.js') }}"></script>

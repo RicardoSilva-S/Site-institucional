@@ -11,6 +11,7 @@
       <h1>@content('contato.hero.title')</h1>
       <p class="lead">@content('contato.hero.lead')</p>
     </div>
+    @extraTexts('contato.hero')
   </section>
 
   <!-- CONTATO INSTITUCIONAL -->
@@ -51,6 +52,7 @@
         </dl>
       </div>
     </div>
+    @extraTexts('contato.institucional')
   </section>
 
   <!-- FORMULÁRIO DE DIAGNÓSTICO -->
@@ -145,6 +147,7 @@
         </form>
       </div>
     </div>
+    @extraTexts('contato.diagnostico')
   </section>
 
   <!-- OUVIDORIA -->
@@ -164,6 +167,7 @@
         <p>@content('contato.ouvidoria.note')</p>
       </div>
     </div>
+    @extraTexts('contato.ouvidoria')
   </section>
 
 @endsection

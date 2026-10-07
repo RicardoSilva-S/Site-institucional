@@ -38,6 +38,9 @@
         </ul>
       </div>
     </div>
+    @extraTexts('home.hero')
+
+    @extraTexts('home.catalog')
   </section>
 
   <!-- O PROBLEMA -->
@@ -83,6 +86,9 @@
         </div>
       </div>
     </div>
+    @extraTexts('home.problem')
+
+    @extraTexts('home.compare')
   </section>
 
   <!-- COMO FUNCIONA -->
@@ -124,6 +130,7 @@
         </div>
       </div>
     </div>
+    @extraTexts('home.steps')
   </section>
 
   <!-- COMO ATUAMOS -->
@@ -174,6 +181,7 @@
         <a href="#">@content('home.cards.cta2')</a>
       </div>
     </div>
+    @extraTexts('home.cards')
   </section>
 
   <!-- POR QUE PELO INSTITUTO -->
@@ -220,6 +228,7 @@
         <a href="{{ route('marco-legal') }}" class="btn btn-outline">@content('home.stats.cta')</a>
       </div>
     </div>
+    @extraTexts('home.stats')
   </section>
 
   <!-- TRANSPARÊNCIA -->
@@ -250,6 +259,7 @@
         </div>
       </div>
     </div>
+    @extraTexts('home.transp')
   </section>
 
   <!-- CTA FINAL -->
@@ -261,6 +271,7 @@
       </div>
       <a href="#" class="btn btn-gold">@content('home.finalcta.button')</a>
     </div>
+    @extraTexts('home.finalcta')
   </section>
 
 @endsection

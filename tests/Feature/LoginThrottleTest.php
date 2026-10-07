@@ -31,7 +31,7 @@ class LoginThrottleTest extends TestCase
         $this->admin();
 
         $this->tentarLogin('senha-correta')
-            ->assertRedirect(route('admin.content.edit'));
+            ->assertRedirect(route('admin.dashboard'));
 
         $this->assertAuthenticated();
     }
@@ -88,7 +88,7 @@ class LoginThrottleTest extends TestCase
 
         $this->tentarLogin('senha-correta');
         $this->assertAuthenticated();
-        $this->post(route('logout'));
+        $this->post(route('admin.logout'));
 
         for ($i = 0; $i < 4; $i++) {
             $this->tentarLogin('senha-errada');

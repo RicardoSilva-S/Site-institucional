@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 /**
- * Login simples por e-mail/senha para o painel /admin/conteudo.
+ * Login do painel administrativo (/login-adm).
  * O usuário admin é criado pelo seeder (database/seeders/AdminUserSeeder.php).
  *
  * Contra tentativa e erro de senha: depois de MAX_TENTATIVAS erros seguidos
@@ -55,7 +55,7 @@ class LoginController extends Controller
         RateLimiter::clear($chave);
         $request->session()->regenerate();
 
-        return redirect()->intended(route('admin.content.edit'));
+        return redirect()->intended(route('admin.dashboard'));
     }
 
     public function logout(Request $request): RedirectResponse
@@ -65,7 +65,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('login');
     }
 
     private function chaveDeTentativas(Request $request): string
