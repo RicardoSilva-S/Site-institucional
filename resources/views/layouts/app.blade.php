@@ -54,6 +54,8 @@
 </header>
 
 <main id="conteudo">
+  {{-- Banners cadastrados no painel (/adm/banners) para esta página. --}}
+  @include('partials.banner')
   @yield('content')
 </main>
 

@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Banner;
+
 use App\Support\SiteContent;
 
 use Illuminate\Support\Facades\Blade;
+
+use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Support\Facades\View;
 
@@ -57,7 +61,26 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+        // Banners ativos da página atual (ou marcados para "todas as páginas"),
+        // usados por resources/views/partials/banner.blade.php.
+        View::composer('partials.banner', function ($view) {
+            $banners = collect();
  
+            if (Schema::hasTable('banners')) {
+                $route = optional(request()->route())->getName();
+ 
+                $banners = Banner::query()
+                    ->where('active', true)
+                    ->where(function ($q) use ($route) {
+                        $q->where('page', $route)->orWhereNull('page');
+                    })
+                    ->orderBy('sort_order')
+                    ->orderBy('id')
+                    ->get();
+            }
+ 
+            $view->with('banners', $banners);
+        });
 
         // Menu lateral do painel: uma entrada por página do config.
 

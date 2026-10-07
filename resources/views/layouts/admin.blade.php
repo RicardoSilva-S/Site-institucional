@@ -36,6 +36,14 @@
           </li>
         @endforeach
       </ul>
+      <p class="admin-sidebar__title">Mídia</p>
+      <ul>
+        <li>
+          <a href="{{ route('admin.banners.index') }}" class="{{ request()->routeIs('admin.banners.*') ? 'is-active' : '' }}">
+            Banners
+          </a>
+        </li>
+      </ul>
     </nav>
 
     <div class="admin-sidebar__footer">
