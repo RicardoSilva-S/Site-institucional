@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\TransparenciaDocumentoController;
+use App\Http\Controllers\Admin\TransparenciaSecaoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SiteController;
@@ -13,6 +15,10 @@ Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-l
 Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
+
+// PDF dos documentos da transparência (fica guardado no banco, ver SiteController)
+Route::get('/transparencia/documentos/{documento}/pdf', [SiteController::class, 'documentoTransparencia'])
+    ->name('transparencia.documento');
 
 // Imagem dos banners (fica guardada no banco, ver BannerController::image)
 Route::get('/banners/{banner}/imagem', [BannerController::class, 'image'])->name('banners.image');
@@ -52,6 +58,17 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
 
     // Banners do topo do site
     Route::resource('banners', BannerController::class)->except('show');
+
+    // Portal da Transparência: seções e documentos (PDF guardado no banco)
+    Route::get('/transparencia', [TransparenciaSecaoController::class, 'index'])->name('transparencia.index');
+    Route::resource('transparencia/secoes', TransparenciaSecaoController::class)
+        ->except(['index', 'show'])
+        ->parameters(['secoes' => 'secao'])
+        ->names('transparencia.secoes');
+    Route::resource('transparencia/documentos', TransparenciaDocumentoController::class)
+        ->except(['index', 'show'])
+        ->parameters(['documentos' => 'documento'])
+        ->names('transparencia.documentos');
 
     // Usuarios do painel (so administrador)
     Route::resource('usuarios', UserController::class)

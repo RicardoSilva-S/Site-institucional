@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TransparenciaDocumento;
+use App\Models\TransparenciaSecao;
+use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\HeaderUtils;
 
 class SiteController extends Controller
 {
@@ -33,38 +38,52 @@ class SiteController extends Controller
 
     public function transparencia(): View
     {
-        $atualizacao = 'Setembro de 2026';
-        $secoes = [
-            ['id' => 'institucional', 'titulo' => 'Institucional', 'subtitulo' => 'Documentos de constituição e registro', 'docs' => [
-              ['nome' => 'Estatuto Social consolidado', 'detalhe' => 'Registrado no RTDPJ de Sarandi/PR', 'status' => 'publicado'],
-              ['nome' => 'Ata de Fundação', 'detalhe' => '11/07/2025 · Registro nº 508', 'status' => 'publicado'],
-              ['nome' => 'Ata da Assembleia Geral Ordinária nº 01/2026', 'detalhe' => '02/01/2026 · Registro nº 508/01', 'status' => 'publicado'],
-              ['nome' => 'Ata da Assembleia Geral Extraordinária nº 02/2026', 'detalhe' => '02/01/2026 · Registro nº 508/02', 'status' => 'publicado'],
-              ['nome' => 'Regimento Interno', 'detalhe' => '02/01/2026', 'status' => 'publicado'],
-              ['nome' => 'Comprovante de Inscrição no CNPJ', 'detalhe' => '64.039.593/0001-82', 'status' => 'publicado'],
-            ]],
-            ['id' => 'governanca', 'titulo' => 'Governança e gestão', 'subtitulo' => 'Composição, mandatos e decisões', 'docs' => [
-              ['nome' => 'Composição da Diretoria Executiva e do Conselho', 'status' => 'publicado'],
-              ['nome' => 'Atas de reunião da Diretoria Executiva', 'status' => 'publicacao'],
-              ['nome' => 'Atas de reunião do Conselho Fiscal e Consultivo', 'status' => 'publicacao'],
-            ]],
-            ['id' => 'normativos', 'titulo' => 'Normativos internos', 'subtitulo' => 'Regras que o Instituto edita para si mesmo', 'docs' => [
-              ['nome' => 'Regulamento de Contratações', 'status' => 'elaboracao'],
-              ['nome' => 'Regulamento de Parcerias e Oportunidades de Negócio', 'status' => 'elaboracao'],
-              ['nome' => 'Código de Ética, Conduta e Integridade', 'status' => 'elaboracao'],
-              ['nome' => 'Política de Conflito de Interesses', 'status' => 'elaboracao'],
-              ['nome' => 'Política de Inovação e Política de Propriedade Intelectual', 'status' => 'elaboracao'],
-            ]],
-            ['id' => 'parcerias', 'titulo' => 'Parcerias e contratos', 'subtitulo' => 'Termos e acordos firmados pelo Instituto', 'docs' => [
-              ['nome' => 'Termo de Cooperação Técnica nº 001/2026 com a Compaxis Tecnologia Ltda', 'detalhe' => '05/08/2026 · sem transferência de recursos', 'status' => 'publicado'],
-            ]],
-            ['id' => 'contas', 'titulo' => 'Prestação de contas', 'subtitulo' => 'Demonstrativos e pareceres', 'docs' => [
-              ['nome' => 'Demonstrações contábeis do exercício', 'status' => 'publicacao'],
-              ['nome' => 'Parecer do Conselho Fiscal', 'status' => 'publicacao'],
-              ['nome' => 'Relatório Anual de Atividades', 'status' => 'publicacao'],
-            ]],
-          ];
-          
+        // Seções e documentos vêm do banco e são editados no painel (/adm/transparencia).
+        $secoes = TransparenciaSecao::comDocumentos();
+        $atualizacao = $this->ultimaAtualizacao($secoes);
+
         return view('site.transparencia', compact('secoes', 'atualizacao'));
+    }
+
+    /**
+     * Entrega o PDF de um documento da transparência. O arquivo fica no banco
+     * (igual às imagens dos banners), porque no Render gratuito o disco é
+     * apagado quando o servidor reinicia.
+     */
+    public function documentoTransparencia(TransparenciaDocumento $documento): Response
+    {
+        abort_unless($documento->temArquivo() && $documento->arquivo_data, 404);
+
+        return response(base64_decode($documento->arquivo_data), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => HeaderUtils::makeDisposition(
+                HeaderUtils::DISPOSITION_INLINE,
+                str_replace(['/', '\\'], '-', $documento->arquivo_nome),
+                $this->nomeSimples($documento->arquivo_nome)
+            ),
+        ]);
+    }
+
+    /**
+     * Versão do nome só com letras, números, ponto, hífen e sublinhado, para
+     * navegadores antigos (ex: "relatório 100%.pdf" vira "relatorio_100_.pdf").
+     */
+    private function nomeSimples(string $nome): string
+    {
+        return preg_replace('/[^A-Za-z0-9._-]/', '_', Str::ascii($nome)) ?: 'documento.pdf';
+    }
+
+    /** "Mês de ano" da última alteração feita no portal (ex: Outubro de 2026). */
+    private function ultimaAtualizacao($secoes): ?string
+    {
+        $datas = $secoes->pluck('updated_at')
+            ->merge($secoes->pluck('documentos')->flatten()->pluck('updated_at'))
+            ->filter();
+
+        if ($datas->isEmpty()) {
+            return null;
+        }
+
+        return Str::ucfirst($datas->max()->locale('pt_BR')->isoFormat('MMMM [de] YYYY'));
     }
 }

@@ -43,6 +43,11 @@
             Banners
           </a>
         </li>
+        <li>
+          <a href="{{ route('admin.transparencia.index') }}" class="{{ request()->routeIs('admin.transparencia.*') ? 'is-active' : '' }}">
+            Documentos (Transparência)
+          </a>
+        </li>
       </ul>
       @if (auth()->user()->ehAdmin())
         <p class="admin-sidebar__title">Acesso</p>
