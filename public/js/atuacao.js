@@ -2,7 +2,6 @@
  * atuacao.js — comportamento da página Atuação
  *   - destaca o atalho da frente que está na tela enquanto a página rola
  *   - no celular, onde os atalhos rolam na horizontal, mantém o ativo visível
- *   - faz a imagem de cada frente surgir suavemente (uma vez) ao entrar na tela
  */
 (function () {
   function setupFrentesNav() {
@@ -40,7 +39,7 @@
 
       const active = links[index];
       if (active && list.scrollWidth > list.clientWidth) {
-        list.scrollTo({ left: active.offsetLeft - 16, behavior: "smooth" });
+        list.scrollTo({ left: active.offsetLeft, behavior: "smooth" });
       }
     }
 
@@ -54,26 +53,5 @@
     update();
   }
 
-  function setupReveal() {
-    const items = document.querySelectorAll(".frente__media");
-    if (!items.length || typeof window.IntersectionObserver !== "function") return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -10% 0px" });
-
-    // Só esconde as imagens depois que o observer existe: se algo falhar
-    // antes, elas continuam visíveis.
-    items.forEach((item) => observer.observe(item));
-    document.documentElement.classList.add("js-reveal");
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    setupFrentesNav();
-    setupReveal();
-  });
+  document.addEventListener("DOMContentLoaded", setupFrentesNav);
 })();

@@ -56,16 +56,16 @@ class InstitucionalAtuacaoEditaveisTest extends TestCase
         $this->get('/atuacao')->assertSee('Novo piloto em andamento.');
     }
 
-    public function test_itens_da_atuacao_viram_cartoes_com_frase_propria()
+    public function test_itens_da_atuacao_aparecem_com_frase_propria()
     {
-        // O complemento ": inventário de dados..." aparece como frase solta no cartão.
+        // O complemento ": inventário de dados..." aparece como frase solta.
         $this->get('/atuacao')
-            ->assertSee('item-card', false)
+            ->assertSee('frente-itens', false)
             ->assertSee('Inventário de dados, bases legais, encarregado e relatório de impacto.')
             ->assertDontSee(': inventário de dados');
     }
 
-    public function test_item_excluido_no_painel_some_dos_cartoes()
+    public function test_item_excluido_no_painel_some_da_lista()
     {
         SiteContent::sync();
         SiteText::query()

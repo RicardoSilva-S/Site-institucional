@@ -5,8 +5,7 @@
 
 {{-- Cada frente: título e texto ao lado da imagem da seção
      (partials/section-banner, editável em /adm/banners ou no editor da página)
-     e, embaixo, os itens em cartões numerados (partials/item-cards) ou a nota.
-     As frentes pares invertem o lado da imagem. --}}
+     e, embaixo, os itens em colunas (partials/frente-itens) ou a nota. --}}
 @section('content')
   <section class="page-hero page-hero--split">
     <div class="wrap">
@@ -28,12 +27,12 @@
   <nav class="frentes-nav" aria-label="Frentes de atuação">
     <div class="wrap">
       <ul>
-        <li><a href="#governanca-publica"><span class="num">01</span> @content('atuacao.nav.governanca')</a></li>
-        <li><a href="#observatorio"><span class="num">02</span> @content('atuacao.nav.observatorio')</a></li>
-        <li><a href="#pmo"><span class="num">03</span> @content('atuacao.nav.pmo')</a></li>
-        <li><a href="#marco-legal-inovacao"><span class="num">04</span> @content('atuacao.nav.marcolegal')</a></li>
-        <li><a href="#capacitacao"><span class="num">05</span> @content('atuacao.nav.capacitacao')</a></li>
-        <li><a href="#piloto"><span class="num">06</span> @content('atuacao.nav.piloto')</a></li>
+        <li><a href="#governanca-publica">@content('atuacao.nav.governanca')</a></li>
+        <li><a href="#observatorio">@content('atuacao.nav.observatorio')</a></li>
+        <li><a href="#pmo">@content('atuacao.nav.pmo')</a></li>
+        <li><a href="#marco-legal-inovacao">@content('atuacao.nav.marcolegal')</a></li>
+        <li><a href="#capacitacao">@content('atuacao.nav.capacitacao')</a></li>
+        <li><a href="#piloto">@content('atuacao.nav.piloto')</a></li>
       </ul>
     </div>
   </nav>
@@ -56,14 +55,14 @@
         </div>
       </div>
       <div class="frente__items">
-        @include('partials.item-cards', ['prefix' => 'atuacao.governanca.item', 'count' => 4])
+        @include('partials.frente-itens', ['prefix' => 'atuacao.governanca.item', 'count' => 4])
       </div>
     </div>
     @extraTexts('atuacao.governanca')
   </section>
 
   <section class="alt frente-section" id="observatorio">
-    <div class="wrap frente frente--reverse">
+    <div class="wrap frente">
       <div class="frente__top">
         <div class="frente__text">
           <div class="section-head">
@@ -80,7 +79,7 @@
         </div>
       </div>
       <div class="frente__items">
-        @include('partials.item-cards', ['prefix' => 'atuacao.observatorio.item', 'count' => 4])
+        @include('partials.frente-itens', ['prefix' => 'atuacao.observatorio.item', 'count' => 4])
       </div>
     </div>
     @extraTexts('atuacao.observatorio')
@@ -115,7 +114,7 @@
   </section>
 
   <section class="alt frente-section" id="marco-legal-inovacao">
-    <div class="wrap frente frente--reverse">
+    <div class="wrap frente">
       <div class="frente__top">
         <div class="frente__text">
           <div class="section-head">
@@ -132,7 +131,7 @@
         </div>
       </div>
       <div class="frente__items">
-        @include('partials.item-cards', ['prefix' => 'atuacao.marcolegal.item', 'count' => 4])
+        @include('partials.frente-itens', ['prefix' => 'atuacao.marcolegal.item', 'count' => 4])
         <p class="cards-note">@content('atuacao.marcolegal.note.start') <strong>@content('atuacao.marcolegal.note.highlight')</strong>@content('atuacao.marcolegal.note.end')</p>
       </div>
     </div>
@@ -154,14 +153,14 @@
         </div>
       </div>
       <div class="frente__items">
-        @include('partials.item-cards', ['prefix' => 'atuacao.capacitacao.card', 'count' => 6])
+        @include('partials.frente-itens', ['prefix' => 'atuacao.capacitacao.card', 'count' => 6])
       </div>
     </div>
     @extraTexts('atuacao.capacitacao')
   </section>
 
   <section class="alt frente-section" id="piloto">
-    <div class="wrap frente frente--reverse">
+    <div class="wrap frente">
       <div class="frente__top">
         <div class="frente__text">
           <div class="section-head">
