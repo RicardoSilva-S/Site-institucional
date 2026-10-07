@@ -5,11 +5,11 @@
 
 @php
   /*
-   * $secoes e $atualizacao vêm do SiteController::transparencia().
-   * Aqui ficam só os detalhes de exibição (rótulos e link do WhatsApp).
+   * $secoes (seções com os documentos, do banco) e $atualizacao vêm do
+   * SiteController::transparencia(). Aqui ficam só os detalhes de exibição.
    */
   $whatsapp = '5544998083001';
-  $rotulos = ['publicado' => 'Disponível', 'publicacao' => 'Em publicação', 'elaboracao' => 'Em elaboração'];
+  $rotulos = \App\Models\TransparenciaDocumento::STATUS;
   $zap = fn ($doc) => 'https://wa.me/' . $whatsapp . '?text=' . rawurlencode('Olá! Gostaria de receber o seguinte documento do IDTNPR: ' . $doc);
 @endphp
 
@@ -21,7 +21,9 @@
       <h1>@content('transparencia.hero.title')</h1>
       <p class="lead">@content('transparencia.hero.lead')</p>
       <div class="page-meta">
-        <div class="meta-chip"><span class="k">Última atualização</span><span class="v">{{ $atualizacao }}</span></div>
+        @if ($atualizacao)
+          <div class="meta-chip"><span class="k">Última atualização</span><span class="v">{{ $atualizacao }}</span></div>
+        @endif
         <div class="meta-chip"><span class="k">Pedidos de informação</span><a class="v" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></div>
       </div>
     </div>
@@ -52,28 +54,33 @@
         <input type="search" id="doc-busca" placeholder="Buscar documento" aria-label="Buscar documento">
         <button type="button" class="chip is-active" data-filter="todos">Todos</button>
         @foreach ($secoes as $secao)
-          <button type="button" class="chip" data-filter="{{ $secao['id'] }}">{{ $secao['titulo'] }}</button>
+          @continue($secao->documentos->isEmpty())
+          <button type="button" class="chip" data-filter="{{ $secao->slug }}">{{ $secao->titulo }}</button>
         @endforeach
       </div>
 
       @foreach ($secoes as $secao)
-        <div class="doc-section" id="{{ $secao['id'] }}" data-section="{{ $secao['id'] }}">
+        @continue($secao->documentos->isEmpty())
+        <div class="doc-section" id="{{ $secao->slug }}" data-section="{{ $secao->slug }}">
           <div class="doc-section-head">
-            <h3>{{ $secao['titulo'] }}</h3>
-            <span>{{ $secao['subtitulo'] }}</span>
+            <h3>{{ $secao->titulo }}</h3>
+            @if ($secao->subtitulo)<span>{{ $secao->subtitulo }}</span>@endif
           </div>
           <ul class="doc-list">
-            @foreach ($secao['docs'] as $doc)
-              <li class="doc-item" data-name="{{ \Illuminate\Support\Str::lower($doc['nome']) }}">
+            @foreach ($secao->documentos as $doc)
+              <li class="doc-item" data-name="{{ \Illuminate\Support\Str::lower($doc->nome) }}">
                 <div>
-                  <div class="doc-name">{{ $doc['nome'] }}</div>
-                  @isset($doc['detalhe'])<div class="doc-detail">{{ $doc['detalhe'] }}</div>@endisset
+                  <div class="doc-name">{{ $doc->nome }}</div>
+                  @if ($doc->detalhe)<div class="doc-detail">{{ $doc->detalhe }}</div>@endif
                 </div>
                 <div class="doc-side">
-                  @if ($doc['status'] === 'publicado')
-                    <a class="btn btn-outline" href="{{ $zap($doc['nome']) }}" target="_blank" rel="noopener">Solicitar</a>
+                  {{-- Com PDF: baixa direto. Sem PDF: pede pelo WhatsApp ou mostra a situação. --}}
+                  @if ($doc->temArquivo())
+                    <a class="btn btn-outline" href="{{ route('transparencia.documento', $doc) }}" target="_blank" rel="noopener">Baixar PDF</a>
+                  @elseif ($doc->status === 'publicado')
+                    <a class="btn btn-outline" href="{{ $zap($doc->nome) }}" target="_blank" rel="noopener">Solicitar</a>
                   @else
-                    <span class="status {{ $doc['status'] }}">{{ $rotulos[$doc['status']] ?? $doc['status'] }}</span>
+                    <span class="status {{ $doc->status }}">{{ $rotulos[$doc->status] ?? $doc->status }}</span>
                   @endif
                 </div>
               </li>
