@@ -6,130 +6,138 @@
 @section('content')
   <section class="page-hero">
     <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span> Soluções para a gestão pública</span>
-      <h1>Atuação</h1>
-      <p class="lead">O Instituto atua como hub de soluções para o poder público: reúne o que os parceiros desenvolvem, produz o que falta e entrega tudo pelo caminho legal adequado a cada caso.</p>
+      <span class="eyebrow"><span class="dot"></span> @content('atuacao.hero.eyebrow')</span>
+      <h1>@content('atuacao.hero.title')</h1>
+      <p class="lead">@content('atuacao.hero.lead')</p>
     </div>
+    @extraTexts('atuacao.hero')
   </section>
 
   <section id="governanca-publica">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">01 · Estruturação institucional</span>
-        <h2>Governança e modernização da gestão pública</h2>
-        <p class="sub">Diagnóstico de maturidade administrativa, desenho de fluxos e processos, políticas internas, governança de dados e adequação à LGPD.</p>
+        <span class="kicker">@content('atuacao.governanca.kicker')</span>
+        <h2>@content('atuacao.governanca.title')</h2>
+        <p class="sub">@content('atuacao.governanca.sub')</p>
       </div>
       <div class="info-box">
-        <p>Entregamos ao município a estrutura que ele precisa ter, e não o software que alguém quer vender. Em boa parte dos casos, o ganho de eficiência vem da revisão do processo antes de qualquer sistema entrar em operação.</p>
+        <p>@content('atuacao.governanca.text')</p>
         <ul class="req-list">
-          <li><strong>Diagnóstico de maturidade digital e administrativa</strong> com indicadores comparáveis.</li>
-          <li><strong>Mapeamento e redesenho de processos</strong> nas áreas mais críticas.</li>
-          <li><strong>Políticas internas</strong> de segurança da informação, uso de dados e governança de TI.</li>
-          <li><strong>Adequação à LGPD</strong>: inventário de dados, bases legais, encarregado e relatório de impacto.</li>
+          <li><strong>@content('atuacao.governanca.item1.title')</strong> @content('atuacao.governanca.item1.text')</li>
+          <li><strong>@content('atuacao.governanca.item2.title')</strong> @content('atuacao.governanca.item2.text')</li>
+          <li><strong>@content('atuacao.governanca.item3.title')</strong> @content('atuacao.governanca.item3.text')</li>
+          <li><strong>@content('atuacao.governanca.item4.title')</strong> @content('atuacao.governanca.item4.text')</li>
         </ul>
       </div>
     </div>
+    @extraTexts('atuacao.governanca')
   </section>
 
   <section class="alt" id="observatorio">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">02 · Gestão por evidências</span>
-        <h2>Observatório de dados e inteligência municipal</h2>
-        <p class="sub">Painéis de indicadores, integração de bases públicas e leitura analítica para decisão.</p>
+        <span class="kicker">@content('atuacao.observatorio.kicker')</span>
+        <h2>@content('atuacao.observatorio.title')</h2>
+        <p class="sub">@content('atuacao.observatorio.sub')</p>
       </div>
       <div class="info-box">
-        <p>O gestor passa a decidir com número e o cidadão passa a enxergar o resultado. Municípios pequenos já produzem muito dado. O que falta é reuni-lo, cruzá-lo e transformá-lo em informação de gestão.</p>
+        <p>@content('atuacao.observatorio.text')</p>
         <ul class="req-list">
-          <li><strong>Painéis de indicadores</strong> por secretaria, com atualização automatizada.</li>
-          <li><strong>Integração de bases públicas</strong> municipais, estaduais e federais.</li>
-          <li><strong>Relatórios analíticos periódicos</strong> com leitura técnica, não apenas gráficos.</li>
-          <li><strong>Painel público de transparência</strong> para o cidadão acompanhar.</li>
+          <li><strong>@content('atuacao.observatorio.item1.title')</strong> @content('atuacao.observatorio.item1.text')</li>
+          <li><strong>@content('atuacao.observatorio.item2.title')</strong> @content('atuacao.observatorio.item2.text')</li>
+          <li><strong>@content('atuacao.observatorio.item3.title')</strong> @content('atuacao.observatorio.item3.text')</li>
+          <li><strong>@content('atuacao.observatorio.item4.title')</strong> @content('atuacao.observatorio.item4.text')</li>
         </ul>
       </div>
     </div>
+    @extraTexts('atuacao.observatorio')
   </section>
 
   <section id="pmo">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">03 · Capacidade de execução</span>
-        <h2>PMO público e gestão de projetos</h2>
-        <p class="sub">Escritório de projetos para a prefeitura: priorização de portfólio, plano de trabalho, cronograma, indicadores e apoio técnico ao fiscal de contrato.</p>
+        <span class="kicker">@content('atuacao.pmo.kicker')</span>
+        <h2>@content('atuacao.pmo.title')</h2>
+        <p class="sub">@content('atuacao.pmo.sub')</p>
       </div>
       <div class="qa-block">
-        <p class="question">Apoio técnico para transformar planejamento em entrega.</p>
-        <p class="answer">O fiscal do contrato é sempre agente público designado por portaria, e essa titularidade é indelegável. Fornecemos o corpo técnico, os relatórios e os indicadores que ele não tem como produzir internamente, na forma autorizada pelo art. 117, <em>caput</em>, da Lei nº 14.133/2021.</p>
+        <p class="question">@content('atuacao.pmo.question')</p>
+        <p class="answer">@content('atuacao.pmo.answer')</p>
       </div>
       <div class="legal-note">
-        <h3>Atuação independente</h3>
-        <p>Essa frente também se aplica a contratos que não são nossos. Podemos apoiar tecnicamente a fiscalização de contratos de qualquer fornecedor. Quando há parceiro do Instituto naquele contrato, não atuamos nessa função.</p>
+        <h3>@content('atuacao.pmo.note.title')</h3>
+        <p>@content('atuacao.pmo.note.text')</p>
       </div>
     </div>
+    @extraTexts('atuacao.pmo')
   </section>
 
   <section class="alt" id="marco-legal-inovacao">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">04 · Política pública estruturante</span>
-        <h2>Marco legal de inovação municipal</h2>
-        <p class="sub">Elaboração da Lei Municipal de Ciência, Tecnologia e Inovação, do decreto de regulamentação, do regimento do Conselho Municipal e do desenho do Fundo Municipal de Inovação.</p>
+        <span class="kicker">@content('atuacao.marcolegal.kicker')</span>
+        <h2>@content('atuacao.marcolegal.title')</h2>
+        <p class="sub">@content('atuacao.marcolegal.sub')</p>
       </div>
       <div class="info-box">
-        <p>Com base na Lei nº 10.973/2004, na Lei Complementar nº 182/2021 e na Lei Estadual/PR nº 20.541/2021. Municípios com política de CT&amp;I institucionalizada acessam mecanismos estaduais de fomento, inclusive o repasse fundo a fundo previsto na Lei Estadual/PR nº 22.107/2024.</p>
+        <p>@content('atuacao.marcolegal.text')</p>
         <ul class="req-list">
-          <li><strong>Minuta de Lei Municipal de CT&amp;I</strong> com exposição de motivos.</li>
-          <li><strong>Decreto de regulamentação</strong> e Programa de Aplicações Piloto.</li>
-          <li><strong>Conselho Municipal de Inovação</strong>: composição, regimento e instalação.</li>
-          <li><strong>Fundo Municipal de Inovação</strong>: desenho, fontes e regras de aplicação.</li>
+          <li><strong>@content('atuacao.marcolegal.item1.title')</strong> @content('atuacao.marcolegal.item1.text')</li>
+          <li><strong>@content('atuacao.marcolegal.item2.title')</strong> @content('atuacao.marcolegal.item2.text')</li>
+          <li><strong>@content('atuacao.marcolegal.item3.title')</strong> @content('atuacao.marcolegal.item3.text')</li>
+          <li><strong>@content('atuacao.marcolegal.item4.title')</strong> @content('atuacao.marcolegal.item4.text')</li>
         </ul>
       </div>
-      <p class="cards-note">As leis que redigimos são <strong>normas gerais e abertas</strong>: criam procedimento, não escolhem fornecedor nem definem especificação técnica que favoreça qualquer solução.</p>
+      <p class="cards-note">@content('atuacao.marcolegal.note')</p>
     </div>
+    @extraTexts('atuacao.marcolegal')
   </section>
 
   <section id="capacitacao">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">05 · Formação continuada</span>
-        <h2>Capacitação de servidores</h2>
-        <p class="sub">Trilhas curtas e aplicadas, presenciais ou remotas, com certificação e material próprio.</p>
+        <span class="kicker">@content('atuacao.capacitacao.kicker')</span>
+        <h2>@content('atuacao.capacitacao.title')</h2>
+        <p class="sub">@content('atuacao.capacitacao.sub')</p>
       </div>
       <div class="cards-grid">
-        <article class="card"><h3>Nova Lei de Licitações</h3><p>Lei nº 14.133/2021 aplicada à realidade do município pequeno.</p></article>
-        <article class="card"><h3>LGPD aplicada</h3><p>Bases legais, tratamento, incidentes e direitos do titular.</p></article>
-        <article class="card"><h3>Governo digital</h3><p>Lei nº 14.129/2021 e digitalização de serviços.</p></article>
-        <article class="card"><h3>Segurança da informação</h3><p>Práticas essenciais para servidores e gestores.</p></article>
-        <article class="card"><h3>Rotinas tributárias e contábeis</h3><p>Escrituração, obrigações acessórias e prazos do Tribunal de Contas.</p></article>
-        <article class="card"><h3>Marco Legal de CT&amp;I</h3><p>Instrumentos de inovação disponíveis ao município.</p></article>
+        <article class="card"><h3>@content('atuacao.capacitacao.card1.title')</h3><p>@content('atuacao.capacitacao.card1.text')</p></article>
+        <article class="card"><h3>@content('atuacao.capacitacao.card2.title')</h3><p>@content('atuacao.capacitacao.card2.text')</p></article>
+        <article class="card"><h3>@content('atuacao.capacitacao.card3.title')</h3><p>@content('atuacao.capacitacao.card3.text')</p></article>
+        <article class="card"><h3>@content('atuacao.capacitacao.card4.title')</h3><p>@content('atuacao.capacitacao.card4.text')</p></article>
+        <article class="card"><h3>@content('atuacao.capacitacao.card5.title')</h3><p>@content('atuacao.capacitacao.card5.text')</p></article>
+        <article class="card"><h3>@content('atuacao.capacitacao.card6.title')</h3><p>@content('atuacao.capacitacao.card6.text')</p></article>
       </div>
     </div>
+    @extraTexts('atuacao.capacitacao')
   </section>
 
   <section class="alt" id="piloto">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">06 · Testar antes de comprar</span>
-        <h2>Aplicações piloto e PD&amp;I</h2>
-        <p class="sub">Estruturação de aplicações piloto e ambientes de teste com rito formal.</p>
+        <span class="kicker">@content('atuacao.piloto.kicker')</span>
+        <h2>@content('atuacao.piloto.title')</h2>
+        <p class="sub">@content('atuacao.piloto.sub')</p>
       </div>
       <div class="info-box">
-        <p>Chamamento público aberto a qualquer interessado, acordo de parceria para pesquisa e desenvolvimento, e relatório técnico público ao final, inclusive com os resultados negativos e as limitações encontradas. O município conhece a solução antes de decidir, e a decisão fica documentada.</p>
+        <p>@content('atuacao.piloto.text')</p>
       </div>
       <div class="legal-note" style="margin-top:18px;">
-        <h3>Sem preferência de contratação</h3>
-        <p><strong>O piloto não gera direito de contratação.</strong> Todos os nossos instrumentos de aplicação piloto contêm cláusula expressa de que a execução não gera preferência, expectativa de direito ou obrigação de contratar em procedimento futuro.</p>
+        <h3>@content('atuacao.piloto.note.title')</h3>
+        <p><strong>@content('atuacao.piloto.note.highlight')</strong> @content('atuacao.piloto.note.text')</p>
       </div>
     </div>
+    @extraTexts('atuacao.piloto')
   </section>
 
   <section class="final-cta">
     <div class="wrap">
       <div>
-        <h2>Qual é o problema do seu município?</h2>
-        <p>O diagnóstico é gratuito. Medimos o problema, apresentamos as alternativas e indicamos o instrumento jurídico aplicável ao caso.</p>
+        <h2>@content('atuacao.cta.title')</h2>
+        <p>@content('atuacao.cta.text')</p>
       </div>
-      <a href="#" class="btn btn-gold">Solicitar diagnóstico</a>
+      <a href="{{ route('contato') }}" class="btn btn-gold">@content('atuacao.cta.btn')</a>
     </div>
+    @extraTexts('atuacao.cta')
   </section>
 @endsection
