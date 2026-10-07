@@ -15,7 +15,7 @@
 
 <div class="admin-layout">
 
-  {{-- Menu lateral: uma entrada por página do site + Banners --}}
+  {{-- Menu lateral: uma entrada por página do site + Banners + Usuários (só admin) --}}
   <aside class="admin-sidebar">
     <div class="admin-sidebar__brand">
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR">
@@ -44,6 +44,16 @@
           </a>
         </li>
       </ul>
+      @if (auth()->user()->ehAdmin())
+        <p class="admin-sidebar__title">Acesso</p>
+        <ul>
+          <li>
+            <a href="{{ route('admin.usuarios.index') }}" class="{{ request()->routeIs('admin.usuarios.*') ? 'is-active' : '' }}">
+              Usuários
+            </a>
+          </li>
+        </ul>
+      @endif
     </nav>
 
     <div class="admin-sidebar__footer">

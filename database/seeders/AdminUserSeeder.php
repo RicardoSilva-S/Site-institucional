@@ -30,6 +30,8 @@ class AdminUserSeeder extends Seeder
                 'name' => env('ADMIN_NAME', 'Administrador IDTNPR'),
                 'password' => Hash::make($password),
                 'email_verified_at' => now(),
+                'papel' => User::PAPEL_ADMIN,
+                'ativo' => true,
             ],
         );
 
