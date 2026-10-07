@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Banner do topo do site, gerenciado em /adm/banners.
+ * Banner do site, gerenciado em /adm/banners.
  *
  * "page" guarda o nome da rota da página (home, institucional, ...).
  * Nulo = o banner aparece em todas as páginas.
+ * "slot" é a posição dentro da página: nulo = carrossel do topo; o id de um
+ * grupo do config/site_content.php = imagem ao lado dessa seção
+ * (ver App\Support\BannerSlots).
  * A imagem fica no próprio banco: "image_data" (base64) e "image_mime".
  * "image" guarda só o nome original do arquivo (ou o caminho antigo em
  * public/uploads, para banners cadastrados antes dessa mudança).
@@ -20,11 +23,12 @@ class Banner extends Model
      * carregar todas as imagens do banco a cada página aberta.
      */
     public const LIST_COLUMNS = [
-        'id', 'page', 'image', 'image_mime', 'title', 'subtitle',
+        'id', 'page', 'slot', 'image', 'image_mime', 'title', 'subtitle',
         'link', 'sort_order', 'active', 'created_at', 'updated_at',
     ];
     protected $fillable = [
         'page',
+        'slot',
         'image',
         'image_mime',
         'image_data',

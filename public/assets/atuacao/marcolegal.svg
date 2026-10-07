@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+  <rect width="640" height="480" fill="#FFFFFF"/>
+  <g fill="none" stroke="#0F2A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="226" y="92" width="220" height="300" rx="10" fill="#E9EDF5"/>
+    <rect x="196" y="72" width="220" height="300" rx="10" fill="#FFFFFF"/>
+    <line x1="226" y1="112" x2="336" y2="112" stroke-width="6"/>
+    <path d="M230,330 Q242,312 254,328 T278,324 T302,326"/>
+  </g>
+  <line x1="226" y1="132" x2="296" y2="132" stroke="#B8862E" stroke-width="4" stroke-linecap="round"/>
+  <g stroke="#C3CADB" stroke-width="5" stroke-linecap="round">
+    <line x1="226" y1="168" x2="386" y2="168"/><line x1="226" y1="188" x2="376" y2="188"/><line x1="226" y1="208" x2="340" y2="208"/>
+    <line x1="226" y1="244" x2="386" y2="244"/><line x1="226" y1="264" x2="360" y2="264"/><line x1="226" y1="284" x2="320" y2="284"/>
+  </g>
+  <line x1="226" y1="350" x2="320" y2="350" stroke="#C3CADB" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#B8862E">
+    <polygon points="398,356 386,412 406,402 416,416 420,366"/>
+    <polygon points="442,356 454,412 434,402 424,416 420,366"/>
+  </g>
+  <circle cx="420" cy="322" r="46" fill="#F2E6CE" stroke="#B8862E" stroke-width="4"/>
+  <circle cx="420" cy="322" r="34" fill="none" stroke="#B8862E" stroke-width="2" stroke-dasharray="4 5"/>
+  <polyline points="402,322 414,334 440,306" fill="none" stroke="#B8862E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

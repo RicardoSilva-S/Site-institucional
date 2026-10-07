@@ -594,3 +594,98 @@ footer{background:var(--mist);padding:68px 0 32px;border-top:1px solid var(--lin
 main h1:empty, main h2:empty, main h3:empty, main p:empty, main li:empty,
 
 main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h4:empty{display:none;}
+
+/* =========================================================================
+   Imagem ao lado de uma seção (partials/section-banner.blade.php).
+   Reaproveita .banner-slide / .banner-dots do carrossel do topo.
+   ========================================================================= */
+.section-banner{
+  position:relative;overflow:hidden;aspect-ratio:4/3;
+  border-radius:var(--radius-md);background:var(--paper);border:1px solid var(--line);
+}
+.section-banner figure{margin:0;}
+.section-banner__caption{
+  position:absolute;left:0;right:0;bottom:0;padding:56px 24px 20px;
+  display:flex;flex-direction:column;gap:4px;
+  background:linear-gradient(180deg, rgba(10,29,66,0) 0%, rgba(10,29,66,.86) 100%);
+}
+.section-banner__caption strong{font-family:var(--serif);font-size:17px;line-height:1.35;color:#fff;}
+.section-banner__caption span{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);}
+.section-banner .banner-dots{top:16px;bottom:auto;justify-content:flex-end;padding:0 16px;}
+
+/* =========================================================================
+   Página Atuação (site/atuacao.blade.php): topo com imagem, atalhos fixos
+   para as frentes e frentes em duas colunas (textos + imagem da seção).
+   ========================================================================= */
+.page-hero--split{padding:64px 0 72px;}
+.page-hero--split .wrap{
+  max-width:1160px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:64px;align-items:center;
+}
+.page-hero--split h1{font-size:46px;line-height:1.15;}
+.page-hero--split .lead{max-width:46ch;}
+.page-hero--split .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+
+/* --- Atalhos para as frentes (fixos logo abaixo do cabeçalho) --- */
+.frentes-nav{
+  position:sticky;top:81px;z-index:90;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(6px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.frentes-nav ul{
+  position:relative;list-style:none;margin:0;padding:0;
+  display:flex;gap:32px;
+  overflow-x:auto;scrollbar-width:none;
+}
+.frentes-nav ul::-webkit-scrollbar{display:none;}
+.frentes-nav a{
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  padding:15px 0 13px;font-size:14.5px;font-weight:500;color:var(--ink-soft);
+  border-bottom:2px solid transparent;transition:color .15s ease, border-color .15s ease;
+}
+.frentes-nav a:hover{color:var(--navy);}
+.frentes-nav a.is-active{color:var(--navy-dark);font-weight:600;border-bottom-color:var(--gold);}
+
+/* --- Frente: título e texto ao lado da imagem; itens em colunas embaixo.
+   A imagem acompanha a altura do texto (mínimo 280px), então a linha de
+   cima nunca fica com sobra, mesmo quando o texto é editado no painel. --- */
+.frente-section{scroll-margin-top:96px;}
+.frente__top{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);
+  column-gap:64px;align-items:stretch;
+}
+.frente__text{display:flex;flex-direction:column;justify-content:center;min-width:0;}
+.frente__text .section-head{margin-bottom:0;}
+.frente__intro{margin-top:20px;max-width:60ch;}
+.frente__intro h3{font-size:19px;line-height:1.35;margin-bottom:10px;}
+.frente__intro p{font-size:16px;line-height:1.65;color:var(--ink);}
+.frente__media{display:flex;min-height:280px;}
+.frente__media .section-banner{flex:1;aspect-ratio:auto;}
+
+.frente__items{margin-top:56px;}
+.frente__items .legal-note{margin-top:0;}
+.frente-itens{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:32px;row-gap:36px;
+}
+.frente-itens--3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.frente-itens li{padding-top:18px;border-top:2px solid var(--navy);}
+.frente-itens h3{font-family:var(--sans);font-size:16px;font-weight:600;line-height:1.4;color:var(--navy-dark);letter-spacing:0;}
+.frente-itens p{margin-top:6px;font-size:15px;line-height:1.55;color:var(--ink-soft);}
+
+@media (max-width:960px){
+  .page-hero--split .wrap{grid-template-columns:1fr;gap:40px;}
+  .page-hero--split h1{font-size:38px;}
+  .frente__top{grid-template-columns:minmax(0,1fr);row-gap:32px;}
+  .frente__media{min-height:0;}
+  .frente__media .section-banner{aspect-ratio:4/3;}
+  .frente__items{margin-top:40px;}
+  .frente-itens,
+  .frente-itens--3{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:600px){
+  .page-hero--split{padding:44px 0 52px;}
+  .page-hero--split h1{font-size:32px;}
+  .frente-itens,
+  .frente-itens--3{grid-template-columns:1fr;row-gap:24px;}
+}

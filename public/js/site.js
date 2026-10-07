@@ -40,8 +40,9 @@
 })();
 
 /**
- * Carrossel de banners do topo (partials/banner.blade.php).
- * Troca sozinho a cada 6 s, com setas e bolinhas de navegação.
+ * Carrossel de banners do topo (partials/banner.blade.php) e das imagens de
+ * seção com mais de um banner (partials/section-banner.blade.php).
+ * Troca sozinho a cada 6 s, com setas (só no topo) e bolinhas de navegação.
  */
 (function () {
   function setupBannerSlider(slider) {
@@ -77,6 +78,6 @@
   }
  
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".banner-slider").forEach(setupBannerSlider);
+    document.querySelectorAll(".banner-slider, .section-banner").forEach(setupBannerSlider);
   });
 })();

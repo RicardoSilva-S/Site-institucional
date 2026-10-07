@@ -4,6 +4,8 @@
  *   - confirmação antes de excluir (botões com data-confirm)
  *   - menu lateral recolhível no celular
  *   - pré-visualização da imagem no formulário de banner
+ *   - tamanho recomendado da imagem conforme o lugar escolhido para o banner
+ *   - aviso antes de sair do editor da página com textos não salvos
  */
 (function () {
   function setupSearch() {
@@ -58,10 +60,45 @@
     });
   }
 
+  function setupBannerPosition() {
+    const select = document.getElementById("posicao");
+    const hint = document.getElementById("image-hint");
+    const preview = document.getElementById("image-preview");
+    if (!select) return;
+
+    function update() {
+      const option = select.selectedOptions[0];
+      if (!option) return;
+      if (hint && option.dataset.hint) hint.textContent = option.dataset.hint;
+      // Imagem de seção é 4:3; a do carrossel do topo é larga.
+      if (preview) preview.classList.toggle("admin-preview--section", option.dataset.section === "1");
+    }
+
+    select.addEventListener("change", update);
+    update();
+  }
+
+  function setupUnsavedWarning() {
+    const form = document.getElementById("admin-form");
+    if (!form) return;
+
+    let dirty = false;
+    form.addEventListener("input", () => { dirty = true; });
+    form.addEventListener("submit", () => { dirty = false; });
+
+    window.addEventListener("beforeunload", (e) => {
+      if (!dirty) return;
+      e.preventDefault();
+      e.returnValue = "";
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     setupSearch();
     setupConfirm();
     setupSidebarToggle();
     setupImagePreview();
+    setupBannerPosition();
+    setupUnsavedWarning();
   });
 })();
