@@ -15,7 +15,7 @@ Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-l
 Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
-Route::get('/privacidade', [SiteController::class, 'privacidade'])->name('privacidade');
+Route::get('/politica-de-privacidade', [SiteController::class, 'privacidade'])->name('privacidade');
 
 // PDF dos documentos da transparência (fica guardado no banco, ver SiteController)
 Route::get('/transparencia/documentos/{documento}/pdf', [SiteController::class, 'documentoTransparencia'])
