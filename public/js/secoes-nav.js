@@ -1,6 +1,7 @@
 /**
- * atuacao.js — comportamento da página Atuação
- *   - destaca o atalho da frente que está na tela enquanto a página rola
+ * secoes-nav.js — barra de atalhos para as seções (.frentes-nav), usada nas
+ * páginas Atuação e Institucional
+ *   - destaca o atalho da seção que está na tela enquanto a página rola
  *   - no celular, onde os atalhos rolam na horizontal, mantém o ativo visível
  */
 (function () {

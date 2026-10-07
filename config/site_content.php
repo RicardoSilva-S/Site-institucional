@@ -814,6 +814,7 @@ return [
             [
                 'id' => 'hero',
                 'label' => 'Topo',
+                'banner' => 'assets/institucional/hero.svg',
                 'fields' => [
                     [
                         'key' => 'institucional.hero.eyebrow',
@@ -829,6 +830,77 @@ return [
                         'key' => 'institucional.hero.lead',
                         'label' => 'Texto de apoio',
                         'default' => 'Quem somos, de onde viemos e como nos organizamos.',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.natureza.label',
+                        'label' => 'Ficha — item 1, rótulo',
+                        'default' => 'Natureza jurídica',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.natureza.value',
+                        'label' => 'Ficha — item 1, valor',
+                        'default' => 'Associação civil sem fins lucrativos',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.sede.label',
+                        'label' => 'Ficha — item 2, rótulo',
+                        'default' => 'Sede',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.sede.value',
+                        'label' => 'Ficha — item 2, valor',
+                        'default' => 'Sarandi, Paraná',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.fundacao.label',
+                        'label' => 'Ficha — item 3, rótulo',
+                        'default' => 'Fundação',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.fundacao.value',
+                        'label' => 'Ficha — item 3, valor',
+                        'default' => 'Julho de 2025',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.enquadramento.label',
+                        'label' => 'Ficha — item 4, rótulo',
+                        'default' => 'Enquadramento',
+                    ],
+                    [
+                        'key' => 'institucional.ficha.enquadramento.value',
+                        'label' => 'Ficha — item 4, valor',
+                        'default' => 'ICT · Lei nº 10.973/2004, art. 2º, V',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'nav',
+                'label' => 'Atalhos para as seções',
+                'fields' => [
+                    [
+                        'key' => 'institucional.nav.quemsomos',
+                        'label' => 'Atalho — Quem somos',
+                        'default' => 'Quem somos',
+                    ],
+                    [
+                        'key' => 'institucional.nav.historia',
+                        'label' => 'Atalho — Nossa história',
+                        'default' => 'Nossa história',
+                    ],
+                    [
+                        'key' => 'institucional.nav.governanca',
+                        'label' => 'Atalho — Governança',
+                        'default' => 'Governança',
+                    ],
+                    [
+                        'key' => 'institucional.nav.marcolegal',
+                        'label' => 'Atalho — Marco legal',
+                        'default' => 'Marco legal',
+                    ],
+                    [
+                        'key' => 'institucional.nav.documentos',
+                        'label' => 'Atalho — Documentos',
+                        'default' => 'Documentos',
                     ],
                 ],
             ],
@@ -1103,6 +1175,31 @@ return [
                         'key' => 'institucional.cta.btn',
                         'label' => 'Botão',
                         'default' => 'Portal da Transparência',
+                    ],
+                    [
+                        'key' => 'institucional.cta.doc1',
+                        'label' => 'Lista — Institucional (Portal da Transparência)',
+                        'default' => 'Estatuto Social, atas e regimento',
+                    ],
+                    [
+                        'key' => 'institucional.cta.doc2',
+                        'label' => 'Lista — Governança e gestão',
+                        'default' => 'Governança e gestão',
+                    ],
+                    [
+                        'key' => 'institucional.cta.doc3',
+                        'label' => 'Lista — Normativos internos',
+                        'default' => 'Normativos internos',
+                    ],
+                    [
+                        'key' => 'institucional.cta.doc4',
+                        'label' => 'Lista — Parcerias e contratos',
+                        'default' => 'Parcerias e contratos',
+                    ],
+                    [
+                        'key' => 'institucional.cta.doc5',
+                        'label' => 'Lista — Prestação de contas',
+                        'default' => 'Prestação de contas',
                     ],
                 ],
             ],
