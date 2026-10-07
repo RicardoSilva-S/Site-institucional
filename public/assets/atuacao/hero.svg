@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+  <defs>
+    <radialGradient id="glowGold" cx="0.92" cy="0.04" r="0.62">
+      <stop offset="0" stop-color="#B8862E" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#B8862E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowBlue" cx="0.04" cy="1" r="0.72">
+      <stop offset="0" stop-color="#1F4C91" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#1F4C91" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#FFFFFF" fill-opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="480" fill="#0A1D42"/>
+  <rect width="640" height="480" fill="url(#glowBlue)"/>
+  <rect width="640" height="480" fill="url(#glowGold)"/>
+  <rect width="640" height="480" fill="url(#dots)"/>
+  <defs>
+    <linearGradient id="hub" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DDB35E"/>
+      <stop offset="1" stop-color="#B8862E"/>
+    </linearGradient>
+  </defs>
+  <circle cx="320" cy="240" r="104" fill="none" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <ellipse cx="320" cy="240" rx="210" ry="150" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-dasharray="3 7"/>
+  <g stroke="#DDB35E" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="4 6">
+    <line x1="320" y1="240" x2="320" y2="90"/>
+    <line x1="320" y1="240" x2="502" y2="165"/>
+    <line x1="320" y1="240" x2="502" y2="315"/>
+    <line x1="320" y1="240" x2="320" y2="390"/>
+    <line x1="320" y1="240" x2="138" y2="315"/>
+    <line x1="320" y1="240" x2="138" y2="165"/>
+  </g>
+  <g fill="#13306A" stroke="#FFFFFF" stroke-opacity="0.2">
+    <rect x="284" y="54" width="72" height="72" rx="16"/>
+    <rect x="466" y="129" width="72" height="72" rx="16"/>
+    <rect x="466" y="279" width="72" height="72" rx="16"/>
+    <rect x="284" y="354" width="72" height="72" rx="16"/>
+    <rect x="102" y="279" width="72" height="72" rx="16"/>
+    <rect x="102" y="129" width="72" height="72" rx="16"/>
+  </g>
+  <!-- 01 governança: fluxo -->
+  <g stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2" fill="none" stroke-linecap="round">
+    <line x1="312" y1="79" x2="328" y2="79"/>
+    <line x1="306" y1="86" x2="315" y2="96"/>
+    <line x1="334" y1="86" x2="325" y2="96"/>
+  </g>
+  <rect x="298" y="72" width="14" height="14" rx="3" fill="#FFFFFF" fill-opacity="0.85"/>
+  <rect x="328" y="72" width="14" height="14" rx="3" fill="#FFFFFF" fill-opacity="0.85"/>
+  <rect x="313" y="96" width="14" height="14" rx="3" fill="#DDB35E"/>
+  <!-- 02 observatório: gráfico -->
+  <rect x="484" y="171" width="8" height="12" rx="2" fill="#FFFFFF" fill-opacity="0.85"/>
+  <rect x="497" y="161" width="8" height="22" rx="2" fill="#FFFFFF" fill-opacity="0.85"/>
+  <rect x="510" y="151" width="8" height="32" rx="2" fill="#DDB35E"/>
+  <line x1="480" y1="186" x2="524" y2="186" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+  <!-- 03 PMO: cronograma -->
+  <rect x="480" y="300" width="28" height="7" rx="3.5" fill="#FFFFFF" fill-opacity="0.85"/>
+  <rect x="490" y="312" width="30" height="7" rx="3.5" fill="#FFFFFF" fill-opacity="0.85"/>
+  <rect x="500" y="324" width="24" height="7" rx="3.5" fill="#DDB35E"/>
+  <!-- 04 marco legal: documento -->
+  <rect x="306" y="372" width="28" height="36" rx="3" fill="none" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2"/>
+  <g stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round">
+    <line x1="312" y1="382" x2="328" y2="382"/>
+    <line x1="312" y1="390" x2="328" y2="390"/>
+    <line x1="312" y1="398" x2="321" y2="398"/>
+  </g>
+  <circle cx="335" cy="405" r="6" fill="#DDB35E"/>
+  <!-- 05 capacitação: capelo -->
+  <path d="M124,314 V324 Q138,332 152,324 V314" fill="none" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2"/>
+  <polygon points="114,309 138,298 162,309 138,320" fill="#FFFFFF" fill-opacity="0.9"/>
+  <line x1="158" y1="311" x2="158" y2="325" stroke="#DDB35E" stroke-width="2"/>
+  <circle cx="158" cy="328" r="2.5" fill="#DDB35E"/>
+  <!-- 06 piloto: frasco -->
+  <path d="M126,173 L121,181 Q118,187 125,187 H151 Q158,187 155,181 L150,173 Z" fill="#DDB35E"/>
+  <path d="M134,146 V160 L121,181 Q118,187 125,187 H151 Q158,187 155,181 L142,160 V146" fill="none" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2" stroke-linejoin="round"/>
+  <line x1="130" y1="146" x2="146" y2="146" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round"/>
+  <!-- hub -->
+  <circle cx="320" cy="240" r="72" fill="none" stroke="#B8862E" stroke-opacity="0.35" stroke-width="2"/>
+  <circle cx="320" cy="240" r="60" fill="url(#hub)"/>
+  <circle cx="320" cy="240" r="34" fill="none" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="2"/>
+  <circle cx="320" cy="240" r="10" fill="#FFFFFF"/>
+  <g fill="#FFFFFF">
+    <circle cx="320" cy="206" r="4"/>
+    <circle cx="349" cy="223" r="4"/>
+    <circle cx="349" cy="257" r="4"/>
+    <circle cx="320" cy="274" r="4"/>
+    <circle cx="291" cy="257" r="4"/>
+    <circle cx="291" cy="223" r="4"/>
+  </g>
+</svg>

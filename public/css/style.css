@@ -594,3 +594,21 @@ footer{background:var(--mist);padding:68px 0 32px;border-top:1px solid var(--lin
 main h1:empty, main h2:empty, main h3:empty, main p:empty, main li:empty,
 
 main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h4:empty{display:none;}
+
+/* =========================================================================
+   Imagem ao lado de uma seção (partials/section-banner.blade.php).
+   Reaproveita .banner-slide / .banner-dots do carrossel do topo.
+   ========================================================================= */
+.section-banner{
+  position:relative;overflow:hidden;aspect-ratio:4/3;
+  border-radius:var(--radius-lg);background:var(--navy-dark);box-shadow:var(--shadow-md);
+}
+.section-banner figure{margin:0;}
+.section-banner__caption{
+  position:absolute;left:0;right:0;bottom:0;padding:56px 24px 20px;
+  display:flex;flex-direction:column;gap:4px;
+  background:linear-gradient(180deg, rgba(10,29,66,0) 0%, rgba(10,29,66,.86) 100%);
+}
+.section-banner__caption strong{font-family:var(--serif);font-size:17px;line-height:1.35;color:#fff;}
+.section-banner__caption span{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);}
+.section-banner .banner-dots{top:16px;bottom:auto;justify-content:flex-end;padding:0 16px;}

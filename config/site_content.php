@@ -18,6 +18,10 @@
  *
  * "route" é o nome da rota da página (routes/web.php) — usado pelos banners.
  *
+ * "banner" num grupo (seção) cria uma posição de imagem ao lado dela, com o
+ * caminho da imagem padrão (relativo a public/). A imagem pode ser trocada em
+ * /adm/banners ou no próprio editor da página — ver App\Support\BannerSlots.
+ *
  * COMO ADICIONAR UMA NOVA PÁGINA:
  * 1. Copie resources/views/site/home.blade.php para a nova página.
  * 2. Adicione um novo item aqui, com "page" => "nome-da-pagina".
@@ -1112,6 +1116,7 @@ return [
             [
                 'id' => 'hero',
                 'label' => 'Topo',
+                'banner' => 'assets/atuacao/hero.svg',
                 'fields' => [
                     [
                         'key' => 'atuacao.hero.eyebrow',
@@ -1134,6 +1139,7 @@ return [
             [
                 'id' => 'governanca',
                 'label' => 'Frente 01 — Governança e modernização',
+                'banner' => 'assets/atuacao/governanca.svg',
                 'fields' => [
                     [
                         'key' => 'atuacao.governanca.kicker',
@@ -1203,6 +1209,7 @@ return [
             [
                 'id' => 'observatorio',
                 'label' => 'Frente 02 — Observatório de dados',
+                'banner' => 'assets/atuacao/observatorio.svg',
                 'fields' => [
                     [
                         'key' => 'atuacao.observatorio.kicker',
@@ -1271,6 +1278,7 @@ return [
             [
                 'id' => 'pmo',
                 'label' => 'Frente 03 — PMO público',
+                'banner' => 'assets/atuacao/pmo.svg',
                 'fields' => [
                     [
                         'key' => 'atuacao.pmo.kicker',
@@ -1325,6 +1333,7 @@ return [
             [
                 'id' => 'marcolegal',
                 'label' => 'Frente 04 — Marco legal de inovação',
+                'banner' => 'assets/atuacao/marcolegal.svg',
                 'fields' => [
                     [
                         'key' => 'atuacao.marcolegal.kicker',
@@ -1409,6 +1418,7 @@ return [
             [
                 'id' => 'capacitacao',
                 'label' => 'Frente 05 — Capacitação de servidores',
+                'banner' => 'assets/atuacao/capacitacao.svg',
                 'fields' => [
                     [
                         'key' => 'atuacao.capacitacao.kicker',
@@ -1493,6 +1503,7 @@ return [
             [
                 'id' => 'piloto',
                 'label' => 'Frente 06 — Aplicações piloto',
+                'banner' => 'assets/atuacao/piloto.svg',
                 'fields' => [
                     [
                         'key' => 'atuacao.piloto.kicker',

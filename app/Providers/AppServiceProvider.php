@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Banner;
 
+use App\Support\BannerSlots;
+
 use App\Support\SiteContent;
 
 use Illuminate\Support\Facades\Blade;
@@ -71,6 +73,7 @@ class AppServiceProvider extends ServiceProvider
  
                 $banners = Banner::query()
                     ->where('active', true)
+                    ->whereNull('slot')
                     ->where(function ($q) use ($route) {
                         $q->where('page', $route)->orWhereNull('page');
                     })
@@ -80,6 +83,18 @@ class AppServiceProvider extends ServiceProvider
             }
  
             $view->with('banners', $banners);
+        });
+
+        // Imagem ao lado de uma seção: @include('partials.section-banner', ['slot' => 'governanca']).
+        // Banners ativos dessa posição ou, sem nenhum, a imagem padrão do config.
+        View::composer('partials.section-banner', function ($view) {
+            $route = (string) optional(request()->route())->getName();
+            $slot = $view->getData()['slot'];
+
+            $view->with([
+                'slotBanners' => BannerSlots::active($route, $slot),
+                'fallback' => BannerSlots::fallback($route, $slot),
+            ]);
         });
 
         // Menu lateral do painel: uma entrada por página do config.
