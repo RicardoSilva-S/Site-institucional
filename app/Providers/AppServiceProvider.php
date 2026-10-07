@@ -70,6 +70,7 @@ class AppServiceProvider extends ServiceProvider
                 $route = optional(request()->route())->getName();
  
                 $banners = Banner::query()
+                    ->select(Banner::LIST_COLUMNS)
                     ->where('active', true)
                     ->where(function ($q) use ($route) {
                         $q->where('page', $route)->orWhereNull('page');
