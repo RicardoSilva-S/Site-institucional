@@ -8,6 +8,7 @@ use App\Support\BannerSlots;
 use App\Support\SiteContent;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
@@ -19,8 +20,10 @@ use Illuminate\View\View;
  * Banners do site (/adm/banners): carrossel do topo das páginas e imagens
  * ao lado das seções (ver App\Support\BannerSlots).
  *
- * As imagens são salvas em public/uploads/banners — assim funcionam direto,
- * sem precisar de "php artisan storage:link".
+ * As imagens são salvas dentro do banco (colunas image_data e image_mime).
+ * No Render gratuito o disco do servidor é apagado a cada reinício, então
+ * uma imagem salva em arquivo sumiria. O método image() entrega a imagem
+ * para o site, pela rota pública /banners/{id}/imagem.
  *
  * Vindo do editor de uma página (/adm/paginas/{page}), o formulário manda
  * "voltar" com o id da página, e depois de salvar o painel volta para lá.
@@ -32,7 +35,7 @@ class BannerController extends Controller
     public function index(): View
     {
         return view('admin.banners.index', [
-            'banners' => Banner::query()->orderBy('page')->orderBy('slot')->orderBy('sort_order')->orderBy('id')->get(),
+            'banners' => Banner::query()->select(Banner::LIST_COLUMNS)->orderBy('page')->orderBy('slot')->orderBy('sort_order')->orderBy('id')->get(),
         ]);
     }
 
@@ -52,7 +55,7 @@ class BannerController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $this->validated($request, true);
-        $data['image'] = $this->saveImage($request->file('image'));
+        $data = array_merge($data, $this->imageFields($request->file('image')));
 
         $banner = Banner::create($data);
 
@@ -70,7 +73,7 @@ class BannerController extends Controller
 
         if ($request->hasFile('image')) {
             $this->deleteImage($banner->image);
-            $data['image'] = $this->saveImage($request->file('image'));
+            $data = array_merge($data, $this->imageFields($request->file('image')));
         }
 
         $banner->update($data);
@@ -96,6 +99,21 @@ class BannerController extends Controller
             'banner' => $banner,
             'positions' => BannerSlots::options(),
             'voltar' => $this->returnPage($request),
+        ]);
+    }
+
+    /**
+     * Entrega a imagem guardada no banco (rota pública, usada pelo site).
+     * O navegador guarda a imagem em cache; quando o banner é editado, o
+     * endereço muda (parâmetro "v") e ele baixa a nova.
+     */
+    public function image(Banner $banner): Response
+    {
+        abort_unless($banner->image_data, 404);
+ 
+        return response(base64_decode($banner->image_data), 200, [
+            'Content-Type' => $banner->image_mime ?: 'image/jpeg',
+            'Cache-Control' => 'public, max-age=31536000',
         ]);
     }
 
@@ -157,12 +175,14 @@ class BannerController extends Controller
         return in_array($value, $this->positionValues(), true);
     }
 
-    protected function saveImage(UploadedFile $file): string
+    /** Campos da imagem para gravar no banco. */
+    protected function imageFields(UploadedFile $file): array
     {
-        $name = now()->format('YmdHis').'-'.Str::lower(Str::random(6)).'.'.$file->extension();
-        $file->move(public_path(self::UPLOAD_DIR), $name);
-
-        return self::UPLOAD_DIR.'/'.$name;
+        return [
+            'image' => Str::limit($file->getClientOriginalName(), 250, ''),
+            'image_mime' => $file->getMimeType(),
+            'image_data' => base64_encode(file_get_contents($file->getRealPath())),
+        ];
     }
 
     protected function deleteImage(?string $path): void

@@ -69,7 +69,7 @@ class AtuacaoBannersTest extends TestCase
         $this->assertSame('governanca', $banner->slot);
 
         $this->get('/atuacao')
-            ->assertSee($banner->image)
+            ->assertSee($banner->imageUrl(), false)
             ->assertSee('Oficina de processos')
             ->assertDontSee('assets/atuacao/governanca.svg')
             ->assertSee('assets/atuacao/pmo.svg');
@@ -135,7 +135,7 @@ class AtuacaoBannersTest extends TestCase
 
         $this->actingAs($admin)
             ->get('/adm/paginas/atuacao')
-            ->assertSee($banner->image);
+            ->assertSee($banner->imageUrl(), false);
 
         $this->actingAs($admin)
             ->delete('/adm/banners/'.$banner->id, ['voltar' => 'atuacao'])

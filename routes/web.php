@@ -14,6 +14,9 @@ Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 
+// Imagem dos banners (fica guardada no banco, ver BannerController::image)
+Route::get('/banners/{banner}/imagem', [BannerController::class, 'image'])->name('banners.image');
+
 // Painel administrativo --------------------------------------------------
 // Separado do site: o site não tem nenhum link para cá. O acesso é só
 // digitando o endereço /login-adm.

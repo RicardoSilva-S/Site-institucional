@@ -126,6 +126,7 @@ class BannerSlots
         if (! $request->attributes->has($key)) {
             $banners = Schema::hasTable('banners')
                 ? Banner::query()
+                    ->select(Banner::LIST_COLUMNS)
                     ->where('page', $route)
                     ->whereNotNull('slot')
                     ->where('active', true)
