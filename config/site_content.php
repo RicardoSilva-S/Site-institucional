@@ -1190,12 +1190,12 @@ return [
                     [
                         'key' => 'atuacao.governanca.item4.title',
                         'label' => 'Item 4 — destaque',
-                        'default' => 'Adequação à LGPD:',
+                        'default' => 'Adequação à LGPD',
                     ],
                     [
                         'key' => 'atuacao.governanca.item4.text',
                         'label' => 'Item 4 — complemento',
-                        'default' => 'inventário de dados, bases legais, encarregado e relatório de impacto.',
+                        'default' => ': inventário de dados, bases legais, encarregado e relatório de impacto.',
                         'long' => true,
                     ],
                 ],
@@ -1295,9 +1295,19 @@ return [
                     ],
                     [
                         'key' => 'atuacao.pmo.answer',
-                        'label' => 'Resposta',
-                        'default' => 'O fiscal do contrato é sempre agente público designado por portaria, e essa titularidade é indelegável. Fornecemos o corpo técnico, os relatórios e os indicadores que ele não tem como produzir internamente, na forma autorizada pelo art. 117, caput, da Lei nº 14.133/2021.',
+                        'label' => 'Resposta — início',
+                        'default' => 'O fiscal do contrato é sempre agente público designado por portaria, e essa titularidade é indelegável. Fornecemos o corpo técnico, os relatórios e os indicadores que ele não tem como produzir internamente, na forma autorizada pelo art. 117,',
                         'long' => true,
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.answer.highlight',
+                        'label' => 'Resposta — trecho em itálico',
+                        'default' => 'caput',
+                    ],
+                    [
+                        'key' => 'atuacao.pmo.answer.end',
+                        'label' => 'Resposta — final',
+                        'default' => ', da Lei nº 14.133/2021.',
                     ],
                     [
                         'key' => 'atuacao.pmo.note.title',
@@ -1361,27 +1371,37 @@ return [
                     [
                         'key' => 'atuacao.marcolegal.item3.title',
                         'label' => 'Item 3 — destaque',
-                        'default' => 'Conselho Municipal de Inovação:',
+                        'default' => 'Conselho Municipal de Inovação',
                     ],
                     [
                         'key' => 'atuacao.marcolegal.item3.text',
                         'label' => 'Item 3 — complemento',
-                        'default' => 'composição, regimento e instalação.',
+                        'default' => ': composição, regimento e instalação.',
                     ],
                     [
                         'key' => 'atuacao.marcolegal.item4.title',
                         'label' => 'Item 4 — destaque',
-                        'default' => 'Fundo Municipal de Inovação:',
+                        'default' => 'Fundo Municipal de Inovação',
                     ],
                     [
                         'key' => 'atuacao.marcolegal.item4.text',
                         'label' => 'Item 4 — complemento',
-                        'default' => 'desenho, fontes e regras de aplicação.',
+                        'default' => ': desenho, fontes e regras de aplicação.',
                     ],
                     [
-                        'key' => 'atuacao.marcolegal.note',
-                        'label' => 'Observação abaixo da lista',
-                        'default' => 'As leis que redigimos são normas gerais e abertas: criam procedimento, não escolhem fornecedor nem definem especificação técnica que favoreça qualquer solução.',
+                        'key' => 'atuacao.marcolegal.note.start',
+                        'label' => 'Observação — início',
+                        'default' => 'As leis que redigimos são',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.note.highlight',
+                        'label' => 'Observação — trecho em negrito',
+                        'default' => 'normas gerais e abertas',
+                    ],
+                    [
+                        'key' => 'atuacao.marcolegal.note.end',
+                        'label' => 'Observação — final',
+                        'default' => ': criam procedimento, não escolhem fornecedor nem definem especificação técnica que favoreça qualquer solução.',
                         'long' => true,
                     ],
                 ],

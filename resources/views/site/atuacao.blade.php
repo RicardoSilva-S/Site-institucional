@@ -26,7 +26,7 @@
           <li><strong>@content('atuacao.governanca.item1.title')</strong> @content('atuacao.governanca.item1.text')</li>
           <li><strong>@content('atuacao.governanca.item2.title')</strong> @content('atuacao.governanca.item2.text')</li>
           <li><strong>@content('atuacao.governanca.item3.title')</strong> @content('atuacao.governanca.item3.text')</li>
-          <li><strong>@content('atuacao.governanca.item4.title')</strong> @content('atuacao.governanca.item4.text')</li>
+          <li><strong>@content('atuacao.governanca.item4.title')</strong>@content('atuacao.governanca.item4.text')</li>
         </ul>
       </div>
     </div>
@@ -62,7 +62,7 @@
       </div>
       <div class="qa-block">
         <p class="question">@content('atuacao.pmo.question')</p>
-        <p class="answer">@content('atuacao.pmo.answer')</p>
+        <p class="answer">@content('atuacao.pmo.answer') <em>@content('atuacao.pmo.answer.highlight')</em>@content('atuacao.pmo.answer.end')</p>
       </div>
       <div class="legal-note">
         <h3>@content('atuacao.pmo.note.title')</h3>
@@ -84,11 +84,11 @@
         <ul class="req-list">
           <li><strong>@content('atuacao.marcolegal.item1.title')</strong> @content('atuacao.marcolegal.item1.text')</li>
           <li><strong>@content('atuacao.marcolegal.item2.title')</strong> @content('atuacao.marcolegal.item2.text')</li>
-          <li><strong>@content('atuacao.marcolegal.item3.title')</strong> @content('atuacao.marcolegal.item3.text')</li>
-          <li><strong>@content('atuacao.marcolegal.item4.title')</strong> @content('atuacao.marcolegal.item4.text')</li>
+          <li><strong>@content('atuacao.marcolegal.item3.title')</strong>@content('atuacao.marcolegal.item3.text')</li>
+          <li><strong>@content('atuacao.marcolegal.item4.title')</strong>@content('atuacao.marcolegal.item4.text')</li>
         </ul>
       </div>
-      <p class="cards-note">@content('atuacao.marcolegal.note')</p>
+      <p class="cards-note">@content('atuacao.marcolegal.note.start') <strong>@content('atuacao.marcolegal.note.highlight')</strong>@content('atuacao.marcolegal.note.end')</p>
     </div>
     @extraTexts('atuacao.marcolegal')
   </section>
