@@ -39,8 +39,8 @@
           </div>
         </li>
         <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.atuacao')</a></li>
-        <li><a class="top-link" href="/projetos">@content('shared.nav.projetos')</a></li>
-        <li><a class="top-link" href="/editais">@content('shared.nav.editais')</a></li>
+        <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.projetos')</a></li>
+        <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.editais')</a></li>
         <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.transparencia')</a></li>
         <li><a class="top-link" href="{{ route('contato') }}">@content('shared.nav.contato')</a></li>
       </ul>
@@ -80,10 +80,10 @@
       <div>
         <h4>@content('shared.footer.col2.title')</h4>
         <ul>
-        <li><a href="/projetos">Projetos e produtos</a></li>
+        <li><a href="{{ route('atuacao') }}">Projetos e produtos</a></li>
         <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
-        <li><a href="/editais">Editais e chamamentos</a></li>
-        <li><a href="/diagnostico">Diagnóstico gratuito</a></li>
+        <li><a href="{{ route('transparencia') }}">Editais e chamamentos</a></li>
+        <li><a href="{{ route('contato') }}#diagnostico">Diagnóstico gratuito</a></li>
         </ul>
       </div>
 
