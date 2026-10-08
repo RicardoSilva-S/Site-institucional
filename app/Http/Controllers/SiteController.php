@@ -86,4 +86,8 @@ class SiteController extends Controller
 
         return Str::ucfirst($datas->max()->locale('pt_BR')->isoFormat('MMMM [de] YYYY'));
     }
+    public function privacidade(): View
+    {
+        return view('site.privacidade');
+    }
 }
