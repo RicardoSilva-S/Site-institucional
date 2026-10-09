@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\TransparenciaDocumento;
 use App\Models\TransparenciaSecao;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\HeaderUtils;
+use Illuminate\Support\Carbon;
 
 class SiteController extends Controller
 {
@@ -30,29 +32,85 @@ class SiteController extends Controller
     {
         return view('site.atuacao');
     }
+
     public function projetos(): View
     {
-    return view('site.projetos');
+        return view('site.projetos');
     }
+
+    public function editais(): View
+    {
+        $editais = collect([
+            [
+                'status'       => 'aberto',
+                'rotulo'       => 'Aberto',
+                'classe'       => 'publicado',
+                'titulo'       => 'Chamamento Público nº 004/2026 – Soluções de Transparência e Participação Legislativa para Câmaras Municipais',
+                'resumo'       => 'Seleção de soluções tecnológicas que aproximem o Poder Legislativo municipal da população, com canais digitais de atendimento aos vereadores, acompanhamento de proposições e divulgação de sessões e votações.',
+                'abertura'     => Carbon::create(2026, 10, 5),
+                'encerramento' => Carbon::create(2026, 11, 20),
+                'acao'         => 'Baixar edital',
+                'url'          => '#',
+            ],
+            [
+                'status'       => 'aberto',
+                'rotulo'       => 'Aberto',
+                'classe'       => 'publicado',
+                'titulo'       => 'Chamamento Público nº 003/2026 – Plataformas de Atendimento ao Cidadão e Autoatendimento',
+                'resumo'       => 'Credenciamento de soluções de autoatendimento, como totens, aplicativos e portais de serviços, que reduzam filas e agilizem a emissão de documentos e o protocolo de solicitações nas prefeituras.',
+                'abertura'     => Carbon::create(2026, 9, 1),
+                'encerramento' => Carbon::create(2026, 10, 30),
+                'acao'         => 'Baixar edital',
+                'url'          => '#',
+            ],
+            [
+                'status'       => 'analise',
+                'rotulo'       => 'Em análise',
+                'classe'       => 'elaboracao',
+                'titulo'       => 'Chamamento Público nº 002/2026 – Gestão e Controle de Frotas e Obras Municipais',
+                'resumo'       => 'Seleção de sistemas para planejamento de manutenção, controle de frotas, registro de ordens de serviço e acompanhamento de obras, com relatórios que apoiem a prestação de contas.',
+                'abertura'     => Carbon::create(2026, 7, 15),
+                'encerramento' => Carbon::create(2026, 9, 14),
+                'acao'         => 'Baixar edital',
+                'url'          => '#',
+            ],
+            [
+                'status'       => 'encerrado',
+                'rotulo'       => 'Encerrado',
+                'classe'       => '',
+                'titulo'       => 'Chamamento Público nº 001/2026 – Credenciamento de Soluções de Cidades Inteligentes',
+                'resumo'       => 'Credenciamento de soluções de monitoramento urbano, mobilidade e serviços digitais para municípios do noroeste paranaense. Chamamento homologado, com resultado final publicado.',
+                'abertura'     => Carbon::create(2026, 3, 2),
+                'encerramento' => Carbon::create(2026, 4, 30),
+                'acao'         => 'Acessar resultado',
+                'url'          => '#',
+            ],
+        ]);
+
+        return view('site.editais', [
+            'editais'  => $editais,
+            'contagem' => $editais->countBy('status'),
+        ]);
+    }
+
     public function contato(): View
     {
         return view('site.contato');
     }
 
+    public function enviarContato(Request $request)
+    {
+        return redirect()->back()->with('success', 'Mensagem enviada com sucesso!');
+    }
+
     public function transparencia(): View
     {
-        // Seções e documentos vêm do banco e são editados no painel (/adm/transparencia).
         $secoes = TransparenciaSecao::comDocumentos();
         $atualizacao = $this->ultimaAtualizacao($secoes);
 
         return view('site.transparencia', compact('secoes', 'atualizacao'));
     }
 
-    /**
-     * Entrega o PDF de um documento da transparência. O arquivo fica no banco
-     * (igual às imagens dos banners), porque no Render gratuito o disco é
-     * apagado quando o servidor reinicia.
-     */
     public function documentoTransparencia(TransparenciaDocumento $documento): Response
     {
         abort_unless($documento->temArquivo() && $documento->arquivo_data, 404);
@@ -67,16 +125,11 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Versão do nome só com letras, números, ponto, hífen e sublinhado, para
-     * navegadores antigos (ex: "relatório 100%.pdf" vira "relatorio_100_.pdf").
-     */
     private function nomeSimples(string $nome): string
     {
         return preg_replace('/[^A-Za-z0-9._-]/', '_', Str::ascii($nome)) ?: 'documento.pdf';
     }
 
-    /** "Mês de ano" da última alteração feita no portal (ex: Outubro de 2026). */
     private function ultimaAtualizacao($secoes): ?string
     {
         $datas = $secoes->pluck('updated_at')
@@ -89,6 +142,7 @@ class SiteController extends Controller
 
         return Str::ucfirst($datas->max()->locale('pt_BR')->isoFormat('MMMM [de] YYYY'));
     }
+    
     public function privacidade(): View
     {
         return view('site.privacidade');
