@@ -572,6 +572,16 @@ footer{background:var(--mist);padding:68px 0 32px;border-top:1px solid var(--lin
   .banner-slide__content p{font-size:15.5px;}
   .banner-nav{display:none;}
 }
+/* Banner com tamanho cadastrado: a altura segue a proporção da imagem
+   (style="aspect-ratio: ..." no partials/banner.blade.php), sem cortar. */
+.banner-slider--ratio{height:auto;}
+/* Versão mobile só no celular. A versão desktop some no celular apenas
+   quando a página tem banner mobile. */
+.banner-slider--mobile{display:none;}
+@media (max-width:720px){
+  .banner-slider--desktop.banner-slider--has-mobile{display:none;}
+  .banner-slider--mobile{display:block;}
+}
  
 /* =========================================================================
 

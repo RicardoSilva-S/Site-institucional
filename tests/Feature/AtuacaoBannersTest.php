@@ -59,7 +59,8 @@ class AtuacaoBannersTest extends TestCase
             ->post('/adm/banners', [
                 'posicao' => 'atuacao:governanca',
                 'image' => $this->imagem(),
-                'title' => 'Oficina de processos',
+                'title' => 'Banner da frente de governança',
+                'display_title' => 'Oficina de processos',
                 'active' => '1',
             ])
             ->assertRedirect(route('admin.banners.index'));
@@ -71,6 +72,7 @@ class AtuacaoBannersTest extends TestCase
         $this->get('/atuacao')
             ->assertSee($banner->imageUrl(), false)
             ->assertSee('Oficina de processos')
+            ->assertDontSee('Banner da frente de governança')
             ->assertDontSee('assets/atuacao/governanca.svg')
             ->assertSee('assets/atuacao/pmo.svg');
     }

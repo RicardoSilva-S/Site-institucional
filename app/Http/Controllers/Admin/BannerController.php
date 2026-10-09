@@ -122,20 +122,42 @@ class BannerController extends Controller
         $data = $request->validate([
             'posicao' => ['nullable', 'string', Rule::in($this->positionValues())],
             'image' => [$imageRequired ? 'required' : 'nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'device' => ['nullable', Rule::in([Banner::DEVICE_DESKTOP, Banner::DEVICE_MOBILE])],
+            'width' => ['nullable', 'integer', 'min:100', 'max:4000'],
+            'height' => ['nullable', 'integer', 'min:100', 'max:4000'],
             'title' => ['nullable', 'string', 'max:255'],
+            'display_title' => ['nullable', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:500'],
             'link' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ], [], [
             'posicao' => 'onde aparece',
             'image' => 'imagem',
-            'title' => 'título',
+            'device' => 'versão',
+            'width' => 'largura',
+            'height' => 'altura',
+            'title' => 'nome interno',
+            'display_title' => 'título no banner',
             'subtitle' => 'subtítulo',
             'sort_order' => 'ordem',
         ]);
 
         [$data['page'], $data['slot']] = BannerSlots::decode($data['posicao'] ?? null);
         unset($data['posicao'], $data['image']);
+
+        if ($data['slot']) {
+            // Imagem ao lado de uma seção: não tem versão desktop/mobile.
+            $data['device'] = Banner::DEVICE_DESKTOP;
+            $data['width'] = null;
+            $data['height'] = null;
+        } else {
+            // Carrossel do topo: sem tamanho informado, usa o padrão da versão.
+            $data['device'] = $data['device'] ?? Banner::DEVICE_DESKTOP;
+            [$defaultWidth, $defaultHeight] = Banner::DEFAULT_SIZES[$data['device']];
+            $data['width'] = $data['width'] ?? $defaultWidth;
+            $data['height'] = $data['height'] ?? $defaultHeight;
+        }
+
         $data['sort_order'] = (int) ($data['sort_order'] ?? 0);
         $data['active'] = $request->boolean('active');
 
