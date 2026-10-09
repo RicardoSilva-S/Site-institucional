@@ -76,8 +76,10 @@
             <input type="number" id="height" name="height" min="100" max="4000" value="{{ old('height', $banner->height ?: $alturaPadrao) }}" aria-label="Altura em pixels">
             <span>px</span>
           </div>
-          <small class="admin-muted">Use o mesmo tamanho da imagem enviada. O site mostra o banner nessa proporção, sem cortar.</small>
+                    <small class="admin-muted">Use o mesmo tamanho da imagem enviada. O site mostra o banner nessa proporção, sem cortar.</small>
         </div>
+      </div>
+    </div>
 
     <div class="admin-form__row">
       <label for="image">Imagem {{ $banner->exists ? '(envie outra para trocar)' : '' }}</label>

@@ -50,10 +50,7 @@
   function setupImagePreview() {
     const input = document.getElementById("image");
     const preview = document.getElementById("image-preview");
-    const deviceFields = document.getElementById("banner-device-fields");
-    const device = document.getElementById("device");
-    const width = document.getElementById("width");
-    const height = document.getElementById("height");
+
     if (!input || !preview) return;
 
     input.addEventListener("change", () => {
@@ -68,6 +65,10 @@
     const select = document.getElementById("posicao");
     const hint = document.getElementById("image-hint");
     const preview = document.getElementById("image-preview");
+    const deviceFields = document.getElementById("banner-device-fields");
+    const device = document.getElementById("device");
+    const width = document.getElementById("width");
+    const height = document.getElementById("height");
     if (!select) return;
 
     function update() {
