@@ -50,6 +50,10 @@
   function setupImagePreview() {
     const input = document.getElementById("image");
     const preview = document.getElementById("image-preview");
+    const deviceFields = document.getElementById("banner-device-fields");
+    const device = document.getElementById("device");
+    const width = document.getElementById("width");
+    const height = document.getElementById("height");
     if (!input || !preview) return;
 
     input.addEventListener("change", () => {
@@ -69,9 +73,37 @@
     function update() {
       const option = select.selectedOptions[0];
       if (!option) return;
-      if (hint && option.dataset.hint) hint.textContent = option.dataset.hint;
-      // Imagem de seção é 4:3; a do carrossel do topo é larga.
-      if (preview) preview.classList.toggle("admin-preview--section", option.dataset.section === "1");
+      const isSection = option.dataset.section === "1";
+ 
+      // Versão e tamanho só existem no carrossel do topo.
+      if (deviceFields) deviceFields.hidden = isSection;
+ 
+      if (isSection) {
+        if (hint && option.dataset.hint) hint.textContent = option.dataset.hint;
+      } else if (hint && width && height) {
+        hint.textContent = "JPG, PNG ou WEBP, até 4 MB. Tamanho: " + width.value + " × " + height.value + " px.";
+      }
+ 
+      if (preview) {
+        // Imagem de seção é 4:3; a do topo segue o tamanho informado.
+        preview.classList.toggle("admin-preview--section", isSection);
+        preview.classList.toggle("admin-preview--mobile", !isSection && device && device.value === "mobile");
+        preview.style.aspectRatio = !isSection && width && height && width.value && height.value
+          ? width.value + " / " + height.value
+          : "";
+      }
+    }
+ 
+    // Trocar a versão preenche o tamanho padrão dela (1920 × 700 ou 600 × 700).
+    if (device && width && height) {
+      device.addEventListener("change", () => {
+        const option = device.selectedOptions[0];
+        width.value = option.dataset.width;
+        height.value = option.dataset.height;
+        update();
+      });
+      width.addEventListener("input", update);
+      height.addEventListener("input", update);
     }
 
     select.addEventListener("change", update);

@@ -7,15 +7,15 @@
   <div class="section-banner"@if ($slotBanners->count() > 1) aria-roledescription="carrossel" aria-label="Imagens da seção"@endif>
     @forelse ($slotBanners as $banner)
       <figure class="banner-slide{{ $loop->first ? ' is-active' : '' }}" aria-hidden="{{ $loop->first ? 'false' : 'true' }}">
-        <img src="{{ $banner->imageUrl() }}" alt="{{ $banner->title }}" @unless($loop->first && ($eager ?? false)) loading="lazy" @endunless>
-        @if ($banner->title || $banner->subtitle)
+        <img src="{{ $banner->imageUrl() }}" alt="{{ $banner->display_title }}" @unless($loop->first && ($eager ?? false)) loading="lazy" @endunless>
+        @if ($banner->display_title || $banner->subtitle)
           <figcaption class="section-banner__caption">
-            @if ($banner->title)<strong>{{ $banner->title }}</strong>@endif
+            @if ($banner->display_title)<strong>{{ $banner->display_title }}</strong>@endif
             @if ($banner->subtitle)<span>{{ $banner->subtitle }}</span>@endif
           </figcaption>
         @endif
         @if ($banner->link)
-          <a href="{{ $banner->link }}" class="banner-slide__link" aria-label="{{ $banner->title ?: 'Abrir banner' }}"></a>
+          <a href="{{ $banner->link }}" class="banner-slide__link" aria-label="{{ $banner->display_title ?: 'Abrir banner' }}"></a>
         @endif
       </figure>
     @empty

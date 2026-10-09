@@ -4,6 +4,8 @@
 
 @php
   $posicaoAtual = old('posicao', \App\Support\BannerSlots::encode($banner->page, $banner->slot));
+  $deviceAtual = old('device', $banner->device ?: \App\Models\Banner::DEVICE_DESKTOP);
+  [$larguraPadrao, $alturaPadrao] = \App\Models\Banner::DEFAULT_SIZES[$deviceAtual] ?? \App\Models\Banner::DEFAULT_SIZES['desktop'];
   $voltarUrl = $voltar ? route('admin.pages.show', $voltar).($banner->slot ? '#secao-'.$banner->slot : '') : route('admin.banners.index');
 @endphp
 
@@ -37,7 +39,7 @@
                 @php $isSection = \Illuminate\Support\Str::contains($value, \App\Support\BannerSlots::SEPARATOR); @endphp
                 <option value="{{ $value }}"
                         data-section="{{ $isSection ? '1' : '0' }}"
-                        data-hint="{{ $isSection ? 'JPG, PNG ou WEBP, até 4 MB. Tamanho recomendado: 1200 × 900 px (proporção 4:3).' : 'JPG, PNG ou WEBP, até 4 MB. Tamanho recomendado: 1920 × 600 px.' }}"
+                        data-hint="{{ $isSection ? 'JPG, PNG ou WEBP, até 4 MB. Tamanho recomendado: 1200 × 900 px (proporção 4:3).' : '' }}"
                         @if ((string) $posicaoAtual === (string) $value) selected @endif>{{ $label }}</option>
               @endforeach
             </optgroup>
@@ -46,6 +48,36 @@
         <small class="admin-muted">Imagens de seção substituem a ilustração padrão daquela seção. Com mais de um banner ativo no mesmo lugar, eles passam em carrossel.</small>
       </div>
     </div>
+ 
+    {{-- Só para o carrossel do topo: versão para computador ou celular, e o
+         tamanho da imagem (o site usa como proporção, para não cortar). --}}
+    <div id="banner-device-fields">
+      <div class="admin-form__row">
+        <label for="device">Versão</label>
+        <div>
+          <select id="device" name="device">
+            @foreach (\App\Models\Banner::DEFAULT_SIZES as $device => $size)
+              <option value="{{ $device }}" data-width="{{ $size[0] }}" data-height="{{ $size[1] }}"
+                      @if ($deviceAtual === $device) selected @endif>
+                {{ $device === 'mobile' ? 'Mobile (celular)' : 'Desktop (computador)' }} — {{ $size[0] }} × {{ $size[1] }} px
+              </option>
+            @endforeach
+          </select>
+          <small class="admin-muted">No celular aparecem os banners Mobile da página. Se não houver nenhum, aparecem os de Desktop.</small>
+        </div>
+      </div>
+ 
+      <div class="admin-form__row">
+        <label for="width">Tamanho da imagem</label>
+        <div>
+          <div class="admin-size">
+            <input type="number" id="width" name="width" min="100" max="4000" value="{{ old('width', $banner->width ?: $larguraPadrao) }}" aria-label="Largura em pixels">
+            <span>×</span>
+            <input type="number" id="height" name="height" min="100" max="4000" value="{{ old('height', $banner->height ?: $alturaPadrao) }}" aria-label="Altura em pixels">
+            <span>px</span>
+          </div>
+          <small class="admin-muted">Use o mesmo tamanho da imagem enviada. O site mostra o banner nessa proporção, sem cortar.</small>
+        </div>
 
     <div class="admin-form__row">
       <label for="image">Imagem {{ $banner->exists ? '(envie outra para trocar)' : '' }}</label>
@@ -61,10 +93,18 @@
     </div>
 
     <div class="admin-form__row">
-      <label for="title">Título</label>
+      <label for="title">Nome interno</label>
       <div>
-        <input type="text" id="title" name="title" maxlength="255" value="{{ old('title', $banner->title) }}">
-        <small class="admin-muted">Também é lido por leitores de tela como descrição da imagem.</small>
+        <input type="text" id="title" name="title" maxlength="255" placeholder="Ex: Banner campanha outubro (mobile)" value="{{ old('title', $banner->title) }}">
+        <small class="admin-muted">Aparece só aqui no painel, para identificar o banner. Não é mostrado no site.</small>
+      </div>
+    </div>
+ 
+    <div class="admin-form__row">
+      <label for="display_title">Título no banner</label>
+      <div>
+        <input type="text" id="display_title" name="display_title" maxlength="255" value="{{ old('display_title', $banner->display_title) }}">
+        <small class="admin-muted">Aparece escrito sobre a imagem, no site. Deixe vazio se a imagem já tem o texto.</small>
       </div>
     </div>
 
