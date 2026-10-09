@@ -214,10 +214,39 @@ details.readmore a.link{color:var(--navy);font-weight:600;display:inline-block;m
 .compare-cell.good .icon{background:var(--good-bg);color:var(--good-ink);}
 
 /* ---------- Process (steps) ---------- */
-.steps-hint{font-size:14px;color:var(--ink-soft);margin-bottom:24px;font-style:italic;}
+/* Carrossel das etapas: --per-view cartões inteiros por vez, sem barra de
+   rolagem; as setas (.steps-nav) avançam um cartão. Ver public/js/site.js. */
+.steps-carousel{position:relative;}
 .steps-track{
-  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);
-  gap:16px;overflow-x:auto;padding-bottom:6px;
+  --per-view:4;
+  display:grid;grid-auto-flow:column;
+  grid-auto-columns:calc((100% - (var(--per-view) - 1) * 16px) / var(--per-view));
+  gap:16px;overflow-x:auto;padding:6px 0 10px;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+.steps-track::-webkit-scrollbar{display:none;}
+.steps-track .step{scroll-snap-align:start;}
+.steps-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--paper);color:var(--navy);font-size:26px;line-height:1;cursor:pointer;
+  box-shadow:var(--shadow-md);transition:opacity .2s ease, background .2s ease, color .2s ease;
+}
+.steps-nav:hover{background:var(--navy);color:#fff;}
+.steps-nav--prev{left:-22px;}
+.steps-nav--next{right:-22px;}
+.steps-nav:disabled{opacity:0;pointer-events:none;}
+.steps-carousel.is-static .steps-nav{display:none;}
+@media (max-width:960px){
+  .steps-track{--per-view:2;}
+}
+@media (max-width:600px){
+  .steps-track{--per-view:1;}
+  .steps-nav{width:38px;height:38px;font-size:22px;}
+  .steps-nav--prev{left:-14px;}
+  .steps-nav--next{right:-14px;}
 }
 .step{
   background:var(--paper);padding:30px 26px;min-height:220px;display:flex;flex-direction:column;
