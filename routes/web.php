@@ -13,6 +13,7 @@ Route::get('/', [SiteController::class, 'home'])->name('home');
 Route::get('/institucional', [SiteController::class, 'institucional'])->name('institucional');
 Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-legal');
 Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
+Route::get('/projetos', [SiteController::class, 'projetos'])->name('projetos');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 Route::get('/politica-de-privacidade', [SiteController::class, 'privacidade'])->name('privacidade');

@@ -30,7 +30,10 @@ class SiteController extends Controller
     {
         return view('site.atuacao');
     }
-
+    public function projetos(): View
+    {
+    return view('site.projetos');
+    }
     public function contato(): View
     {
         return view('site.contato');
