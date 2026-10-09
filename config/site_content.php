@@ -371,11 +371,7 @@ return [
                         'label' => 'Subtítulo',
                         'default' => 'Todo projeto de tecnologia percorre o mesmo rito, em qualquer município. É isso que dá previsibilidade ao gestor e segurança ao controle.',
                         'long' => true,
-                    ],
-                    [
-                        'key' => 'home.steps.hint',
-                        'label' => 'Dica de arrastar',
-                        'default' => 'Arraste para o lado para ver as cinco etapas →',
+                  
                     ],
                     [
                         'key' => 'home.step1.title',

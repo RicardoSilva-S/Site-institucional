@@ -81,3 +81,43 @@
     document.querySelectorAll(".banner-slider, .section-banner").forEach(setupBannerSlider);
   });
 })();
+
+/**
+ * Carrossel das etapas da página inicial (.steps-carousel em home.blade.php).
+ * As setas avançam/voltam um cartão; cada seta some quando chega na ponta, e
+ * as duas somem se todos os cartões couberem na tela.
+ */
+(function () {
+  function setupStepsCarousel(carousel) {
+    const track = carousel.querySelector(".steps-track");
+    const prev = carousel.querySelector(".steps-nav--prev");
+    const next = carousel.querySelector(".steps-nav--next");
+    if (!track || !prev || !next) return;
+ 
+    // Largura de um cartão + o espaço entre eles.
+    function stepSize() {
+      const card = track.querySelector(".step");
+      if (!card) return track.clientWidth;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+ 
+    function update() {
+      const max = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= max - 1;
+      carousel.classList.toggle("is-static", max <= 1);
+    }
+ 
+    prev.addEventListener("click", () => track.scrollBy({ left: -stepSize(), behavior: "smooth" }));
+    next.addEventListener("click", () => track.scrollBy({ left: stepSize(), behavior: "smooth" }));
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+ 
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".steps-carousel").forEach(setupStepsCarousel);
+  });
+})();
+

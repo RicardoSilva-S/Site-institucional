@@ -99,8 +99,11 @@
         <h2>@content('home.steps.title')</h2>
         <p class="sub">@content('home.steps.sub')</p>
       </div>
-      <p class="steps-hint">@content('home.steps.hint')</p>
-      <div class="steps-track">
+      {{-- Carrossel das etapas: setas ao lado (public/js/site.js) e cartões
+           sempre inteiros na tela (4 no computador, 2 no tablet, 1 no celular). --}}
+      <div class="steps-carousel">
+        <button type="button" class="steps-nav steps-nav--prev" aria-label="Etapa anterior">‹</button>
+        <div class="steps-track" tabindex="0" aria-label="Etapas do processo">
         <div class="step">
           <span class="num">1</span>
           <h3>@content('home.step1.title')</h3>
@@ -128,6 +131,8 @@
           <h3>@content('home.step5.title')</h3>
           <p>@content('home.step5.desc')</p>
         </div>
+        </div>
+        <button type="button" class="steps-nav steps-nav--next" aria-label="Próxima etapa">›</button>
       </div>
     </div>
     @extraTexts('home.steps')
