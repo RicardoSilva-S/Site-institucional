@@ -22,10 +22,6 @@
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR - Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense">
     </a>
 
-    {{-- Projetos e Editais ainda não têm rota própria — Início,
-         Institucional, Marco Legal, Atuação, Contato e Transparência já foram
-         migrados para Blade. Aponte para a rota real assim que a página
-         correspondente existir em routes/web.php. --}}
     <nav class="primary" aria-label="Navegação principal">
       <ul>
         <li><a class="top-link" href="{{ route('home') }}">@content('shared.nav.inicio')</a></li>
@@ -39,7 +35,7 @@
           </div>
         </li>
         <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.atuacao')</a></li>
-        <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.projetos')</a></li>
+        <li><a class="top-link" href="{{ route('projetos') }}">@content('shared.nav.projetos')</a></li>
         <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.editais')</a></li>
         <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.transparencia')</a></li>
         <li><a class="top-link" href="{{ route('contato') }}">@content('shared.nav.contato')</a></li>
@@ -47,7 +43,7 @@
     </nav>
 
     <div style="display:flex;align-items:center;gap:12px;">
-    <a href="/contato" class="btn btn-primary">@content('shared.nav.cta')</a>
+      <a href="/contato" class="btn btn-primary">@content('shared.nav.cta')</a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>
   </div>
@@ -80,10 +76,10 @@
       <div>
         <h4>@content('shared.footer.col2.title')</h4>
         <ul>
-        <li><a href="{{ route('atuacao') }}">Projetos e produtos</a></li>
-        <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
-        <li><a href="{{ route('transparencia') }}">Editais e chamamentos</a></li>
-        <li><a href="{{ route('contato') }}#diagnostico">Diagnóstico gratuito</a></li>
+          <li><a href="{{ route('projetos') }}">Projetos e produtos</a></li>
+          <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
+          <li><a href="{{ route('transparencia') }}">Editais e chamamentos</a></li>
+          <li><a href="{{ route('contato') }}#diagnostico">Diagnóstico gratuito</a></li>
         </ul>
       </div>
 
