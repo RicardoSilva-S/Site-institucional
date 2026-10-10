@@ -258,7 +258,7 @@
           <h3>@content('home.transp.item3.title')</h3>
           <p>@content('home.transp.item3.desc')</p>
         </div>
-        <div class="transp-item">
+        <div class="transp-item">''
           <h3>@content('home.transp.item4.title')</h3>
           <p>@content('home.transp.item4.desc')</p>
         </div>

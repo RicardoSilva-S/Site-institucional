@@ -22,7 +22,8 @@
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR - Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense">
     </a>
 
-    <nav class="primary" aria-label="Navegação principal">
+
+<nav class="primary" aria-label="Navegação principal">
       <ul>
         <li><a class="top-link" href="{{ route('home') }}">@content('shared.nav.inicio')</a></li>
         <li class="has-sub">
@@ -36,14 +37,15 @@
         </li>
         <li><a class="top-link" href="{{ route('atuacao') }}">@content('shared.nav.atuacao')</a></li>
         <li><a class="top-link" href="{{ route('projetos') }}">@content('shared.nav.projetos')</a></li>
-        <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.editais')</a></li>
+        <li><a class="top-link" href="{{ route('editais') }}">@content('shared.nav.editais')</a></li>
         <li><a class="top-link" href="{{ route('transparencia') }}">@content('shared.nav.transparencia')</a></li>
         <li><a class="top-link" href="{{ route('contato') }}">@content('shared.nav.contato')</a></li>
       </ul>
     </nav>
 
+
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="/contato" class="btn btn-primary">@content('shared.nav.cta')</a>
+    <a href="/contato" class="btn btn-primary">@content('shared.nav.cta')</a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>
   </div>
@@ -64,22 +66,22 @@
       </div>
 
       <div>
-        <h4>@content('shared.footer.col1.title')</h4>
+        <h4>@content('shared.footer.col2.title')</h4>
         <ul>
-          <li><a href="{{ route('institucional') }}">Quem somos</a></li>
-          <li><a href="{{ route('institucional') }}#linha-do-tempo">Linha do tempo</a></li>
-          <li><a href="{{ route('institucional') }}#governanca">Governança</a></li>
-          <li><a href="{{ route('marco-legal') }}">Marco Legal</a></li>
+          <li><a href="{{ route('projetos') }}">Projetos e produtos</a></li>
+          <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
+          <li><a href="{{ route('editais') }}">Editais e chamamentos</a></li>
+          <li><a href="{{ route('contato') }}#diagnostico">Diagnóstico gratuito</a></li>
         </ul>
       </div>
 
       <div>
         <h4>@content('shared.footer.col2.title')</h4>
         <ul>
-          <li><a href="{{ route('projetos') }}">Projetos e produtos</a></li>
-          <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
-          <li><a href="{{ route('transparencia') }}">Editais e chamamentos</a></li>
-          <li><a href="{{ route('contato') }}#diagnostico">Diagnóstico gratuito</a></li>
+        <li><a href="{{ route('atuacao') }}">Projetos e produtos</a></li>
+        <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
+        <li><a href="{{ route('transparencia') }}">Editais e chamamentos</a></li>
+        <li><a href="{{ route('contato') }}#diagnostico">Diagnóstico gratuito</a></li>
         </ul>
       </div>
 
