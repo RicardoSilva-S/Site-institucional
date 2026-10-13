@@ -1704,6 +1704,498 @@ return [
         ],
     ],
     [
+        'page' => 'projetos',
+        'pageLabel' => 'Projetos',
+        'route' => 'projetos',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo',
+                'fields' => [
+                    [
+                        'key' => 'projetos.hero.eyebrow',
+                        'label' => 'Selo',
+                        'default' => 'Soluções para a gestão pública',
+                    ],
+                    [
+                        'key' => 'projetos.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Tecnologia que transforma desafios públicos em soluções.',
+                    ],
+                    [
+                        'key' => 'projetos.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'O IDTNPR aproxima inovação, desenvolvimento e administração pública para criar soluções acessíveis, seguras e conectadas à realidade de prefeituras e câmaras municipais.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'projetos.hero.btn1',
+                        'label' => 'Botão principal',
+                        'default' => 'Conheça as soluções',
+                    ],
+                    [
+                        'key' => 'projetos.hero.btn2',
+                        'label' => 'Botão secundário',
+                        'default' => 'Fale com o Instituto',
+                    ],
+                    [
+                        'key' => 'projetos.hero.fact1',
+                        'label' => 'Destaque 1',
+                        'default' => 'Inovação aplicada ao serviço do cidadão',
+                    ],
+                    [
+                        'key' => 'projetos.hero.fact2',
+                        'label' => 'Destaque 2',
+                        'default' => 'Soluções desenvolvidas para necessidades reais',
+                    ],
+                    [
+                        'key' => 'projetos.hero.fact3',
+                        'label' => 'Destaque 3',
+                        'default' => 'Orientação institucional em cada etapa',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'impacto',
+                'label' => 'Seção "Impacto e alcance"',
+                'fields' => [
+                    [
+                        'key' => 'projetos.impacto.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Impacto e alcance',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.title',
+                        'label' => 'Título',
+                        'default' => 'Projetos pensados para produzir resultado público.',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Cada iniciativa conecta diagnóstico, tecnologia e orientação para apoiar decisões mais eficientes e transparentes.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat1.num',
+                        'label' => 'Número 1',
+                        'default' => '4',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat1.label',
+                        'label' => 'Número 1 — legenda',
+                        'default' => 'frentes de soluções para municípios',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat2.num',
+                        'label' => 'Número 2',
+                        'default' => '3',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat2.label',
+                        'label' => 'Número 2 — legenda',
+                        'default' => 'áreas integradas: cidadão, gestão e legislativo',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat3.num',
+                        'label' => 'Número 3',
+                        'default' => '100%',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat3.label',
+                        'label' => 'Número 3 — legenda',
+                        'default' => 'foco na realidade da administração pública',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat4.num',
+                        'label' => 'Número 4',
+                        'default' => '1',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.stat4.label',
+                        'label' => 'Número 4 — legenda',
+                        'default' => 'Instituto para orientar o caminho da inovação',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa1.title',
+                        'label' => 'Etapa 1 — título',
+                        'default' => 'Diagnóstico',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa1.text',
+                        'label' => 'Etapa 1 — texto',
+                        'default' => 'Entender o desafio local',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa2.title',
+                        'label' => 'Etapa 2 — título',
+                        'default' => 'Desenho',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa2.text',
+                        'label' => 'Etapa 2 — texto',
+                        'default' => 'Definir a solução adequada',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa3.title',
+                        'label' => 'Etapa 3 — título',
+                        'default' => 'Tecnologia',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa3.text',
+                        'label' => 'Etapa 3 — texto',
+                        'default' => 'Aplicar inovação com propósito',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa4.title',
+                        'label' => 'Etapa 4 — título',
+                        'default' => 'Orientação',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa4.text',
+                        'label' => 'Etapa 4 — texto',
+                        'default' => 'Apoiar a contratação segura',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa5.title',
+                        'label' => 'Etapa 5 — título',
+                        'default' => 'Resultado',
+                    ],
+                    [
+                        'key' => 'projetos.impacto.etapa5.text',
+                        'label' => 'Etapa 5 — texto',
+                        'default' => 'Melhorar o serviço público',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'portfolio',
+                'label' => 'Seção "Portfólio" (os cards dos projetos vêm do cadastro de projetos)',
+                'fields' => [
+                    [
+                        'key' => 'projetos.portfolio.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Portfólio institucional',
+                    ],
+                    [
+                        'key' => 'projetos.portfolio.title',
+                        'label' => 'Título',
+                        'default' => 'Soluções para desafios reais da administração municipal.',
+                    ],
+                    [
+                        'key' => 'projetos.portfolio.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Conheça as iniciativas do IDTNPR e identifique quais delas podem contribuir para o seu município.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'cta',
+                'label' => 'Chamada final',
+                'fields' => [
+                    [
+                        'key' => 'projetos.cta.title',
+                        'label' => 'Título',
+                        'default' => 'Seu município também pode inovar com segurança.',
+                    ],
+                    [
+                        'key' => 'projetos.cta.text',
+                        'label' => 'Texto',
+                        'default' => 'Converse com o IDTNPR para identificar o desafio, avaliar a solução mais adequada e entender os próximos passos.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'projetos.cta.btn',
+                        'label' => 'Botão',
+                        'default' => 'Solicitar diagnóstico gratuito',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'page' => 'editais',
+        'pageLabel' => 'Editais',
+        'route' => 'editais',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo',
+                'fields' => [
+                    [
+                        'key' => 'editais.hero.eyebrow',
+                        'label' => 'Selo',
+                        'default' => 'Transparência e inovação aberta',
+                    ],
+                    [
+                        'key' => 'editais.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Editais e Chamamentos Públicos',
+                    ],
+                    [
+                        'key' => 'editais.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'O IDTNPR conduz seus chamamentos com regras claras, critérios objetivos e ampla publicidade. A cada edital, abrimos o Instituto à inovação aberta e buscamos parceiros tecnológicos capazes de entregar soluções seguras e comprovadas para prefeituras e câmaras municipais.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.hero.box1.title',
+                        'label' => 'Quadro 1 — título',
+                        'default' => 'Quem pode participar',
+                    ],
+                    [
+                        'key' => 'editais.hero.box1.text',
+                        'label' => 'Quadro 1 — texto',
+                        'default' => 'Empresas, startups e ICTs de tecnologia',
+                    ],
+                    [
+                        'key' => 'editais.hero.box2.title',
+                        'label' => 'Quadro 2 — título',
+                        'default' => 'Onde são publicados',
+                    ],
+                    [
+                        'key' => 'editais.hero.box2.text',
+                        'label' => 'Quadro 2 — texto',
+                        'default' => 'Esta página e Portal da Transparência',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'etapas',
+                'label' => 'Seção "Como participar"',
+                'fields' => [
+                    [
+                        'key' => 'editais.etapas.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Como participar',
+                    ],
+                    [
+                        'key' => 'editais.etapas.title',
+                        'label' => 'Título',
+                        'default' => 'Da qualificação à homologação, em quatro etapas',
+                    ],
+                    [
+                        'key' => 'editais.etapas.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'O mesmo caminho vale para todos os chamamentos. Cada etapa é documentada, os critérios são públicos e o resultado é divulgado para qualquer cidadão consultar.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa1.title',
+                        'label' => 'Etapa 1 — título',
+                        'default' => 'Qualificação',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa1.text',
+                        'label' => 'Etapa 1 — texto',
+                        'default' => 'A empresa reúne e envia a documentação de habilitação jurídica, fiscal, trabalhista e técnica, comprovando regularidade e experiência na solução que pretende ofertar.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa1.tag',
+                        'label' => 'Etapa 1 — selo',
+                        'default' => 'Etapa documental',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa2.title',
+                        'label' => 'Etapa 2 — título',
+                        'default' => 'Submissão da Proposta',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa2.text',
+                        'label' => 'Etapa 2 — texto',
+                        'default' => 'Dentro do prazo do edital, a empresa protocola a proposta com a descrição técnica da solução, o modelo de implantação, o cronograma e a forma de contratação prevista.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa3.title',
+                        'label' => 'Etapa 3 — título',
+                        'default' => 'Avaliação Técnica',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa3.text',
+                        'label' => 'Etapa 3 — texto',
+                        'default' => 'Uma comissão analisa as propostas com critérios objetivos divulgados no edital, como aderência ao objeto, segurança da informação, adequação à LGPD e interoperabilidade. Pode haver demonstração prática da solução.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa4.title',
+                        'label' => 'Etapa 4 — título',
+                        'default' => 'Homologação',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa4.text',
+                        'label' => 'Etapa 4 — texto',
+                        'default' => 'O resultado é publicado, abre-se prazo para recurso e, encerrada essa fase, o Instituto homologa o chamamento. As soluções aprovadas passam a integrar o catálogo disponível para contratação pelos entes públicos.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'parceria',
+                'label' => 'Seção "Parceria tecnológica"',
+                'fields' => [
+                    [
+                        'key' => 'editais.parceria.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Parceria tecnológica',
+                    ],
+                    [
+                        'key' => 'editais.parceria.title',
+                        'label' => 'Título',
+                        'default' => 'Inovação aberta para necessidades reais do município.',
+                    ],
+                    [
+                        'key' => 'editais.parceria.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'O Instituto conecta o ecossistema de inovação às demandas concretas da administração pública municipal, mantendo o processo acessível e orientado por critérios públicos.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box1.title',
+                        'label' => 'Quadro 1 — título',
+                        'default' => 'Portal oficial',
+                    ],
+                    [
+                        'key' => 'editais.parceria.box1.text',
+                        'label' => 'Quadro 1 — texto',
+                        'default' => 'Todos os documentos, avisos, retificações e resultados são divulgados nesta página e no Portal da Transparência.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box2.title',
+                        'label' => 'Quadro 2 — título',
+                        'default' => 'Critérios objetivos',
+                    ],
+                    [
+                        'key' => 'editais.parceria.box2.text',
+                        'label' => 'Quadro 2 — texto',
+                        'default' => 'Cada chamamento apresenta seu objeto, requisitos, prazos e critérios de avaliação antes do recebimento das propostas.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box3.title',
+                        'label' => 'Quadro 3 — título',
+                        'default' => 'Fale com o Instituto',
+                    ],
+                    [
+                        'key' => 'editais.parceria.box3.text',
+                        'label' => 'Quadro 3 — texto',
+                        'default' => 'Empresas, startups e ICTs podem tirar dúvidas e entender como apresentar uma solução tecnológica ao poder público.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box3.link',
+                        'label' => 'Quadro 3 — link',
+                        'default' => 'Entrar em contato',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'avisos',
+                'label' => 'Seção "Quadro de avisos"',
+                'fields' => [
+                    [
+                        'key' => 'editais.avisos.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Quadro de avisos',
+                    ],
+                    [
+                        'key' => 'editais.avisos.title',
+                        'label' => 'Título',
+                        'default' => 'Situação dos editais',
+                    ],
+                    [
+                        'key' => 'editais.avisos.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Um retrato rápido dos chamamentos conduzidos pelo Instituto, atualizado a cada publicação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat1',
+                        'label' => 'Contador 1 — legenda',
+                        'default' => 'Editais abertos para submissão de propostas',
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat2',
+                        'label' => 'Contador 2 — legenda',
+                        'default' => 'Editais em análise pela comissão técnica',
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat3',
+                        'label' => 'Contador 3 — legenda',
+                        'default' => 'Editais finalizados e homologados',
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat4',
+                        'label' => 'Contador 4 — legenda (o ano é colocado depois)',
+                        'default' => 'Chamamentos publicados em',
+                    ],
+                    [
+                        'key' => 'editais.avisos.nota.title',
+                        'label' => 'Aviso — título',
+                        'default' => 'Aviso aos interessados',
+                    ],
+                    [
+                        'key' => 'editais.avisos.nota.text',
+                        'label' => 'Aviso — texto',
+                        'default' => 'Retificações, erratas e respostas a pedidos de esclarecimento são publicadas no mesmo local do edital original. Confira as atualizações antes de enviar sua proposta: os prazos só mudam por aviso publicado.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'lista',
+                'label' => 'Seção "Editais publicados" (os editais vêm do cadastro de editais)',
+                'fields' => [
+                    [
+                        'key' => 'editais.lista.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Editais publicados',
+                    ],
+                    [
+                        'key' => 'editais.lista.title',
+                        'label' => 'Título (o ano é colocado depois)',
+                        'default' => 'Chamamentos públicos de',
+                    ],
+                    [
+                        'key' => 'editais.lista.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Leia o objeto, confira as datas e baixe o edital completo para conhecer requisitos, critérios de avaliação e formas de contratação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.lista.vazio',
+                        'label' => 'Mensagem quando o filtro não acha nada',
+                        'default' => 'Nenhum edital encontrado para este filtro.',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'cta',
+                'label' => 'Chamada final',
+                'fields' => [
+                    [
+                        'key' => 'editais.cta.title',
+                        'label' => 'Título',
+                        'default' => 'Sua empresa tem uma solução para a gestão pública?',
+                    ],
+                    [
+                        'key' => 'editais.cta.text',
+                        'label' => 'Texto',
+                        'default' => 'Fale com a equipe do Instituto, tire dúvidas sobre os próximos chamamentos e conheça o caminho para levar sua tecnologia a prefeituras e câmaras.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.cta.btn',
+                        'label' => 'Botão',
+                        'default' => 'Falar com o Instituto',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
         'page' => 'marcolegal',
         'pageLabel' => 'Marco Legal',
         'route' => 'marco-legal',
@@ -2364,6 +2856,242 @@ return [
                         'label' => 'Texto (antes dos links de e-mail e Ouvidoria)',
                         'default' => 'Qualquer pessoa pode solicitar informações sobre a atuação do Instituto, identificando-se ou não, pelo e-mail',
                         'long' => true,
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'page' => 'privacidade',
+        'pageLabel' => 'Política de Privacidade',
+        'route' => 'privacidade',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.hero.eyebrow',
+                        'label' => 'Selo',
+                        'default' => 'LGPD',
+                    ],
+                    [
+                        'key' => 'privacidade.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Política de Privacidade',
+                    ],
+                    [
+                        'key' => 'privacidade.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'Como o IDTNPR trata os dados pessoais de quem utiliza este site, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados).',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.hero.atualizacao',
+                        'label' => 'Data da última atualização',
+                        'default' => 'Última atualização: outubro de 2026',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'dados',
+                'label' => 'Controlador e dados coletados',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.controlador.kicker',
+                        'label' => 'Controlador — selo',
+                        'default' => 'Quem somos',
+                    ],
+                    [
+                        'key' => 'privacidade.controlador.title',
+                        'label' => 'Controlador — título',
+                        'default' => 'Controlador dos dados',
+                    ],
+                    [
+                        'key' => 'privacidade.controlador.text',
+                        'label' => 'Controlador — texto',
+                        'default' => 'O Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense (IDTNPR), CNPJ 64.039.593/0001-82, com sede em Sarandi/PR, é o responsável pelo tratamento dos dados pessoais coletados por este site.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.kicker',
+                        'label' => 'Coleta — selo',
+                        'default' => 'Coleta',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.title',
+                        'label' => 'Coleta — título',
+                        'default' => 'Quais dados coletamos',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.text',
+                        'label' => 'Coleta — texto',
+                        'default' => 'Coletamos apenas os dados que você nos envia voluntariamente pelo formulário de contato:',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item1',
+                        'label' => 'Coleta — item 1',
+                        'default' => 'Nome',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item2',
+                        'label' => 'Coleta — item 2',
+                        'default' => 'E-mail',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item3',
+                        'label' => 'Coleta — item 3',
+                        'default' => 'Telefone (quando informado)',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item4',
+                        'label' => 'Coleta — item 4',
+                        'default' => 'O conteúdo da mensagem enviada',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'uso',
+                'label' => 'Finalidade e cookies',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.uso.kicker',
+                        'label' => 'Uso — selo',
+                        'default' => 'Uso',
+                    ],
+                    [
+                        'key' => 'privacidade.uso.title',
+                        'label' => 'Uso — título',
+                        'default' => 'Para que usamos os seus dados',
+                    ],
+                    [
+                        'key' => 'privacidade.uso.text',
+                        'label' => 'Uso — texto',
+                        'default' => 'Os dados são usados exclusivamente para responder à sua solicitação e manter o contato sobre o assunto tratado. Não vendemos nem compartilhamos seus dados para fins comerciais.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.cookies.kicker',
+                        'label' => 'Cookies — selo',
+                        'default' => 'Cookies',
+                    ],
+                    [
+                        'key' => 'privacidade.cookies.title',
+                        'label' => 'Cookies — título',
+                        'default' => 'Uso de cookies',
+                    ],
+                    [
+                        'key' => 'privacidade.cookies.text',
+                        'label' => 'Cookies — texto',
+                        'default' => 'Este site utiliza apenas cookies necessários ao seu funcionamento, como o cookie de sessão. Não utilizamos cookies de publicidade ou de rastreamento.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'direitos',
+                'label' => 'Armazenamento e direitos',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.armazenamento.kicker',
+                        'label' => 'Armazenamento — selo',
+                        'default' => 'Armazenamento',
+                    ],
+                    [
+                        'key' => 'privacidade.armazenamento.title',
+                        'label' => 'Armazenamento — título',
+                        'default' => 'Como guardamos seus dados',
+                    ],
+                    [
+                        'key' => 'privacidade.armazenamento.p1',
+                        'label' => 'Armazenamento — parágrafo 1',
+                        'default' => 'Os dados enviados pelo formulário de contato ficam armazenados de forma segura em nossos sistemas, com acesso restrito às pessoas responsáveis por responder às solicitações.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.armazenamento.p2',
+                        'label' => 'Armazenamento — parágrafo 2',
+                        'default' => 'Você pode solicitar a exclusão dos seus dados a qualquer momento, pelos canais de contato indicados ao final desta página.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.kicker',
+                        'label' => 'Direitos — selo',
+                        'default' => 'Seus direitos',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.title',
+                        'label' => 'Direitos — título',
+                        'default' => 'O que você pode solicitar',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.text',
+                        'label' => 'Direitos — texto',
+                        'default' => 'Nos termos do art. 18 da LGPD, você pode, a qualquer momento:',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item1',
+                        'label' => 'Direitos — item 1',
+                        'default' => 'Confirmar se tratamos seus dados e acessá-los',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item2',
+                        'label' => 'Direitos — item 2',
+                        'default' => 'Corrigir dados incompletos ou desatualizados',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item3',
+                        'label' => 'Direitos — item 3',
+                        'default' => 'Pedir a anonimização, o bloqueio ou a exclusão dos dados',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item4',
+                        'label' => 'Direitos — item 4',
+                        'default' => 'Saber com quem seus dados foram compartilhados',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item5',
+                        'label' => 'Direitos — item 5',
+                        'default' => 'Revogar o consentimento',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'contato',
+                'label' => 'Seção "Fale conosco" (e-mail e WhatsApp ficam fixos)',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.contato.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Fale conosco',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.title',
+                        'label' => 'Título',
+                        'default' => 'Dúvidas ou solicitações sobre seus dados',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Para exercer seus direitos ou tirar dúvidas sobre esta política, entre em contato pelos nossos canais oficiais.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.contato.email',
+                        'label' => 'Rótulo do e-mail',
+                        'default' => 'E-mail',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.whatsapp',
+                        'label' => 'Rótulo do WhatsApp',
+                        'default' => 'WhatsApp',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.btn',
+                        'label' => 'Botão',
+                        'default' => 'Ir para a página de Contato',
                     ],
                 ],
             ],

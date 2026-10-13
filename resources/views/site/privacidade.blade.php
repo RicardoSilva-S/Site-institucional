@@ -48,98 +48,102 @@
         </svg>
       </div>
       <div>
-        <span class="eyebrow"><span class="dot"></span> LGPD</span>
-        <h1>Política de Privacidade</h1>
-        <p class="lead">Como o IDTNPR trata os dados pessoais de quem utiliza este site, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados).</p>
-        <p class="policy-updated">Última atualização: outubro de 2026</p>
+        <span class="eyebrow"><span class="dot"></span> @content('privacidade.hero.eyebrow')</span>
+        <h1>@content('privacidade.hero.title')</h1>
+        <p class="lead">@content('privacidade.hero.lead')</p>
+        <p class="policy-updated">@content('privacidade.hero.atualizacao')</p>
       </div>
     </div>
+    @extraTexts('privacidade.hero')
   </section>
 
   <!-- CONTROLADOR E DADOS -->
   <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Quem somos</span>
-        <h2>Controlador dos dados</h2>
+        <span class="kicker">@content('privacidade.controlador.kicker')</span>
+        <h2>@content('privacidade.controlador.title')</h2>
       </div>
       <div class="info-box">
-        <p>O Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense (IDTNPR), CNPJ 64.039.593/0001-82, com sede em Sarandi/PR, é o responsável pelo tratamento dos dados pessoais coletados por este site.</p>
+        <p>@content('privacidade.controlador.text')</p>
       </div>
 
       <div class="section-head" style="margin-top:48px;">
-        <span class="kicker">Coleta</span>
-        <h2>Quais dados coletamos</h2>
+        <span class="kicker">@content('privacidade.coleta.kicker')</span>
+        <h2>@content('privacidade.coleta.title')</h2>
       </div>
       <div class="info-box">
-        <p>Coletamos apenas os dados que você nos envia voluntariamente pelo formulário de contato:</p>
+        <p>@content('privacidade.coleta.text')</p>
         <ul class="policy-list">
-          <li>Nome</li>
-          <li>E-mail</li>
-          <li>Telefone (quando informado)</li>
-          <li>O conteúdo da mensagem enviada</li>
+          <li>@content('privacidade.coleta.item1')</li>
+          <li>@content('privacidade.coleta.item2')</li>
+          <li>@content('privacidade.coleta.item3')</li>
+          <li>@content('privacidade.coleta.item4')</li>
         </ul>
       </div>
     </div>
+    @extraTexts('privacidade.dados')
   </section>
 
   <!-- FINALIDADE E COOKIES -->
   <section class="alt">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Uso</span>
-        <h2>Para que usamos os seus dados</h2>
+        <span class="kicker">@content('privacidade.uso.kicker')</span>
+        <h2>@content('privacidade.uso.title')</h2>
       </div>
       <div class="info-box">
-        <p>Os dados são usados exclusivamente para responder à sua solicitação e manter o contato sobre o assunto tratado. Não vendemos nem compartilhamos seus dados para fins comerciais.</p>
+        <p>@content('privacidade.uso.text')</p>
       </div>
 
       <div class="section-head" style="margin-top:48px;">
-        <span class="kicker">Cookies</span>
-        <h2>Uso de cookies</h2>
+        <span class="kicker">@content('privacidade.cookies.kicker')</span>
+        <h2>@content('privacidade.cookies.title')</h2>
       </div>
       <div class="info-box">
-        <p>Este site utiliza apenas cookies necessários ao seu funcionamento, como o cookie de sessão. Não utilizamos cookies de publicidade ou de rastreamento.</p>
+        <p>@content('privacidade.cookies.text')</p>
       </div>
     </div>
+    @extraTexts('privacidade.uso')
   </section>
 
   <!-- ARMAZENAMENTO E DIREITOS -->
   <section>
     <div class="wrap">
             <div class="section-head">
-        <span class="kicker">Armazenamento</span>
-        <h2>Como guardamos seus dados</h2>
+        <span class="kicker">@content('privacidade.armazenamento.kicker')</span>
+        <h2>@content('privacidade.armazenamento.title')</h2>
       </div>
       <div class="info-box">
-        <p>Os dados enviados pelo formulário de contato ficam armazenados de forma segura em nossos sistemas, com acesso restrito às pessoas responsáveis por responder às solicitações.</p>
-        <p style="margin-top:14px;">Você pode solicitar a exclusão dos seus dados a qualquer momento, pelos canais de contato indicados ao final desta página.</p>
+        <p>@content('privacidade.armazenamento.p1')</p>
+        <p style="margin-top:14px;">@content('privacidade.armazenamento.p2')</p>
       </div>
 
       <div class="section-head" style="margin-top:48px;">
-        <span class="kicker">Seus direitos</span>
-        <h2>O que você pode solicitar</h2>
+        <span class="kicker">@content('privacidade.direitos.kicker')</span>
+        <h2>@content('privacidade.direitos.title')</h2>
       </div>
       <div class="info-box">
-        <p>Nos termos do art. 18 da LGPD, você pode, a qualquer momento:</p>
+        <p>@content('privacidade.direitos.text')</p>
         <ul class="policy-list">
-          <li>Confirmar se tratamos seus dados e acessá-los</li>
-          <li>Corrigir dados incompletos ou desatualizados</li>
-          <li>Pedir a anonimização, o bloqueio ou a exclusão dos dados</li>
-          <li>Saber com quem seus dados foram compartilhados</li>
-          <li>Revogar o consentimento</li>
+          <li>@content('privacidade.direitos.item1')</li>
+          <li>@content('privacidade.direitos.item2')</li>
+          <li>@content('privacidade.direitos.item3')</li>
+          <li>@content('privacidade.direitos.item4')</li>
+          <li>@content('privacidade.direitos.item5')</li>
         </ul>
       </div>
     </div>
+    @extraTexts('privacidade.direitos')
   </section>
 
   <!-- CONTATO -->
   <section class="alt">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Fale conosco</span>
-        <h2>Dúvidas ou solicitações sobre seus dados</h2>
-        <p class="sub">Para exercer seus direitos ou tirar dúvidas sobre esta política, entre em contato pelos nossos canais oficiais.</p>
+        <span class="kicker">@content('privacidade.contato.kicker')</span>
+        <h2>@content('privacidade.contato.title')</h2>
+        <p class="sub">@content('privacidade.contato.sub')</p>
       </div>
       <div class="info-box">
         <div class="policy-feature">
@@ -150,7 +154,7 @@
             </svg>
           </span>
           <div>
-            <h3>E-mail</h3>
+            <h3>@content('privacidade.contato.email')</h3>
             <p><a href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></p>
           </div>
         </div>
@@ -162,15 +166,16 @@
             </svg>
           </span>
           <div>
-            <h3>WhatsApp</h3>
+            <h3>@content('privacidade.contato.whatsapp')</h3>
             <p><a href="https://wa.me/5544998083001" target="_blank" rel="noopener">(44) 99808-3001</a></p>
           </div>
         </div>
       </div>
 
       <p style="margin-top:24px;">
-        <a href="{{ url('/contato') }}" class="btn btn-primary">Ir para a página de Contato</a>
+        <a href="{{ url('/contato') }}" class="btn btn-primary">@content('privacidade.contato.btn')</a>
       </p>
     </div>
+    @extraTexts('privacidade.contato')
   </section>
 @endsection 

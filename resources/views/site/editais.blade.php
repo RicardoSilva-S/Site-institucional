@@ -13,18 +13,18 @@
 
       <!-- Coluna da esquerda: conteúdo essencial dos editais -->
       <div>
-        <span class="eyebrow"><span class="dot"></span> Transparência e inovação aberta</span>
-        <h1>Editais e Chamamentos Públicos</h1>
-        <p class="lead">O IDTNPR conduz seus chamamentos com regras claras, critérios objetivos e ampla publicidade. A cada edital, abrimos o Instituto à inovação aberta e buscamos parceiros tecnológicos capazes de entregar soluções seguras e comprovadas para prefeituras e câmaras municipais.</p>
+        <span class="eyebrow"><span class="dot"></span> @content('editais.hero.eyebrow')</span>
+        <h1>@content('editais.hero.title')</h1>
+        <p class="lead">@content('editais.hero.lead')</p>
 
         <div class="info-grid" style="margin-top:34px;">
           <div class="info-box">
-            <h3>Quem pode participar</h3>
-            <p>Empresas, startups e ICTs de tecnologia</p>
+            <h3>@content('editais.hero.box1.title')</h3>
+            <p>@content('editais.hero.box1.text')</p>
           </div>
           <div class="info-box">
-            <h3>Onde são publicados</h3>
-            <p>Esta página e Portal da Transparência</p>
+            <h3>@content('editais.hero.box2.title')</h3>
+            <p>@content('editais.hero.box2.text')</p>
           </div>
         </div>
       </div>
@@ -72,15 +72,16 @@
       </div>
 
     </div>
+    @extraTexts('editais.hero')
   </section>
 
   <!-- COMO FUNCIONA -->
   <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Como participar</span>
-        <h2>Da qualificação à homologação, em quatro etapas</h2>
-        <p class="sub">O mesmo caminho vale para todos os chamamentos. Cada etapa é documentada, os critérios são públicos e o resultado é divulgado para qualquer cidadão consultar.</p>
+        <span class="kicker">@content('editais.etapas.kicker')</span>
+        <h2>@content('editais.etapas.title')</h2>
+        <p class="sub">@content('editais.etapas.sub')</p>
       </div>
 
       <div class="steps-carousel">
@@ -88,102 +89,105 @@
         <div class="steps-track" tabindex="0" aria-label="Etapas para participar dos editais">
           <div class="step">
             <span class="num">1</span>
-            <h3>Qualificação</h3>
-            <p>A empresa reúne e envia a documentação de habilitação jurídica, fiscal, trabalhista e técnica, comprovando regularidade e experiência na solução que pretende ofertar.</p>
-            <span class="free">Etapa documental</span>
+            <h3>@content('editais.etapas.etapa1.title')</h3>
+            <p>@content('editais.etapas.etapa1.text')</p>
+            <span class="free">@content('editais.etapas.etapa1.tag')</span>
           </div>
           <div class="step">
             <span class="num">2</span>
-            <h3>Submissão da Proposta</h3>
-            <p>Dentro do prazo do edital, a empresa protocola a proposta com a descrição técnica da solução, o modelo de implantação, o cronograma e a forma de contratação prevista.</p>
+            <h3>@content('editais.etapas.etapa2.title')</h3>
+            <p>@content('editais.etapas.etapa2.text')</p>
           </div>
           <div class="step">
             <span class="num">3</span>
-            <h3>Avaliação Técnica</h3>
-            <p>Uma comissão analisa as propostas com critérios objetivos divulgados no edital, como aderência ao objeto, segurança da informação, adequação à LGPD e interoperabilidade. Pode haver demonstração prática da solução.</p>
+            <h3>@content('editais.etapas.etapa3.title')</h3>
+            <p>@content('editais.etapas.etapa3.text')</p>
           </div>
           <div class="step">
             <span class="num">4</span>
-            <h3>Homologação</h3>
-            <p>O resultado é publicado, abre-se prazo para recurso e, encerrada essa fase, o Instituto homologa o chamamento. As soluções aprovadas passam a integrar o catálogo disponível para contratação pelos entes públicos.</p>
+            <h3>@content('editais.etapas.etapa4.title')</h3>
+            <p>@content('editais.etapas.etapa4.text')</p>
           </div>
         </div>
         <button type="button" class="steps-nav steps-nav--next" aria-label="Próxima etapa">›</button>
       </div>
     </div>
+    @extraTexts('editais.etapas')
   </section>
 
   <!-- INFORMAÇÕES INSTITUCIONAIS: conteúdo antes exibido no cartão azul do Hero -->
   <section class="alt">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Parceria tecnológica</span>
-        <h2>Inovação aberta para necessidades reais do município.</h2>
-        <p class="sub">O Instituto conecta o ecossistema de inovação às demandas concretas da administração pública municipal, mantendo o processo acessível e orientado por critérios públicos.</p>
+        <span class="kicker">@content('editais.parceria.kicker')</span>
+        <h2>@content('editais.parceria.title')</h2>
+        <p class="sub">@content('editais.parceria.sub')</p>
       </div>
 
       <div class="info-grid">
         <div class="info-box">
-          <h3>Portal oficial</h3>
-          <p>Todos os documentos, avisos, retificações e resultados são divulgados nesta página e no Portal da Transparência.</p>
+          <h3>@content('editais.parceria.box1.title')</h3>
+          <p>@content('editais.parceria.box1.text')</p>
         </div>
         <div class="info-box">
-          <h3>Critérios objetivos</h3>
-          <p>Cada chamamento apresenta seu objeto, requisitos, prazos e critérios de avaliação antes do recebimento das propostas.</p>
+          <h3>@content('editais.parceria.box2.title')</h3>
+          <p>@content('editais.parceria.box2.text')</p>
         </div>
         <div class="info-box">
-          <h3>Fale com o Instituto</h3>
-          <p>Empresas, startups e ICTs podem tirar dúvidas e entender como apresentar uma solução tecnológica ao poder público.</p>
+          <h3>@content('editais.parceria.box3.title')</h3>
+          <p>@content('editais.parceria.box3.text')</p>
           <div class="cards-cta">
-            <a href="{{ route('contato') }}">Entrar em contato</a>
+            <a href="{{ route('contato') }}">@content('editais.parceria.box3.link')</a>
           </div>
         </div>
       </div>
     </div>
+    @extraTexts('editais.parceria')
   </section>
 
   <!-- QUADRO DE AVISOS -->
   <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Quadro de avisos</span>
-        <h2>Situação dos editais</h2>
-        <p class="sub">Um retrato rápido dos chamamentos conduzidos pelo Instituto, atualizado a cada publicação.</p>
+        <span class="kicker">@content('editais.avisos.kicker')</span>
+        <h2>@content('editais.avisos.title')</h2>
+        <p class="sub">@content('editais.avisos.sub')</p>
       </div>
 
       <div class="stats-grid">
         <div class="stat">
           <div class="num">{{ $contagem->get('aberto', 0) }}</div>
-          <div class="label">Editais abertos para submissão de propostas</div>
+          <div class="label">@content('editais.avisos.stat1')</div>
         </div>
         <div class="stat">
           <div class="num">{{ $contagem->get('analise', 0) }}</div>
-          <div class="label">Editais em análise pela comissão técnica</div>
+          <div class="label">@content('editais.avisos.stat2')</div>
         </div>
         <div class="stat">
           <div class="num">{{ $contagem->get('encerrado', 0) }}</div>
-          <div class="label">Editais finalizados e homologados</div>
+          <div class="label">@content('editais.avisos.stat3')</div>
         </div>
         <div class="stat">
           <div class="num">{{ $editais->count() }}</div>
-          <div class="label">Chamamentos publicados em {{ now()->year }}</div>
+          <div class="label">@content('editais.avisos.stat4') {{ now()->year }}</div>
         </div>
       </div>
 
       <div class="legal-note">
-        <h3>Aviso aos interessados</h3>
-        <p>Retificações, erratas e respostas a pedidos de esclarecimento são publicadas no mesmo local do edital original. Confira as atualizações antes de enviar sua proposta: os prazos só mudam por aviso publicado.</p>
+        <h3>@content('editais.avisos.nota.title')</h3>
+        <p>@content('editais.avisos.nota.text')</p>
       </div>
     </div>
+    @extraTexts('editais.avisos')
   </section>
 
   <!-- LISTA DE EDITAIS -->
   <section id="lista-editais">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Editais publicados</span>
-        <h2>Chamamentos públicos de {{ now()->year }}</h2>
-        <p class="sub">Leia o objeto, confira as datas e baixe o edital completo para conhecer requisitos, critérios de avaliação e formas de contratação.</p>
+        <span class="kicker">@content('editais.lista.kicker')</span>
+        <h2>@content('editais.lista.title') {{ now()->year }}</h2>
+        <p class="sub">@content('editais.lista.sub')</p>
       </div>
 
       <div class="doc-filters" role="group" aria-label="Filtrar editais por situação">
@@ -218,19 +222,21 @@
         @endforeach
       </div>
 
-      <div class="doc-empty" role="status">Nenhum edital encontrado para este filtro.</div>
+      <div class="doc-empty" role="status">@content('editais.lista.vazio')</div>
     </div>
+    @extraTexts('editais.lista')
   </section>
 
   <!-- CTA FINAL -->
   <section class="final-cta">
     <div class="wrap">
       <div>
-        <h2>Sua empresa tem uma solução para a gestão pública?</h2>
-        <p>Fale com a equipe do Instituto, tire dúvidas sobre os próximos chamamentos e conheça o caminho para levar sua tecnologia a prefeituras e câmaras.</p>
+        <h2>@content('editais.cta.title')</h2>
+        <p>@content('editais.cta.text')</p>
       </div>
-      <a href="{{ route('contato') }}" class="btn btn-gold">Falar com o Instituto</a>
+      <a href="{{ route('contato') }}" class="btn btn-gold">@content('editais.cta.btn')</a>
     </div>
+    @extraTexts('editais.cta')
   </section>
 
 @endsection
