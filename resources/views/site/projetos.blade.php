@@ -9,17 +9,17 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow"><span class="dot"></span> Soluções para a gestão pública</span>
-        <h1>Tecnologia que transforma desafios públicos em soluções.</h1>
-        <p class="lead">O IDTNPR aproxima inovação, desenvolvimento e administração pública para criar soluções acessíveis, seguras e conectadas à realidade de prefeituras e câmaras municipais.</p>
+        <span class="eyebrow"><span class="dot"></span> @content('projetos.hero.eyebrow')</span>
+        <h1>@content('projetos.hero.title')</h1>
+        <p class="lead">@content('projetos.hero.lead')</p>
         <div class="cta-row">
-          <a href="#projetos" class="btn btn-primary">Conheça as soluções</a>
-          <a href="{{ route('contato') }}" class="btn btn-outline">Fale com o Instituto</a>
+          <a href="#projetos" class="btn btn-primary">@content('projetos.hero.btn1')</a>
+          <a href="{{ route('contato') }}" class="btn btn-outline">@content('projetos.hero.btn2')</a>
         </div>
         <ul class="facts">
-          <li>Inovação aplicada ao serviço do cidadão</li>
-          <li>Soluções desenvolvidas para necessidades reais</li>
-          <li>Orientação institucional em cada etapa</li>
+          <li>@content('projetos.hero.fact1')</li>
+          <li>@content('projetos.hero.fact2')</li>
+          <li>@content('projetos.hero.fact3')</li>
         </ul>
       </div>
 
@@ -68,53 +68,55 @@
         </svg>
       </div>
     </div>
+    @extraTexts('projetos.hero')
   </section>
 
   {{-- IMPACTO --}}
   <section class="alt">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Impacto e alcance</span>
-        <h2>Projetos pensados para produzir resultado público.</h2>
-        <p class="sub">Cada iniciativa conecta diagnóstico, tecnologia e orientação para apoiar decisões mais eficientes e transparentes.</p>
+        <span class="kicker">@content('projetos.impacto.kicker')</span>
+        <h2>@content('projetos.impacto.title')</h2>
+        <p class="sub">@content('projetos.impacto.sub')</p>
       </div>
 
       <div class="stats-grid">
         <div class="stat">
-          <div class="num">4</div>
-          <div class="label">frentes de soluções para municípios</div>
+          <div class="num">@content('projetos.impacto.stat1.num')</div>
+          <div class="label">@content('projetos.impacto.stat1.label')</div>
         </div>
         <div class="stat">
-          <div class="num">3</div>
-          <div class="label">áreas integradas: cidadão, gestão e legislativo</div>
+          <div class="num">@content('projetos.impacto.stat2.num')</div>
+          <div class="label">@content('projetos.impacto.stat2.label')</div>
         </div>
         <div class="stat">
-          <div class="num">100%</div>
-          <div class="label">foco na realidade da administração pública</div>
+          <div class="num">@content('projetos.impacto.stat3.num')</div>
+          <div class="label">@content('projetos.impacto.stat3.label')</div>
         </div>
         <div class="stat">
-          <div class="num">1</div>
-          <div class="label">Instituto para orientar o caminho da inovação</div>
+          <div class="num">@content('projetos.impacto.stat4.num')</div>
+          <div class="label">@content('projetos.impacto.stat4.label')</div>
         </div>
       </div>
 
       <div class="rite-strip">
-        <div class="rite-stage"><div class="t">Diagnóstico</div><div class="s">Entender o desafio local</div></div>
-        <div class="rite-stage"><div class="t">Desenho</div><div class="s">Definir a solução adequada</div></div>
-        <div class="rite-stage"><div class="t">Tecnologia</div><div class="s">Aplicar inovação com propósito</div></div>
-        <div class="rite-stage"><div class="t">Orientação</div><div class="s">Apoiar a contratação segura</div></div>
-        <div class="rite-stage"><div class="t">Resultado</div><div class="s">Melhorar o serviço público</div></div>
+        <div class="rite-stage"><div class="t">@content('projetos.impacto.etapa1.title')</div><div class="s">@content('projetos.impacto.etapa1.text')</div></div>
+        <div class="rite-stage"><div class="t">@content('projetos.impacto.etapa2.title')</div><div class="s">@content('projetos.impacto.etapa2.text')</div></div>
+        <div class="rite-stage"><div class="t">@content('projetos.impacto.etapa3.title')</div><div class="s">@content('projetos.impacto.etapa3.text')</div></div>
+        <div class="rite-stage"><div class="t">@content('projetos.impacto.etapa4.title')</div><div class="s">@content('projetos.impacto.etapa4.text')</div></div>
+        <div class="rite-stage"><div class="t">@content('projetos.impacto.etapa5.title')</div><div class="s">@content('projetos.impacto.etapa5.text')</div></div>
       </div>
     </div>
+    @extraTexts('projetos.impacto')
   </section>
 
   {{-- PROJETOS E SOLUÇÕES --}}
   <section id="projetos">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Portfólio institucional</span>
-        <h2>Soluções para desafios reais da administração municipal.</h2>
-        <p class="sub">Conheça as iniciativas do IDTNPR e identifique quais delas podem contribuir para o seu município.</p>
+        <span class="kicker">@content('projetos.portfolio.kicker')</span>
+        <h2>@content('projetos.portfolio.title')</h2>
+        <p class="sub">@content('projetos.portfolio.sub')</p>
       </div>
 
       <div class="cards-grid">
@@ -164,17 +166,19 @@
         </article>
       </div>
     </div>
+    @extraTexts('projetos.portfolio')
   </section>
 
   {{-- CTA FINAL --}}
   <section class="final-cta">
     <div class="wrap">
       <div>
-        <h2>Seu município também pode inovar com segurança.</h2>
-        <p>Converse com o IDTNPR para identificar o desafio, avaliar a solução mais adequada e entender os próximos passos.</p>
+        <h2>@content('projetos.cta.title')</h2>
+        <p>@content('projetos.cta.text')</p>
       </div>
-      <a href="{{ route('contato') }}" class="btn btn-gold">Solicitar diagnóstico gratuito</a>
+      <a href="{{ route('contato') }}" class="btn btn-gold">@content('projetos.cta.btn')</a>
     </div>
+    @extraTexts('projetos.cta')
   </section>
 
 @endsection
