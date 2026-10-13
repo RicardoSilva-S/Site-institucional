@@ -54,6 +54,14 @@
           </a>
         </li>
       </ul>
+      <p class="admin-sidebar__title">Contato</p>
+      <ul>
+        <li>
+          <a href="{{ route('admin.messages.index') }}" class="{{ request()->routeIs('admin.messages.*') ? 'is-active' : '' }}">
+            Mensagens
+          </a>
+        </li>
+      </ul>
       @if (auth()->user()->ehAdmin())
         <p class="admin-sidebar__title">Acesso</p>
         <ul>
