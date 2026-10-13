@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TransparenciaSecaoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OuvidoriaController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,9 @@ Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::post('/contato/enviar', [ContactController::class, 'store'])
     ->middleware('throttle:5,1')
     ->name('contato.enviar');
+Route::post('/ouvidoria', [OuvidoriaController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('ouvidoria.enviar');
 Route::get('/transparencia', [SiteController::class, 'transparencia'])->name('transparencia');
 Route::get('/politica-de-privacidade', [SiteController::class, 'privacidade'])->name('privacidade');
 
