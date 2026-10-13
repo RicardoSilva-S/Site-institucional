@@ -13,6 +13,12 @@ class DiretoriaConselhoTest extends TestCase
     use RefreshDatabase;
 
     private const PAINEL = '/adm/equipe';
+    private const JPEG = 'image/jpeg';
+    private const JONNY = 'Jonny de Souza Ribeiro';
+    private const GILMAR = 'Gilmar Boti Júnior';
+    private const BRUNO = 'Bruno Nascimento';
+    private const WALMIR = 'Walmir Rafael da Silva';
+    private const MARIA = 'Maria Teste';
 
     private function editor(): User
     {
@@ -22,14 +28,14 @@ class DiretoriaConselhoTest extends TestCase
     /** Foto de verdade do projeto (o PHP local não tem GD para gerar imagens falsas). */
     private function foto(string $nome = 'nova.jpg'): UploadedFile
     {
-        return new UploadedFile(public_path('assets/equipe/bruno.jpg'), $nome, 'image/jpeg', null, true);
+        return new UploadedFile(public_path('assets/equipe/bruno.jpg'), $nome, self::JPEG, null, true);
     }
 
     private function dados(array $extra = []): array
     {
         return array_merge([
             'grupo' => 'diretoria',
-            'nome' => 'Maria Teste',
+            'nome' => self::MARIA,
             'cargo' => 'Diretoria financeira',
             'bio' => 'Contadora com experiência no terceiro setor.',
             'ordem' => 4,
@@ -40,15 +46,15 @@ class DiretoriaConselhoTest extends TestCase
     {
         $this->get(route('institucional'))
             ->assertOk()
-            ->assertSee('Jonny de Souza Ribeiro')
-            ->assertSee('Bruno Nascimento')
-            ->assertSee('Walmir Rafael da Silva')
+            ->assertSee(self::JONNY)
+            ->assertSee(self::BRUNO)
+            ->assertSee(self::WALMIR)
             ->assertSee('WS');
     }
 
     public function test_fotos_atuais_foram_copiadas_para_o_banco(): void
     {
-        $jonny = MembroInstitucional::where('nome', 'Jonny de Souza Ribeiro')->firstOrFail();
+        $jonny = MembroInstitucional::where('nome', self::JONNY)->firstOrFail();
 
         $this->assertTrue($jonny->temFoto());
         $this->assertTrue($jonny->foto_aproximada);
@@ -58,11 +64,11 @@ class DiretoriaConselhoTest extends TestCase
 
     public function test_rota_da_foto_entrega_a_imagem_guardada_no_banco(): void
     {
-        $gilmar = MembroInstitucional::where('nome', 'Gilmar Boti Júnior')->firstOrFail();
+        $gilmar = MembroInstitucional::where('nome', self::GILMAR)->firstOrFail();
 
         $resposta = $this->get(route('equipe.foto', $gilmar))->assertOk();
 
-        $this->assertSame('image/jpeg', $resposta->headers->get('Content-Type'));
+        $this->assertSame(self::JPEG, $resposta->headers->get('Content-Type'));
         $this->assertSame(file_get_contents(public_path('assets/equipe/gilmar.jpg')), $resposta->getContent());
     }
 
@@ -99,12 +105,12 @@ class DiretoriaConselhoTest extends TestCase
             ->assertRedirect(self::PAINEL)
             ->assertSessionHasNoErrors();
 
-        $maria = MembroInstitucional::where('nome', 'Maria Teste')->firstOrFail();
+        $maria = MembroInstitucional::where('nome', self::MARIA)->firstOrFail();
         $this->assertSame('maria.jpg', $maria->foto_nome);
-        $this->assertSame('image/jpeg', $maria->foto_mime);
+        $this->assertSame(self::JPEG, $maria->foto_mime);
 
         $this->get(route('institucional'))
-            ->assertSee('Maria Teste')
+            ->assertSee(self::MARIA)
             ->assertSee('Diretoria financeira')
             ->assertSee($maria->fotoUrl(), false);
     }
@@ -117,7 +123,7 @@ class DiretoriaConselhoTest extends TestCase
             ]))
             ->assertSessionHasErrors('foto');
 
-        $this->assertDatabaseMissing('membros_institucionais', ['nome' => 'Maria Teste']);
+        $this->assertDatabaseMissing('membros_institucionais', ['nome' => self::MARIA]);
     }
 
     public function test_nome_e_cargo_sao_obrigatorios(): void
@@ -129,11 +135,11 @@ class DiretoriaConselhoTest extends TestCase
 
     public function test_edita_e_remove_a_foto(): void
     {
-        $bruno = MembroInstitucional::where('nome', 'Bruno Nascimento')->firstOrFail();
+        $bruno = MembroInstitucional::where('nome', self::BRUNO)->firstOrFail();
 
         $this->actingAs($this->editor())
             ->put(self::PAINEL . "/{$bruno->id}", $this->dados([
-                'nome' => 'Bruno Nascimento',
+                'nome' => self::BRUNO,
                 'cargo' => 'Tecnologia',
                 'remover_foto' => '1',
             ]))
@@ -147,22 +153,22 @@ class DiretoriaConselhoTest extends TestCase
 
     public function test_editar_sem_enviar_foto_mantem_a_atual(): void
     {
-        $gilmar = MembroInstitucional::where('nome', 'Gilmar Boti Júnior')->firstOrFail();
+        $gilmar = MembroInstitucional::where('nome', self::GILMAR)->firstOrFail();
 
         $this->actingAs($this->editor())
-            ->put(self::PAINEL . "/{$gilmar->id}", $this->dados(['nome' => 'Gilmar Boti Júnior']));
+            ->put(self::PAINEL . "/{$gilmar->id}", $this->dados(['nome' => self::GILMAR]));
 
         $this->assertTrue($gilmar->fresh()->temFoto());
     }
 
     public function test_remover_pessoa_tira_do_site(): void
     {
-        $walmir = MembroInstitucional::where('nome', 'Walmir Rafael da Silva')->firstOrFail();
+        $walmir = MembroInstitucional::where('nome', self::WALMIR)->firstOrFail();
 
         $this->actingAs($this->editor())
             ->delete(self::PAINEL . "/{$walmir->id}")
             ->assertRedirect(self::PAINEL);
 
-        $this->get(route('institucional'))->assertDontSee('Walmir Rafael da Silva');
+        $this->get(route('institucional'))->assertDontSee(self::WALMIR);
     }
 }
