@@ -95,7 +95,7 @@
         <h3>@content('transparencia.editais.title')</h3>
         <p>@content('transparencia.editais.text')</p>
         {{-- Editais ainda não tem rota própria — aponta pra rota real quando existir em routes/web.php. --}}
-        <a class="btn btn-primary" href="#">@content('transparencia.editais.btn')</a>
+        <a class="btn btn-primary" href="{{ route('editais') }}">@content('transparencia.editais.btn')</a>
       </div>
     </div>
     @extraTexts('transparencia.editais')
