@@ -3,6 +3,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\MembroInstitucionalController;
+use App\Http\Controllers\Admin\OuvidoriaController as AdminOuvidoriaController;
 use App\Http\Controllers\Admin\TransparenciaDocumentoController;
 use App\Http\Controllers\Admin\TransparenciaSecaoController;
 use App\Http\Controllers\Admin\UserController;
@@ -82,4 +83,8 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
     // Mensagens do formulario de contato
     Route::get('/mensagens', [ContactMessageController::class, 'index'])->name('messages.index');
     Route::post('/mensagens/{message}/lida', [ContactMessageController::class, 'toggleRead'])->name('messages.toggle-read');
+
+    // Manifestacoes da ouvidoria
+    Route::get('/ouvidoria', [AdminOuvidoriaController::class, 'index'])->name('ouvidoria.index');
+    Route::post('/ouvidoria/{manifestacao}/status', [AdminOuvidoriaController::class, 'alternarStatus'])->name('ouvidoria.status');
 });
