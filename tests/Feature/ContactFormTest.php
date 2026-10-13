@@ -39,7 +39,7 @@ class ContactFormTest extends TestCase
 
         $this->post(route('contato.enviar'), $this->payload())
             ->assertRedirect(route('contato').'#diagnostico')
-            ->assertSessionHas('contact_status');
+            ->assertSessionHas('success');
 
         $this->assertDatabaseHas('contact_messages', [
             'nome' => 'Maria Souza',
@@ -104,7 +104,7 @@ class ContactFormTest extends TestCase
         Mail::shouldReceive('to')->andThrow(new \RuntimeException('smtp fora do ar'));
 
         $this->post(route('contato.enviar'), $this->payload())
-            ->assertSessionHas('contact_status');
+            ->assertSessionHas('success');
 
         $this->assertDatabaseCount('contact_messages', 1);
     }

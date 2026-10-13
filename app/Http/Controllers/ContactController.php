@@ -46,6 +46,6 @@ class ContactController extends Controller
     {
         return redirect()
             ->to(route('contato').'#diagnostico')
-            ->with('contact_status', 'Mensagem enviada! Nossa equipe vai responder em breve.');
+            ->with('success', 'Mensagem enviada! Nossa equipe vai responder em breve.');
     }
 }

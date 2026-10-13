@@ -114,11 +114,6 @@ class SiteController extends Controller
         return view('site.contato');
     }
 
-    public function enviarContato(Request $request)
-    {
-        return redirect()->back()->with('success', 'Mensagem enviada com sucesso!');
-    }
-
     public function transparencia(): View
     {
         $secoes = TransparenciaSecao::comDocumentos();
