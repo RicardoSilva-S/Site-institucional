@@ -1914,6 +1914,288 @@ return [
         ],
     ],
     [
+        'page' => 'editais',
+        'pageLabel' => 'Editais',
+        'route' => 'editais',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo',
+                'fields' => [
+                    [
+                        'key' => 'editais.hero.eyebrow',
+                        'label' => 'Selo',
+                        'default' => 'Transparência e inovação aberta',
+                    ],
+                    [
+                        'key' => 'editais.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Editais e Chamamentos Públicos',
+                    ],
+                    [
+                        'key' => 'editais.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'O IDTNPR conduz seus chamamentos com regras claras, critérios objetivos e ampla publicidade. A cada edital, abrimos o Instituto à inovação aberta e buscamos parceiros tecnológicos capazes de entregar soluções seguras e comprovadas para prefeituras e câmaras municipais.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.hero.box1.title',
+                        'label' => 'Quadro 1 — título',
+                        'default' => 'Quem pode participar',
+                    ],
+                    [
+                        'key' => 'editais.hero.box1.text',
+                        'label' => 'Quadro 1 — texto',
+                        'default' => 'Empresas, startups e ICTs de tecnologia',
+                    ],
+                    [
+                        'key' => 'editais.hero.box2.title',
+                        'label' => 'Quadro 2 — título',
+                        'default' => 'Onde são publicados',
+                    ],
+                    [
+                        'key' => 'editais.hero.box2.text',
+                        'label' => 'Quadro 2 — texto',
+                        'default' => 'Esta página e Portal da Transparência',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'etapas',
+                'label' => 'Seção "Como participar"',
+                'fields' => [
+                    [
+                        'key' => 'editais.etapas.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Como participar',
+                    ],
+                    [
+                        'key' => 'editais.etapas.title',
+                        'label' => 'Título',
+                        'default' => 'Da qualificação à homologação, em quatro etapas',
+                    ],
+                    [
+                        'key' => 'editais.etapas.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'O mesmo caminho vale para todos os chamamentos. Cada etapa é documentada, os critérios são públicos e o resultado é divulgado para qualquer cidadão consultar.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa1.title',
+                        'label' => 'Etapa 1 — título',
+                        'default' => 'Qualificação',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa1.text',
+                        'label' => 'Etapa 1 — texto',
+                        'default' => 'A empresa reúne e envia a documentação de habilitação jurídica, fiscal, trabalhista e técnica, comprovando regularidade e experiência na solução que pretende ofertar.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa1.tag',
+                        'label' => 'Etapa 1 — selo',
+                        'default' => 'Etapa documental',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa2.title',
+                        'label' => 'Etapa 2 — título',
+                        'default' => 'Submissão da Proposta',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa2.text',
+                        'label' => 'Etapa 2 — texto',
+                        'default' => 'Dentro do prazo do edital, a empresa protocola a proposta com a descrição técnica da solução, o modelo de implantação, o cronograma e a forma de contratação prevista.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa3.title',
+                        'label' => 'Etapa 3 — título',
+                        'default' => 'Avaliação Técnica',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa3.text',
+                        'label' => 'Etapa 3 — texto',
+                        'default' => 'Uma comissão analisa as propostas com critérios objetivos divulgados no edital, como aderência ao objeto, segurança da informação, adequação à LGPD e interoperabilidade. Pode haver demonstração prática da solução.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa4.title',
+                        'label' => 'Etapa 4 — título',
+                        'default' => 'Homologação',
+                    ],
+                    [
+                        'key' => 'editais.etapas.etapa4.text',
+                        'label' => 'Etapa 4 — texto',
+                        'default' => 'O resultado é publicado, abre-se prazo para recurso e, encerrada essa fase, o Instituto homologa o chamamento. As soluções aprovadas passam a integrar o catálogo disponível para contratação pelos entes públicos.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'parceria',
+                'label' => 'Seção "Parceria tecnológica"',
+                'fields' => [
+                    [
+                        'key' => 'editais.parceria.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Parceria tecnológica',
+                    ],
+                    [
+                        'key' => 'editais.parceria.title',
+                        'label' => 'Título',
+                        'default' => 'Inovação aberta para necessidades reais do município.',
+                    ],
+                    [
+                        'key' => 'editais.parceria.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'O Instituto conecta o ecossistema de inovação às demandas concretas da administração pública municipal, mantendo o processo acessível e orientado por critérios públicos.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box1.title',
+                        'label' => 'Quadro 1 — título',
+                        'default' => 'Portal oficial',
+                    ],
+                    [
+                        'key' => 'editais.parceria.box1.text',
+                        'label' => 'Quadro 1 — texto',
+                        'default' => 'Todos os documentos, avisos, retificações e resultados são divulgados nesta página e no Portal da Transparência.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box2.title',
+                        'label' => 'Quadro 2 — título',
+                        'default' => 'Critérios objetivos',
+                    ],
+                    [
+                        'key' => 'editais.parceria.box2.text',
+                        'label' => 'Quadro 2 — texto',
+                        'default' => 'Cada chamamento apresenta seu objeto, requisitos, prazos e critérios de avaliação antes do recebimento das propostas.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box3.title',
+                        'label' => 'Quadro 3 — título',
+                        'default' => 'Fale com o Instituto',
+                    ],
+                    [
+                        'key' => 'editais.parceria.box3.text',
+                        'label' => 'Quadro 3 — texto',
+                        'default' => 'Empresas, startups e ICTs podem tirar dúvidas e entender como apresentar uma solução tecnológica ao poder público.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.parceria.box3.link',
+                        'label' => 'Quadro 3 — link',
+                        'default' => 'Entrar em contato',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'avisos',
+                'label' => 'Seção "Quadro de avisos"',
+                'fields' => [
+                    [
+                        'key' => 'editais.avisos.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Quadro de avisos',
+                    ],
+                    [
+                        'key' => 'editais.avisos.title',
+                        'label' => 'Título',
+                        'default' => 'Situação dos editais',
+                    ],
+                    [
+                        'key' => 'editais.avisos.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Um retrato rápido dos chamamentos conduzidos pelo Instituto, atualizado a cada publicação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat1',
+                        'label' => 'Contador 1 — legenda',
+                        'default' => 'Editais abertos para submissão de propostas',
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat2',
+                        'label' => 'Contador 2 — legenda',
+                        'default' => 'Editais em análise pela comissão técnica',
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat3',
+                        'label' => 'Contador 3 — legenda',
+                        'default' => 'Editais finalizados e homologados',
+                    ],
+                    [
+                        'key' => 'editais.avisos.stat4',
+                        'label' => 'Contador 4 — legenda (o ano é colocado depois)',
+                        'default' => 'Chamamentos publicados em',
+                    ],
+                    [
+                        'key' => 'editais.avisos.nota.title',
+                        'label' => 'Aviso — título',
+                        'default' => 'Aviso aos interessados',
+                    ],
+                    [
+                        'key' => 'editais.avisos.nota.text',
+                        'label' => 'Aviso — texto',
+                        'default' => 'Retificações, erratas e respostas a pedidos de esclarecimento são publicadas no mesmo local do edital original. Confira as atualizações antes de enviar sua proposta: os prazos só mudam por aviso publicado.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'lista',
+                'label' => 'Seção "Editais publicados" (os editais vêm do cadastro de editais)',
+                'fields' => [
+                    [
+                        'key' => 'editais.lista.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Editais publicados',
+                    ],
+                    [
+                        'key' => 'editais.lista.title',
+                        'label' => 'Título (o ano é colocado depois)',
+                        'default' => 'Chamamentos públicos de',
+                    ],
+                    [
+                        'key' => 'editais.lista.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Leia o objeto, confira as datas e baixe o edital completo para conhecer requisitos, critérios de avaliação e formas de contratação.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.lista.vazio',
+                        'label' => 'Mensagem quando o filtro não acha nada',
+                        'default' => 'Nenhum edital encontrado para este filtro.',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'cta',
+                'label' => 'Chamada final',
+                'fields' => [
+                    [
+                        'key' => 'editais.cta.title',
+                        'label' => 'Título',
+                        'default' => 'Sua empresa tem uma solução para a gestão pública?',
+                    ],
+                    [
+                        'key' => 'editais.cta.text',
+                        'label' => 'Texto',
+                        'default' => 'Fale com a equipe do Instituto, tire dúvidas sobre os próximos chamamentos e conheça o caminho para levar sua tecnologia a prefeituras e câmaras.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'editais.cta.btn',
+                        'label' => 'Botão',
+                        'default' => 'Falar com o Instituto',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
         'page' => 'marcolegal',
         'pageLabel' => 'Marco Legal',
         'route' => 'marco-legal',
