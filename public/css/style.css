@@ -799,6 +799,7 @@ main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h4:empty{di
 .team-card__photo{overflow:hidden;aspect-ratio:5/4;}
 .team-card__photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;}
 .team-card--jonny .team-card__photo img{transform:scale(1.18);transform-origin:center 18%;}
+.team-card--zoom .team-card__photo img{transform:scale(1.18);transform-origin:center 18%;} /* "Aproximar a foto" no painel (/adm/equipe) */
 .team-card__body{padding:24px 26px 28px;}
 .team-card h4{margin:8px 0 0;font-family:var(--serif);font-size:20px;line-height:1.3;color:var(--navy-dark);}
 .team-card p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--ink-soft);}

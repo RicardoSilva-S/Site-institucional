@@ -48,6 +48,11 @@
             Documentos (Transparência)
           </a>
         </li>
+        <li>
+          <a href="{{ route('admin.equipe.index') }}" class="{{ request()->routeIs('admin.equipe.*') ? 'is-active' : '' }}">
+            Diretoria e conselho
+          </a>
+        </li>
       </ul>
       @if (auth()->user()->ehAdmin())
         <p class="admin-sidebar__title">Acesso</p>

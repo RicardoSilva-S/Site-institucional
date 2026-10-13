@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MembroInstitucional;
 use App\Models\TransparenciaDocumento;
 use App\Models\TransparenciaSecao;
 use Illuminate\Http\Request;
@@ -25,7 +26,22 @@ class SiteController extends Controller
 
     public function institucional(): View
     {
-        return view('site.institucional');
+        // Diretoria e conselho vêm do banco e são editados no painel (/adm/equipe).
+        return view('site.institucional', [
+            'diretoria' => MembroInstitucional::doGrupo('diretoria'),
+            'conselho' => MembroInstitucional::doGrupo('conselho'),
+        ]);
+    }
+
+    /** Entrega a foto de uma pessoa da diretoria/conselho, guardada no banco. */
+    public function fotoMembro(MembroInstitucional $membro): Response
+    {
+        abort_unless($membro->temFoto() && $membro->foto_data, 404);
+
+        return response(base64_decode($membro->foto_data), 200, [
+            'Content-Type' => $membro->foto_mime ?: 'image/jpeg',
+            'Cache-Control' => 'public, max-age=31536000',
+        ]);
     }
 
     public function atuacao(): View

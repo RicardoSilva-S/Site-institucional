@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\MembroInstitucionalController;
 use App\Http\Controllers\Admin\TransparenciaDocumentoController;
 use App\Http\Controllers\Admin\TransparenciaSecaoController;
 use App\Http\Controllers\Admin\UserController;
@@ -23,6 +24,9 @@ Route::get('/politica-de-privacidade', [SiteController::class, 'privacidade'])->
 // PDF dos documentos da transparência (fica guardado no banco, ver SiteController)
 Route::get('/transparencia/documentos/{documento}/pdf', [SiteController::class, 'documentoTransparencia'])
     ->name('transparencia.documento');
+
+// Foto da diretoria/conselho (fica guardada no banco, ver SiteController)
+Route::get('/equipe/{membro}/foto', [SiteController::class, 'fotoMembro'])->name('equipe.foto');
 
 // Imagem dos banners (fica guardada no banco, ver BannerController::image)
 Route::get('/banners/{banner}/imagem', [BannerController::class, 'image'])->name('banners.image');
@@ -57,6 +61,11 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
         ->except(['index', 'show'])
         ->parameters(['documentos' => 'documento'])
         ->names('transparencia.documentos');
+
+    // Diretoria e conselho da página Institucional (foto guardada no banco)
+    Route::resource('equipe', MembroInstitucionalController::class)
+        ->except('show')
+        ->parameters(['equipe' => 'membro']);
 
     Route::resource('usuarios', UserController::class)
         ->only(['index', 'create', 'store', 'edit', 'update'])
