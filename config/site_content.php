@@ -2861,4 +2861,240 @@ return [
             ],
         ],
     ],
+    [
+        'page' => 'privacidade',
+        'pageLabel' => 'Política de Privacidade',
+        'route' => 'privacidade',
+        'groups' => [
+            [
+                'id' => 'hero',
+                'label' => 'Topo',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.hero.eyebrow',
+                        'label' => 'Selo',
+                        'default' => 'LGPD',
+                    ],
+                    [
+                        'key' => 'privacidade.hero.title',
+                        'label' => 'Título',
+                        'default' => 'Política de Privacidade',
+                    ],
+                    [
+                        'key' => 'privacidade.hero.lead',
+                        'label' => 'Texto de apoio',
+                        'default' => 'Como o IDTNPR trata os dados pessoais de quem utiliza este site, conforme a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados).',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.hero.atualizacao',
+                        'label' => 'Data da última atualização',
+                        'default' => 'Última atualização: outubro de 2026',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'dados',
+                'label' => 'Controlador e dados coletados',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.controlador.kicker',
+                        'label' => 'Controlador — selo',
+                        'default' => 'Quem somos',
+                    ],
+                    [
+                        'key' => 'privacidade.controlador.title',
+                        'label' => 'Controlador — título',
+                        'default' => 'Controlador dos dados',
+                    ],
+                    [
+                        'key' => 'privacidade.controlador.text',
+                        'label' => 'Controlador — texto',
+                        'default' => 'O Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense (IDTNPR), CNPJ 64.039.593/0001-82, com sede em Sarandi/PR, é o responsável pelo tratamento dos dados pessoais coletados por este site.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.kicker',
+                        'label' => 'Coleta — selo',
+                        'default' => 'Coleta',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.title',
+                        'label' => 'Coleta — título',
+                        'default' => 'Quais dados coletamos',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.text',
+                        'label' => 'Coleta — texto',
+                        'default' => 'Coletamos apenas os dados que você nos envia voluntariamente pelo formulário de contato:',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item1',
+                        'label' => 'Coleta — item 1',
+                        'default' => 'Nome',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item2',
+                        'label' => 'Coleta — item 2',
+                        'default' => 'E-mail',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item3',
+                        'label' => 'Coleta — item 3',
+                        'default' => 'Telefone (quando informado)',
+                    ],
+                    [
+                        'key' => 'privacidade.coleta.item4',
+                        'label' => 'Coleta — item 4',
+                        'default' => 'O conteúdo da mensagem enviada',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'uso',
+                'label' => 'Finalidade e cookies',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.uso.kicker',
+                        'label' => 'Uso — selo',
+                        'default' => 'Uso',
+                    ],
+                    [
+                        'key' => 'privacidade.uso.title',
+                        'label' => 'Uso — título',
+                        'default' => 'Para que usamos os seus dados',
+                    ],
+                    [
+                        'key' => 'privacidade.uso.text',
+                        'label' => 'Uso — texto',
+                        'default' => 'Os dados são usados exclusivamente para responder à sua solicitação e manter o contato sobre o assunto tratado. Não vendemos nem compartilhamos seus dados para fins comerciais.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.cookies.kicker',
+                        'label' => 'Cookies — selo',
+                        'default' => 'Cookies',
+                    ],
+                    [
+                        'key' => 'privacidade.cookies.title',
+                        'label' => 'Cookies — título',
+                        'default' => 'Uso de cookies',
+                    ],
+                    [
+                        'key' => 'privacidade.cookies.text',
+                        'label' => 'Cookies — texto',
+                        'default' => 'Este site utiliza apenas cookies necessários ao seu funcionamento, como o cookie de sessão. Não utilizamos cookies de publicidade ou de rastreamento.',
+                        'long' => true,
+                    ],
+                ],
+            ],
+            [
+                'id' => 'direitos',
+                'label' => 'Armazenamento e direitos',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.armazenamento.kicker',
+                        'label' => 'Armazenamento — selo',
+                        'default' => 'Armazenamento',
+                    ],
+                    [
+                        'key' => 'privacidade.armazenamento.title',
+                        'label' => 'Armazenamento — título',
+                        'default' => 'Como guardamos seus dados',
+                    ],
+                    [
+                        'key' => 'privacidade.armazenamento.p1',
+                        'label' => 'Armazenamento — parágrafo 1',
+                        'default' => 'Os dados enviados pelo formulário de contato ficam armazenados de forma segura em nossos sistemas, com acesso restrito às pessoas responsáveis por responder às solicitações.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.armazenamento.p2',
+                        'label' => 'Armazenamento — parágrafo 2',
+                        'default' => 'Você pode solicitar a exclusão dos seus dados a qualquer momento, pelos canais de contato indicados ao final desta página.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.kicker',
+                        'label' => 'Direitos — selo',
+                        'default' => 'Seus direitos',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.title',
+                        'label' => 'Direitos — título',
+                        'default' => 'O que você pode solicitar',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.text',
+                        'label' => 'Direitos — texto',
+                        'default' => 'Nos termos do art. 18 da LGPD, você pode, a qualquer momento:',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item1',
+                        'label' => 'Direitos — item 1',
+                        'default' => 'Confirmar se tratamos seus dados e acessá-los',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item2',
+                        'label' => 'Direitos — item 2',
+                        'default' => 'Corrigir dados incompletos ou desatualizados',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item3',
+                        'label' => 'Direitos — item 3',
+                        'default' => 'Pedir a anonimização, o bloqueio ou a exclusão dos dados',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item4',
+                        'label' => 'Direitos — item 4',
+                        'default' => 'Saber com quem seus dados foram compartilhados',
+                    ],
+                    [
+                        'key' => 'privacidade.direitos.item5',
+                        'label' => 'Direitos — item 5',
+                        'default' => 'Revogar o consentimento',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'contato',
+                'label' => 'Seção "Fale conosco" (e-mail e WhatsApp ficam fixos)',
+                'fields' => [
+                    [
+                        'key' => 'privacidade.contato.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Fale conosco',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.title',
+                        'label' => 'Título',
+                        'default' => 'Dúvidas ou solicitações sobre seus dados',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.sub',
+                        'label' => 'Subtítulo',
+                        'default' => 'Para exercer seus direitos ou tirar dúvidas sobre esta política, entre em contato pelos nossos canais oficiais.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'privacidade.contato.email',
+                        'label' => 'Rótulo do e-mail',
+                        'default' => 'E-mail',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.whatsapp',
+                        'label' => 'Rótulo do WhatsApp',
+                        'default' => 'WhatsApp',
+                    ],
+                    [
+                        'key' => 'privacidade.contato.btn',
+                        'label' => 'Botão',
+                        'default' => 'Ir para a página de Contato',
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
