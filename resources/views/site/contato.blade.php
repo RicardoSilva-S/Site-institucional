@@ -211,7 +211,7 @@
           @endif
 
           <div class="form-grid">
-            <div class="field full">
+            <div class="field full @error('tipo') has-error @enderror">
               <label for="ouv-tipo">Tipo de manifestação <span class="req">*</span></label>
               <select id="ouv-tipo" name="tipo" required>
                 <option value="">Selecione</option>
@@ -231,7 +231,7 @@
               </label>
             </div>
 
-            <div class="field">
+            <div class="field @error('nome') has-error @enderror">
               <label for="ouv-nome">Nome <span class="req">*</span></label>
               <input type="text" id="ouv-nome" name="nome" value="{{ old('nome') }}" autocomplete="name">
               @error('nome')
@@ -239,7 +239,7 @@
               @enderror
             </div>
 
-            <div class="field">
+            <div class="field @error('email') has-error @enderror">
               <label for="ouv-email">E-mail</label>
               <input type="email" id="ouv-email" name="email" value="{{ old('email') }}" autocomplete="email">
               @error('email')
@@ -247,7 +247,7 @@
               @enderror
             </div>
 
-            <div class="field full">
+            <div class="field full @error('telefone') has-error @enderror">
               <label for="ouv-telefone">Telefone ou WhatsApp</label>
               <input type="tel" id="ouv-telefone" name="telefone" value="{{ old('telefone') }}" autocomplete="tel">
               @error('telefone')
@@ -255,7 +255,7 @@
               @enderror
             </div>
 
-            <div class="field full">
+            <div class="field full @error('mensagem') has-error @enderror">
               <label for="ouv-mensagem">Sua manifestação <span class="req">*</span></label>
               <textarea id="ouv-mensagem" name="mensagem" required>{{ old('mensagem') }}</textarea>
               @error('mensagem')
