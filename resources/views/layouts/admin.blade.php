@@ -61,6 +61,11 @@
             Mensagens
           </a>
         </li>
+        <li>
+          <a href="{{ route('admin.ouvidoria.index') }}" class="{{ request()->routeIs('admin.ouvidoria.*') ? 'is-active' : '' }}">
+            Ouvidoria
+          </a>
+        </li>
       </ul>
       @if (auth()->user()->ehAdmin())
         <p class="admin-sidebar__title">Acesso</p>

@@ -197,6 +197,79 @@
         <p>@content('contato.ouvidoria.note')</p>
       </div>
     </div>
+
+    {{-- formulario da ouvidoria: mesmas classes do formulario de contato --}}
+    <div class="wrap" style="margin-top:36px;">
+      <div class="form-card">
+        <form id="form-ouvidoria" action="{{ route('ouvidoria.enviar') }}" method="POST" novalidate>
+          @csrf
+
+          @if (session('ouvidoria_protocolo'))
+            <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+              Manifestação registrada. Guarde o seu protocolo: <strong>{{ session('ouvidoria_protocolo') }}</strong>
+            </div>
+          @endif
+
+          <div class="form-grid">
+            <div class="field full @error('tipo') has-error @enderror">
+              <label for="ouv-tipo">Tipo de manifestação <span class="req">*</span></label>
+              <select id="ouv-tipo" name="tipo" required>
+                <option value="">Selecione</option>
+                @foreach (\App\Models\ManifestacaoOuvidoria::TIPOS as $valor => $nome)
+                  <option value="{{ $valor }}" @if (old('tipo') === $valor) selected @endif>{{ $nome }}</option>
+                @endforeach
+              </select>
+              @error('tipo')
+                <span class="error-msg text-danger">{{ $message }}</span>
+              @enderror
+            </div>
+
+            <div class="field full">
+              <label>
+                <input type="checkbox" name="anonimo" value="1" @if (old('anonimo')) checked @endif>
+                Quero me manifestar de forma anônima (nome, e-mail e telefone não serão guardados)
+              </label>
+            </div>
+
+            <div class="field @error('nome') has-error @enderror">
+              <label for="ouv-nome">Nome <span class="req">*</span></label>
+              <input type="text" id="ouv-nome" name="nome" value="{{ old('nome') }}" autocomplete="name">
+              @error('nome')
+                <span class="error-msg text-danger">{{ $message }}</span>
+              @enderror
+            </div>
+
+            <div class="field @error('email') has-error @enderror">
+              <label for="ouv-email">E-mail</label>
+              <input type="email" id="ouv-email" name="email" value="{{ old('email') }}" autocomplete="email">
+              @error('email')
+                <span class="error-msg text-danger">{{ $message }}</span>
+              @enderror
+            </div>
+
+            <div class="field full @error('telefone') has-error @enderror">
+              <label for="ouv-telefone">Telefone ou WhatsApp</label>
+              <input type="tel" id="ouv-telefone" name="telefone" value="{{ old('telefone') }}" autocomplete="tel">
+              @error('telefone')
+                <span class="error-msg text-danger">{{ $message }}</span>
+              @enderror
+            </div>
+
+            <div class="field full @error('mensagem') has-error @enderror">
+              <label for="ouv-mensagem">Sua manifestação <span class="req">*</span></label>
+              <textarea id="ouv-mensagem" name="mensagem" required>{{ old('mensagem') }}</textarea>
+              @error('mensagem')
+                <span class="error-msg text-danger">{{ $message }}</span>
+              @enderror
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar manifestação</button>
+          </div>
+        </form>
+      </div>
+    </div>
     @extraTexts('contato.ouvidoria')
   </section>
 
