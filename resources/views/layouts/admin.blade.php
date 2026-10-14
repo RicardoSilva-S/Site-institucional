@@ -53,6 +53,11 @@
             Diretoria e conselho
           </a>
         </li>
+        <li>
+          <a href="{{ route('admin.editais.index') }}" class="{{ request()->routeIs('admin.editais.*') ? 'is-active' : '' }}">
+            Editais
+          </a>
+        </li>
       </ul>
       <p class="admin-sidebar__title">Contato</p>
       <ul>

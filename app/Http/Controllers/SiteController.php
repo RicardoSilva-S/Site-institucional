@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edital;
 use App\Models\MembroInstitucional;
 use App\Models\TransparenciaDocumento;
 use App\Models\TransparenciaSecao;
@@ -10,7 +11,6 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\HeaderUtils;
-use Illuminate\Support\Carbon;
 
 class SiteController extends Controller
 {
@@ -56,56 +56,27 @@ class SiteController extends Controller
 
     public function editais(): View
     {
-        $editais = collect([
-            [
-                'status'       => 'aberto',
-                'rotulo'       => 'Aberto',
-                'classe'       => 'publicado',
-                'titulo'       => 'Chamamento Público nº 004/2026 – Soluções de Transparência e Participação Legislativa para Câmaras Municipais',
-                'resumo'       => 'Seleção de soluções tecnológicas que aproximem o Poder Legislativo municipal da população, com canais digitais de atendimento aos vereadores, acompanhamento de proposições e divulgação de sessões e votações.',
-                'abertura'     => Carbon::create(2026, 10, 5),
-                'encerramento' => Carbon::create(2026, 11, 20),
-                'acao'         => 'Baixar edital',
-                'url'          => '#',
-            ],
-            [
-                'status'       => 'aberto',
-                'rotulo'       => 'Aberto',
-                'classe'       => 'publicado',
-                'titulo'       => 'Chamamento Público nº 003/2026 – Plataformas de Atendimento ao Cidadão e Autoatendimento',
-                'resumo'       => 'Credenciamento de soluções de autoatendimento, como totens, aplicativos e portais de serviços, que reduzam filas e agilizem a emissão de documentos e o protocolo de solicitações nas prefeituras.',
-                'abertura'     => Carbon::create(2026, 9, 1),
-                'encerramento' => Carbon::create(2026, 10, 30),
-                'acao'         => 'Baixar edital',
-                'url'          => '#',
-            ],
-            [
-                'status'       => 'analise',
-                'rotulo'       => 'Em análise',
-                'classe'       => 'elaboracao',
-                'titulo'       => 'Chamamento Público nº 002/2026 – Gestão e Controle de Frotas e Obras Municipais',
-                'resumo'       => 'Seleção de sistemas para planejamento de manutenção, controle de frotas, registro de ordens de serviço e acompanhamento de obras, com relatórios que apoiem a prestação de contas.',
-                'abertura'     => Carbon::create(2026, 7, 15),
-                'encerramento' => Carbon::create(2026, 9, 14),
-                'acao'         => 'Baixar edital',
-                'url'          => '#',
-            ],
-            [
-                'status'       => 'encerrado',
-                'rotulo'       => 'Encerrado',
-                'classe'       => '',
-                'titulo'       => 'Chamamento Público nº 001/2026 – Credenciamento de Soluções de Cidades Inteligentes',
-                'resumo'       => 'Credenciamento de soluções de monitoramento urbano, mobilidade e serviços digitais para municípios do noroeste paranaense. Chamamento homologado, com resultado final publicado.',
-                'abertura'     => Carbon::create(2026, 3, 2),
-                'encerramento' => Carbon::create(2026, 4, 30),
-                'acao'         => 'Acessar resultado',
-                'url'          => '#',
-            ],
-        ]);
+        // Editais vêm do banco e são cadastrados no painel (/adm/editais).
+        $editais = Edital::paraLista();
 
         return view('site.editais', [
             'editais'  => $editais,
             'contagem' => $editais->countBy('status'),
+        ]);
+    }
+
+    /** Entrega o PDF de um edital, guardado no banco. */
+    public function pdfEdital(Edital $edital): Response
+    {
+        abort_unless($edital->temArquivo() && $edital->arquivo_data, 404);
+
+        return response(base64_decode($edital->arquivo_data), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => HeaderUtils::makeDisposition(
+                HeaderUtils::DISPOSITION_INLINE,
+                str_replace(['/', '\\'], '-', $edital->arquivo_nome),
+                $this->nomeSimples($edital->arquivo_nome)
+            ),
         ]);
     }
 

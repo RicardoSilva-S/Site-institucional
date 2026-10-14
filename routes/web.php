@@ -2,6 +2,7 @@
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\EditalController;
 use App\Http\Controllers\Admin\MembroInstitucionalController;
 use App\Http\Controllers\Admin\OuvidoriaController as AdminOuvidoriaController;
 use App\Http\Controllers\Admin\TransparenciaDocumentoController;
@@ -33,6 +34,9 @@ Route::get('/politica-de-privacidade', [SiteController::class, 'privacidade'])->
 // PDF dos documentos da transparência (fica guardado no banco, ver SiteController)
 Route::get('/transparencia/documentos/{documento}/pdf', [SiteController::class, 'documentoTransparencia'])
     ->name('transparencia.documento');
+
+// PDF dos editais (fica guardado no banco, ver SiteController)
+Route::get('/editais/{edital}/pdf', [SiteController::class, 'pdfEdital'])->name('editais.pdf');
 
 // Foto da diretoria/conselho (fica guardada no banco, ver SiteController)
 Route::get('/equipe/{membro}/foto', [SiteController::class, 'fotoMembro'])->name('equipe.foto');
@@ -75,6 +79,11 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
     Route::resource('equipe', MembroInstitucionalController::class)
         ->except('show')
         ->parameters(['equipe' => 'membro']);
+
+    // Editais e chamamentos da página /editais (PDF guardado no banco)
+    Route::resource('editais', EditalController::class)
+        ->except('show')
+        ->parameters(['editais' => 'edital']);
 
     Route::resource('usuarios', UserController::class)
         ->only(['index', 'create', 'store', 'edit', 'update'])
