@@ -887,3 +887,13 @@ main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h2:empty{di
   .team-grid,
   .conselho{grid-template-columns:minmax(0,1fr);}
 }
+
+/* =========================================================================
+   Navegação e foco (o contraste do dourado já está em --gold-ink e .btn-gold, acima)
+   ========================================================================= */
+
+/* Item do menu da página atual (aria-current="page" vem do layouts/app.blade.php). */
+nav.primary a.top-link[aria-current="page"]{color:var(--navy);font-weight:600;}
+
+/* <main tabindex="-1"> recebe foco do link "Pular para o conteúdo"; sem contorno gigante. */
+main:focus{outline:none;}
