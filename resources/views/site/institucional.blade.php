@@ -32,20 +32,8 @@
       ->filter(fn ($passo) => trim($passo['title']) !== '' || trim($passo['text']) !== '')
       ->values();
 
-  $diretoria = [
-      ['foto' => 'jonny.jpg', 'nome' => 'Jonny de Souza Ribeiro', 'cargo' => 'Presidência', 'classe' => 'team-card--jonny',
-       'bio' => 'Economista com pós-graduação em Controladoria e Finanças, com experiência em tecnologia, análise econômica aplicada à gestão pública e projetos de inovação.'],
-      ['foto' => 'gilmar.jpg', 'nome' => 'Gilmar Boti Júnior', 'cargo' => 'Diretoria administrativa', 'classe' => '',
-       'bio' => 'Graduado em Processos Gerenciais e Gestão Pública, com mais de dez anos de atuação direta no setor público e na administração de contratos.'],
-      ['foto' => 'bruno.jpg', 'nome' => 'Bruno Nascimento', 'cargo' => 'Projetos e tecnologia', 'classe' => '',
-       'bio' => 'Bacharel em Gestão Pública, consultor e empresário com experiência em processos, modernização administrativa e implantação de sistemas.'],
-  ];
-
-  $conselho = [
-      ['nome' => 'Vinicius Cancian', 'cargo' => 'Presidente do conselho', 'sigla' => 'VC'],
-      ['nome' => 'Anderson de Jesus Ciriaco Lopes', 'cargo' => 'Conselheiro fiscal', 'sigla' => 'AL'],
-      ['nome' => 'Walmir Rafael da Silva', 'cargo' => 'Conselheiro consultivo', 'sigla' => 'WS'],
-  ];
+  // $diretoria e $conselho vêm do banco (SiteController::institucional),
+  // editados no painel em /adm/equipe.
 
   // Lista da chamada final: cada item abre a seção correspondente do Portal da Transparência.
   $documentos = collect([
@@ -177,14 +165,16 @@
       <h3 class="inst-subhead">@content('institucional.governanca.diretoria')</h3>
       <div class="team-grid">
         @foreach ($diretoria as $membro)
-          <article class="team-card {{ $membro['classe'] }}">
-            <div class="team-card__photo">
-              <img src="{{ asset('assets/equipe/'.$membro['foto']) }}" alt="{{ $membro['nome'] }}" loading="lazy">
-            </div>
+          <article class="team-card {{ $membro->foto_aproximada ? 'team-card--zoom' : '' }}">
+            @if ($membro->temFoto())
+              <div class="team-card__photo">
+                <img src="{{ $membro->fotoUrl() }}" alt="{{ $membro->nome }}" loading="lazy">
+              </div>
+            @endif
             <div class="team-card__body">
-              <span class="inst-label">{{ $membro['cargo'] }}</span>
-              <h4>{{ $membro['nome'] }}</h4>
-              <p>{{ $membro['bio'] }}</p>
+              <span class="inst-label">{{ $membro->cargo }}</span>
+              <h4>{{ $membro->nome }}</h4>
+              @if ($membro->bio)<p>{{ $membro->bio }}</p>@endif
             </div>
           </article>
         @endforeach
@@ -194,10 +184,10 @@
       <ul class="conselho">
         @foreach ($conselho as $membro)
           <li>
-            <span class="conselho__sigla" aria-hidden="true">{{ $membro['sigla'] }}</span>
+            <span class="conselho__sigla" aria-hidden="true">{{ $membro->sigla() }}</span>
             <div>
-              <span class="inst-label">{{ $membro['cargo'] }}</span>
-              <strong>{{ $membro['nome'] }}</strong>
+              <span class="inst-label">{{ $membro->cargo }}</span>
+              <strong>{{ $membro->nome }}</strong>
             </div>
           </li>
         @endforeach

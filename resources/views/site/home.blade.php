@@ -13,8 +13,8 @@
         <h1>@content('home.hero.title')</h1>
         <p class="lead">@content('home.hero.lead')</p>
         <div class="cta-row">
-          <a href="#" class="btn btn-primary">@content('home.hero.cta1')</a>
-          <a href="#" class="btn btn-outline">@content('home.hero.cta2')</a>
+          <a href="{{ route('contato') }}#diagnostico" class="btn btn-primary">@content('home.hero.cta1')</a>
+          <a href="{{ route('projetos') }}" class="btn btn-outline">@content('home.hero.cta2')</a>
         </div>
 
         <ul class="facts">
@@ -99,8 +99,11 @@
         <h2>@content('home.steps.title')</h2>
         <p class="sub">@content('home.steps.sub')</p>
       </div>
-      <p class="steps-hint">@content('home.steps.hint')</p>
-      <div class="steps-track">
+      {{-- Carrossel das etapas: setas ao lado (public/js/site.js) e cartões
+           sempre inteiros na tela (4 no computador, 2 no tablet, 1 no celular). --}}
+      <div class="steps-carousel">
+        <button type="button" class="steps-nav steps-nav--prev" aria-label="Etapa anterior">‹</button>
+        <div class="steps-track" tabindex="0" aria-label="Etapas do processo">
         <div class="step">
           <span class="num">1</span>
           <h3>@content('home.step1.title')</h3>
@@ -128,6 +131,8 @@
           <h3>@content('home.step5.title')</h3>
           <p>@content('home.step5.desc')</p>
         </div>
+        </div>
+        <button type="button" class="steps-nav steps-nav--next" aria-label="Próxima etapa">›</button>
       </div>
     </div>
     @extraTexts('home.steps')
@@ -177,8 +182,8 @@
 
       <p class="cards-note">@content('home.cards.note')</p>
       <div class="cards-cta">
-        <a href="#">@content('home.cards.cta1')</a>
-        <a href="#">@content('home.cards.cta2')</a>
+        <a href="{{ route('projetos') }}">@content('home.cards.cta1')</a>
+        <a href="{{ route('atuacao') }}">@content('home.cards.cta2')</a>
       </div>
     </div>
     @extraTexts('home.cards')
@@ -238,7 +243,7 @@
         <span class="section-head kicker" style="display:block;">@content('home.transp.kicker')</span>
         <h2 style="margin-bottom:16px;">@content('home.transp.title')</h2>
         <p style="color:var(--ink-soft);font-size:16.5px;">@content('home.transp.text')</p>
-        <a href="#" class="btn btn-primary" style="margin-top:26px;">@content('home.transp.cta')</a>
+        <a href="{{ route('transparencia') }}" class="btn btn-primary" style="margin-top:26px;">@content('home.transp.cta')</a>
       </div>
       <div class="transp-items">
         <div class="transp-item">
@@ -253,7 +258,7 @@
           <h3>@content('home.transp.item3.title')</h3>
           <p>@content('home.transp.item3.desc')</p>
         </div>
-        <div class="transp-item">
+        <div class="transp-item">''
           <h3>@content('home.transp.item4.title')</h3>
           <p>@content('home.transp.item4.desc')</p>
         </div>
@@ -269,7 +274,7 @@
         <h2>@content('home.finalcta.title')</h2>
         <p>@content('home.finalcta.text')</p>
       </div>
-      <a href="#" class="btn btn-gold">@content('home.finalcta.button')</a>
+      <a href="{{ route('contato') }}" class="btn btn-gold">@content('home.finalcta.button')</a>
     </div>
     @extraTexts('home.finalcta')
   </section>

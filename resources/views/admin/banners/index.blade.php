@@ -22,8 +22,9 @@
         <thead>
           <tr>
             <th>Imagem</th>
-            <th>Título</th>
+            <th>Nome interno</th>
             <th>Onde aparece</th>
+            <th>Versão</th>
             <th>Ordem</th>
             <th>Situação</th>
             <th></th>
@@ -34,10 +35,18 @@
             <tr>
               <td><img src="{{ $banner->imageUrl() }}" alt="" class="admin-thumb"></td>
               <td>
-                <strong>{{ $banner->title ?: '(sem título)' }}</strong>
-                @if ($banner->subtitle)<br><span class="admin-muted">{{ \Illuminate\Support\Str::limit($banner->subtitle, 70) }}</span>@endif
+                <strong>{{ $banner->title ?: '(sem nome)' }}</strong>
+                @if ($banner->display_title)<br><span class="admin-muted">No site: {{ \Illuminate\Support\Str::limit($banner->display_title, 70) }}</span>@endif
               </td>
               <td>{{ \App\Support\BannerSlots::label($banner->page, $banner->slot) }}</td>
+              <td>
+                @if ($banner->slot)
+                  —
+                @else
+                  {{ $banner->isMobile() ? 'Mobile' : 'Desktop' }}
+                  @if ($banner->width && $banner->height)<br><span class="admin-muted">{{ $banner->width }} × {{ $banner->height }}</span>@endif
+                @endif
+              </td>
               <td>{{ $banner->sort_order }}</td>
               <td>
                 <span class="admin-badge{{ $banner->active ? '' : ' admin-badge--muted' }}">{{ $banner->active ? 'Ativo' : 'Inativo' }}</span>

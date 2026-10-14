@@ -48,6 +48,29 @@
             Documentos (Transparência)
           </a>
         </li>
+        <li>
+          <a href="{{ route('admin.equipe.index') }}" class="{{ request()->routeIs('admin.equipe.*') ? 'is-active' : '' }}">
+            Diretoria e conselho
+          </a>
+        </li>
+        <li>
+          <a href="{{ route('admin.editais.index') }}" class="{{ request()->routeIs('admin.editais.*') ? 'is-active' : '' }}">
+            Editais
+          </a>
+        </li>
+      </ul>
+      <p class="admin-sidebar__title">Contato</p>
+      <ul>
+        <li>
+          <a href="{{ route('admin.messages.index') }}" class="{{ request()->routeIs('admin.messages.*') ? 'is-active' : '' }}">
+            Mensagens
+          </a>
+        </li>
+        <li>
+          <a href="{{ route('admin.ouvidoria.index') }}" class="{{ request()->routeIs('admin.ouvidoria.*') ? 'is-active' : '' }}">
+            Ouvidoria
+          </a>
+        </li>
       </ul>
       @if (auth()->user()->ehAdmin())
         <p class="admin-sidebar__title">Acesso</p>
