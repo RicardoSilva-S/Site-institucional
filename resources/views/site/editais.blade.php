@@ -198,26 +198,34 @@
       </div>
 
       <div class="norma-grid">
+        {{-- Editais cadastrados no painel (/adm/editais). O botão só aparece
+             quando o edital tem PDF enviado. --}}
         @foreach ($editais as $edital)
-          <article class="card" data-edital-status="{{ $edital['status'] }}">
-            <span class="kicker"><span class="status {{ $edital['classe'] }}">{{ $edital['rotulo'] }}</span></span>
-            <h3>{{ $edital['titulo'] }}</h3>
-            <p>{{ $edital['resumo'] }}</p>
+          <article class="card" data-edital-status="{{ $edital->status }}">
+            <span class="kicker"><span class="status {{ $edital->classe() }}">{{ $edital->rotulo() }}</span></span>
+            <h3>{{ $edital->titulo }}</h3>
+            @if ($edital->resumo)<p>{{ $edital->resumo }}</p>@endif
 
             <dl class="ficha">
-              <div>
-                <dt>Abertura</dt>
-                <dd>{{ $edital['abertura']->format('d/m/Y') }}</dd>
-              </div>
-              <div>
-                <dt>Encerramento</dt>
-                <dd>{{ $edital['encerramento']->format('d/m/Y') }}</dd>
-              </div>
+              @if ($edital->abertura)
+                <div>
+                  <dt>Abertura</dt>
+                  <dd>{{ $edital->abertura->format('d/m/Y') }}</dd>
+                </div>
+              @endif
+              @if ($edital->encerramento)
+                <div>
+                  <dt>Encerramento</dt>
+                  <dd>{{ $edital->encerramento->format('d/m/Y') }}</dd>
+                </div>
+              @endif
             </dl>
 
-            <div class="proc-cta-row">
-              <a href="{{ $edital['url'] }}" class="btn {{ $edital['status'] === 'aberto' ? 'btn-primary' : 'btn-outline' }}">{{ $edital['acao'] }}</a>
-            </div>
+            @if ($edital->temArquivo())
+              <div class="proc-cta-row">
+                <a href="{{ route('editais.pdf', $edital) }}" target="_blank" rel="noopener" class="btn {{ $edital->status === 'aberto' ? 'btn-primary' : 'btn-outline' }}">{{ $edital->acao() }}</a>
+              </div>
+            @endif
           </article>
         @endforeach
       </div>
