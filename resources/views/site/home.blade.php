@@ -94,10 +94,15 @@
   <!-- COMO FUNCIONA -->
   <section class="alt">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('home.steps.kicker')</span>
-        <h2>@content('home.steps.title')</h2>
-        <p class="sub">@content('home.steps.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('home.steps.kicker')</span>
+          <h2>@content('home.steps.title')</h2>
+          <p class="sub">@content('home.steps.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'steps'])
+        </div>
       </div>
       {{-- Carrossel das etapas: setas ao lado (public/js/site.js) e cartões
            sempre inteiros na tela (4 no computador, 2 no tablet, 1 no celular). --}}
@@ -141,10 +146,15 @@
   <!-- COMO ATUAMOS -->
   <section>
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('home.cards.kicker')</span>
-        <h2>@content('home.cards.title')</h2>
-        <p class="sub">@content('home.cards.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('home.cards.kicker')</span>
+          <h2>@content('home.cards.title')</h2>
+          <p class="sub">@content('home.cards.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'cards'])
+        </div>
       </div>
 
       <div class="cards-grid">
@@ -192,9 +202,14 @@
   <!-- POR QUE PELO INSTITUTO -->
   <section class="alt">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('home.stats.kicker')</span>
-        <h2>@content('home.stats.title')</h2>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('home.stats.kicker')</span>
+          <h2>@content('home.stats.title')</h2>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'stats'])
+        </div>
       </div>
 
       <div class="stats-grid">

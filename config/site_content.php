@@ -354,6 +354,7 @@ return [
             [
                 'id' => 'steps',
                 'label' => 'Seção "Como funciona" (5 etapas)',
+                'banner' => 'assets/home/steps.svg',
                 'fields' => [
                     [
                         'key' => 'home.steps.kicker',
@@ -443,6 +444,7 @@ return [
             [
                 'id' => 'cards',
                 'label' => 'Seção "Como atuamos" (cartões)',
+                'banner' => 'assets/home/cards.svg',
                 'fields' => [
                     [
                         'key' => 'home.cards.kicker',
@@ -584,6 +586,7 @@ return [
             [
                 'id' => 'stats',
                 'label' => 'Seção "Por que pelo Instituto"',
+                'banner' => 'assets/home/stats.svg',
                 'fields' => [
                     [
                         'key' => 'home.stats.kicker',
@@ -1758,6 +1761,7 @@ return [
             [
                 'id' => 'impacto',
                 'label' => 'Seção "Impacto e alcance"',
+                'banner' => 'assets/projetos/impacto.svg',
                 'fields' => [
                     [
                         'key' => 'projetos.impacto.kicker',
@@ -1870,6 +1874,7 @@ return [
             [
                 'id' => 'portfolio',
                 'label' => 'Seção "Portfólio" (os cards dos projetos vêm do cadastro de projetos)',
+                'banner' => 'assets/projetos/portfolio.svg',
                 'fields' => [
                     [
                         'key' => 'projetos.portfolio.kicker',
@@ -1963,6 +1968,7 @@ return [
             [
                 'id' => 'etapas',
                 'label' => 'Seção "Como participar"',
+                'banner' => 'assets/editais/etapas.svg',
                 'fields' => [
                     [
                         'key' => 'editais.etapas.kicker',
@@ -2034,6 +2040,7 @@ return [
             [
                 'id' => 'parceria',
                 'label' => 'Seção "Parceria tecnológica"',
+                'banner' => 'assets/editais/parceria.svg',
                 'fields' => [
                     [
                         'key' => 'editais.parceria.kicker',
@@ -2094,6 +2101,7 @@ return [
             [
                 'id' => 'avisos',
                 'label' => 'Seção "Quadro de avisos"',
+                'banner' => 'assets/editais/avisos.svg',
                 'fields' => [
                     [
                         'key' => 'editais.avisos.kicker',
@@ -2147,6 +2155,7 @@ return [
             [
                 'id' => 'lista',
                 'label' => 'Seção "Editais publicados" (os editais vêm do cadastro de editais)',
+                'banner' => 'assets/editais/lista.svg',
                 'fields' => [
                     [
                         'key' => 'editais.lista.kicker',
@@ -2203,6 +2212,7 @@ return [
             [
                 'id' => 'hero',
                 'label' => 'Topo',
+                'banner' => 'assets/marco-legal/hero.svg',
                 'fields' => [
                     [
                         'key' => 'marcolegal.hero.title',
@@ -2221,6 +2231,7 @@ return [
             [
                 'id' => 'normas',
                 'label' => 'Seção "As normas que sustentam a cooperação"',
+                'banner' => 'assets/marco-legal/normas.svg',
                 'fields' => [
                     [
                         'key' => 'marcolegal.normas.kicker',
@@ -2395,6 +2406,7 @@ return [
             [
                 'id' => 'mapa',
                 'label' => 'Seção "Seis instrumentos, seis situações" (tabela)',
+                'banner' => 'assets/marco-legal/mapa.svg',
                 'fields' => [
                     [
                         'key' => 'marcolegal.mapa.kicker',
@@ -2546,6 +2558,7 @@ return [
             [
                 'id' => 'procuradorias',
                 'label' => 'Seção "Para Procuradorias Municipais"',
+                'banner' => 'assets/marco-legal/procuradorias.svg',
                 'fields' => [
                     [
                         'key' => 'marcolegal.proc.kicker',
@@ -2598,6 +2611,7 @@ return [
             [
                 'id' => 'hero',
                 'label' => 'Topo da página',
+                'banner' => 'assets/contato/hero.svg',
                 'fields' => [
                     [
                         'key' => 'contato.hero.title',
@@ -2774,6 +2788,7 @@ return [
             [
                 'id' => 'hero',
                 'label' => 'Topo da página',
+                'banner' => 'assets/transparencia/hero.svg',
                 'fields' => [
                     [
                         'key' => 'transparencia.hero.title',

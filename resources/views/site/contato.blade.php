@@ -6,10 +6,13 @@
 @section('content')
 
   <!-- HERO -->
-  <section class="page-hero">
+  <section class="page-hero page-hero--split">
     <div class="wrap">
-      <h1>@content('contato.hero.title')</h1>
-      <p class="lead">@content('contato.hero.lead')</p>
+      <div>
+        <h1>@content('contato.hero.title')</h1>
+        <p class="lead">@content('contato.hero.lead')</p>
+      </div>
+      @include('partials.section-banner', ['slot' => 'hero', 'eager' => true])
     </div>
     @extraTexts('contato.hero')
   </section>
