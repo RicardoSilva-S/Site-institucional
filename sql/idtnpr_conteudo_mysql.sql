@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS site_content_values (
 
 -- ---------------------------------------------------------------------
 -- banners: imagens do carrossel e imagens ao lado das secoes
--- (create_banners_table + add_slot + add_image_data)
+-- (create_banners_table + add_slot + add_image_data
+--  + add_device_and_display_title)
 -- ---------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS banners (
   id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -59,5 +60,9 @@ CREATE TABLE IF NOT EXISTS banners (
   updated_at  TIMESTAMP       NULL DEFAULT NULL,
   image_mime  VARCHAR(50)     NULL DEFAULT NULL COMMENT 'ex.: image/jpeg',
   image_data  LONGTEXT        NULL COMMENT 'imagem em base64',
+  device         VARCHAR(10)       NOT NULL DEFAULT 'desktop' COMMENT 'desktop (computador) ou mobile (celular)',
+  width          SMALLINT UNSIGNED NULL DEFAULT NULL COMMENT 'largura da imagem em pixels, ex.: 1920',
+  height         SMALLINT UNSIGNED NULL DEFAULT NULL COMMENT 'altura da imagem em pixels, ex.: 700',
+  display_title  VARCHAR(255)      NULL DEFAULT NULL COMMENT 'texto escrito sobre a imagem no site (title = nome interno no painel)',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
