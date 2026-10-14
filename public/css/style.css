@@ -863,3 +863,29 @@ main .kicker:empty, main .eyebrow span:empty, footer p:empty, footer h4:empty{di
   .team-grid,
   .conselho{grid-template-columns:minmax(0,1fr);}
 }
+/* =========================================================================
+   Acessibilidade — contraste e foco
+   ========================================================================= */
+
+/* O dourado --gold (#B8862E) dá só 3,24:1 sobre branco e 2,97:1 sobre --mist
+   como texto pequeno (o mínimo WCAG AA é 4,5:1). --gold-ink dá 5,5:1 / 5,1:1. */
+:root{--gold-ink:#8A6112;}
+.section-head .kicker,
+.card .kicker,
+.step .free,
+.info-box h3,
+.contact-card dt,
+.meta-chip .k,
+.ficha dt,
+.inst-label{color:var(--gold-ink);}
+
+/* Texto branco sobre o botão dourado dá 3,24:1. Texto azul-escuro dá 5,1:1
+   (e 8,4:1 no hover, que clareia o dourado em vez de escurecer). */
+.btn-gold{color:var(--navy-dark);}
+.btn-gold:hover{background:#DDB35E;color:var(--navy-dark);}
+
+/* Item do menu da página atual (aria-current="page" vem do layouts/app.blade.php). */
+nav.primary a.top-link[aria-current="page"]{color:var(--navy);font-weight:600;}
+
+/* <main tabindex="-1"> recebe foco do link "Pular para o conteúdo"; sem contorno gigante. */
+main:focus{outline:none;}
