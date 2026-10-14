@@ -86,7 +86,8 @@
     </nav>
 
     <div style="display:flex;align-items:center;gap:12px;">
-      <a href="{{ route('contato') }}" class="btn btn-primary">@content('shared.nav.cta')</a>
+      {{-- nav-cta: a classe esconde o botão em telas muito pequenas (style.css, max-width:480px) --}}
+      <a href="{{ route('contato') }}" class="btn btn-primary nav-cta">@content('shared.nav.cta')</a>
       <button type="button" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">☰</button>
     </div>
   </div>
@@ -109,7 +110,7 @@
       </div>
 
       <div>
-        <h4>@content('shared.footer.col1.title')</h4>
+        <h2>@content('shared.footer.col1.title')</h2>
         <ul>
           <li><a href="{{ route('institucional') }}">Quem somos</a></li>
           <li><a href="{{ route('institucional') }}#linha-do-tempo">Linha do tempo</a></li>
@@ -119,7 +120,7 @@
       </div>
 
       <div>
-        <h4>@content('shared.footer.col2.title')</h4>
+        <h2>@content('shared.footer.col2.title')</h2>
         <ul>
           <li><a href="{{ route('projetos') }}">Projetos e produtos</a></li>
           <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
@@ -129,7 +130,7 @@
       </div>
 
       <div>
-        <h4>@content('shared.footer.col3.title')</h4>
+        <h2>@content('shared.footer.col3.title')</h2>
         <ul>
           <li><a href="{{ route('transparencia') }}">Portal da Transparência</a></li>
           <li><a href="{{ route('transparencia') }}">Documentos institucionais</a></li>

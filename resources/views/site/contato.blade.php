@@ -6,10 +6,13 @@
 @section('content')
 
   <!-- HERO -->
-  <section class="page-hero">
+  <section class="page-hero page-hero--split">
     <div class="wrap">
-      <h1>@content('contato.hero.title')</h1>
-      <p class="lead">@content('contato.hero.lead')</p>
+      <div>
+        <h1>@content('contato.hero.title')</h1>
+        <p class="lead">@content('contato.hero.lead')</p>
+      </div>
+      @include('partials.section-banner', ['slot' => 'hero', 'eager' => true])
     </div>
     @extraTexts('contato.hero')
   </section>
@@ -21,7 +24,7 @@
   <section style="padding-top:36px;">
     <div class="wrap contact-grid">
       <div class="contact-card">
-        <h3>@content('contato.institucional.card1.title')</h3>
+        <h2>@content('contato.institucional.card1.title')</h2>
         <dl>
           <dt>E-mail</dt>
           <dd><a href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></dd>
@@ -32,7 +35,7 @@
         </dl>
       </div>
       <div class="contact-card">
-        <h3>@content('contato.institucional.card2.title')</h3>
+        <h2>@content('contato.institucional.card2.title')</h2>
         <dl>
           <dt>Sede</dt>
           <dd>Rua João Marangoni, nº 2908, Casa 7<br>Bairro Panorama · CEP 87.113-310<br>Sarandi – Paraná</dd>
@@ -41,7 +44,7 @@
         </dl>
       </div>
       <div class="contact-card">
-        <h3>@content('contato.institucional.card3.title')</h3>
+        <h2>@content('contato.institucional.card3.title')</h2>
         <dl>
           <dt>Razão social</dt>
           <dd>@content('contato.institucional.razao_social')</dd>

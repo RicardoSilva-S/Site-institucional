@@ -78,10 +78,15 @@
   <!-- COMO FUNCIONA -->
   <section>
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('editais.etapas.kicker')</span>
-        <h2>@content('editais.etapas.title')</h2>
-        <p class="sub">@content('editais.etapas.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('editais.etapas.kicker')</span>
+          <h2>@content('editais.etapas.title')</h2>
+          <p class="sub">@content('editais.etapas.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'etapas'])
+        </div>
       </div>
 
       <div class="steps-carousel">
@@ -118,10 +123,15 @@
   <!-- INFORMAÇÕES INSTITUCIONAIS: conteúdo antes exibido no cartão azul do Hero -->
   <section class="alt">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('editais.parceria.kicker')</span>
-        <h2>@content('editais.parceria.title')</h2>
-        <p class="sub">@content('editais.parceria.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('editais.parceria.kicker')</span>
+          <h2>@content('editais.parceria.title')</h2>
+          <p class="sub">@content('editais.parceria.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'parceria'])
+        </div>
       </div>
 
       <div class="info-grid">
@@ -148,10 +158,15 @@
   <!-- QUADRO DE AVISOS -->
   <section>
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('editais.avisos.kicker')</span>
-        <h2>@content('editais.avisos.title')</h2>
-        <p class="sub">@content('editais.avisos.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('editais.avisos.kicker')</span>
+          <h2>@content('editais.avisos.title')</h2>
+          <p class="sub">@content('editais.avisos.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'avisos'])
+        </div>
       </div>
 
       <div class="stats-grid">
@@ -184,10 +199,15 @@
   <!-- LISTA DE EDITAIS -->
   <section id="lista-editais">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('editais.lista.kicker')</span>
-        <h2>@content('editais.lista.title') {{ now()->year }}</h2>
-        <p class="sub">@content('editais.lista.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('editais.lista.kicker')</span>
+          <h2>@content('editais.lista.title') {{ now()->year }}</h2>
+          <p class="sub">@content('editais.lista.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'lista'])
+        </div>
       </div>
 
       <div class="doc-filters" role="group" aria-label="Filtrar editais por situação">

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+  <rect width="640" height="480" fill="#FFFFFF"/>
+  <g fill="none" stroke="#0F2A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M196,240 H260 V130 H330"/><path d="M260,240 H330"/><path d="M260,240 V350 H330"/>
+    <polyline points="322,122 332,130 322,138"/><polyline points="322,232 332,240 322,248"/><polyline points="322,342 332,350 322,358"/>
+    <rect x="84" y="200" width="112" height="80" rx="14" fill="#E9EDF5"/>
+    <rect x="340" y="98" width="176" height="64" rx="12" fill="#FFFFFF"/>
+    <rect x="340" y="318" width="176" height="64" rx="12" fill="#FFFFFF"/>
+  </g>
+  <rect x="340" y="208" width="176" height="64" rx="12" fill="#F2E6CE" stroke="#B8862E" stroke-width="3"/>
+  <g stroke="#C3CADB" stroke-width="6" stroke-linecap="round">
+    <line x1="106" y1="230" x2="172" y2="230"/><line x1="106" y1="250" x2="152" y2="250"/>
+    <line x1="362" y1="124" x2="470" y2="124"/><line x1="362" y1="140" x2="440" y2="140"/>
+    <line x1="362" y1="344" x2="470" y2="344"/><line x1="362" y1="360" x2="440" y2="360"/>
+  </g>
+  <g stroke="#D9BE85" stroke-width="6" stroke-linecap="round"><line x1="362" y1="234" x2="440" y2="234"/><line x1="362" y1="250" x2="420" y2="250"/></g>
+  <circle cx="540" cy="240" r="16" fill="#B8862E"/>
+  <polyline points="533,240 538,245 548,234" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
