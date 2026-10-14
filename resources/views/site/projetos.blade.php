@@ -74,10 +74,15 @@
   {{-- IMPACTO --}}
   <section class="alt">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('projetos.impacto.kicker')</span>
-        <h2>@content('projetos.impacto.title')</h2>
-        <p class="sub">@content('projetos.impacto.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('projetos.impacto.kicker')</span>
+          <h2>@content('projetos.impacto.title')</h2>
+          <p class="sub">@content('projetos.impacto.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'impacto'])
+        </div>
       </div>
 
       <div class="stats-grid">
@@ -113,10 +118,15 @@
   {{-- PROJETOS E SOLUÇÕES --}}
   <section id="projetos">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('projetos.portfolio.kicker')</span>
-        <h2>@content('projetos.portfolio.title')</h2>
-        <p class="sub">@content('projetos.portfolio.sub')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('projetos.portfolio.kicker')</span>
+          <h2>@content('projetos.portfolio.title')</h2>
+          <p class="sub">@content('projetos.portfolio.sub')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'portfolio'])
+        </div>
       </div>
 
       <div class="cards-grid">

@@ -16,16 +16,19 @@
 @section('content')
 
   <!-- HERO -->
-  <section class="page-hero">
+  <section class="page-hero page-hero--split">
     <div class="wrap">
-      <h1>@content('transparencia.hero.title')</h1>
-      <p class="lead">@content('transparencia.hero.lead')</p>
-      <div class="page-meta">
-        @if ($atualizacao)
-          <div class="meta-chip"><span class="k">Última atualização</span><span class="v">{{ $atualizacao }}</span></div>
-        @endif
-        <div class="meta-chip"><span class="k">Pedidos de informação</span><a class="v" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></div>
+      <div>
+        <h1>@content('transparencia.hero.title')</h1>
+        <p class="lead">@content('transparencia.hero.lead')</p>
+        <div class="page-meta">
+          @if ($atualizacao)
+            <div class="meta-chip"><span class="k">Última atualização</span><span class="v">{{ $atualizacao }}</span></div>
+          @endif
+          <div class="meta-chip"><span class="k">Pedidos de informação</span><a class="v" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></div>
+        </div>
       </div>
+      @include('partials.section-banner', ['slot' => 'hero', 'eager' => true])
     </div>
     @extraTexts('transparencia.hero')
   </section>
