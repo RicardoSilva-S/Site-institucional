@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Admin\BackupController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\ContentController;
@@ -88,6 +89,13 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
     Route::resource('usuarios', UserController::class)
         ->only(['index', 'create', 'store', 'edit', 'update'])
         ->middleware('admin');
+
+    // Backup e restauração do banco (ver App\Support\BackupBanco)
+    Route::middleware('admin')->prefix('backup')->name('backup.')->group(function () {
+        Route::get('/', [BackupController::class, 'index'])->name('index');
+        Route::get('/baixar', [BackupController::class, 'baixar'])->name('baixar');
+        Route::post('/restaurar', [BackupController::class, 'restaurar'])->name('restaurar');
+    });
 
     // Mensagens do formulario de contato
     Route::get('/mensagens', [ContactMessageController::class, 'index'])->name('messages.index');
