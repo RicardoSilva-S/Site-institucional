@@ -23,7 +23,7 @@
     </a>
 
 
-<nav class="primary" aria-label="Navegação principal">
+<nav class="primary" id="menu-principal" aria-label="Navegação principal">
       <ul>
         <li><a class="top-link" href="{{ route('home') }}">@content('shared.nav.inicio')</a></li>
         <li class="has-sub">
@@ -45,8 +45,8 @@
 
 
     <div style="display:flex;align-items:center;gap:12px;">
-    <a href="/contato" class="btn btn-primary">@content('shared.nav.cta')</a>
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <a href="/contato" class="btn btn-primary nav-cta">@content('shared.nav.cta')</a>
+      <button type="button" class="menu-toggle" aria-label="Abrir menu" aria-controls="menu-principal" aria-expanded="false">☰</button>
     </div>
   </div>
 </header>
@@ -66,7 +66,7 @@
       </div>
 
       <div>
-        <h4>@content('shared.footer.col2.title')</h4>
+        <h2>@content('shared.footer.col2.title')</h2>
         <ul>
           <li><a href="{{ route('projetos') }}">Projetos e produtos</a></li>
           <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
@@ -76,7 +76,7 @@
       </div>
 
       <div>
-        <h4>@content('shared.footer.col2.title')</h4>
+        <h2>@content('shared.footer.col2.title')</h2>
         <ul>
         <li><a href="{{ route('atuacao') }}">Projetos e produtos</a></li>
         <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
@@ -86,7 +86,7 @@
       </div>
 
       <div>
-        <h4>@content('shared.footer.col3.title')</h4>
+        <h2>@content('shared.footer.col3.title')</h2>
         <ul>
           <li><a href="{{ route('transparencia') }}">Portal da Transparência</a></li>
           <li><a href="{{ route('transparencia') }}">Documentos institucionais</a></li>
