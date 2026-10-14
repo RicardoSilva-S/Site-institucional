@@ -21,7 +21,7 @@
   <section style="padding-top:36px;">
     <div class="wrap contact-grid">
       <div class="contact-card">
-        <h3>@content('contato.institucional.card1.title')</h3>
+        <h2>@content('contato.institucional.card1.title')</h2>
         <dl>
           <dt>E-mail</dt>
           <dd><a href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></dd>
@@ -32,7 +32,7 @@
         </dl>
       </div>
       <div class="contact-card">
-        <h3>@content('contato.institucional.card2.title')</h3>
+        <h2>@content('contato.institucional.card2.title')</h2>
         <dl>
           <dt>Sede</dt>
           <dd>Rua João Marangoni, nº 2908, Casa 7<br>Bairro Panorama · CEP 87.113-310<br>Sarandi – Paraná</dd>
@@ -41,7 +41,7 @@
         </dl>
       </div>
       <div class="contact-card">
-        <h3>@content('contato.institucional.card3.title')</h3>
+        <h2>@content('contato.institucional.card3.title')</h2>
         <dl>
           <dt>Razão social</dt>
           <dd>@content('contato.institucional.razao_social')</dd>

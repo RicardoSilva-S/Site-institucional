@@ -27,7 +27,7 @@
 
       <div class="catalog-card">
         <span class="tag">@content('home.catalog.tag')</span>
-        <h3>@content('home.catalog.title')</h3>
+        <h2>@content('home.catalog.title')</h2>
         <ul class="catalog-list">
           <li><span class="item-left"><span class="item-dot"></span><span class="item-label">@content('home.catalog.item1.label')</span></span><span class="item-cat">@content('home.catalog.item1.cat')</span></li>
           <li><span class="item-left"><span class="item-dot"></span><span class="item-label">@content('home.catalog.item2.label')</span></span><span class="item-cat">@content('home.catalog.item2.cat')</span></li>
