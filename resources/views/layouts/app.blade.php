@@ -22,8 +22,7 @@
       <img src="{{ asset('assets/logo.png') }}" alt="IDTNPR - Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense">
     </a>
 
-
-<nav class="primary" aria-label="Navegação principal">
+    <nav class="primary" aria-label="Navegação principal">
       <ul>
         <li><a class="top-link" href="{{ route('home') }}">@content('shared.nav.inicio')</a></li>
         <li class="has-sub">
@@ -43,9 +42,9 @@
       </ul>
     </nav>
 
-
     <div style="display:flex;align-items:center;gap:12px;">
-    <a href="/contato" class="btn btn-primary">@content('shared.nav.cta')</a>
+      {{-- LINHA CORRIGIDA: De "/contato" para route('contato') --}}
+      <a href="{{ route('contato') }}" class="btn btn-primary">@content('shared.nav.cta')</a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>
   </div>
@@ -91,7 +90,8 @@
           <li><a href="{{ route('transparencia') }}">Portal da Transparência</a></li>
           <li><a href="{{ route('transparencia') }}">Documentos institucionais</a></li>
           <li><a href="{{ route('contato') }}#ouvidoria">Ouvidoria</a></li>
-          <li><a href="/politica-de-privacidade">LGPD e Privacidade</a></li>
+          {{-- LINHA CORRIGIDA: De "/politica-de-privacidade" para route('privacidade') --}}
+          <li><a href="{{ route('privacidade') }}">LGPD e Privacidade</a></li>
         </ul>
       </div>
     </div>
