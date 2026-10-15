@@ -79,7 +79,7 @@
                 <div class="doc-side">
                   {{-- Com PDF: baixa direto. Sem PDF: pede pelo WhatsApp ou mostra a situação. --}}
                   @if ($doc->temArquivo())
-                    <a class="btn btn-outline" href="{{ route('transparencia.documento', $doc) }}" target="_blank" rel="noopener">Baixar PDF</a>
+                    <a class="btn btn-outline" href="{{ $doc->arquivoUrl() }}" target="_blank" rel="noopener">Baixar PDF</a>
                   @elseif ($doc->status === 'publicado')
                     <a class="btn btn-outline" href="{{ $zap($doc->nome) }}" target="_blank" rel="noopener">Solicitar</a>
                   @else

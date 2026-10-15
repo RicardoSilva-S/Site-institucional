@@ -51,4 +51,10 @@ class TransparenciaDocumento extends Model
     {
         return ! empty($this->arquivo_nome);
     }
+
+    /** endereco do PDF; o "v" muda quando o documento e editado, para o navegador baixar o novo */
+    public function arquivoUrl(): string
+    {
+        return route('transparencia.documento', ['documento' => $this->id, 'v' => optional($this->updated_at)->timestamp]);
+    }
 }
