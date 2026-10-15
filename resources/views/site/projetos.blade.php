@@ -129,51 +129,20 @@
         </div>
       </div>
 
+      {{-- Cartões cadastrados no painel (/adm/projetos). --}}
       <div class="cards-grid">
-        <article class="card">
-          <span class="kicker"><span class="status publicado">Implementado</span></span>
-          <h3>Totem de Autoatendimento</h3>
-          <p><strong>Frente:</strong> Atendimento ao cidadão</p>
-          <p>Reduz filas e facilita o acesso da população a serviços e informações municipais em pontos estratégicos de atendimento.</p>
-          <p><strong>Tecnologia:</strong> autoatendimento digital, interface acessível e integração com serviços públicos.</p>
-          <a href="{{ route('contato') }}" class="link">Conhecer a solução</a>
-        </article>
-
-        <article class="card">
-          <span class="kicker"><span class="status">Em expansão</span></span>
-          <h3>Alô Câmara</h3>
-          <p><strong>Frente:</strong> Participação popular e legislativo</p>
-          <p>Cria um canal direto entre a Câmara Municipal e os moradores para aproximar a população do trabalho dos vereadores.</p>
-          <p><strong>Tecnologia:</strong> comunicação digital, registro de demandas e acesso simplificado à informação.</p>
-          <a href="{{ route('contato') }}" class="link">Conhecer a solução</a>
-        </article>
-
-        <article class="card">
-          <span class="kicker"><span class="status">Consultoria</span></span>
-          <h3>Lei Municipal de Inovação</h3>
-          <p><strong>Frente:</strong> Marco legal e segurança jurídica</p>
-          <p>Apoia o município na criação de um ambiente institucional capaz de estimular inovação, parcerias e modernização dos serviços.</p>
-          <p><strong>Tecnologia:</strong> diagnóstico normativo, estruturação regulatória e orientação para políticas públicas.</p>
-          <a href="{{ route('marco-legal') }}" class="link">Conhecer o marco legal</a>
-        </article>
-
-        <article class="card">
-          <span class="kicker"><span class="status elaboracao">Fase piloto</span></span>
-          <h3>Gestão de Manutenção Municipal</h3>
-          <p><strong>Frente:</strong> Gestão municipal e operação</p>
-          <p>Organiza solicitações, ordens de serviço e históricos de manutenção para dar mais previsibilidade à operação municipal.</p>
-          <p><strong>Tecnologia:</strong> gestão de chamados, acompanhamento de ativos e painéis de controle.</p>
-          <a href="{{ route('contato') }}" class="link">Conhecer o projeto</a>
-        </article>
-
-        <article class="card">
-          <span class="kicker"><span class="status">Desenvolvimento</span></span>
-          <h3>Mobilidade e Frota Pública</h3>
-          <p><strong>Frente:</strong> Mobilidade, frota e eficiência</p>
-          <p>Ajuda o município a acompanhar veículos, deslocamentos e necessidades de manutenção, apoiando uma operação mais econômica e organizada.</p>
-          <p><strong>Tecnologia:</strong> monitoramento de ativos, indicadores operacionais e dados para tomada de decisão.</p>
-          <a href="{{ route('contato') }}" class="link">Conhecer o projeto</a>
-        </article>
+        @foreach ($projetos as $projeto)
+          <article class="card">
+            <span class="kicker"><span class="status {{ $projeto->classe() }}">{{ $projeto->rotulo() }}</span></span>
+            <h3>{{ $projeto->titulo }}</h3>
+            @if ($projeto->categorias)<p><strong>Frente:</strong> {{ $projeto->categorias }}</p>@endif
+            <p>{{ $projeto->breve_descricao }}</p>
+            @if ($projeto->tecnologia)<p><strong>Tecnologia:</strong> {{ $projeto->tecnologia }}</p>@endif
+            @if ($projeto->link_rotulo)
+              <a href="{{ $projeto->linkUrl() }}" class="link">{{ $projeto->link_rotulo }}</a>
+            @endif
+          </article>
+        @endforeach
       </div>
     </div>
     @extraTexts('projetos.portfolio')
