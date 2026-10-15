@@ -93,12 +93,17 @@ class SiteController extends Controller
         return view('site.transparencia', compact('secoes', 'atualizacao'));
     }
 
-    public function documentoTransparencia(TransparenciaDocumento $documento): Response
+    public function documentoTransparencia(Request $request, TransparenciaDocumento $documento): Response
     {
         abort_unless($documento->temArquivo() && $documento->arquivo_data, 404);
 
+        // com o "v" no endereco (arquivoUrl) o PDF pode ficar no cache do navegador:
+        // se o documento mudar, o endereco muda junto
+        $cache = $request->has('v') ? 'public, max-age=31536000' : 'no-cache';
+
         return response(base64_decode($documento->arquivo_data), 200, [
             'Content-Type' => 'application/pdf',
+            'Cache-Control' => $cache,
             'Content-Disposition' => HeaderUtils::makeDisposition(
                 HeaderUtils::DISPOSITION_INLINE,
                 str_replace(['/', '\\'], '-', $documento->arquivo_nome),

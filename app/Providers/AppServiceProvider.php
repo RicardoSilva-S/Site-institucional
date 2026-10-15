@@ -10,7 +10,6 @@ use App\Support\SiteContent;
 
 use Illuminate\Support\Facades\Blade;
 
-use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Support\Facades\View;
 
@@ -66,12 +65,12 @@ class AppServiceProvider extends ServiceProvider
         // Banners ativos da página atual (ou marcados para "todas as páginas"),
         // usados por resources/views/partials/banner.blade.php.
         View::composer('partials.banner', function ($view) {
-            $banners = collect();
- 
-            if (Schema::hasTable('banners')) {
-                $route = optional(request()->route())->getName();
- 
-                $banners = Banner::query()
+            $route = optional(request()->route())->getName();
+
+            // sem checar se a tabela existe a cada pagina (era 1 consulta a mais);
+            // se ainda nao rodou a migration, rescue() devolve lista vazia
+            $banners = rescue(function () use ($route) {
+                return Banner::query()
                     ->select(Banner::LIST_COLUMNS)
                     ->where('active', true)
                     ->whereNull('slot')
@@ -81,8 +80,8 @@ class AppServiceProvider extends ServiceProvider
                     ->orderBy('sort_order')
                     ->orderBy('id')
                     ->get();
-            }
- 
+            }, collect());
+
             $view->with('banners', $banners);
         });
 

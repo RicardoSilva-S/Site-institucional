@@ -20,9 +20,9 @@ class RodapeTest extends TestCase
     {
         $rodape = $this->rodape();
 
-        $this->assertSame(1, substr_count($rodape, '<h4>Institucional</h4>'));
-        $this->assertSame(1, substr_count($rodape, '<h4>Soluções</h4>'));
-        $this->assertSame(1, substr_count($rodape, '<h4>Transparência</h4>'));
+        $this->assertSame(1, substr_count($rodape, '<h2>Institucional</h2>'));
+        $this->assertSame(1, substr_count($rodape, '<h2>Soluções</h2>'));
+        $this->assertSame(1, substr_count($rodape, '<h2>Transparência</h2>'));
     }
 
     public function test_coluna_institucional_leva_para_as_paginas()

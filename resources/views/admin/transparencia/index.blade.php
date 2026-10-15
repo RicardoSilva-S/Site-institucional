@@ -69,7 +69,7 @@
                 </td>
                 <td>
                   @if ($documento->temArquivo())
-                    <a href="{{ route('transparencia.documento', $documento) }}" target="_blank" rel="noopener">{{ \Illuminate\Support\Str::limit($documento->arquivo_nome, 30) }}</a>
+                    <a href="{{ $documento->arquivoUrl() }}" target="_blank" rel="noopener">{{ \Illuminate\Support\Str::limit($documento->arquivo_nome, 30) }}</a>
                   @else
                     <span class="admin-muted">—</span>
                   @endif

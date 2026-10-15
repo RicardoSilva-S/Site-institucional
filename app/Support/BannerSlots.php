@@ -4,7 +4,6 @@ namespace App\Support;
 
 use App\Models\Banner;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Schema;
 
 /**
  * Posições de banner do site: o carrossel do topo de cada página e as
@@ -124,8 +123,9 @@ class BannerSlots
         $key = 'banner-slots.'.$route;
 
         if (! $request->attributes->has($key)) {
-            $banners = Schema::hasTable('banners')
-                ? Banner::query()
+            // sem checar se a tabela existe (era 1 consulta a mais por pagina)
+            $banners = rescue(function () use ($route) {
+                return Banner::query()
                     ->select(Banner::LIST_COLUMNS)
                     ->where('page', $route)
                     ->whereNotNull('slot')
@@ -133,8 +133,8 @@ class BannerSlots
                     ->orderBy('sort_order')
                     ->orderBy('id')
                     ->get()
-                    ->groupBy('slot')
-                : collect();
+                    ->groupBy('slot');
+            }, collect());
 
             $request->attributes->set($key, $banners);
         }
