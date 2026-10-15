@@ -112,6 +112,24 @@ class TransparenciaPainelTest extends TestCase
         $this->assertStringContainsString('relatorio_100__final.pdf', $resposta->headers->get('Content-Disposition'));
     }
 
+    public function test_link_do_pdf_tem_versao_e_fica_no_cache(): void
+    {
+        $documento = $this->secao()->documentos()->create([
+            'nome' => 'Ata',
+            'arquivo_nome' => 'ata.pdf',
+            'arquivo_data' => base64_encode('%PDF-1.4 ata'),
+        ]);
+
+        $this->assertStringContainsString('v=' . $documento->updated_at->timestamp, $documento->arquivoUrl());
+        $this->get('/transparencia')->assertSee($documento->arquivoUrl(), false);
+
+        $comVersao = $this->get($documento->arquivoUrl())->assertOk();
+        $this->assertStringContainsString('max-age=31536000', $comVersao->headers->get('Cache-Control'));
+
+        $semVersao = $this->get(route('transparencia.documento', $documento))->assertOk();
+        $this->assertStringContainsString('no-cache', $semVersao->headers->get('Cache-Control'));
+    }
+
     public function test_download_de_documento_sem_pdf_da_404(): void
     {
         $documento = TransparenciaDocumento::first();
