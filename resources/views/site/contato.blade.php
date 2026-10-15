@@ -176,7 +176,7 @@
     <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
   </div>
   
-  <p class="form-note">@content('contato.form.note') Ver a <a href="/politica-de-privacidade">Política de Privacidade</a>.</p>
+  <p class="form-note">@content('contato.form.note') Ver a <a href="{{ route('privacidade') }}">Política de Privacidade</a>.</p>
 </form>
       </div>
     </div>
