@@ -96,7 +96,7 @@
         </div>
       </div>
 
-      <div class="info-box" style="margin-top:18px;">
+      <div class="info-box mt-18">
         <h3>@content('marcolegal.ict.verif.title')</h3>
         <p>@content('marcolegal.ict.verif.text')</p>
       </div>

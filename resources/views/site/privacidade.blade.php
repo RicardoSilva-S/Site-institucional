@@ -68,7 +68,7 @@
         <p>@content('privacidade.controlador.text')</p>
       </div>
 
-      <div class="section-head" style="margin-top:48px;">
+      <div class="section-head mt-48">
         <span class="kicker">@content('privacidade.coleta.kicker')</span>
         <h2>@content('privacidade.coleta.title')</h2>
       </div>
@@ -96,7 +96,7 @@
         <p>@content('privacidade.uso.text')</p>
       </div>
 
-      <div class="section-head" style="margin-top:48px;">
+      <div class="section-head mt-48">
         <span class="kicker">@content('privacidade.cookies.kicker')</span>
         <h2>@content('privacidade.cookies.title')</h2>
       </div>
@@ -116,10 +116,10 @@
       </div>
       <div class="info-box">
         <p>@content('privacidade.armazenamento.p1')</p>
-        <p style="margin-top:14px;">@content('privacidade.armazenamento.p2')</p>
+        <p class="mt-14">@content('privacidade.armazenamento.p2')</p>
       </div>
 
-      <div class="section-head" style="margin-top:48px;">
+      <div class="section-head mt-48">
         <span class="kicker">@content('privacidade.direitos.kicker')</span>
         <h2>@content('privacidade.direitos.title')</h2>
       </div>
@@ -172,7 +172,7 @@
         </div>
       </div>
 
-      <p style="margin-top:24px;">
+      <p class="mt-24">
         <a href="{{ url('/contato') }}" class="btn btn-primary">@content('privacidade.contato.btn')</a>
       </p>
     </div>

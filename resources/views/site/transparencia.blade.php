@@ -34,7 +34,7 @@
   </section>
 
   <!-- SOLICITAÇÃO -->
-  <section style="padding:36px 0 20px;">
+  <section class="section--meta">
     <div class="wrap">
       <div class="cta-panel">
         <div>
@@ -51,7 +51,7 @@
   </section>
 
   <!-- DOCUMENTOS -->
-  <section style="padding-top:48px;">
+  <section class="section--pt-48">
     <div class="wrap">
       <div class="doc-filters" role="search">
         <input type="search" id="doc-busca" placeholder="Buscar documento" aria-label="Buscar documento">
@@ -108,13 +108,13 @@
   <section class="alt">
     <div class="wrap pedidos-grid">
       <div>
-        <span class="section-head kicker" style="display:block;">@content('transparencia.pedidos.kicker')</span>
+        <span class="section-head kicker kicker--block">@content('transparencia.pedidos.kicker')</span>
         <h2>@content('transparencia.pedidos.title')</h2>
       </div>
-      <p style="color:var(--ink-soft);font-size:16.5px;">
+      <p class="text-soft-lg">
         @content('transparencia.pedidos.text')
-        <a href="mailto:faleconosco@idtnpr.org.br" style="color:var(--navy);font-weight:600;">faleconosco@idtnpr.org.br</a>
-        ou pela <a href="{{ route('contato') }}#ouvidoria" style="color:var(--navy);font-weight:600;">Ouvidoria</a>. Respondemos em até 20 dias úteis.
+        <a class="link-strong" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a>
+        ou pela <a class="link-strong" href="{{ route('contato') }}#ouvidoria">Ouvidoria</a>. Respondemos em até 20 dias úteis.
       </p>
     </div>
     @extraTexts('transparencia.pedidos')
