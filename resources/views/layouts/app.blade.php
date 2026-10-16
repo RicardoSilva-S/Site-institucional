@@ -17,6 +17,10 @@
 <meta name="robots" content="{{ $seoRobots }}">
 <link rel="canonical" href="{{ $seoUrl }}">
 <meta name="theme-color" content="#0F2A5C">
+{{-- Ícones: aba do navegador, favoritos e tela inicial do celular --}}
+<link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+<link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 
 {{-- Open Graph: pré-visualização no WhatsApp, LinkedIn e Facebook --}}
 <meta property="og:type" content="website">
