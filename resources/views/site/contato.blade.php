@@ -97,7 +97,7 @@
   @csrf 
   
   @if(session('success'))
-    <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+    <div class="form-alert success is-visible" role="status">
       {{ session('success') }}
     </div>
   @endif
@@ -208,7 +208,7 @@
           @csrf
 
           @if (session('ouvidoria_protocolo'))
-            <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <div class="form-alert success is-visible" role="status">
               Manifestação registrada. Guarde o seu protocolo: <strong>{{ session('ouvidoria_protocolo') }}</strong>
             </div>
           @endif
