@@ -215,6 +215,13 @@ details.readmore a.link{color:var(--navy);font-weight:600;display:inline-block;m
 .compare-cell.bad .icon{background:var(--bad-bg);color:var(--bad-ink);}
 .compare-cell.good{color:var(--ink);font-weight:500;}
 .compare-cell.good .icon{background:var(--good-bg);color:var(--good-ink);}
+/* Celular: as duas colunas continuam lado a lado (a comparação é o ponto),
+   mas com menos espaço interno e fonte menor, para o texto respirar. */
+@media (max-width:600px){
+  .compare-row.head .compare-cell{padding:14px 12px;font-size:14px;}
+  .compare-cell{padding:14px 12px;font-size:14px;line-height:1.45;gap:8px;align-items:flex-start;}
+  .compare-cell .icon{width:20px;height:20px;font-size:11px;margin-top:1px;}
+}
 
 /* ---------- Process (steps) ---------- */
 /* Carrossel das etapas: --per-view cartões inteiros por vez, sem barra de
