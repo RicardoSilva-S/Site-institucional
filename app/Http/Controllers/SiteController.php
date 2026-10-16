@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Edital;
 use App\Models\MembroInstitucional;
+use App\Models\Projeto;
 use App\Models\TransparenciaDocumento;
 use App\Models\TransparenciaSecao;
 use Illuminate\Http\Request;
@@ -51,7 +52,10 @@ class SiteController extends Controller
 
     public function projetos(): View
     {
-        return view('site.projetos');
+        // Cartões do portfólio vêm do banco e são cadastrados no painel (/adm/projetos).
+        return view('site.projetos', [
+            'projetos' => Projeto::emOrdem(),
+        ]);
     }
 
     public function editais(): View

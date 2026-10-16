@@ -58,6 +58,11 @@
             Editais
           </a>
         </li>
+        <li>
+          <a href="{{ route('admin.projetos.index') }}" class="{{ request()->routeIs('admin.projetos.*') ? 'is-active' : '' }}">
+            Projetos
+          </a>
+        </li>
       </ul>
       <p class="admin-sidebar__title">Contato</p>
       <ul>
