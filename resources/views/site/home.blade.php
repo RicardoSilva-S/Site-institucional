@@ -45,15 +45,15 @@
     <div class="wrap">
       <div class="problem-grid">
         <div>
-          <span class="section-head kicker" style="display:block;">@content('home.problem.kicker')</span>
-          <h2 style="margin-bottom:18px;">@content('home.problem.title')</h2>
+          <span class="section-head kicker kicker--block">@content('home.problem.kicker')</span>
+          <h2 class="mb-18">@content('home.problem.title')</h2>
           <p>@content('home.problem.text')</p>
 
           <details class="readmore">
             <summary>Continuar lendo</summary>
             <div class="more">
               <p>@content('home.problem.more1')</p>
-              <p style="margin-top:14px;">@content('home.problem.more2')</p>
+              <p class="mt-14">@content('home.problem.more2')</p>
               <a class="link" href="{{ route('marco-legal') }}">@content('home.problem.link')</a>
             </div>
           </details>
@@ -163,7 +163,7 @@
         <p>@content('home.stats.copy2')</p>
       </div>
 
-      <div style="margin-top:32px;">
+      <div class="mt-32">
         <a href="{{ route('marco-legal') }}" class="btn btn-outline">@content('home.stats.cta')</a>
       </div>
     </div>
@@ -174,10 +174,10 @@
   <section>
     <div class="wrap transp-grid">
       <div>
-        <span class="section-head kicker" style="display:block;">@content('home.transp.kicker')</span>
-        <h2 style="margin-bottom:16px;">@content('home.transp.title')</h2>
-        <p style="color:var(--ink-soft);font-size:16.5px;">@content('home.transp.text')</p>
-        <a href="{{ route('transparencia') }}" class="btn btn-primary" style="margin-top:26px;">@content('home.transp.cta')</a>
+        <span class="section-head kicker kicker--block">@content('home.transp.kicker')</span>
+        <h2 class="mb-16">@content('home.transp.title')</h2>
+        <p class="text-soft-lg">@content('home.transp.text')</p>
+        <a href="{{ route('transparencia') }}" class="btn btn-primary mt-26">@content('home.transp.cta')</a>
       </div>
       <div class="transp-items">
         @for ($i = 1; $i <= 4; $i++)

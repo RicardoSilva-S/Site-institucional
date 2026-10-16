@@ -17,7 +17,7 @@
         <h1>@content('editais.hero.title')</h1>
         <p class="lead">@content('editais.hero.lead')</p>
 
-        <div class="info-grid" style="margin-top:34px;">
+        <div class="info-grid mt-34">
           <div class="info-box">
             <h3>@content('editais.hero.box1.title')</h3>
             <p>@content('editais.hero.box1.text')</p>

@@ -21,7 +21,7 @@
   {{-- E-mail, WhatsApp, Instagram, endereços e CNPJ são dados de cadastro, não
        "texto" do site — ficam fixos aqui, como o número de WhatsApp já fica
        fixo em marco-legal.blade.php, em vez de editáveis pelo painel. --}}
-  <section style="padding-top:36px;">
+  <section class="section--pt-36">
     <div class="wrap contact-grid">
       <div class="contact-card">
         <h2>@content('contato.institucional.card1.title')</h2>
@@ -69,7 +69,7 @@
   <section class="alt" id="diagnostico">
     <div class="wrap form-layout">
       <div class="form-intro">
-        <div class="section-head" style="margin-bottom:0;">
+        <div class="section-head mb-0">
           <span class="kicker">@content('contato.diagnostico.kicker')</span>
           <h2>@content('contato.diagnostico.title')</h2>
         </div>
@@ -184,10 +184,10 @@
   </section>
 
   <!-- OUVIDORIA -->
-  <section id="ouvidoria" style="scroll-margin-top:90px;">
+  <section class="scroll-offset" id="ouvidoria">
     <div class="wrap ouvidoria">
       <div>
-        <div class="section-head" style="margin-bottom:0;">
+        <div class="section-head mb-0">
           <span class="kicker">@content('contato.ouvidoria.kicker')</span>
           <h2>@content('contato.ouvidoria.title')</h2>
         </div>
@@ -202,7 +202,7 @@
     </div>
 
     {{-- formulario da ouvidoria: mesmas classes do formulario de contato --}}
-    <div class="wrap" style="margin-top:36px;">
+    <div class="wrap mt-36">
       <div class="form-card">
         <form id="form-ouvidoria" action="{{ route('ouvidoria.enviar') }}" method="POST" novalidate>
           @csrf
