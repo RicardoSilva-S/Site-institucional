@@ -16,22 +16,25 @@
 @section('content')
 
   <!-- HERO -->
-  <section class="page-hero">
+  <section class="page-hero page-hero--split">
     <div class="wrap">
-      <h1>@content('transparencia.hero.title')</h1>
-      <p class="lead">@content('transparencia.hero.lead')</p>
-      <div class="page-meta">
-        @if ($atualizacao)
-          <div class="meta-chip"><span class="k">Última atualização</span><span class="v">{{ $atualizacao }}</span></div>
-        @endif
-        <div class="meta-chip"><span class="k">Pedidos de informação</span><a class="v" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></div>
+      <div>
+        <h1>@content('transparencia.hero.title')</h1>
+        <p class="lead">@content('transparencia.hero.lead')</p>
+        <div class="page-meta">
+          @if ($atualizacao)
+            <div class="meta-chip"><span class="k">Última atualização</span><span class="v">{{ $atualizacao }}</span></div>
+          @endif
+          <div class="meta-chip"><span class="k">Pedidos de informação</span><a class="v" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></div>
+        </div>
       </div>
+      @include('partials.section-banner', ['slot' => 'hero', 'eager' => true])
     </div>
     @extraTexts('transparencia.hero')
   </section>
 
   <!-- SOLICITAÇÃO -->
-  <section style="padding:36px 0 20px;">
+  <section class="section--meta">
     <div class="wrap">
       <div class="cta-panel">
         <div>
@@ -48,7 +51,7 @@
   </section>
 
   <!-- DOCUMENTOS -->
-  <section style="padding-top:48px;">
+  <section class="section--pt-48">
     <div class="wrap">
       <div class="doc-filters" role="search">
         <input type="search" id="doc-busca" placeholder="Buscar documento" aria-label="Buscar documento">
@@ -76,7 +79,7 @@
                 <div class="doc-side">
                   {{-- Com PDF: baixa direto. Sem PDF: pede pelo WhatsApp ou mostra a situação. --}}
                   @if ($doc->temArquivo())
-                    <a class="btn btn-outline" href="{{ route('transparencia.documento', $doc) }}" target="_blank" rel="noopener">Baixar PDF</a>
+                    <a class="btn btn-outline" href="{{ $doc->arquivoUrl() }}" target="_blank" rel="noopener">Baixar PDF</a>
                   @elseif ($doc->status === 'publicado')
                     <a class="btn btn-outline" href="{{ $zap($doc->nome) }}" target="_blank" rel="noopener">Solicitar</a>
                   @else
@@ -105,13 +108,13 @@
   <section class="alt">
     <div class="wrap pedidos-grid">
       <div>
-        <span class="section-head kicker" style="display:block;">@content('transparencia.pedidos.kicker')</span>
+        <span class="section-head kicker kicker--block">@content('transparencia.pedidos.kicker')</span>
         <h2>@content('transparencia.pedidos.title')</h2>
       </div>
-      <p style="color:var(--ink-soft);font-size:16.5px;">
+      <p class="text-soft-lg">
         @content('transparencia.pedidos.text')
-        <a href="mailto:faleconosco@idtnpr.org.br" style="color:var(--navy);font-weight:600;">faleconosco@idtnpr.org.br</a>
-        ou pela <a href="{{ route('contato') }}#ouvidoria" style="color:var(--navy);font-weight:600;">Ouvidoria</a>. Respondemos em até 20 dias úteis.
+        <a class="link-strong" href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a>
+        ou pela <a class="link-strong" href="{{ route('contato') }}#ouvidoria">Ouvidoria</a>. Respondemos em até 20 dias úteis.
       </p>
     </div>
     @extraTexts('transparencia.pedidos')

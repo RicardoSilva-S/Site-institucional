@@ -58,7 +58,7 @@
         @if ($documento->temArquivo())
           <p>
             Arquivo atual:
-            <a href="{{ route('transparencia.documento', $documento) }}" target="_blank" rel="noopener">{{ $documento->arquivo_nome }}</a>
+            <a href="{{ $documento->arquivoUrl() }}" target="_blank" rel="noopener">{{ $documento->arquivo_nome }}</a>
           </p>
         @endif
         <input type="file" id="arquivo" name="arquivo" accept="application/pdf,.pdf">

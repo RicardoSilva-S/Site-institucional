@@ -6,10 +6,13 @@
 @section('content')
 
   <!-- HERO -->
-  <section class="page-hero">
+  <section class="page-hero page-hero--split">
     <div class="wrap">
-      <h1>@content('contato.hero.title')</h1>
-      <p class="lead">@content('contato.hero.lead')</p>
+      <div>
+        <h1>@content('contato.hero.title')</h1>
+        <p class="lead">@content('contato.hero.lead')</p>
+      </div>
+      @include('partials.section-banner', ['slot' => 'hero', 'eager' => true])
     </div>
     @extraTexts('contato.hero')
   </section>
@@ -18,10 +21,10 @@
   {{-- E-mail, WhatsApp, Instagram, endereços e CNPJ são dados de cadastro, não
        "texto" do site — ficam fixos aqui, como o número de WhatsApp já fica
        fixo em marco-legal.blade.php, em vez de editáveis pelo painel. --}}
-  <section style="padding-top:36px;">
+  <section class="section--pt-36">
     <div class="wrap contact-grid">
       <div class="contact-card">
-        <h3>@content('contato.institucional.card1.title')</h3>
+        <h2>@content('contato.institucional.card1.title')</h2>
         <dl>
           <dt>E-mail</dt>
           <dd><a href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></dd>
@@ -32,7 +35,7 @@
         </dl>
       </div>
       <div class="contact-card">
-        <h3>@content('contato.institucional.card2.title')</h3>
+        <h2>@content('contato.institucional.card2.title')</h2>
         <dl>
           <dt>Sede</dt>
           <dd>Rua João Marangoni, nº 2908, Casa 7<br>Bairro Panorama · CEP 87.113-310<br>Sarandi – Paraná</dd>
@@ -41,7 +44,7 @@
         </dl>
       </div>
       <div class="contact-card">
-        <h3>@content('contato.institucional.card3.title')</h3>
+        <h2>@content('contato.institucional.card3.title')</h2>
         <dl>
           <dt>Razão social</dt>
           <dd>@content('contato.institucional.razao_social')</dd>
@@ -66,7 +69,7 @@
   <section class="alt" id="diagnostico">
     <div class="wrap form-layout">
       <div class="form-intro">
-        <div class="section-head" style="margin-bottom:0;">
+        <div class="section-head mb-0">
           <span class="kicker">@content('contato.diagnostico.kicker')</span>
           <h2>@content('contato.diagnostico.title')</h2>
         </div>
@@ -94,7 +97,7 @@
   @csrf 
   
   @if(session('success'))
-    <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+    <div class="form-alert success is-visible" role="status">
       {{ session('success') }}
     </div>
   @endif
@@ -173,7 +176,7 @@
     <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
   </div>
   
-  <p class="form-note">@content('contato.form.note') Ver a <a href="/politica-de-privacidade">Política de Privacidade</a>.</p>
+  <p class="form-note">@content('contato.form.note') Ver a <a href="{{ route('privacidade') }}">Política de Privacidade</a>.</p>
 </form>
       </div>
     </div>
@@ -181,10 +184,10 @@
   </section>
 
   <!-- OUVIDORIA -->
-  <section id="ouvidoria" style="scroll-margin-top:90px;">
+  <section class="scroll-offset" id="ouvidoria">
     <div class="wrap ouvidoria">
       <div>
-        <div class="section-head" style="margin-bottom:0;">
+        <div class="section-head mb-0">
           <span class="kicker">@content('contato.ouvidoria.kicker')</span>
           <h2>@content('contato.ouvidoria.title')</h2>
         </div>
@@ -199,13 +202,13 @@
     </div>
 
     {{-- formulario da ouvidoria: mesmas classes do formulario de contato --}}
-    <div class="wrap" style="margin-top:36px;">
+    <div class="wrap mt-36">
       <div class="form-card">
         <form id="form-ouvidoria" action="{{ route('ouvidoria.enviar') }}" method="POST" novalidate>
           @csrf
 
           @if (session('ouvidoria_protocolo'))
-            <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <div class="form-alert success is-visible" role="status">
               Manifestação registrada. Guarde o seu protocolo: <strong>{{ session('ouvidoria_protocolo') }}</strong>
             </div>
           @endif

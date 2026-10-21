@@ -15,23 +15,38 @@
     const nav = document.querySelector("nav.primary");
     if (!toggle || !nav) return;
 
-    toggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("is-open");
+    const isMobile = () => window.innerWidth <= 960;
+
+    function setOpen(isOpen) {
+      nav.classList.toggle("is-open", isOpen);
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      toggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+    }
+
+    toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
+
+    // Esc fecha o menu mobile e devolve o foco ao botão ☰
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
     });
 
-    // Fecha o menu mobile ao clicar num link
+    // No mobile, o item "Institucional" abre/fecha o submenu em vez de navegar;
+    // os demais links fecham o menu mobile
     nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => nav.classList.remove("is-open"));
-    });
+      const isSubToggle = link.matches(".has-sub > a.top-link");
+      if (isSubToggle && isMobile()) link.setAttribute("aria-expanded", "false");
 
-    // No mobile, o item "Institucional" abre/fecha o submenu em vez de navegar
-    document.querySelectorAll(".has-sub > a.top-link").forEach((link) => {
       link.addEventListener("click", (e) => {
-        if (window.innerWidth <= 960) {
+        if (isSubToggle && isMobile()) {
           e.preventDefault();
-          link.parentElement.classList.toggle("is-open");
+          const subOpen = link.parentElement.classList.toggle("is-open");
+          link.setAttribute("aria-expanded", subOpen ? "true" : "false");
+          return;
         }
+        setOpen(false);
       });
     });
   }
@@ -62,17 +77,24 @@
       dots.forEach((dot, i) => dot.classList.toggle("is-active", i === current));
     }
  
+    // Quem pediu menos movimento no sistema não recebe a troca automática
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     function restart() {
       clearInterval(timer);
+      if (reduceMotion) return;
       timer = setInterval(() => show(current + 1), 6000);
     }
- 
+
     slider.querySelector(".banner-nav--prev")?.addEventListener("click", () => { show(current - 1); restart(); });
     slider.querySelector(".banner-nav--next")?.addEventListener("click", () => { show(current + 1); restart(); });
     dots.forEach((dot, i) => dot.addEventListener("click", () => { show(i); restart(); }));
- 
+
+    // Pausa com o mouse em cima ou com o foco do teclado dentro do carrossel
     slider.addEventListener("mouseenter", () => clearInterval(timer));
     slider.addEventListener("mouseleave", restart);
+    slider.addEventListener("focusin", () => clearInterval(timer));
+    slider.addEventListener("focusout", (e) => { if (!slider.contains(e.relatedTarget)) restart(); });
  
     restart();
   }

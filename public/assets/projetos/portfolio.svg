@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+  <rect width="640" height="480" fill="#FFFFFF"/>
+  <g fill="#FFFFFF" stroke="#0F2A5C" stroke-width="3" stroke-linejoin="round">
+    <rect x="96" y="96" width="200" height="132" rx="14"/>
+    <rect x="344" y="96" width="200" height="132" rx="14" fill="#E9EDF5"/>
+    <rect x="96" y="260" width="200" height="132" rx="14" fill="#E9EDF5"/>
+    <rect x="344" y="260" width="200" height="132" rx="14"/>
+  </g>
+  <g fill="#F2E6CE" stroke="#B8862E" stroke-width="2.5">
+    <rect x="118" y="116" width="74" height="22" rx="11"/><rect x="366" y="280" width="74" height="22" rx="11"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#0F2A5C" stroke-width="2.5">
+    <rect x="366" y="116" width="74" height="22" rx="11"/><rect x="118" y="280" width="74" height="22" rx="11"/>
+  </g>
+  <g stroke="#C3CADB" stroke-width="6" stroke-linecap="round">
+    <line x1="118" y1="164" x2="262" y2="164"/><line x1="118" y1="184" x2="232" y2="184"/><line x1="118" y1="204" x2="246" y2="204"/>
+    <line x1="366" y1="164" x2="510" y2="164"/><line x1="366" y1="184" x2="480" y2="184"/><line x1="366" y1="204" x2="494" y2="204"/>
+    <line x1="118" y1="328" x2="262" y2="328"/><line x1="118" y1="348" x2="232" y2="348"/><line x1="118" y1="368" x2="246" y2="368"/>
+    <line x1="366" y1="328" x2="510" y2="328"/><line x1="366" y1="348" x2="480" y2="348"/><line x1="366" y1="368" x2="494" y2="368"/>
+  </g>
+</svg>

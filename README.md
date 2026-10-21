@@ -61,6 +61,26 @@ site, não só no navegador de quem editou. "Restaurar padrão" apaga os
 overrides salvos e volta ao texto original do `config/site_content.php`.
 Há também um botão de exportar os textos atuais em `.json`.
 
+## E-mail no Render
+
+O formulário de contato grava a mensagem no banco e avisa `CONTACT_MAIL_TO`
+por e-mail. Se o e-mail falhar, a mensagem continua salva e aparece em
+`/admin/mensagens`; o erro vai para o log do Render.
+
+O `render.yaml` já declara as variáveis `MAIL_*`. Para o e-mail sair de verdade:
+
+1. Crie uma conta num provedor de SMTP (Brevo, Mailgun, SendGrid, etc.) e
+   verifique o endereço ou domínio remetente.
+2. No Render, em **Environment** do serviço, preencha as variáveis que o
+   Blueprint deixa em branco (`sync: false`): `MAIL_HOST`, `MAIL_USERNAME`,
+   `MAIL_PASSWORD` e `MAIL_FROM_ADDRESS`.
+3. Salve e aguarde o redeploy. Teste enviando o formulário em `/contato`.
+
+O plano free do Render bloqueia as portas SMTP 25, 465 e 587, por isso o
+padrão é a porta `2525` com `tls`. Se o provedor não oferecer 2525, use um
+provedor que ofereça ou um plano pago do Render. Os valores reais ficam só no
+painel do Render, nunca no repositório.
+
 ---
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>

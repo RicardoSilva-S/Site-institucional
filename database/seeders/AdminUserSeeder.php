@@ -7,33 +7,37 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Cria (ou atualiza a senha de) o usuário que acessa o painel
- * /admin/conteudo. Credenciais vêm do .env — ver .env.example:
+ * Cria o usuário administrador do painel (/adm) se ele ainda não existir.
+ * Dados em config/admin.php, que lê do .env (ADMIN_NAME, ADMIN_EMAIL e
+ * ADMIN_PASSWORD — ver .env.example).
  *
- *   ADMIN_NAME=...
- *   ADMIN_EMAIL=...
- *   ADMIN_PASSWORD=...
+ * Roda em todo deploy (docker/start.sh). Se o admin já existe, a senha NÃO é
+ * mexida (troca de senha é pelo painel /adm/usuarios); só garante que ele
+ * continua admin e ativo.
  *
  * Rode com: php artisan db:seed --class=AdminUserSeeder
- * (o DatabaseSeeder padrão já chama este seeder.)
  */
 class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        $email = env('ADMIN_EMAIL', 'admin@idtnpr.org.br');
-        $password = env('ADMIN_PASSWORD', 'trocar-esta-senha');
+        $email = config('admin.email');
+        $senha = config('admin.password') ?: 'trocar-esta-senha';
 
-        User::query()->updateOrCreate(
-            ['email' => $email],
-            [
-                'name' => env('ADMIN_NAME', 'Administrador IDTNPR'),
-                'password' => Hash::make($password),
-                'email_verified_at' => now(),
-                'papel' => User::PAPEL_ADMIN,
-                'ativo' => true,
-            ],
-        );
+        $admin = User::query()->firstOrNew(['email' => $email]);
+
+        // a senha so e definida quando o admin e criado; depois disso quem manda e
+        // o painel (/adm/usuarios), senao cada deploy desfaria a troca de senha
+        if (! $admin->exists) {
+            $admin->name = config('admin.name');
+            $admin->password = Hash::make($senha);
+            $admin->email_verified_at = now();
+        }
+
+        // o admin principal sempre continua admin e ativo (o painel nunca fica sem admin)
+        $admin->papel = User::PAPEL_ADMIN;
+        $admin->ativo = true;
+        $admin->save();
 
         if (! $this->command) {
             return;
@@ -41,7 +45,7 @@ class AdminUserSeeder extends Seeder
 
         $this->command->info("Usuário admin pronto: {$email}");
 
-        if (! env('ADMIN_PASSWORD')) {
+        if (! config('admin.password')) {
             $this->command->warn(
                 'ADMIN_PASSWORD não definida no .env — usando a senha padrão "trocar-esta-senha". Troque-a antes de publicar em produção.'
             );

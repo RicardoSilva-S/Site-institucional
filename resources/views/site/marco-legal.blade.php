@@ -6,10 +6,13 @@
 @section('content')
 
   <!-- HERO -->
-  <section class="page-hero">
+  <section class="page-hero page-hero--split">
     <div class="wrap">
-      <h1>@content('marcolegal.hero.title')</h1>
-      <p class="lead">@content('marcolegal.hero.lead')</p>
+      <div>
+        <h1>@content('marcolegal.hero.title')</h1>
+        <p class="lead">@content('marcolegal.hero.lead')</p>
+      </div>
+      @include('partials.section-banner', ['slot' => 'hero', 'eager' => true])
     </div>
     @extraTexts('marcolegal.hero')
   </section>
@@ -17,9 +20,14 @@
   <!-- AS NORMAS -->
   <section>
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('marcolegal.normas.kicker')</span>
-        <h2>@content('marcolegal.normas.title')</h2>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('marcolegal.normas.kicker')</span>
+          <h2>@content('marcolegal.normas.title')</h2>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'normas'])
+        </div>
       </div>
 
       <div class="norma-grid">
@@ -88,7 +96,7 @@
         </div>
       </div>
 
-      <div class="info-box" style="margin-top:18px;">
+      <div class="info-box mt-18">
         <h3>@content('marcolegal.ict.verif.title')</h3>
         <p>@content('marcolegal.ict.verif.text')</p>
       </div>
@@ -99,10 +107,15 @@
   <!-- O MAPA -->
   <section>
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('marcolegal.mapa.kicker')</span>
-        <h2>@content('marcolegal.mapa.title')</h2>
-        <p class="sub">@content('marcolegal.mapa.intro')</p>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('marcolegal.mapa.kicker')</span>
+          <h2>@content('marcolegal.mapa.title')</h2>
+          <p class="sub">@content('marcolegal.mapa.intro')</p>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'mapa'])
+        </div>
       </div>
 
       <div class="legal-table">
@@ -160,9 +173,14 @@
   <!-- PROCURADORIAS -->
   <section class="alt">
     <div class="wrap">
-      <div class="section-head">
-        <span class="kicker">@content('marcolegal.proc.kicker')</span>
-        <h2>@content('marcolegal.proc.title')</h2>
+      <div class="split-head">
+        <div class="section-head">
+          <span class="kicker">@content('marcolegal.proc.kicker')</span>
+          <h2>@content('marcolegal.proc.title')</h2>
+        </div>
+        <div class="split-head__media">
+          @include('partials.section-banner', ['slot' => 'procuradorias'])
+        </div>
       </div>
 
       <div class="proc-card">

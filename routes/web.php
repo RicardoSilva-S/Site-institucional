@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\EditalController;
 use App\Http\Controllers\Admin\MembroInstitucionalController;
 use App\Http\Controllers\Admin\OuvidoriaController as AdminOuvidoriaController;
+use App\Http\Controllers\Admin\ProjetoController;
 use App\Http\Controllers\Admin\TransparenciaDocumentoController;
 use App\Http\Controllers\Admin\TransparenciaSecaoController;
 use App\Http\Controllers\Admin\UserController;
@@ -85,6 +86,9 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
     Route::resource('editais', EditalController::class)
         ->except('show')
         ->parameters(['editais' => 'edital']);
+
+    // Projetos e soluções da página /projetos (cartões do portfólio)
+    Route::resource('projetos', ProjetoController::class)->except('show');
 
     Route::resource('usuarios', UserController::class)
         ->only(['index', 'create', 'store', 'edit', 'update'])

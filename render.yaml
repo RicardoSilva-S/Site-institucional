@@ -31,6 +31,28 @@ services:
       - key: ADMIN_PASSWORD
         sync: false   # o Render pede para você digitar a senha do painel
 
+      # E-mail do formulário de contato (ver README, seção "E-mail no Render").
+      # O plano free do Render bloqueia as portas SMTP 25, 465 e 587; por isso
+      # a porta padrão aqui é 2525, que a maioria dos provedores aceita.
+      - key: MAIL_MAILER
+        value: smtp
+      - key: MAIL_HOST
+        sync: false   # servidor SMTP do provedor (ex.: smtp-relay.brevo.com)
+      - key: MAIL_PORT
+        value: "2525"
+      - key: MAIL_ENCRYPTION
+        value: tls
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: MAIL_FROM_ADDRESS
+        sync: false   # remetente verificado no provedor
+      - key: MAIL_FROM_NAME
+        value: IDTNPR
+      - key: CONTACT_MAIL_TO
+        value: faleconosco@idtnpr.org.br
+
 databases:
   - name: site-institucional-db
     plan: free
