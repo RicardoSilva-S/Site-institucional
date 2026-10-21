@@ -18,4 +18,4 @@ ALTER TABLE banners
   ADD COLUMN display_title  VARCHAR(255)      NULL DEFAULT NULL COMMENT 'texto escrito sobre a imagem no site (title = nome interno no painel)';
 
 -- Banners que ja existiam: o titulo que aparecia no site continua aparecendo.
-UPDATE banners SET display_title = title;
+UPDATE banners SET display_title = title WHERE display_title IS NULL;
