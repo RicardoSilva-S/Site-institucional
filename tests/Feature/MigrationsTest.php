@@ -52,7 +52,7 @@ class MigrationsTest extends TestCase
             ['projeto_id' => $projetoId, 'titulo' => 'Para quem é', 'texto' => 'Prefeituras.', 'created_at' => $agora, 'updated_at' => $agora],
         ]);
 
-        $this->assertSame('em_desenvolvimento', DB::table('projetos')->value('estagio'));
+        $this->assertSame('desenvolvimento', DB::table('projetos')->where('id', $projetoId)->value('estagio'));
         $this->assertSame(2, DB::table('descricao_projetos')->where('projeto_id', $projetoId)->count());
 
         DB::table('projetos')->where('id', $projetoId)->delete();
