@@ -115,42 +115,55 @@ class BackupBanco
                 DB::table($tabela)->delete();
             }
 
-            $lotes = [];
-            foreach ($this->registros($caminho) as $linha) {
-                $tabela = $linha['t'];
-                if (! isset($colunas[$tabela])) {
-                    continue;
-                }
-
-                // Colunas que não existem mais no banco são ignoradas; as novas
-                // ficam com o valor padrão da migration.
-                $registro = array_intersect_key($linha['r'], $colunas[$tabela]);
-                foreach ($booleanas[$tabela] as $coluna) {
-                    if (array_key_exists($coluna, $registro) && $registro[$coluna] !== null) {
-                        $registro[$coluna] = (bool) $registro[$coluna];
-                    }
-                }
-
-                $lotes[$tabela][] = $registro;
-                $contagem[$tabela]++;
-
-                if (count($lotes[$tabela]) >= self::LOTE) {
-                    DB::table($tabela)->insert($lotes[$tabela]);
-                    $lotes[$tabela] = [];
-                }
-            }
-
-            // O arquivo vem na ordem pai -> filho, então os pais já estão gravados.
+            // Uma passada pelo arquivo para cada tabela, sempre na ordem pai -> filho
+            // do banco atual. Assim a filha nunca é gravada antes da pai, mesmo quando
+            // ela tem mais linhas que o lote ou o arquivo vem em outra ordem.
             foreach ($tabelas as $tabela) {
-                if (! empty($lotes[$tabela])) {
-                    DB::table($tabela)->insert($lotes[$tabela]);
-                }
+                $contagem[$tabela] = $this->restaurarTabela($caminho, $tabela, $colunas[$tabela], $booleanas[$tabela]);
             }
 
             $this->ajustarSequencias($tabelas);
         });
 
         return $contagem;
+    }
+
+    /**
+     * Grava no banco, em lotes, os registros de $tabela que estão no arquivo.
+     *
+     * @param array<string,int> $colunas   colunas que existem hoje na tabela (nome => posição)
+     * @param string[]          $booleanas colunas booleanas da tabela
+     * @return int quantos registros foram gravados
+     */
+    private function restaurarTabela(string $caminho, string $tabela, array $colunas, array $booleanas): int
+    {
+        $lote = [];
+        $total = 0;
+
+        foreach ($this->registros($caminho, $tabela) as $linha) {
+            // Colunas que não existem mais no banco são ignoradas; as novas
+            // ficam com o valor padrão da migration.
+            $registro = array_intersect_key($linha['r'], $colunas);
+            foreach ($booleanas as $coluna) {
+                if (array_key_exists($coluna, $registro) && $registro[$coluna] !== null) {
+                    $registro[$coluna] = (bool) $registro[$coluna];
+                }
+            }
+
+            $lote[] = $registro;
+            $total++;
+
+            if (count($lote) >= self::LOTE) {
+                DB::table($tabela)->insert($lote);
+                $lote = [];
+            }
+        }
+
+        if (! empty($lote)) {
+            DB::table($tabela)->insert($lote);
+        }
+
+        return $total;
     }
 
     /**
@@ -213,8 +226,11 @@ class BackupBanco
         gzwrite($arquivo, $json . "\n");
     }
 
-    /** Lê o arquivo linha a linha, sem carregar tudo na memória. */
-    private function linhas(string $caminho): \Generator
+    /**
+     * Lê o arquivo linha a linha, sem carregar tudo na memória. Com $prefixo,
+     * só devolve as linhas que começam por ele.
+     */
+    private function linhas(string $caminho, ?string $prefixo = null): \Generator
     {
         $arquivo = @gzopen($caminho, 'rb');
         if ($arquivo === false) {
@@ -231,6 +247,11 @@ class BackupBanco
                 if ($texto === '') {
                     continue;
                 }
+                // Com $prefixo, só decodifica as linhas da tabela pedida: sem isso cada
+                // passada decodificaria de novo todos os PDFs em base64.
+                if ($prefixo !== null && strncmp($texto, $prefixo, strlen($prefixo)) !== 0) {
+                    continue;
+                }
                 $linha = json_decode($texto, true);
                 if (! is_array($linha)) {
                     throw new RuntimeException('Arquivo de backup corrompido.');
@@ -242,10 +263,13 @@ class BackupBanco
         }
     }
 
-    /** Só as linhas de registro (pula o cabeçalho). */
-    private function registros(string $caminho): \Generator
+    /** Só as linhas de registro (pula o cabeçalho). Com $tabela, só as dela. */
+    private function registros(string $caminho, ?string $tabela = null): \Generator
     {
-        foreach ($this->linhas($caminho) as $linha) {
+        // Mesmo formato que escrever() grava: {"t":"tabela","r":{...}}
+        $prefixo = $tabela === null ? null : '{"t":' . json_encode($tabela) . ',"r":';
+
+        foreach ($this->linhas($caminho, $prefixo) as $linha) {
             if (isset($linha['t'], $linha['r'])) {
                 yield $linha;
             }

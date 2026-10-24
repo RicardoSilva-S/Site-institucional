@@ -130,4 +130,92 @@ class BackupBancoTest extends TestCase
             ->assertSee('Baixar backup agora')
             ->assertSee('Backup do banco');
     }
+
+    /**
+     * Completa a tabela de documentos até $total linhas (o seed traz 18), todos
+     * na primeira seção. As seções continuam sendo poucas.
+     */
+    private function documentosAte(int $total): void
+    {
+        $secaoId = DB::table('transparencia_secoes')->orderBy('id')->value('id');
+        $agora = now();
+
+        for ($n = DB::table('transparencia_documentos')->count() + 1; $n <= $total; $n++) {
+            DB::table('transparencia_documentos')->insert([
+                'secao_id' => $secaoId,
+                'nome' => "Documento extra {$n}",
+                'status' => 'publicado',
+                'ordem' => 100 + $n,
+                'created_at' => $agora,
+                'updated_at' => $agora,
+            ]);
+        }
+    }
+
+    public function totaisDeDocumentos(): array
+    {
+        return [
+            'exatamente um lote' => [BackupBanco::LOTE],
+            'passa do lote' => [BackupBanco::LOTE + 5],
+            'dois lotes' => [BackupBanco::LOTE * 2],
+        ];
+    }
+
+    /**
+     * A tabela filha (documentos) pode ter mais linhas que o lote enquanto a
+     * pai (seções) tem menos. A restauração não pode gravar a filha antes da pai.
+     *
+     * @dataProvider totaisDeDocumentos
+     */
+    public function test_restaura_quando_a_filha_tem_mais_linhas_que_o_lote($total)
+    {
+        $this->documentosAte($total);
+        $this->assertLessThan(BackupBanco::LOTE, DB::table('transparencia_secoes')->count());
+        $antes = DB::table('transparencia_documentos')->orderBy('id')->get()->toArray();
+        $this->assertCount($total, $antes);
+
+        $backup = app(BackupBanco::class);
+        $caminho = $this->arquivoTemporario();
+        $backup->gerar($caminho);
+        DB::table('transparencia_documentos')->delete();
+
+        $contagem = $backup->restaurar($caminho);
+
+        $this->assertSame($total, $contagem['transparencia_documentos']);
+        $this->assertEquals($antes, DB::table('transparencia_documentos')->orderBy('id')->get()->toArray());
+        unlink($caminho);
+    }
+
+    public function test_restaura_mesmo_quando_o_arquivo_traz_a_filha_antes_da_pai()
+    {
+        $this->documentosAte(BackupBanco::LOTE + 5);
+        $secoes = DB::table('transparencia_secoes')->orderBy('id')->get()->toArray();
+        $documentos = DB::table('transparencia_documentos')->orderBy('id')->get()->toArray();
+
+        $backup = app(BackupBanco::class);
+        $caminho = $this->arquivoTemporario();
+        $backup->gerar($caminho);
+
+        // refaz o arquivo com as linhas dos documentos antes das linhas das seções
+        $linhas = gzfile($caminho);
+        $cabecalho = array_shift($linhas);
+        $daSecao = $dosDocumentos = $demais = [];
+        foreach ($linhas as $linha) {
+            if (strpos($linha, '{"t":"transparencia_secoes"') === 0) {
+                $daSecao[] = $linha;
+            } elseif (strpos($linha, '{"t":"transparencia_documentos"') === 0) {
+                $dosDocumentos[] = $linha;
+            } else {
+                $demais[] = $linha;
+            }
+        }
+        $this->assertNotEmpty($daSecao);
+        file_put_contents($caminho, gzencode($cabecalho . implode('', $dosDocumentos) . implode('', $daSecao) . implode('', $demais)));
+
+        $backup->restaurar($caminho);
+
+        $this->assertEquals($secoes, DB::table('transparencia_secoes')->orderBy('id')->get()->toArray());
+        $this->assertEquals($documentos, DB::table('transparencia_documentos')->orderBy('id')->get()->toArray());
+        unlink($caminho);
+    }
 }
