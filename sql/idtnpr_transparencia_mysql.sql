@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS transparencia_documentos (
   secao_id      BIGINT UNSIGNED NOT NULL,
   nome          VARCHAR(255)    NOT NULL,
   detalhe       VARCHAR(255)    NULL DEFAULT NULL,
+  data_documento DATE           NULL DEFAULT NULL COMMENT 'data do documento, ex.: data da ata (opcional)',
   status        VARCHAR(20)     NOT NULL DEFAULT 'publicado' COMMENT 'publicado, publicacao ou elaboracao',
   arquivo_nome  VARCHAR(255)    NULL DEFAULT NULL COMMENT 'nome original do PDF',
   arquivo_data  LONGTEXT        NULL COMMENT 'conteudo do PDF em base64',

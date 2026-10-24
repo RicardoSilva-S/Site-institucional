@@ -22,7 +22,7 @@ class TransparenciaDocumento extends Model
     // Colunas usadas nas listagens. Deixa de fora "arquivo_data" para não
     // carregar o PDF inteiro de cada documento só para mostrar a lista.
     public const COLUNAS_LISTA = [
-        'id', 'secao_id', 'nome', 'detalhe', 'status', 'arquivo_nome', 'ordem', 'created_at', 'updated_at',
+        'id', 'secao_id', 'nome', 'detalhe', 'data_documento', 'status', 'arquivo_nome', 'ordem', 'created_at', 'updated_at',
     ];
 
     protected $table = 'transparencia_documentos';
@@ -31,6 +31,7 @@ class TransparenciaDocumento extends Model
         'secao_id',
         'nome',
         'detalhe',
+        'data_documento',
         'status',
         'arquivo_nome',
         'arquivo_data',
@@ -40,6 +41,11 @@ class TransparenciaDocumento extends Model
     // O conteúdo do PDF é grande: não entra quando o documento vira array/JSON.
     protected $hidden = [
         'arquivo_data',
+    ];
+
+    // Data do documento (ex.: a data da ata). Opcional.
+    protected $casts = [
+        'data_documento' => 'date',
     ];
 
     public function secao()
