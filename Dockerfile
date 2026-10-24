@@ -28,11 +28,13 @@ COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-interaction
 
 COPY . .
-# Libera a gravação das imagens dos banners e permite uploads de até 4 MB.
+# Libera a gravação das imagens dos banners. O limite de envio é de 40 MB
+# porque o backup guarda os PDFs em base64 e é enviado inteiro em /adm/backup;
+# PDFs, fotos e banners têm limites menores, validados nos controllers.
 RUN composer dump-autoload --optimize --no-dev \
     && mkdir -p public/uploads/banners \
     && chown -R www-data:www-data storage bootstrap/cache public/uploads \
-    && { echo 'upload_max_filesize=5M'; echo 'post_max_size=8M'; } > /usr/local/etc/php/conf.d/uploads.ini
+    && { echo 'upload_max_filesize=40M'; echo 'post_max_size=48M'; } > /usr/local/etc/php/conf.d/uploads.ini
 
 COPY docker/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh

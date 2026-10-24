@@ -218,4 +218,50 @@ class BackupBancoTest extends TestCase
         $this->assertEquals($documentos, DB::table('transparencia_documentos')->orderBy('id')->get()->toArray());
         unlink($caminho);
     }
+
+    public function test_restauracao_nao_junta_pdfs_grandes_num_unico_insert()
+    {
+        // 3 PDFs de 3 MB nos 3 primeiros documentos: juntos passam do teto de bytes
+        $pdf = str_repeat('A', 3 * 1024 * 1024);
+        $ids = DB::table('transparencia_documentos')->orderBy('id')->limit(3)->pluck('id');
+        DB::table('transparencia_documentos')->whereIn('id', $ids)->update(['arquivo_nome' => 'a.pdf', 'arquivo_data' => $pdf]);
+        $this->assertLessThan(BackupBanco::LOTE, DB::table('transparencia_documentos')->count());
+        $this->assertGreaterThan(BackupBanco::LOTE_BYTES, 3 * strlen($pdf));
+        $antes = DB::table('transparencia_documentos')->orderBy('id')->get()->toArray();
+
+        $backup = app(BackupBanco::class);
+        $caminho = $this->arquivoTemporario();
+        $backup->gerar($caminho);
+
+        $inserts = 0;
+        DB::listen(function ($consulta) use (&$inserts) {
+            if (strpos($consulta->sql, 'insert into "transparencia_documentos"') === 0) {
+                $inserts++;
+            }
+        });
+        $backup->restaurar($caminho);
+
+        // só pela quantidade de linhas (menos que LOTE) seria 1 insert; pelos bytes são 2
+        $this->assertSame(2, $inserts);
+        $this->assertEquals($antes, DB::table('transparencia_documentos')->orderBy('id')->get()->toArray());
+        unlink($caminho);
+    }
+
+    public function test_painel_aceita_backup_acima_de_5_mb_e_recusa_acima_de_40_mb()
+    {
+        $admin = $this->admin();
+
+        // 6 MB passa na validação do tamanho (o conteúdo falso é recusado depois, como backup inválido)
+        $resposta = $this->actingAs($admin)->from('/adm/backup')->post('/adm/backup/restaurar', [
+            'arquivo' => UploadedFile::fake()->create('backup.ndjson.gz', 6 * 1024),
+            'confirmacao' => 'RESTAURAR',
+        ]);
+        $resposta->assertSessionHasErrors('arquivo');
+        $this->assertStringNotContainsString('passa de', session('errors')->first('arquivo'));
+
+        $this->actingAs($admin)->from('/adm/backup')->post('/adm/backup/restaurar', [
+            'arquivo' => UploadedFile::fake()->create('backup.ndjson.gz', 41 * 1024),
+            'confirmacao' => 'RESTAURAR',
+        ])->assertSessionHasErrors(['arquivo' => 'O backup passa de 40 MB.']);
+    }
 }

@@ -34,6 +34,16 @@ class BackupBanco
     const LOTE = 20;
 
     /**
+     * Teto de bytes por INSERT na restauração. Sem ele, 20 PDFs de 5 MB
+     * (6,7 MB em base64) esgotam a memória do PHP (128 MB) e passam do
+     * max_allowed_packet do MySQL. Uma linha maior que isso vai sozinha.
+     */
+    const LOTE_BYTES = 8 * 1024 * 1024;
+
+    /** Quantos registros são lidos por vez ao gerar o backup (cada PDF de 5 MB ocupa ~14 MB no PHP). */
+    const PAGINA = 2;
+
+    /**
      * Grava o backup em $caminho e devolve quantos registros cada tabela teve.
      *
      * @return array<string,int>
@@ -66,8 +76,7 @@ class BackupBanco
             foreach ($tabelas as $tabela) {
                 $contagem[$tabela] = 0;
 
-                // cursor() lê um registro por vez: não carrega todos os PDFs na memória
-                foreach ($this->consultaOrdenada($tabela)->cursor() as $registro) {
+                foreach ($this->registrosDaTabela($tabela) as $registro) {
                     $this->escrever($arquivo, ['t' => $tabela, 'r' => (array) $registro]);
                     $contagem[$tabela]++;
                 }
@@ -138,6 +147,7 @@ class BackupBanco
     private function restaurarTabela(string $caminho, string $tabela, array $colunas, array $booleanas): int
     {
         $lote = [];
+        $bytesDoLote = 0;
         $total = 0;
 
         foreach ($this->registros($caminho, $tabela) as $linha) {
@@ -150,12 +160,22 @@ class BackupBanco
                 }
             }
 
+            // Grava o lote antes de a próxima linha estourar o teto de bytes.
+            $bytes = $this->tamanhoDoRegistro($registro);
+            if ($lote && $bytesDoLote + $bytes > self::LOTE_BYTES) {
+                DB::table($tabela)->insert($lote);
+                $lote = [];
+                $bytesDoLote = 0;
+            }
+
             $lote[] = $registro;
+            $bytesDoLote += $bytes;
             $total++;
 
             if (count($lote) >= self::LOTE) {
                 DB::table($tabela)->insert($lote);
                 $lote = [];
+                $bytesDoLote = 0;
             }
         }
 
@@ -263,6 +283,19 @@ class BackupBanco
         }
     }
 
+    /** Bytes dos textos do registro (PDF e foto em base64 são o que pesa). */
+    private function tamanhoDoRegistro(array $registro): int
+    {
+        $bytes = 0;
+        foreach ($registro as $valor) {
+            if (is_string($valor)) {
+                $bytes += strlen($valor);
+            }
+        }
+
+        return $bytes;
+    }
+
     /** Só as linhas de registro (pula o cabeçalho). Com $tabela, só as dela. */
     private function registros(string $caminho, ?string $tabela = null): \Generator
     {
@@ -276,11 +309,28 @@ class BackupBanco
         }
     }
 
-    private function consultaOrdenada(string $tabela)
+    /**
+     * Registros da tabela, lidos de poucos em poucos pelo id. O cursor() do
+     * Laravel não ajuda no MySQL: o driver carrega o resultado inteiro na
+     * memória do PHP, e uma tabela com PDFs em base64 passa do limite.
+     */
+    private function registrosDaTabela(string $tabela): \Generator
     {
-        $consulta = DB::table($tabela);
+        if (! Schema::hasColumn($tabela, 'id')) {
+            yield from DB::table($tabela)->cursor();
 
-        return Schema::hasColumn($tabela, 'id') ? $consulta->orderBy('id') : $consulta;
+            return;
+        }
+
+        $ultimoId = 0;
+        do {
+            $pagina = DB::table($tabela)->where('id', '>', $ultimoId)->orderBy('id')->limit(self::PAGINA)->get();
+
+            foreach ($pagina as $registro) {
+                $ultimoId = $registro->id;
+                yield $registro;
+            }
+        } while ($pagina->count() === self::PAGINA);
     }
 
     /** @return string[] */

@@ -34,12 +34,12 @@ class BackupController extends Controller
     public function restaurar(Request $request, BackupBanco $backup)
     {
         $request->validate([
-            'arquivo' => ['required', 'file', 'max:5120'],
+            'arquivo' => ['required', 'file', 'max:40960'],
             'confirmacao' => ['required', 'in:RESTAURAR'],
         ], [
             'arquivo.required' => 'Escolha o arquivo de backup.',
             'arquivo.file' => 'O envio do arquivo falhou. Ele pode ser maior que o limite do servidor.',
-            'arquivo.max' => 'O backup passa de 5 MB.',
+            'arquivo.max' => 'O backup passa de 40 MB.',
             'confirmacao.*' => 'Digite RESTAURAR para confirmar.',
         ]);
 
