@@ -33,8 +33,10 @@ class BackupController extends Controller
 
     public function restaurar(Request $request, BackupBanco $backup)
     {
+        // 40 MB de propósito: o backup guarda os PDFs em base64 e é enviado inteiro.
+        // A rota é só de administradores (middleware "admin") e exige confirmação.
         $request->validate([
-            'arquivo' => ['required', 'file', 'max:40960'],
+            'arquivo' => ['required', 'file', 'max:40960'], // NOSONAR php:S5693 limite revisado
             'confirmacao' => ['required', 'in:RESTAURAR'],
         ], [
             'arquivo.required' => 'Escolha o arquivo de backup.',
