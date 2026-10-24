@@ -141,3 +141,32 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Backup e restauração do banco
+
+O backup guarda só os dados (não a estrutura), num arquivo `.ndjson.gz` que
+restaura em **MySQL, Postgres ou SQLite**. Por isso ele também serve para mudar
+o site de hospedagem (ex: Render/Postgres → hospedagem com MySQL).
+
+Pelo painel (só administradores): **/adm/backup** → *Baixar backup agora* ou
+enviar um arquivo e digitar `RESTAURAR`.
+
+Pelo terminal:
+
+```bash
+php artisan banco:backup                      # salva em storage/app/backups/
+php artisan banco:backup --arquivo=meu.ndjson.gz
+php artisan migrate --force                   # no destino, antes de restaurar
+php artisan banco:restaurar meu.ndjson.gz     # pede confirmação (--force pula)
+```
+
+A restauração roda numa transação: se der erro, o banco fica como estava.
+As tabelas `migrations` e `sessions` não entram no backup.
+
+## Compatibilidade do banco
+
+As migrations rodam em MySQL (local/hospedagem), Postgres (Render) e SQLite
+(testes), sempre com PHP 7.4. O workflow `.github/workflows/migrations.yml`
+confere isso em todo PR. No SQLite, o rollback (`migrate:reset`) precisa do
+`doctrine/dbal`: `composer require --dev doctrine/dbal:^3.1.4`. Sem ele, o
+teste de rollback é pulado.

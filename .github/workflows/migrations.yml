@@ -1,0 +1,85 @@
+# Garante que as migrations rodam nos três bancos que o projeto usa:
+#   MySQL (local / hospedagem), Postgres (Render) e SQLite (testes),
+# sempre com PHP 7.4, a versão travada no composer.json.
+name: Migrations e testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  migrations:
+    name: Migrations (${{ matrix.banco }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        banco: [mysql, pgsql]
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: site
+          MYSQL_USER: app
+          MYSQL_PASSWORD: app
+          MYSQL_ROOT_PASSWORD: root
+        ports: ['3306:3306']
+        options: --health-cmd="mysqladmin ping -h 127.0.0.1" --health-interval=5s --health-timeout=5s --health-retries=20
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: site
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app
+        ports: ['5432:5432']
+        options: --health-cmd=pg_isready --health-interval=5s --health-timeout=5s --health-retries=20
+
+    env:
+      APP_ENV: testing
+      APP_KEY: base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+      DB_CONNECTION: ${{ matrix.banco }}
+      DB_HOST: 127.0.0.1
+      DB_PORT: ${{ matrix.banco == 'mysql' && '3306' || '5432' }}
+      DB_DATABASE: site
+      DB_USERNAME: app
+      DB_PASSWORD: app
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PASSWORD: senha-de-teste
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '7.4'
+          extensions: pdo_mysql, pdo_pgsql, zlib
+          coverage: none
+      - run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Migrate do zero (igual ao primeiro deploy)
+        run: php artisan migrate --force
+      - name: Seed do usuário do painel
+        run: php artisan db:seed --force
+      - name: Migrate de novo (deploy repetido não pode falhar)
+        run: php artisan migrate --force
+      - name: Backup, rollback completo, migrate e restauração
+        run: |
+          php artisan banco:backup --arquivo=/tmp/backup.ndjson.gz
+          php artisan migrate:reset --force
+          php artisan migrate --force
+          php artisan banco:restaurar /tmp/backup.ndjson.gz --force
+
+  testes:
+    name: Testes (SQLite, PHP 7.4)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '7.4'
+          extensions: pdo_sqlite, zlib
+          coverage: none
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - run: cp .env.example .env && php artisan key:generate
+      - run: php artisan test
