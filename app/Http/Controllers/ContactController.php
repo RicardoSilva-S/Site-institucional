@@ -18,7 +18,7 @@ class ContactController extends Controller
             'nome' => ['required', 'string', 'max:150'],
             'cargo' => ['nullable', 'string', 'max:150'],
             'orgao' => ['required', 'string', 'max:200'],
-            'email' => ['nullable', 'email', 'max:190'],
+            'email' => ['nullable', 'email', 'not_regex:/[\r\n]/', 'max:190'], // sem quebra de linha: o e-mail vai pro cabecalho do aviso
             'telefone' => ['nullable', 'string', 'max:30'],
             'area' => ['nullable', 'string', Rule::in(ContactMessage::AREAS)],
             'mensagem' => ['required', 'string', 'max:5000'],
