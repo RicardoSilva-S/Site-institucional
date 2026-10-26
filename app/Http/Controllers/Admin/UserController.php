@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         $dados = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')->ignore($usuario->id)],
+            'email' => ['required', 'email', 'not_regex:/[\r\n]/', 'max:255', Rule::unique('users', 'email')->ignore($usuario->id)],
             'papel' => ['required', Rule::in(array_keys(User::PAPEIS))],
             'password' => [$usuario->exists ? 'nullable' : 'required', 'string', 'min:8', 'confirmed'],
         ], [], [

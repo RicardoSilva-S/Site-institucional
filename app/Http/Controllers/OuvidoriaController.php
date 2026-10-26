@@ -19,7 +19,7 @@ class OuvidoriaController extends Controller
         $dados = $request->validate([
             'tipo' => ['required', Rule::in(array_keys(ManifestacaoOuvidoria::TIPOS))],
             'nome' => [$anonimo ? 'nullable' : 'required', 'string', 'max:150'],
-            'email' => ['nullable', 'email', 'max:190'],
+            'email' => ['nullable', 'email', 'not_regex:/[\r\n]/', 'max:190'],
             'telefone' => ['nullable', 'string', 'max:30'],
             'mensagem' => ['required', 'string', 'max:5000'],
         ], [], [

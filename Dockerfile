@@ -1,14 +1,6 @@
-# Imagem para publicar o site no Render (https://render.com).
-# PHP 7.4 é a versão travada no composer.json (config.platform.php).
-FROM php:7.4-apache
-
-# O Debian 11 (base da imagem PHP 7.4) saiu de suporte e foi movido para
-# archive.debian.org; sem isso o apt-get dá 404. As linhas de "updates" e
-# "security" ficam de fora porque ainda não existem no arquivo histórico.
-RUN sed -i -e '/bullseye-updates/d' \
-           -e '/debian-security/d' \
-           -e 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
-    && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99archive
+# Imagem do site com Apache. O servidor do professor roda PHP 8.3, a mesma
+# versao travada no composer.json (config.platform.php).
+FROM php:8.3-apache
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends libpq-dev libzip-dev \
