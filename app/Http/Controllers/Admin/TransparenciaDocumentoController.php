@@ -23,7 +23,7 @@ class TransparenciaDocumentoController extends Controller
 {
     // Tamanho máximo do PDF, em MB, mostrado no formulário. A regra de validação
     // usa o mesmo valor escrito direto ('max:5000', em KB), abaixo do limite de
-    // upload do servidor (upload_max_filesize=5M no Dockerfile).
+    // upload do servidor (upload_max_filesize no Dockerfile).
     private const TAMANHO_MAXIMO_MB = 5;
 
     public function create(Request $request): View

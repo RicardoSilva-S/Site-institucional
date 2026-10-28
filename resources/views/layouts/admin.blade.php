@@ -87,6 +87,11 @@
               Usuários
             </a>
           </li>
+          <li>
+            <a href="{{ route('admin.backup.index') }}" class="{{ request()->routeIs('admin.backup.*') ? 'is-active' : '' }}">
+              Backup do banco
+            </a>
+          </li>
         </ul>
       @endif
     </nav>
