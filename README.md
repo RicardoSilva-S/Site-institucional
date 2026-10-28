@@ -166,7 +166,7 @@ As tabelas `migrations` e `sessions` não entram no backup.
 ## Compatibilidade do banco
 
 As migrations rodam em MySQL (local/hospedagem), Postgres (Render) e SQLite
-(testes), sempre com PHP 7.4. O workflow `.github/workflows/migrations.yml`
+(testes), com PHP 8.3 (o do servidor). O workflow `.github/workflows/migrations.yml`
 confere isso em todo PR. No SQLite, o rollback (`migrate:reset`) precisa do
 `doctrine/dbal`: `composer require --dev doctrine/dbal:^3.1.4`. Sem ele, o
 teste de rollback é pulado.

@@ -1,6 +1,6 @@
 # Garante que as migrations rodam nos três bancos que o projeto usa:
 #   MySQL (local / hospedagem), Postgres (Render) e SQLite (testes),
-# sempre com PHP 7.4, a versão travada no composer.json.
+# sempre com PHP 8.3, a versão do servidor e a travada no composer.json.
 name: Migrations e testes
 
 on:
@@ -52,7 +52,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
-          php-version: '7.4'
+          php-version: '8.3'
           extensions: pdo_mysql, pdo_pgsql, zlib
           coverage: none
       - run: composer install --no-interaction --no-progress --prefer-dist
@@ -71,13 +71,13 @@ jobs:
           php artisan banco:restaurar /tmp/backup.ndjson.gz --force
 
   testes:
-    name: Testes (SQLite, PHP 7.4)
+    name: Testes (SQLite, PHP 8.3)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
-          php-version: '7.4'
+          php-version: '8.3'
           extensions: pdo_sqlite, zlib
           coverage: none
       - run: composer install --no-interaction --no-progress --prefer-dist
