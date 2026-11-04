@@ -72,15 +72,7 @@
     <nav class="primary" id="menu-principal" aria-label="Navegação principal">
       <ul>
         <li><a class="top-link" href="{{ route('home') }}" @if (request()->routeIs('home')) aria-current="page" @endif>Início</a></li>
-        <li class="has-sub">
-          <a class="top-link" href="{{ route('institucional') }}" @if (request()->routeIs('institucional', 'marco-legal')) aria-current="page" @endif>Institucional</a>
-          <div class="sub-panel">
-            <a href="{{ route('institucional') }}">Quem somos</a>
-            <a href="{{ route('institucional') }}#linha-do-tempo">Linha do tempo</a>
-            <a href="{{ route('institucional') }}#governanca">Governança</a>
-            <a href="{{ route('marco-legal') }}">Marco Legal</a>
-          </div>
-        </li>
+        <li><a class="top-link" href="{{ route('institucional') }}" @if (request()->routeIs('institucional', 'marco-legal')) aria-current="page" @endif>Institucional</a></li>
         <li><a class="top-link" href="{{ route('atuacao') }}" @if (request()->routeIs('atuacao')) aria-current="page" @endif>Atuação</a></li>
         <li><a class="top-link" href="{{ route('projetos') }}" @if (request()->routeIs('projetos')) aria-current="page" @endif>Projetos</a></li>
         <li><a class="top-link" href="{{ route('editais') }}" @if (request()->routeIs('editais')) aria-current="page" @endif>Editais</a></li>
