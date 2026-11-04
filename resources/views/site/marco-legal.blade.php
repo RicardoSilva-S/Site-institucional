@@ -188,8 +188,8 @@
         <p>@content('marcolegal.proc.text2')</p>
 
         <div class="proc-cta-row">
-          <a href="https://wa.me/5544998083001" class="btn btn-primary" target="_blank" rel="noopener">@content('marcolegal.proc.cta1')</a>
-          <a href="mailto:faleconosco@idtnpr.org.br" class="btn btn-outline">@content('marcolegal.proc.cta2')</a>
+          <a href="https://wa.me/5544998083001" class="btn btn-primary" target="_blank" rel="noopener">Solicitar pelo WhatsApp</a>
+          <a href="mailto:faleconosco@idtnpr.org.br" class="btn btn-outline">Solicitar por e-mail</a>
         </div>
 
         <p class="proc-disclaimer">@content('marcolegal.proc.disclaimer')</p>
