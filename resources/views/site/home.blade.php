@@ -146,8 +146,8 @@
         </div>
       </div>
 
-      <div class="stats-grid">
-        @for ($i = 1; $i <= 4; $i++)
+      <div class="stats-grid stats-grid--duo">
+        @for ($i = 1; $i <= 2; $i++)
           <x-stat :prefix="'home.stat'.$i" />
         @endfor
       </div>
@@ -194,8 +194,8 @@
       <div>
         <h2>@content('home.finalcta.title')</h2>
         <p>@content('home.finalcta.text')</p>
+        <a href="{{ route('contato') }}" class="btn btn-gold">@content('home.finalcta.button')</a>
       </div>
-      <a href="{{ route('contato') }}" class="btn btn-gold">@content('home.finalcta.button')</a>
     </div>
     @extraTexts('home.finalcta')
   </section>
