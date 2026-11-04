@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Edital;
+use App\Models\MarcoInstitucional;
 use App\Models\MembroInstitucional;
 use App\Models\Projeto;
 use App\Models\TransparenciaDocumento;
@@ -27,10 +28,12 @@ class SiteController extends Controller
 
     public function institucional(): View
     {
-        // Diretoria e conselho vêm do banco e são editados no painel (/adm/equipe).
+        // Diretoria e conselho (/adm/equipe) e os marcos da linha do tempo
+        // (/adm/marcos) vêm do banco e são editados no painel.
         return view('site.institucional', [
             'diretoria' => MembroInstitucional::doGrupo('diretoria'),
             'conselho' => MembroInstitucional::doGrupo('conselho'),
+            'marcos' => MarcoInstitucional::naOrdem(),
         ]);
     }
 

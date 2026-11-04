@@ -979,7 +979,7 @@ return [
             ],
             [
                 'id' => 'historia',
-                'label' => 'Seção "Nossa história"',
+                'label' => 'Seção "Nossa história" (os marcos da linha do tempo ficam em "Marcos (linha do tempo)", no menu ao lado)',
                 'fields' => [
                     [
                         'key' => 'institucional.historia.kicker',
@@ -1007,61 +1007,6 @@ return [
                         'key' => 'institucional.historia.p2',
                         'label' => 'Parágrafo 2',
                         'default' => 'Sarandi/PR foi escolhida como sede e ponto de partida para uma atuação que mira municípios, autarquias e entidades públicas de toda a região e do país. O que segue é o registro dos passos já dados.',
-                        'long' => true,
-                    ],
-                    [
-                        'key' => 'institucional.passo1.title',
-                        'label' => 'Passo 1 — data',
-                        'default' => 'Jul · 2025',
-                    ],
-                    [
-                        'key' => 'institucional.passo1.text',
-                        'label' => 'Passo 1 — texto',
-                        'default' => 'Constituição do Instituto em assembleia de fundação, com aprovação do Estatuto Social e eleição da primeira Diretoria.',
-                        'long' => true,
-                    ],
-                    [
-                        'key' => 'institucional.passo2.title',
-                        'label' => 'Passo 2 — data',
-                        'default' => 'Set · 2025',
-                    ],
-                    [
-                        'key' => 'institucional.passo2.text',
-                        'label' => 'Passo 2 — texto',
-                        'default' => 'Inscrição no Cadastro Nacional da Pessoa Jurídica, habilitando o Instituto a firmar instrumentos e operar formalmente.',
-                        'long' => true,
-                    ],
-                    [
-                        'key' => 'institucional.passo3.title',
-                        'label' => 'Passo 3 — data',
-                        'default' => 'Jan · 2026',
-                    ],
-                    [
-                        'key' => 'institucional.passo3.text',
-                        'label' => 'Passo 3 — texto',
-                        'default' => 'Eleição da Diretoria Executiva e do Conselho Fiscal e Consultivo, com aprovação do Regimento Interno.',
-                        'long' => true,
-                    ],
-                    [
-                        'key' => 'institucional.passo4.title',
-                        'label' => 'Passo 4 — data',
-                        'default' => '2026',
-                    ],
-                    [
-                        'key' => 'institucional.passo4.text',
-                        'label' => 'Passo 4 — texto',
-                        'default' => 'Primeira entrega técnica: elaboração de minuta para a Política Municipal de Ciência, Tecnologia e Inovação de Sarandi.',
-                        'long' => true,
-                    ],
-                    [
-                        'key' => 'institucional.passo5.title',
-                        'label' => 'Passo 5 — data',
-                        'default' => 'Ago · 2026',
-                    ],
-                    [
-                        'key' => 'institucional.passo5.text',
-                        'label' => 'Passo 5 — texto',
-                        'default' => 'Primeira parceria com desenvolvedora, inaugurando a carteira de soluções tecnológicas do Instituto.',
                         'long' => true,
                     ],
                 ],

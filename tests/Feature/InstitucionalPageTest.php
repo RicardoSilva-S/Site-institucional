@@ -3,10 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Banner;
-use App\Models\SiteText;
 use App\Models\User;
 use App\Support\BannerSlots;
-use App\Support\SiteContent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -50,20 +48,6 @@ class InstitucionalPageTest extends TestCase
         $this->get('/institucional')
             ->assertSee('<li>Legalidade</li>', false)
             ->assertSee('<li>Interesse público</li>', false);
-    }
-
-    public function test_passo_excluido_no_painel_some_da_linha_do_tempo()
-    {
-        SiteContent::sync();
-        SiteText::query()
-            ->whereIn('key', ['institucional.passo3.title', 'institucional.passo3.text'])
-            ->update(['value' => '']);
-        SiteContent::forget();
-
-        $this->get('/institucional')
-            ->assertDontSee('Jan · 2026')
-            ->assertSee('Set · 2025')
-            ->assertSee('Ago · 2026');
     }
 
     public function test_lista_de_documentos_abre_a_secao_do_portal()

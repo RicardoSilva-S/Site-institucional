@@ -23,17 +23,8 @@
       ->map(fn ($principio) => trim($principio))
       ->filter();
 
-  // Passos da linha do tempo; passos excluídos no painel (data e texto vazios) somem.
-  $passos = collect(range(1, 5))
-      ->map(fn ($i) => [
-          'title' => $textos::text("institucional.passo{$i}.title"),
-          'text' => $textos::text("institucional.passo{$i}.text"),
-      ])
-      ->filter(fn ($passo) => trim($passo['title']) !== '' || trim($passo['text']) !== '')
-      ->values();
-
-  // $diretoria e $conselho vêm do banco (SiteController::institucional),
-  // editados no painel em /adm/equipe.
+  // $diretoria, $conselho e $marcos vêm do banco (SiteController::institucional),
+  // editados no painel em /adm/equipe e /adm/marcos.
 
   // Lista da chamada final: cada item abre a seção correspondente do Portal da Transparência.
   $documentos = collect([
@@ -138,12 +129,12 @@
           <p>@content('institucional.historia.p2')</p>
         </div>
       </div>
-      @if ($passos->isNotEmpty())
+      @if ($marcos->isNotEmpty())
         <ol class="timeline">
-          @foreach ($passos as $passo)
+          @foreach ($marcos as $marco)
             <li @if ($loop->last) class="is-latest" @endif>
-              <h3>{{ $passo['title'] }}</h3>
-              <p>{{ $passo['text'] }}</p>
+              <h3>{{ $marco->data }}</h3>
+              <p>{{ $marco->texto }}</p>
             </li>
           @endforeach
         </ol>

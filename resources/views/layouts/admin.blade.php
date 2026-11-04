@@ -53,6 +53,11 @@
         <li>
           <a href="{{ route('admin.equipe.index') }}" class="{{ request()->routeIs('admin.equipe.*') ? 'is-active' : '' }}">
             Diretoria e conselho
+            </a>
+        </li>
+        <li>
+          <a href="{{ route('admin.marcos.index') }}" class="{{ request()->routeIs('admin.marcos.*') ? 'is-active' : '' }}">
+            Marcos (linha do tempo)
           </a>
         </li>
         <li>
