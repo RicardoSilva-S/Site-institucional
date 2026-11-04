@@ -295,6 +295,7 @@ details.readmore a.link{color:var(--navy);font-weight:600;display:inline-block;m
 
 /* ---------- Stats ---------- */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;}
+.stats-grid--duo{grid-template-columns:repeat(2,1fr);}
 .stat .num{font-family:var(--serif);font-size:36px;color:var(--navy-dark);font-weight:700;}
 .stat .label{font-size:14px;color:var(--ink-soft);margin-top:8px;max-width:22ch;line-height:1.5;}
 .stats-copy{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px;}
@@ -317,10 +318,11 @@ details.readmore a.link{color:var(--navy);font-weight:600;display:inline-block;m
 .transp-item p{font-size:14px;color:var(--ink-soft);}
 
 /* ---------- Final CTA ---------- */
-.final-cta{background:var(--navy-dark);color:#fff;text-align:left;padding:46px 0;}
+.final-cta{background:var(--navy-dark);color:#fff;text-align:left;padding:36px 0;}
 .final-cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;}
 .final-cta h2{color:#fff;font-size:28px;max-width:16ch;}
 .final-cta p{color:rgba(255,255,255,0.75);margin-top:12px;max-width:48ch;font-size:16px;}
+.final-cta .btn-gold{margin-top:22px;}
 
 /* ---------- Footer ---------- */
 footer{background:var(--mist);padding:40px 0 24px;border-top:1px solid var(--line);}
