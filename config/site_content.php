@@ -33,55 +33,9 @@
 return [
     [
         'page' => 'shared',
-        'pageLabel' => 'Menu e rodapé',
+        'pageLabel' => 'Rodapé',
         'route' => null,
         'groups' => [
-            [
-                'id' => 'nav',
-                'label' => 'Menu de navegação',
-                'fields' => [
-                    [
-                        'key' => 'shared.nav.inicio',
-                        'label' => 'Item do menu: Início',
-                        'default' => 'Início',
-                    ],
-                    [
-                        'key' => 'shared.nav.institucional',
-                        'label' => 'Item do menu: Institucional',
-                        'default' => 'Institucional',
-                    ],
-                    [
-                        'key' => 'shared.nav.atuacao',
-                        'label' => 'Item do menu: Atuação',
-                        'default' => 'Atuação',
-                    ],
-                    [
-                        'key' => 'shared.nav.projetos',
-                        'label' => 'Item do menu: Projetos',
-                        'default' => 'Projetos',
-                    ],
-                    [
-                        'key' => 'shared.nav.editais',
-                        'label' => 'Item do menu: Editais',
-                        'default' => 'Editais',
-                    ],
-                    [
-                        'key' => 'shared.nav.transparencia',
-                        'label' => 'Item do menu: Transparência',
-                        'default' => 'Transparência',
-                    ],
-                    [
-                        'key' => 'shared.nav.contato',
-                        'label' => 'Item do menu: Contato',
-                        'default' => 'Contato',
-                    ],
-                    [
-                        'key' => 'shared.nav.cta',
-                        'label' => 'Botão do topo',
-                        'default' => 'Fale com o Instituto',
-                    ],
-                ],
-            ],
             [
                 'id' => 'footer',
                 'label' => 'Rodapé',
@@ -91,21 +45,6 @@ return [
                         'label' => 'Texto sobre o Instituto',
                         'default' => 'Instituto de Desenvolvimento de Tecnologias do Noroeste Paranaense. Associação civil de direito privado sem fins lucrativos. CNPJ 64.039.593/0001-82',
                         'long' => true,
-                    ],
-                    [
-                        'key' => 'shared.footer.col1.title',
-                        'label' => 'Título da coluna 1',
-                        'default' => 'Institucional',
-                    ],
-                    [
-                        'key' => 'shared.footer.col2.title',
-                        'label' => 'Título da coluna 2',
-                        'default' => 'Soluções',
-                    ],
-                    [
-                        'key' => 'shared.footer.col3.title',
-                        'label' => 'Título da coluna 3',
-                        'default' => 'Transparência',
                     ],
                     [
                         'key' => 'shared.footer.bottom.left',
@@ -299,16 +238,6 @@ return [
                 'id' => 'compare',
                 'label' => 'Tabela comparativa',
                 'fields' => [
-                    [
-                        'key' => 'home.compare.head.left',
-                        'label' => 'Cabeçalho — coluna esquerda',
-                        'default' => 'O que trava',
-                    ],
-                    [
-                        'key' => 'home.compare.head.right',
-                        'label' => 'Cabeçalho — coluna direita',
-                        'default' => 'O que entregamos',
-                    ],
                     [
                         'key' => 'home.compare.row1.bad',
                         'label' => 'Linha 1 — problema',
@@ -873,37 +802,6 @@ return [
                 ],
             ],
             [
-                'id' => 'nav',
-                'label' => 'Atalhos para as seções',
-                'fields' => [
-                    [
-                        'key' => 'institucional.nav.quemsomos',
-                        'label' => 'Atalho — Quem somos',
-                        'default' => 'Quem somos',
-                    ],
-                    [
-                        'key' => 'institucional.nav.historia',
-                        'label' => 'Atalho — Nossa história',
-                        'default' => 'Nossa história',
-                    ],
-                    [
-                        'key' => 'institucional.nav.governanca',
-                        'label' => 'Atalho — Governança',
-                        'default' => 'Governança',
-                    ],
-                    [
-                        'key' => 'institucional.nav.marcolegal',
-                        'label' => 'Atalho — Marco legal',
-                        'default' => 'Marco legal',
-                    ],
-                    [
-                        'key' => 'institucional.nav.documentos',
-                        'label' => 'Atalho — Documentos',
-                        'default' => 'Documentos',
-                    ],
-                ],
-            ],
-            [
                 'id' => 'quemsomos',
                 'label' => 'Seção "Quem somos"',
                 'fields' => [
@@ -1179,42 +1077,6 @@ return [
                         'key' => 'atuacao.hero.cta',
                         'label' => 'Botão',
                         'default' => 'Solicitar diagnóstico gratuito',
-                    ],
-                ],
-            ],
-            [
-                'id' => 'nav',
-                'label' => 'Atalhos para as frentes',
-                'fields' => [
-                    [
-                        'key' => 'atuacao.nav.governanca',
-                        'label' => 'Atalho — Frente 01',
-                        'default' => 'Governança',
-                    ],
-                    [
-                        'key' => 'atuacao.nav.observatorio',
-                        'label' => 'Atalho — Frente 02',
-                        'default' => 'Observatório de dados',
-                    ],
-                    [
-                        'key' => 'atuacao.nav.pmo',
-                        'label' => 'Atalho — Frente 03',
-                        'default' => 'PMO público',
-                    ],
-                    [
-                        'key' => 'atuacao.nav.marcolegal',
-                        'label' => 'Atalho — Frente 04',
-                        'default' => 'Marco legal',
-                    ],
-                    [
-                        'key' => 'atuacao.nav.capacitacao',
-                        'label' => 'Atalho — Frente 05',
-                        'default' => 'Capacitação',
-                    ],
-                    [
-                        'key' => 'atuacao.nav.piloto',
-                        'label' => 'Atalho — Frente 06',
-                        'default' => 'Piloto e PD&I',
                     ],
                 ],
             ],
@@ -2080,11 +1942,6 @@ return [
                         'default' => 'Editais finalizados e homologados',
                     ],
                     [
-                        'key' => 'editais.avisos.stat4',
-                        'label' => 'Contador 4 — legenda (o ano é colocado depois)',
-                        'default' => 'Chamamentos publicados em',
-                    ],
-                    [
                         'key' => 'editais.avisos.nota.title',
                         'label' => 'Aviso — título',
                         'default' => 'Aviso aos interessados',
@@ -2108,20 +1965,10 @@ return [
                         'default' => 'Editais publicados',
                     ],
                     [
-                        'key' => 'editais.lista.title',
-                        'label' => 'Título (o ano é colocado depois)',
-                        'default' => 'Chamamentos públicos de',
-                    ],
-                    [
                         'key' => 'editais.lista.sub',
                         'label' => 'Subtítulo',
                         'default' => 'Leia o objeto, confira as datas e baixe o edital completo para conhecer requisitos, critérios de avaliação e formas de contratação.',
                         'long' => true,
-                    ],
-                    [
-                        'key' => 'editais.lista.vazio',
-                        'label' => 'Mensagem quando o filtro não acha nada',
-                        'default' => 'Nenhum edital encontrado para este filtro.',
                     ],
                 ],
             ],
@@ -2371,21 +2218,6 @@ return [
                         'long' => true,
                     ],
                     [
-                        'key' => 'marcolegal.mapa.col1',
-                        'label' => 'Cabeçalho da coluna 1',
-                        'default' => 'Situação',
-                    ],
-                    [
-                        'key' => 'marcolegal.mapa.col2',
-                        'label' => 'Cabeçalho da coluna 2',
-                        'default' => 'Instrumento',
-                    ],
-                    [
-                        'key' => 'marcolegal.mapa.col3',
-                        'label' => 'Cabeçalho da coluna 3',
-                        'default' => 'Fundamento',
-                    ],
-                    [
                         'key' => 'marcolegal.mapa.row1.situacao',
                         'label' => 'Linha 1 — situação',
                         'default' => 'Problema definido, solução não existe pronta, há risco tecnológico',
@@ -2529,16 +2361,6 @@ return [
                         'long' => true,
                     ],
                     [
-                        'key' => 'marcolegal.proc.cta1',
-                        'label' => 'Botão — WhatsApp',
-                        'default' => 'Solicitar pelo WhatsApp',
-                    ],
-                    [
-                        'key' => 'marcolegal.proc.cta2',
-                        'label' => 'Botão — e-mail',
-                        'default' => 'Solicitar por e-mail',
-                    ],
-                    [
                         'key' => 'marcolegal.proc.disclaimer',
                         'label' => 'Ressalva legal',
                         'default' => 'O envio do material não cria vínculo, obrigação de contratar nem expectativa de direito de qualquer natureza, e a análise permanece integralmente a cargo da Procuradoria do Município.',
@@ -2575,21 +2397,6 @@ return [
                 'id' => 'institucional',
                 'label' => 'Blocos de contato institucional',
                 'fields' => [
-                    [
-                        'key' => 'contato.institucional.card1.title',
-                        'label' => 'Título — bloco 1',
-                        'default' => 'Contato institucional',
-                    ],
-                    [
-                        'key' => 'contato.institucional.card2.title',
-                        'label' => 'Título — bloco 2',
-                        'default' => 'Endereço',
-                    ],
-                    [
-                        'key' => 'contato.institucional.card3.title',
-                        'label' => 'Título — bloco 3',
-                        'default' => 'Identificação',
-                    ],
                     [
                         'key' => 'contato.institucional.razao_social',
                         'label' => 'Razão social',
@@ -2665,16 +2472,6 @@ return [
                         'label' => 'Público 3 — texto',
                         'default' => 'Interesse em integrar a carteira de soluções do Instituto? Nossos processos de credenciamento são abertos e não excludentes.',
                         'long' => true,
-                    ],
-                    [
-                        'key' => 'contato.form.btn_whatsapp',
-                        'label' => 'Botão — enviar pelo WhatsApp',
-                        'default' => 'Enviar pelo WhatsApp',
-                    ],
-                    [
-                        'key' => 'contato.form.btn_email',
-                        'label' => 'Botão — enviar por e-mail',
-                        'default' => 'Enviar por e-mail',
                     ],
                     [
                         'key' => 'contato.form.note',
@@ -2762,16 +2559,6 @@ return [
                         'label' => 'Texto',
                         'default' => 'Estatuto Social, atas registradas, regimento interno, CNPJ, termos de parceria. Todos existem, estão registrados e podem ser enviados a você. Diga qual precisa e respondemos com o arquivo.',
                         'long' => true,
-                    ],
-                    [
-                        'key' => 'transparencia.cta.btn_whatsapp',
-                        'label' => 'Botão — WhatsApp',
-                        'default' => 'Solicitar pelo WhatsApp',
-                    ],
-                    [
-                        'key' => 'transparencia.cta.btn_email',
-                        'label' => 'Botão — e-mail',
-                        'default' => 'Solicitar por e-mail',
                     ],
                 ],
             ],
@@ -3037,16 +2824,6 @@ return [
                         'label' => 'Subtítulo',
                         'default' => 'Para exercer seus direitos ou tirar dúvidas sobre esta política, entre em contato pelos nossos canais oficiais.',
                         'long' => true,
-                    ],
-                    [
-                        'key' => 'privacidade.contato.email',
-                        'label' => 'Rótulo do e-mail',
-                        'default' => 'E-mail',
-                    ],
-                    [
-                        'key' => 'privacidade.contato.whatsapp',
-                        'label' => 'Rótulo do WhatsApp',
-                        'default' => 'WhatsApp',
                     ],
                     [
                         'key' => 'privacidade.contato.btn',

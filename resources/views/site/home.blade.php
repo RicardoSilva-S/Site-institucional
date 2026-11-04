@@ -61,8 +61,8 @@
 
         <div class="compare">
           <div class="compare-row head">
-            <div class="compare-cell bad-head">@content('home.compare.head.left')</div>
-            <div class="compare-cell good-head">@content('home.compare.head.right')</div>
+            <div class="compare-cell bad-head">O que trava</div>
+            <div class="compare-cell good-head">O que entregamos</div>
           </div>
           @for ($i = 1; $i <= 4; $i++)
             <x-compare-row :prefix="'home.compare.row'.$i" />

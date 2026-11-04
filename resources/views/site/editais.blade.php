@@ -184,7 +184,7 @@
         </div>
         <div class="stat">
           <div class="num">{{ $editais->count() }}</div>
-          <div class="label">@content('editais.avisos.stat4') {{ now()->year }}</div>
+          <div class="label">Chamamentos publicados em {{ now()->year }}</div>
         </div>
       </div>
 
@@ -202,7 +202,7 @@
       <div class="split-head">
         <div class="section-head">
           <span class="kicker">@content('editais.lista.kicker')</span>
-          <h2>@content('editais.lista.title') {{ now()->year }}</h2>
+          <h2>Chamamentos públicos de {{ now()->year }}</h2>
           <p class="sub">@content('editais.lista.sub')</p>
         </div>
         <div class="split-head__media">
@@ -250,7 +250,7 @@
         @endforeach
       </div>
 
-      <div class="doc-empty" role="status">@content('editais.lista.vazio')</div>
+      <div class="doc-empty" role="status">Nenhum edital encontrado para este filtro.</div>
     </div>
     @extraTexts('editais.lista')
   </section>

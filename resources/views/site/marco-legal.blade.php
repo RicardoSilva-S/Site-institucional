@@ -122,9 +122,9 @@
         <table>
           <thead>
             <tr>
-              <th>@content('marcolegal.mapa.col1')</th>
-              <th>@content('marcolegal.mapa.col2')</th>
-              <th>@content('marcolegal.mapa.col3')</th>
+              <th>Situação</th>
+              <th>Instrumento</th>
+              <th>Fundamento</th>
             </tr>
           </thead>
           <tbody>
