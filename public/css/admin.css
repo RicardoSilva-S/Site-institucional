@@ -165,9 +165,11 @@
   .admin-layout{grid-template-columns:1fr;}
   .admin-sidebar{position:static;height:auto;padding:16px;}
   .admin-sidebar__brand{flex-direction:row;align-items:center;justify-content:space-between;border:none;padding:0;}
+  /* min-height: 36px de altura ficava abaixo do alvo de toque de 44px. */
   .admin-sidebar__toggle{
     display:block;margin-top:12px;background:rgba(255,255,255,.1);color:#fff;border:none;
-    border-radius:var(--radius-sm);padding:10px 14px;font-size:14px;font-weight:600;cursor:pointer;text-align:left;
+    border-radius:var(--radius-sm);padding:10px 14px;min-height:44px;
+    font-size:14px;font-weight:600;cursor:pointer;text-align:left;
   }
   .admin-sidebar__nav,
   .admin-sidebar__footer{display:none;}
@@ -232,17 +234,39 @@
 .auth-back:hover{color:var(--navy);}
 
 /* ---- Mensagens do formulário de contato (/admin/mensagens) ---- */
-.admin-messages{padding-bottom:90px;display:grid;gap:16px;}
-.msg-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:22px 26px;}
+/* minmax(0,1fr): sem isso a coluna do grid cresce até caber o e-mail mais
+   longo e a lista inteira passa da largura da tela no celular. */
+.admin-messages{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;}
+.msg-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:22px 26px;min-width:0;}
 .msg-card.is-unread{border-left:4px solid var(--gold);}
-.msg-card.is-read{opacity:.8;}
+/* Lida: a marca é a barra lateral apagada. Não usar opacity — ela clareia
+   junto o texto da mensagem e derruba o contraste na tela do celular. */
+.msg-card.is-read{border-left:4px solid var(--line);}
 .msg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.msg-head > div{min-width:0;}
 .msg-head h3{font-family:var(--serif);font-size:18px;color:var(--navy-dark);}
 .msg-meta{color:var(--ink-soft);font-size:13.5px;margin-top:4px;}
 .msg-badge{font-family:var(--sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--gold);color:#fff;padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;}
-.msg-fields{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:14px 0 0;font-size:14.5px;}
+.msg-fields{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 16px;margin:14px 0 0;font-size:14.5px;}
 .msg-fields dt{font-weight:600;color:var(--ink-soft);}
-.msg-fields dd{margin:0;}
-.msg-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:15px;line-height:1.6;}
+/* E-mail institucional é uma palavra só e não quebra sozinho. */
+.msg-fields dd{margin:0;min-width:0;overflow-wrap:anywhere;}
+.msg-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:15px;line-height:1.6;overflow-wrap:anywhere;}
 .msg-empty{background:var(--paper);border:1px dashed var(--line);border-radius:var(--radius-md);padding:36px;text-align:center;color:var(--ink-soft);}
-.msg-pager nav{display:flex;gap:16px;justify-content:center;}
+.msg-pager{min-width:0;}
+.msg-pager nav{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* --- Celular: cartão mais justo, rótulo em cima do valor e botão inteiro --- */
+@media (max-width:600px){
+  .admin-messages{gap:12px;}
+  .msg-card{padding:16px 16px 18px;}
+  .msg-head{gap:12px;}
+  .msg-head h3{font-size:17px;}
+  /* Duas colunas deixavam o e-mail com menos de meia tela para quebrar. */
+  .msg-fields{grid-template-columns:minmax(0,1fr);gap:0;margin-top:12px;}
+  .msg-fields dt{margin-top:10px;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;}
+  .msg-fields dt:first-of-type{margin-top:0;}
+  /* Solto no meio do cartão não se lia como a ação daquela mensagem. */
+  .msg-head form{width:100%;}
+  .msg-head form .btn{width:100%;justify-content:center;}
+}
