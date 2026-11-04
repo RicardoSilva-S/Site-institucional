@@ -937,36 +937,48 @@ main:focus{outline:none;}
 .scroll-offset{scroll-margin-top:90px !important;}
 
 /* =========================================================================
-   Texto justificado nos parágrafos de leitura (a partir do tablet)
-   No celular fica alinhado à esquerda: colunas estreitas justificadas abrem
-   "buracos" entre as palavras. A hifenização usa o lang="pt-BR" do <html>.
-   Ficam de fora os textos de colunas muito estreitas (etapas, linha do tempo,
-   itens de frente e de transparência), onde justificar piora a leitura.
+   Texto justificado nos parágrafos de leitura
+   Vale em qualquer largura, celular incluído. A hifenização automática usa o
+   lang="pt-BR" do <html> e fecha os "buracos" que o justificado abriria entre
+   as palavras numa coluna estreita; hyphenate-limit-chars evita cortar
+   palavras curtas e deixar uma sílaba solta na linha.
+   Ficam de fora rótulos, datas, chips e legendas de uma linha, onde
+   justificar não muda nada ou só atrapalha.
    ========================================================================= */
-@media (min-width:601px){
-  .hero .lead,
-  .page-hero .lead,
-  .section-head .sub,
-  .problem-grid p,
-  .stats-copy p,
-  .cards-note,
-  .card p,
-  .inst-split__body p,
-  .inst-split__aside,
-  .identidade p,
-  .team-card p,
-  .frente__intro p,
-  .norma-card .desc,
-  .info-box p,
-  .legal-note p,
-  .proc-card p,
-  .doc-note p,
-  .ouvidoria p,
-  .form-intro p,
-  .final-cta p,
-  .extra-texts p{
-    text-align:justify;
-    hyphens:auto;
-    -webkit-hyphens:auto;
-  }
+.hero .lead,
+.page-hero .lead,
+.section-head .sub,
+.problem-grid p,
+.stats-copy p,
+.cards-note,
+.card p,
+.step p,
+.timeline p,
+.transp-item p,
+.inst-split__body p,
+.inst-split__aside,
+.identidade p,
+.team-card p,
+.frente__intro p,
+.frente-itens p,
+.norma-card .desc,
+.info-box p,
+.legal-note p,
+.qa-block .answer,
+.proc-card p,
+.proc-disclaimer,
+.cta-panel p,
+.doc-note p,
+.contact-card p,
+.link-card__text,
+.ouvidoria p,
+.ouvidoria-box p,
+.form-intro p,
+.banner-slide__content p,
+.final-cta p,
+.extra-texts p{
+  text-align:justify;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  hyphenate-limit-chars:6 3 3;
 }
