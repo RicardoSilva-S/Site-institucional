@@ -154,7 +154,7 @@
             </svg>
           </span>
           <div>
-            <h3>@content('privacidade.contato.email')</h3>
+            <h3>E-mail</h3>
             <p><a href="mailto:faleconosco@idtnpr.org.br">faleconosco@idtnpr.org.br</a></p>
           </div>
         </div>
@@ -166,7 +166,7 @@
             </svg>
           </span>
           <div>
-            <h3>@content('privacidade.contato.whatsapp')</h3>
+            <h3>WhatsApp</h3>
             <p><a href="https://wa.me/5544998083001" target="_blank" rel="noopener">(44) 99808-3001</a></p>
           </div>
         </div>

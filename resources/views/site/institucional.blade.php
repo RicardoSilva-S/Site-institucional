@@ -67,11 +67,11 @@
   <nav class="frentes-nav" aria-label="Seções da página">
     <div class="wrap">
       <ul>
-        <li><a href="#quem-somos">@content('institucional.nav.quemsomos')</a></li>
-        <li><a href="#linha-do-tempo">@content('institucional.nav.historia')</a></li>
-        <li><a href="#governanca">@content('institucional.nav.governanca')</a></li>
-        <li><a href="#marco-legal">@content('institucional.nav.marcolegal')</a></li>
-        <li><a href="#documentos">@content('institucional.nav.documentos')</a></li>
+        <li><a href="#quem-somos">Quem somos</a></li>
+        <li><a href="#linha-do-tempo">Nossa história</a></li>
+        <li><a href="#governanca">Governança</a></li>
+        <li><a href="#marco-legal">Marco legal</a></li>
+        <li><a href="#documentos">Documentos</a></li>
       </ul>
     </div>
   </nav>

@@ -27,12 +27,12 @@
   <nav class="frentes-nav" aria-label="Frentes de atuação">
     <div class="wrap">
       <ul>
-        <li><a href="#governanca-publica">@content('atuacao.nav.governanca')</a></li>
-        <li><a href="#observatorio">@content('atuacao.nav.observatorio')</a></li>
-        <li><a href="#pmo">@content('atuacao.nav.pmo')</a></li>
-        <li><a href="#marco-legal-inovacao">@content('atuacao.nav.marcolegal')</a></li>
-        <li><a href="#capacitacao">@content('atuacao.nav.capacitacao')</a></li>
-        <li><a href="#piloto">@content('atuacao.nav.piloto')</a></li>
+        <li><a href="#governanca-publica">Governança</a></li>
+        <li><a href="#observatorio">Observatório de dados</a></li>
+        <li><a href="#pmo">PMO público</a></li>
+        <li><a href="#marco-legal-inovacao">Marco legal</a></li>
+        <li><a href="#capacitacao">Capacitação</a></li>
+        <li><a href="#piloto">Piloto e PD&amp;I</a></li>
       </ul>
     </div>
   </nav>

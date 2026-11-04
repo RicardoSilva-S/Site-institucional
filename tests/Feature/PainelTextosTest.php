@@ -90,7 +90,7 @@ class PainelTextosTest extends TestCase
                 'label' => 'Item novo',
                 'value' => 'Não deveria entrar',
             ])
-            ->assertStatus(422);
+            ->assertSessionHasErrors('group');
 
         $this->assertDatabaseMissing('site_texts', ['label' => 'Item novo']);
     }
