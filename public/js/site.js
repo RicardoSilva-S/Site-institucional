@@ -33,21 +33,9 @@
       }
     });
 
-    // No mobile, o item "Institucional" abre/fecha o submenu em vez de navegar;
-    // os demais links fecham o menu mobile
+    // Qualquer link do menu fecha o menu mobile
     nav.querySelectorAll("a").forEach((link) => {
-      const isSubToggle = link.matches(".has-sub > a.top-link");
-      if (isSubToggle && isMobile()) link.setAttribute("aria-expanded", "false");
-
-      link.addEventListener("click", (e) => {
-        if (isSubToggle && isMobile()) {
-          e.preventDefault();
-          const subOpen = link.parentElement.classList.toggle("is-open");
-          link.setAttribute("aria-expanded", subOpen ? "true" : "false");
-          return;
-        }
-        setOpen(false);
-      });
+      link.addEventListener("click", () => setOpen(false));
     });
   }
 
@@ -142,4 +130,3 @@
     document.querySelectorAll(".steps-carousel").forEach(setupStepsCarousel);
   });
 })();
-
