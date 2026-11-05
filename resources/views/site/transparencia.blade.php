@@ -42,8 +42,8 @@
           <p>@content('transparencia.cta.text')</p>
         </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="{{ $zap('documentos institucionais') }}" target="_blank" rel="noopener">@content('transparencia.cta.btn_whatsapp')</a>
-          <a class="btn btn-outline" href="mailto:faleconosco@idtnpr.org.br?subject={{ rawurlencode('Solicitação de documentos institucionais') }}">@content('transparencia.cta.btn_email')</a>
+          <a class="btn btn-primary" href="{{ $zap('documentos institucionais') }}" target="_blank" rel="noopener">Solicitar pelo WhatsApp</a>
+          <a class="btn btn-outline" href="mailto:faleconosco@idtnpr.org.br?subject={{ rawurlencode('Solicitação de documentos institucionais') }}">Solicitar por e-mail</a>
         </div>
       </div>
     </div>

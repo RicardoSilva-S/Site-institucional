@@ -61,8 +61,8 @@
 
         <div class="compare">
           <div class="compare-row head">
-            <div class="compare-cell bad-head">@content('home.compare.head.left')</div>
-            <div class="compare-cell good-head">@content('home.compare.head.right')</div>
+            <div class="compare-cell bad-head">O que trava</div>
+            <div class="compare-cell good-head">O que entregamos</div>
           </div>
           @for ($i = 1; $i <= 4; $i++)
             <x-compare-row :prefix="'home.compare.row'.$i" />
@@ -146,8 +146,8 @@
         </div>
       </div>
 
-      <div class="stats-grid">
-        @for ($i = 1; $i <= 4; $i++)
+      <div class="stats-grid stats-grid--duo">
+        @for ($i = 1; $i <= 2; $i++)
           <x-stat :prefix="'home.stat'.$i" />
         @endfor
       </div>
@@ -194,8 +194,8 @@
       <div>
         <h2>@content('home.finalcta.title')</h2>
         <p>@content('home.finalcta.text')</p>
+        <a href="{{ route('contato') }}" class="btn btn-gold">@content('home.finalcta.button')</a>
       </div>
-      <a href="{{ route('contato') }}" class="btn btn-gold">@content('home.finalcta.button')</a>
     </div>
     @extraTexts('home.finalcta')
   </section>

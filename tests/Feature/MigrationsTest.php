@@ -22,7 +22,7 @@ class MigrationsTest extends TestCase
         foreach ([
             'users', 'site_texts', 'banners', 'contact_messages',
             'transparencia_secoes', 'transparencia_documentos',
-            'membros_institucionais', 'manifestacoes_ouvidoria', 'editais',
+            'membros_institucionais', 'marcos_institucionais', 'manifestacoes_ouvidoria', 'editais',
             'projetos', 'descricao_projetos',
         ] as $tabela) {
             $this->assertTrue(Schema::hasTable($tabela), "Falta a tabela {$tabela}");
@@ -31,6 +31,7 @@ class MigrationsTest extends TestCase
         $this->assertTrue(Schema::hasColumns('users', ['papel', 'ativo', 'ultimo_login']));
         $this->assertSame(18, DB::table('transparencia_documentos')->count());
         $this->assertSame(6, DB::table('membros_institucionais')->count());
+        $this->assertSame(5, DB::table('marcos_institucionais')->count());
         $this->assertSame(4, DB::table('editais')->count());
     }
 

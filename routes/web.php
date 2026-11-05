@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\EditalController;
+use App\Http\Controllers\Admin\MarcoInstitucionalController;
 use App\Http\Controllers\Admin\MembroInstitucionalController;
 use App\Http\Controllers\Admin\OuvidoriaController as AdminOuvidoriaController;
 use App\Http\Controllers\Admin\ProjetoController;
@@ -81,6 +82,11 @@ Route::middleware(['auth', 'ativo'])->prefix('adm')->name('admin.')->group(funct
     Route::resource('equipe', MembroInstitucionalController::class)
         ->except('show')
         ->parameters(['equipe' => 'membro']);
+
+         // Marcos da linha do tempo ("Nossa história") da página Institucional
+    Route::resource('marcos', MarcoInstitucionalController::class)
+        ->except('show')
+        ->parameters(['marcos' => 'marco']);
 
     // Editais e chamamentos da página /editais (PDF guardado no banco)
     Route::resource('editais', EditalController::class)

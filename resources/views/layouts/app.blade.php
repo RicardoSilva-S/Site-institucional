@@ -71,27 +71,19 @@
 
     <nav class="primary" id="menu-principal" aria-label="Navegação principal">
       <ul>
-        <li><a class="top-link" href="{{ route('home') }}" @if (request()->routeIs('home')) aria-current="page" @endif>@content('shared.nav.inicio')</a></li>
-        <li class="has-sub">
-          <a class="top-link" href="{{ route('institucional') }}" @if (request()->routeIs('institucional', 'marco-legal')) aria-current="page" @endif>@content('shared.nav.institucional')</a>
-          <div class="sub-panel">
-            <a href="{{ route('institucional') }}">Quem somos</a>
-            <a href="{{ route('institucional') }}#linha-do-tempo">Linha do tempo</a>
-            <a href="{{ route('institucional') }}#governanca">Governança</a>
-            <a href="{{ route('marco-legal') }}">Marco Legal</a>
-          </div>
-        </li>
-        <li><a class="top-link" href="{{ route('atuacao') }}" @if (request()->routeIs('atuacao')) aria-current="page" @endif>@content('shared.nav.atuacao')</a></li>
-        <li><a class="top-link" href="{{ route('projetos') }}" @if (request()->routeIs('projetos')) aria-current="page" @endif>@content('shared.nav.projetos')</a></li>
-        <li><a class="top-link" href="{{ route('editais') }}" @if (request()->routeIs('editais')) aria-current="page" @endif>@content('shared.nav.editais')</a></li>
-        <li><a class="top-link" href="{{ route('transparencia') }}" @if (request()->routeIs('transparencia')) aria-current="page" @endif>@content('shared.nav.transparencia')</a></li>
-        <li><a class="top-link" href="{{ route('contato') }}" @if (request()->routeIs('contato')) aria-current="page" @endif>@content('shared.nav.contato')</a></li>
+        <li><a class="top-link" href="{{ route('home') }}" @if (request()->routeIs('home')) aria-current="page" @endif>Início</a></li>
+        <li><a class="top-link" href="{{ route('institucional') }}" @if (request()->routeIs('institucional', 'marco-legal')) aria-current="page" @endif>Institucional</a></li>
+        <li><a class="top-link" href="{{ route('atuacao') }}" @if (request()->routeIs('atuacao')) aria-current="page" @endif>Atuação</a></li>
+        <li><a class="top-link" href="{{ route('projetos') }}" @if (request()->routeIs('projetos')) aria-current="page" @endif>Projetos</a></li>
+        <li><a class="top-link" href="{{ route('editais') }}" @if (request()->routeIs('editais')) aria-current="page" @endif>Editais</a></li>
+        <li><a class="top-link" href="{{ route('transparencia') }}" @if (request()->routeIs('transparencia')) aria-current="page" @endif>Transparência</a></li>
+        <li><a class="top-link" href="{{ route('contato') }}" @if (request()->routeIs('contato')) aria-current="page" @endif>Contato</a></li>
       </ul>
     </nav>
 
     <div style="display:flex;align-items:center;gap:12px;">
       {{-- nav-cta: a classe esconde o botão em telas muito pequenas (style.css, max-width:480px) --}}
-      <a href="{{ route('contato') }}" class="btn btn-primary nav-cta">@content('shared.nav.cta')</a>
+      <a href="{{ route('contato') }}" class="btn btn-primary nav-cta">Fale com o Instituto</a>
       <button type="button" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">☰</button>
     </div>
   </div>
@@ -114,7 +106,7 @@
       </div>
 
       <div>
-        <h2>@content('shared.footer.col1.title')</h2>
+        <h2>Institucional</h2>
         <ul>
           <li><a href="{{ route('institucional') }}">Quem somos</a></li>
           <li><a href="{{ route('institucional') }}#linha-do-tempo">Linha do tempo</a></li>
@@ -124,7 +116,7 @@
       </div>
 
       <div>
-        <h2>@content('shared.footer.col2.title')</h2>
+        <h2>Soluções</h2>
         <ul>
           <li><a href="{{ route('projetos') }}">Projetos e produtos</a></li>
           <li><a href="{{ route('atuacao') }}">Frentes de atuação</a></li>
@@ -134,7 +126,7 @@
       </div>
 
       <div>
-        <h2>@content('shared.footer.col3.title')</h2>
+        <h2>Transparência</h2>
         <ul>
           <li><a href="{{ route('transparencia') }}">Portal da Transparência</a></li>
           <li><a href="{{ route('transparencia') }}">Documentos institucionais</a></li>
