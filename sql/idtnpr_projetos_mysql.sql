@@ -5,6 +5,7 @@
 --   2026_10_15_120000_create_projetos_table
 --   2026_10_15_130000_add_problema_to_projetos_table
 --   2026_10_15_130100_create_descricao_projetos_table
+--   2026_11_17_120000_add_slug_e_icone_to_projetos_table
 -- Use-o só para montar o banco SEM o Laravel. Com `php artisan migrate` ele
 -- não é necessário, e os dois não devem ser misturados no mesmo banco. Se uma
 -- migration mudar, atualize este arquivo.
@@ -38,7 +39,7 @@ CREATE TABLE IF NOT EXISTS projetos (
   titulo           VARCHAR(255)    NOT NULL COMMENT 'nome do projeto, ex.: Totem de Autoatendimento',
   breve_descricao  VARCHAR(500)    NOT NULL COMMENT 'texto do cartão',
   categorias       VARCHAR(255)    NULL COMMENT 'Frente, no cartão',
-  estagio          VARCHAR(30)     NOT NULL DEFAULT 'desenvolvimento' COMMENT 'implementado, expansao, consultoria, piloto ou desenvolvimento',
+  estagio          VARCHAR(30)     NOT NULL DEFAULT 'desenvolvimento' COMMENT 'implementado (Disponível), desenvolvimento (Em desenvolvimento), piloto, expansao ou consultoria',
   tecnologia       VARCHAR(500)    NULL,
   link_rotulo      VARCHAR(255)    NULL COMMENT 'ex.: Conhecer a solução',
   link_destino     VARCHAR(30)     NOT NULL DEFAULT 'contato' COMMENT 'página para onde o link leva',
@@ -47,7 +48,11 @@ CREATE TABLE IF NOT EXISTS projetos (
   updated_at       TIMESTAMP       NULL DEFAULT NULL,
   -- Fica por último porque foi acrescentada depois (migration add_problema).
   problema         TEXT            NULL COMMENT 'texto de "O problema"',
-  PRIMARY KEY (id)
+  -- Acrescentadas depois (migration add_slug_e_icone).
+  slug             VARCHAR(120)    NULL COMMENT 'endereço da página de detalhe: /projetos/{slug}',
+  icone            VARCHAR(30)     NULL COMMENT 'ícone do cartão: saneamento, autoatendimento, fiscal, legislativo, juridico, formacao ou padrao',
+  PRIMARY KEY (id),
+  UNIQUE KEY projetos_slug_unique (slug)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------

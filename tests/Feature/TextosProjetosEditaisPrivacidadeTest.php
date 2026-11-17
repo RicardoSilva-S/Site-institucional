@@ -13,7 +13,7 @@ class TextosProjetosEditaisPrivacidadeTest extends TestCase
 
     public function test_paginas_mostram_os_textos_originais()
     {
-        $this->get('/projetos')->assertOk()->assertSee('Projetos pensados para produzir resultado público.');
+        $this->get('/projetos')->assertOk()->assertSee('Nenhuma solução é oferecida sem caminho jurídico');
         $this->get('/editais')->assertOk()->assertSee('Da qualificação à homologação, em quatro etapas');
         $this->get('/politica-de-privacidade')->assertOk()->assertSee('Quais dados coletamos');
     }
@@ -22,7 +22,7 @@ class TextosProjetosEditaisPrivacidadeTest extends TestCase
     {
         $admin = User::factory()->create();
 
-        $this->actingAs($admin)->get('/adm/paginas/projetos')->assertOk()->assertSee('Impacto e alcance');
+        $this->actingAs($admin)->get('/adm/paginas/projetos')->assertOk()->assertSee('Como chega ao município');
         $this->actingAs($admin)->get('/adm/paginas/editais')->assertOk()->assertSee('Quadro de avisos');
         $this->actingAs($admin)->get('/adm/paginas/privacidade')->assertOk()->assertSee('Seus direitos');
     }

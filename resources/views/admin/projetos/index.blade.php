@@ -7,7 +7,7 @@
     <div>
       <p class="admin-eyebrow">Projetos</p>
       <h1>Projetos e soluções</h1>
-      <p class="admin-muted">Cartões do portfólio da página <a href="{{ route('projetos') }}#projetos" target="_blank" rel="noopener">Projetos ↗</a>. Os textos em volta (título da seção, introdução, chamada final) ficam em "Páginas do site → Projetos".</p>
+      <p class="admin-muted">Cartões do catálogo da página <a href="{{ route('projetos') }}#projetos" target="_blank" rel="noopener">Projetos ↗</a>. Os textos em volta (topo, introdução do catálogo, "Como chega ao município", chamada para parceiros) ficam em "Páginas do site → Projetos".</p>
     </div>
     <a href="{{ route('admin.projetos.create') }}" class="btn btn-primary btn-sm">+ Novo projeto</a>
   </div>

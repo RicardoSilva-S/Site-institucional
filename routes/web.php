@@ -23,6 +23,8 @@ Route::get('/institucional', [SiteController::class, 'institucional'])->name('in
 Route::get('/marco-legal', [SiteController::class, 'marcoLegal'])->name('marco-legal');
 Route::get('/atuacao', [SiteController::class, 'atuacao'])->name('atuacao');
 Route::get('/projetos', [SiteController::class, 'projetos'])->name('projetos');
+// Detalhe de um projeto do catálogo: o {projeto:slug} busca pelo campo slug.
+Route::get('/projetos/{projeto:slug}', [SiteController::class, 'projeto'])->name('projetos.show');
 Route::get('/editais', [SiteController::class, 'editais'])->name('editais');
 Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
 Route::post('/contato/enviar', [ContactController::class, 'store'])

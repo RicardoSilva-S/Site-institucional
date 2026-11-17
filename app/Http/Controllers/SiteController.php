@@ -61,6 +61,14 @@ class SiteController extends Controller
         ]);
     }
 
+    /** Página de detalhe de um projeto do catálogo (/projetos/{slug}). */
+    public function projeto(Projeto $projeto): View
+    {
+        return view('site.projeto', [
+            'projeto' => $projeto->load('descricoes'),
+        ]);
+    }
+
     public function editais(): View
     {
         // Editais vêm do banco e são cadastrados no painel (/adm/editais).
