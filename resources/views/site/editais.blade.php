@@ -121,7 +121,7 @@
   </section>
 
   <!-- INFORMAÇÕES INSTITUCIONAIS: conteúdo antes exibido no cartão azul do Hero -->
-  <section class="alt">
+  <section class="alt scroll-offset" id="parceria">
     <div class="wrap">
       <div class="split-head">
         <div class="section-head">

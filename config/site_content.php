@@ -1523,203 +1523,102 @@ return [
                 'label' => 'Topo',
                 'fields' => [
                     [
-                        'key' => 'projetos.hero.eyebrow',
-                        'label' => 'Selo',
-                        'default' => 'Soluções para a gestão pública',
-                    ],
-                    [
                         'key' => 'projetos.hero.title',
                         'label' => 'Título',
-                        'default' => 'Tecnologia que transforma desafios públicos em soluções.',
+                        'default' => 'Projetos e produtos',
                     ],
                     [
                         'key' => 'projetos.hero.lead',
                         'label' => 'Texto de apoio',
-                        'default' => 'O IDTNPR aproxima inovação, desenvolvimento e administração pública para criar soluções acessíveis, seguras e conectadas à realidade de prefeituras e câmaras municipais.',
+                        'default' => 'As soluções que o Instituto reúne hoje e leva às entidades públicas, cada uma com o instrumento jurídico que a viabiliza.',
                         'long' => true,
-                    ],
-                    [
-                        'key' => 'projetos.hero.btn1',
-                        'label' => 'Botão principal',
-                        'default' => 'Conheça as soluções',
-                    ],
-                    [
-                        'key' => 'projetos.hero.btn2',
-                        'label' => 'Botão secundário',
-                        'default' => 'Fale com o Instituto',
-                    ],
-                    [
-                        'key' => 'projetos.hero.fact1',
-                        'label' => 'Destaque 1',
-                        'default' => 'Inovação aplicada ao serviço do cidadão',
-                    ],
-                    [
-                        'key' => 'projetos.hero.fact2',
-                        'label' => 'Destaque 2',
-                        'default' => 'Soluções desenvolvidas para necessidades reais',
-                    ],
-                    [
-                        'key' => 'projetos.hero.fact3',
-                        'label' => 'Destaque 3',
-                        'default' => 'Orientação institucional em cada etapa',
-                    ],
-                ],
-            ],
-            [
-                'id' => 'impacto',
-                'label' => 'Seção "Impacto e alcance"',
-                'banner' => 'assets/projetos/impacto.svg',
-                'fields' => [
-                    [
-                        'key' => 'projetos.impacto.kicker',
-                        'label' => 'Selo da seção',
-                        'default' => 'Impacto e alcance',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.title',
-                        'label' => 'Título',
-                        'default' => 'Projetos pensados para produzir resultado público.',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.sub',
-                        'label' => 'Subtítulo',
-                        'default' => 'Cada iniciativa conecta diagnóstico, tecnologia e orientação para apoiar decisões mais eficientes e transparentes.',
-                        'long' => true,
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat1.num',
-                        'label' => 'Número 1',
-                        'default' => '4',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat1.label',
-                        'label' => 'Número 1 — legenda',
-                        'default' => 'frentes de soluções para municípios',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat2.num',
-                        'label' => 'Número 2',
-                        'default' => '3',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat2.label',
-                        'label' => 'Número 2 — legenda',
-                        'default' => 'áreas integradas: cidadão, gestão e legislativo',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat3.num',
-                        'label' => 'Número 3',
-                        'default' => '100%',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat3.label',
-                        'label' => 'Número 3 — legenda',
-                        'default' => 'foco na realidade da administração pública',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat4.num',
-                        'label' => 'Número 4',
-                        'default' => '1',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.stat4.label',
-                        'label' => 'Número 4 — legenda',
-                        'default' => 'Instituto para orientar o caminho da inovação',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa1.title',
-                        'label' => 'Etapa 1 — título',
-                        'default' => 'Diagnóstico',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa1.text',
-                        'label' => 'Etapa 1 — texto',
-                        'default' => 'Entender o desafio local',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa2.title',
-                        'label' => 'Etapa 2 — título',
-                        'default' => 'Desenho',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa2.text',
-                        'label' => 'Etapa 2 — texto',
-                        'default' => 'Definir a solução adequada',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa3.title',
-                        'label' => 'Etapa 3 — título',
-                        'default' => 'Tecnologia',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa3.text',
-                        'label' => 'Etapa 3 — texto',
-                        'default' => 'Aplicar inovação com propósito',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa4.title',
-                        'label' => 'Etapa 4 — título',
-                        'default' => 'Orientação',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa4.text',
-                        'label' => 'Etapa 4 — texto',
-                        'default' => 'Apoiar a contratação segura',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa5.title',
-                        'label' => 'Etapa 5 — título',
-                        'default' => 'Resultado',
-                    ],
-                    [
-                        'key' => 'projetos.impacto.etapa5.text',
-                        'label' => 'Etapa 5 — texto',
-                        'default' => 'Melhorar o serviço público',
                     ],
                 ],
             ],
             [
                 'id' => 'portfolio',
-                'label' => 'Seção "Portfólio" (os cards dos projetos vêm do cadastro de projetos)',
-                'banner' => 'assets/projetos/portfolio.svg',
+                'label' => 'Seção "O catálogo" (os cartões vêm do cadastro de projetos)',
                 'fields' => [
                     [
                         'key' => 'projetos.portfolio.kicker',
                         'label' => 'Selo da seção',
-                        'default' => 'Portfólio institucional',
+                        'default' => 'O catálogo',
                     ],
                     [
                         'key' => 'projetos.portfolio.title',
                         'label' => 'Título',
-                        'default' => 'Soluções para desafios reais da administração municipal.',
+                        'default' => 'Soluções desenvolvidas e reunidas pelo Instituto',
                     ],
                     [
                         'key' => 'projetos.portfolio.sub',
-                        'label' => 'Subtítulo',
-                        'default' => 'Conheça as iniciativas do IDTNPR e identifique quais delas podem contribuir para o seu município.',
+                        'label' => 'Texto',
+                        'default' => 'Parte das soluções é desenvolvida pelo próprio Instituto, parte vem de empresas parceiras e é entregue através dele. Em todos os casos o município tem um único interlocutor técnico e um caminho de contratação definido antes da proposta.',
                         'long' => true,
+                    ],
+                    [
+                        'key' => 'projetos.portfolio.hint',
+                        'label' => 'Instrução',
+                        'default' => 'Clique em cada solução para ver a descrição completa.',
+                    ],
+                ],
+            ],
+            [
+                'id' => 'caminho',
+                'label' => 'Seção "Como chega ao município"',
+                'fields' => [
+                    [
+                        'key' => 'projetos.caminho.kicker',
+                        'label' => 'Selo da seção',
+                        'default' => 'Como chega ao município',
+                    ],
+                    [
+                        'key' => 'projetos.caminho.title',
+                        'label' => 'Título',
+                        'default' => 'Nenhuma solução é oferecida sem caminho jurídico',
+                    ],
+                    [
+                        'key' => 'projetos.caminho.text1',
+                        'label' => 'Texto',
+                        'default' => 'Antes de apresentar qualquer solução, o Instituto identifica por qual instrumento legal ela pode ser contratada naquele município específico, e entrega essa fundamentação à Procuradoria junto com a proposta.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'projetos.caminho.text2',
+                        'label' => 'Observação',
+                        'default' => 'Quando o caso é de licitação comum, é isso que dizemos. A escolha e a decisão permanecem integralmente com a Administração.',
+                        'long' => true,
+                    ],
+                    [
+                        'key' => 'projetos.caminho.btn1',
+                        'label' => 'Botão principal (Marco Legal)',
+                        'default' => 'Ver os instrumentos disponíveis',
+                    ],
+                    [
+                        'key' => 'projetos.caminho.btn2',
+                        'label' => 'Botão secundário (Contato)',
+                        'default' => 'Solicitar reunião técnica',
                     ],
                 ],
             ],
             [
                 'id' => 'cta',
-                'label' => 'Chamada final',
+                'label' => 'Chamada para parceiros',
                 'fields' => [
                     [
                         'key' => 'projetos.cta.title',
                         'label' => 'Título',
-                        'default' => 'Seu município também pode inovar com segurança.',
+                        'default' => 'Desenvolve uma solução para o setor público?',
                     ],
                     [
                         'key' => 'projetos.cta.text',
                         'label' => 'Texto',
-                        'default' => 'Converse com o IDTNPR para identificar o desafio, avaliar a solução mais adequada e entender os próximos passos.',
+                        'default' => 'Empresas interessadas em integrar a carteira de soluções do Instituto podem se credenciar. O credenciamento é gratuito, sem exclusividade e sem garantia de demanda.',
                         'long' => true,
                     ],
                     [
                         'key' => 'projetos.cta.btn',
-                        'label' => 'Botão',
-                        'default' => 'Solicitar diagnóstico gratuito',
+                        'label' => 'Botão (Editais → Parcerias)',
+                        'default' => 'Como se tornar parceiro',
                     ],
                 ],
             ],

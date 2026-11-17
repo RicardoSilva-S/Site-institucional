@@ -1,0 +1,135 @@
+/* =========================================================================
+   IDTNPR — projetos.css
+   Página /projetos (catálogo) e /projetos/{slug} (detalhe).
+   Carregado só nessas páginas (@push('styles')). Usa as variáveis, botões,
+   .section-head, .status e .final-cta do style.css; aqui ficam apenas as
+   peças próprias da página.
+   ========================================================================= */
+
+/* ---------- Topo azul com traçado de circuito ---------- */
+.projetos-hero{
+  position:relative;overflow:hidden;color:#fff;
+  padding:64px 0 60px;
+  background-color:var(--navy-dark);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='240' viewBox='0 0 480 240' fill='none' stroke='%23FFFFFF' stroke-opacity='.09' stroke-width='1.2'%3E%3Cpath d='M0 60h90l40 40h110M240 100l30-30h90M360 70h120M30 0v60M300 240v-70l40-40h140M0 190h140l30-30h70'/%3E%3Ccircle cx='240' cy='100' r='3.5' fill='%23FFFFFF' fill-opacity='.18'/%3E%3Ccircle cx='360' cy='70' r='3.5' fill='%23FFFFFF' fill-opacity='.18'/%3E%3Ccircle cx='300' cy='170' r='3.5' fill='%23FFFFFF' fill-opacity='.18'/%3E%3Ccircle cx='170' cy='160' r='3.5' fill='%23FFFFFF' fill-opacity='.18'/%3E%3C/svg%3E"),
+    linear-gradient(120deg, var(--navy-dark) 0%, var(--navy) 55%, var(--blue) 100%);
+  background-size:480px 240px, cover;
+}
+.projetos-hero h1{color:#fff;font-size:40px;line-height:1.15;max-width:20ch;}
+.projetos-hero .lead{
+  color:rgba(255,255,255,0.86);font-size:18px;line-height:1.6;
+  margin-top:16px;max-width:56ch;
+}
+.projetos-hero .extra-texts p{color:rgba(255,255,255,0.8);}
+
+/* ---------- Cabeçalho das seções ---------- */
+.projetos-head{max-width:760px;}
+.projetos-head .sub{max-width:62ch;}
+.projetos-nota{margin-top:14px;font-size:15.5px;color:var(--ink);max-width:62ch;line-height:1.6;}
+.projetos-acoes{display:flex;gap:14px;flex-wrap:wrap;}
+.projetos-vazio{color:var(--ink-soft);font-size:16px;}
+
+/* ---------- Grid de cartões: 3 / 2 / 1 colunas ---------- */
+.projetos-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+
+.projeto-card{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--paper);padding:26px 24px 20px;
+  border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);
+  transition:box-shadow .15s ease, transform .15s ease, border-color .15s ease;
+}
+.projeto-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:#C9D2E3;}
+/* O link estica sobre o cartão: a borda de foco vai para o cartão inteiro. */
+.projeto-card:focus-within{outline:2px solid var(--gold);outline-offset:3px;}
+.projeto-card:focus-within .projeto-card__link:focus-visible{outline:none;}
+
+.projeto-card__head{display:flex;align-items:flex-start;gap:16px;}
+.projeto-card__icone{
+  flex:none;display:inline-flex;align-items:center;justify-content:center;
+  width:52px;height:52px;border-radius:var(--radius-md);
+  background:var(--mist);border:1px solid var(--line);color:var(--navy);
+}
+.projeto-card__icone .projeto-icone{width:26px;height:26px;}
+.projeto-card__icone--grande{width:64px;height:64px;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.22);color:#fff;}
+.projeto-card__icone--grande .projeto-icone{width:32px;height:32px;}
+
+.projeto-card__titulo{font-size:19px;line-height:1.3;}
+.projeto-card__categoria{margin-top:4px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+.projeto-card__descricao{margin-top:18px;font-size:15px;color:var(--ink-soft);line-height:1.65;flex:1;}
+
+.projeto-card__rodape{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
+}
+.projeto-card__link{
+  display:inline-flex;align-items:center;gap:6px;min-height:44px;
+  font-weight:600;font-size:15px;color:var(--navy);
+}
+.projeto-card__link::after{content:"";position:absolute;inset:0;border-radius:inherit;}
+.projeto-card:hover .projeto-card__link{color:var(--navy-dark);text-decoration:underline;text-underline-offset:3px;}
+
+/* Texto só para leitor de tela ("Ver detalhes de Acquora"). */
+.visually-hidden{
+  position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ---------- Chamada para parceiros (centralizada, como no modelo antigo) ---------- */
+.projetos-cta{
+  text-align:center;padding:56px 0;
+  background:linear-gradient(120deg, var(--navy-dark) 0%, var(--navy) 60%, var(--blue) 100%);
+}
+.projetos-cta .wrap{display:block;max-width:760px;}
+.projetos-cta h2{max-width:none;font-size:28px;}
+.projetos-cta p{margin:14px auto 0;max-width:58ch;color:rgba(255,255,255,0.82);}
+.projetos-cta .btn-gold{margin-top:26px;}
+
+/* ---------- Página de detalhe ---------- */
+.projetos-hero--detalhe{padding:40px 0 44px;}
+.projetos-trilha{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:22px;}
+.projetos-trilha a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+.projeto-detalhe__head{display:flex;align-items:center;gap:20px;}
+.projeto-detalhe__head h1{font-size:36px;}
+.projeto-detalhe__meta{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:15px;color:rgba(255,255,255,0.86);}
+
+.projeto-detalhe{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:48px;align-items:start;}
+.projeto-detalhe__lead{font-size:18px;line-height:1.65;color:var(--ink);}
+.projeto-detalhe__texto h2{font-size:21px;margin:30px 0 10px;}
+.projeto-detalhe__texto p{font-size:16px;line-height:1.7;color:var(--ink-soft);max-width:68ch;}
+.projeto-detalhe__aside{
+  background:var(--mist);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;
+}
+.projeto-detalhe__aside h2{font-size:19px;margin-bottom:10px;}
+.projeto-detalhe__aside p{font-size:15px;color:var(--ink-soft);line-height:1.6;}
+.projeto-detalhe__acoes{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
+.projeto-detalhe__acoes .btn{justify-content:center;white-space:normal;text-align:center;}
+.projetos-voltar{display:inline-flex;gap:8px;align-items:center;min-height:44px;margin-top:28px;font-weight:600;color:var(--navy);}
+.projetos-voltar:hover{text-decoration:underline;text-underline-offset:3px;}
+
+/* ---------- Tablet ---------- */
+@media (max-width:960px){
+  .projetos-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .projetos-hero h1{font-size:34px;}
+  .projeto-detalhe{grid-template-columns:minmax(0,1fr);gap:32px;}
+}
+
+/* ---------- Celular ---------- */
+@media (max-width:600px){
+  .projetos-grid{grid-template-columns:minmax(0,1fr);}
+  .projetos-hero{padding:40px 0 38px;}
+  .projetos-hero h1{font-size:30px;}
+  .projetos-hero .lead{font-size:16.5px;}
+  .projeto-card{padding:22px 18px 16px;}
+  .projetos-acoes .btn{width:100%;justify-content:center;white-space:normal;text-align:center;}
+  .projetos-cta{padding:40px 0;}
+  .projetos-cta .wrap{text-align:left;}
+  .projetos-cta h2{font-size:24px;}
+  .projetos-cta p{margin-left:0;}
+  .projeto-detalhe__head{align-items:flex-start;}
+  .projeto-detalhe__head h1{font-size:28px;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .projeto-card,.projeto-card:hover{transition:none;transform:none;}
+}

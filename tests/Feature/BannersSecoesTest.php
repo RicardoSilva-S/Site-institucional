@@ -15,7 +15,6 @@ class BannersSecoesTest extends TestCase
     /** Seções que tinham espaço vazio ao lado do título: rota => [posição => url]. */
     private const POSICOES = [
         'home' => ['steps' => '/', 'cards' => '/', 'stats' => '/'],
-        'projetos' => ['impacto' => '/projetos', 'portfolio' => '/projetos'],
         'editais' => ['etapas' => '/editais', 'parceria' => '/editais', 'avisos' => '/editais', 'lista' => '/editais'],
         'marco-legal' => ['hero' => '/marco-legal', 'normas' => '/marco-legal', 'mapa' => '/marco-legal', 'procuradorias' => '/marco-legal'],
         'contato' => ['hero' => '/contato'],
